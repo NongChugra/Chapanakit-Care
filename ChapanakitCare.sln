@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChapanakitCare.Domain.Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChapanakitCare.Web", "src\ChapanakitCare.Web\ChapanakitCare.Web.csproj", "{169617E7-3123-4AE1-8FFC-8AAEE4F1AA5F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChapanakitCare.Desktop", "src\ChapanakitCare.Desktop\ChapanakitCare.Desktop.csproj", "{2BDA885B-D793-4F2D-A279-E339052DB6E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChapanakitCare.Desktop.Tests", "tests\ChapanakitCare.Desktop.Tests\ChapanakitCare.Desktop.Tests.csproj", "{A6B347F6-6E12-47A4-BE31-BDB9876A8C1B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +77,14 @@ Global
 		{169617E7-3123-4AE1-8FFC-8AAEE4F1AA5F}.Release|x64.Build.0 = Release|Any CPU
 		{169617E7-3123-4AE1-8FFC-8AAEE4F1AA5F}.Release|x86.ActiveCfg = Release|Any CPU
 		{169617E7-3123-4AE1-8FFC-8AAEE4F1AA5F}.Release|x86.Build.0 = Release|Any CPU
+		{2BDA885B-D793-4F2D-A279-E339052DB6E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BDA885B-D793-4F2D-A279-E339052DB6E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BDA885B-D793-4F2D-A279-E339052DB6E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BDA885B-D793-4F2D-A279-E339052DB6E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6B347F6-6E12-47A4-BE31-BDB9876A8C1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6B347F6-6E12-47A4-BE31-BDB9876A8C1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6B347F6-6E12-47A4-BE31-BDB9876A8C1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6B347F6-6E12-47A4-BE31-BDB9876A8C1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,5 +94,7 @@ Global
 		{B8E494C9-9AD5-424F-906E-0377E6CE7411} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
 		{A7521E23-66E5-4FCB-AF4A-FF3CB27F8B8E} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
 		{169617E7-3123-4AE1-8FFC-8AAEE4F1AA5F} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{2BDA885B-D793-4F2D-A279-E339052DB6E4} = {827E0CD3-B72D-47B6-A68D-7590B98EB39B}
+		{A6B347F6-6E12-47A4-BE31-BDB9876A8C1B} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
 	EndGlobalSection
 EndGlobal

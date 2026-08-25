@@ -11,6 +11,7 @@ public sealed class CreateModel(DeathApplicationService service) : PageModel
     [BindProperty, Required] public string RunNo { get; set; } = string.Empty;
     [BindProperty, Required] public string CertificateNo { get; set; } = string.Empty;
     [BindProperty, Required] public DateOnly? CertificateDate { get; set; }
+    [BindProperty, Required] public DateOnly? ReportedCertificateDate { get; set; }
     [BindProperty] public IFormFile? CertificatePdf { get; set; }
     [BindProperty, Required] public string Cause { get; set; } = string.Empty;
     [BindProperty] public bool NonPay { get; set; }
@@ -24,6 +25,7 @@ public sealed class CreateModel(DeathApplicationService service) : PageModel
     {
         RunNo = runNo ?? string.Empty;
         CertificateDate = DateOnly.FromDateTime(DateTime.Today);
+        ReportedCertificateDate = DateOnly.FromDateTime(DateTime.Today);
         await LoadPreviewAsync();
     }
 
@@ -32,6 +34,7 @@ public sealed class CreateModel(DeathApplicationService service) : PageModel
         ModelState.Remove(nameof(CertificateNo));
         ModelState.Remove(nameof(Cause));
         ModelState.Remove(nameof(CertificateDate));
+        ModelState.Remove(nameof(ReportedCertificateDate));
         ModelState.Remove(nameof(CertificatePdf));
         await LoadPreviewAsync();
         return Page();
@@ -42,20 +45,33 @@ public sealed class CreateModel(DeathApplicationService service) : PageModel
         await LoadPreviewAsync();
         if (NonPay && string.IsNullOrWhiteSpace(NonPayReason))
             ModelState.AddModelError(nameof(NonPayReason), "กรุณาระบุเหตุผลเคสไม่จ่าย");
-        if (CertificatePdf is null || CertificatePdf.Length == 0)
-            ModelState.AddModelError(nameof(CertificatePdf), "กรุณาแนบใบมรณะบัตร PDF");
-        else if (CertificatePdf.Length > 10 * 1024 * 1024)
+        if (CertificatePdf is not null && CertificatePdf.Length > 10 * 1024 * 1024)
             ModelState.AddModelError(nameof(CertificatePdf), "ไฟล์ใบมรณะบัตร PDF ต้องมีขนาดไม่เกิน 10 MB");
         if (!ModelState.IsValid) return Page();
 
         try
         {
-            await using var input = CertificatePdf!.OpenReadStream();
-            using var buffer = new MemoryStream();
-            await input.CopyToAsync(buffer);
+            byte[] bytes;
+            string fileName;
+            string contentType;
+            if (CertificatePdf is null || CertificatePdf.Length == 0)
+            {
+                bytes = "%PDF-1.4\n% ไม่มีไฟล์ใบมรณะบัตรแนบ\n%%EOF"u8.ToArray();
+                fileName = "not-provided.pdf";
+                contentType = "application/pdf";
+            }
+            else
+            {
+                await using var input = CertificatePdf.OpenReadStream();
+                using var buffer = new MemoryStream();
+                await input.CopyToAsync(buffer);
+                bytes = buffer.ToArray();
+                fileName = CertificatePdf.FileName;
+                contentType = CertificatePdf.ContentType;
+            }
             var result = await service.ConfirmAsync(new(
                 RunNo, CertificateNo, CertificateDate!.Value, Cause, NonPay, NonPayReason,
-                new DeathCertificateDocument(CertificatePdf.FileName, CertificatePdf.ContentType, buffer.ToArray())),
+                new DeathCertificateDocument(fileName, contentType, bytes)),
                 DateOnly.FromDateTime(DateTime.Today), DateTimeOffset.UtcNow, "ผู้ใช้งานเครื่องนี้");
             TempData["Success"] = $"บันทึก {result.DeathCase.DeathCaseNo} ยอดสุทธิ {result.Calculation.TotalBenefitSatang / 100m:N2} บาท";
             return RedirectToPage("Index");

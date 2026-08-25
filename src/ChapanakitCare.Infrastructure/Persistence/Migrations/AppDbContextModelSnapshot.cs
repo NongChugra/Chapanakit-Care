@@ -86,9 +86,9 @@ namespace ChapanakitCare.Infrastructure.Persistence.Migrations
                         {
                             t.HasCheckConstraint("ck_advance_ledger_entries_arithmetic", "balance_before + units_delta = balance_after");
 
-                            t.HasCheckConstraint("ck_advance_ledger_entries_source", "(entry_type = 'death_contribution' AND source_death_case_id IS NOT NULL AND source_reset_batch_id IS NULL) OR (entry_type = 'reset_to_30' AND source_reset_batch_id IS NOT NULL AND source_death_case_id IS NULL) OR (entry_type IN ('opening_30', 'correction'))");
+                            t.HasCheckConstraint("ck_advance_ledger_entries_source", "(entry_type = 'death_contribution' AND source_death_case_id IS NOT NULL AND source_reset_batch_id IS NULL) OR (entry_type = 'reset_to_30' AND source_reset_batch_id IS NOT NULL AND source_death_case_id IS NULL) OR (entry_type IN ('opening_30', 'correction', 'resignation_refund'))");
 
-                            t.HasCheckConstraint("ck_advance_ledger_entries_type", "entry_type IN ('opening_30', 'death_contribution', 'reset_to_30', 'correction')");
+                            t.HasCheckConstraint("ck_advance_ledger_entries_type", "entry_type IN ('opening_30', 'death_contribution', 'reset_to_30', 'correction', 'resignation_refund')");
                         });
                 });
 
@@ -909,7 +909,7 @@ namespace ChapanakitCare.Infrastructure.Persistence.Migrations
 
                             t.HasCheckConstraint("ck_members_run_no_length", "length(run_no) = 5");
 
-                            t.HasCheckConstraint("ck_members_status", "status IN ('normal', 'deceased')");
+                            t.HasCheckConstraint("ck_members_status", "status IN ('normal', 'deceased', 'resigned')");
 
                             t.HasCheckConstraint("ck_members_version", "version >= 1");
                         });
@@ -1093,9 +1093,9 @@ namespace ChapanakitCare.Infrastructure.Persistence.Migrations
 
                     b.ToTable("member_status_events", null, t =>
                         {
-                            t.HasCheckConstraint("ck_member_status_events_from", "from_status IS NULL OR from_status IN ('normal', 'deceased')");
+                            t.HasCheckConstraint("ck_member_status_events_from", "from_status IS NULL OR from_status IN ('normal', 'deceased', 'resigned')");
 
-                            t.HasCheckConstraint("ck_member_status_events_to", "to_status IN ('normal', 'deceased')");
+                            t.HasCheckConstraint("ck_member_status_events_to", "to_status IN ('normal', 'deceased', 'resigned')");
                         });
                 });
 
@@ -1271,12 +1271,12 @@ namespace ChapanakitCare.Infrastructure.Persistence.Migrations
                             DeathWarningThreshold = 25,
                             ResetTargetUnits = 30,
                             ServiceFeeBasisPoints = 400,
-                            ServiceFeeRoundingMode = "round_up_to_satang",
+                            ServiceFeeRoundingMode = "round_down_to_satang",
                             SettingsRevision = 1,
                             SpecialNonPayWindowDays = 365,
                             UpdatedAtUtc = new DateTimeOffset(new DateTime(2026, 8, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 0, 0, 0, 0)),
                             UpdatedBy = "system_seed",
-                            WelfarePerMemberSatang = 1500L
+                            WelfarePerMemberSatang = 900L
                         });
                 });
 

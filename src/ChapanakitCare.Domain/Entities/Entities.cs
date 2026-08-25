@@ -3,7 +3,8 @@ namespace ChapanakitCare.Domain.Entities;
 public enum MemberStatus
 {
     Normal,
-    Deceased
+    Deceased,
+    Resigned
 }
 
 public sealed class Member
@@ -89,12 +90,12 @@ public sealed class SystemSettings
     public int SettingsRevision { get; set; } = 1;
     public long? RegistrationFeeSatang { get; set; }
     public int ServiceFeeBasisPoints { get; set; } = 400;
-    public long WelfarePerMemberSatang { get; set; } = 1_500;
+    public long WelfarePerMemberSatang { get; set; } = 900;
     public int ResetTargetUnits { get; set; } = 30;
     public int CoverageWaitDays { get; set; } = 180;
     public int SpecialNonPayWindowDays { get; set; } = 365;
     public int DeathWarningThreshold { get; set; } = 25;
-    public string ServiceFeeRoundingMode { get; set; } = "round_up_to_satang";
+    public string ServiceFeeRoundingMode { get; set; } = "round_down_to_satang";
     public DateTimeOffset UpdatedAtUtc { get; set; }
     public string UpdatedBy { get; set; } = string.Empty;
 }

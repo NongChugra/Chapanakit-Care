@@ -189,7 +189,16 @@ public sealed class NotificationService(AppDbContext database)
 {
     public async Task RefreshAsync(DateOnly date, DateTimeOffset now, CancellationToken ct = default)
     {
-        var latest = (await database.AdvanceResetBatches.AsNoTracking().ToListAsync(ct)).OrderByDescending(x => x.ConfirmedAtUtc).FirstOrDefault(); var cycle = latest?.Id.ToString() ?? "initial"; var deaths = await database.DeathCases.CountAsync(x => x.RecordState == "confirmed" && (latest == null || x.ConfirmedAtUtc > latest.ConfirmedAtUtc), ct); var threshold = (await database.SystemSettings.AsNoTracking().SingleAsync(ct)).DeathWarningThreshold;
+        var latest = (await database.AdvanceResetBatches.AsNoTracking().ToListAsync(ct)).OrderByDescending(x => x.ConfirmedAtUtc).FirstOrDefault();
+        var cycle = latest?.Id.ToString() ?? "initial";
+        var confirmedDeathTimes = await database.DeathCases
+            .Where(x => x.RecordState == "confirmed")
+            .Select(x => x.ConfirmedAtUtc)
+            .ToListAsync(ct);
+        var deaths = latest is null
+            ? confirmedDeathTimes.Count
+            : confirmedDeathTimes.Count(value => value > latest.ConfirmedAtUtc);
+        var threshold = (await database.SystemSettings.AsNoTracking().SingleAsync(ct)).DeathWarningThreshold;
         if (date.Day == 1) await Add("month_start_reset", date.ToString("yyyy-MM", CultureInfo.InvariantCulture), "ถึงวันที่ 1 ของเดือน กรุณาพิจารณารีเซ็ตยอดล่วงหน้า", null, latest?.Id, date, now, ct);
         if (deaths > threshold) await Add("death_threshold", cycle, $"มีผู้เสียชีวิต {deaths} รายตั้งแต่รีเซ็ตครั้งล่าสุด กรุณาพิจารณารีเซ็ตยอดล่วงหน้า", deaths, latest?.Id, date, now, ct);
         await database.SaveChangesAsync(ct);

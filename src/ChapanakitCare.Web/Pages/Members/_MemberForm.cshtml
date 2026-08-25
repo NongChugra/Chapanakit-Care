@@ -1,4 +1,5 @@
 @model ChapanakitCare.Web.Pages.Members.MemberEditorPageModel
+@using System.Globalization
 <div asp-validation-summary="All"></div>
 <input asp-for="Input.Version" type="hidden" />
 
@@ -7,32 +8,33 @@
     <label>คำนำหน้า<input asp-for="Input.Title" list="thai-titles" placeholder="เลือกหรือพิมพ์" data-title-input required /></label>
     <label>ชื่อ<input asp-for="Input.FirstName" required /></label>
     <label>นามสกุล<input asp-for="Input.LastName" required /></label>
-    <label>เพศ<span class="hint">แนะนำจากคำนำหน้าและแก้ไขได้</span><select asp-for="Input.Gender" data-gender-select required><option value="">เลือก</option><option>ชาย</option><option>หญิง</option></select></label>
+    <label>เพศ<select asp-for="Input.Gender" data-gender-select required><option value="">เลือก</option><option>ชาย</option><option>หญิง</option></select></label>
     <label>เลขประจำตัวประชาชน<input asp-for="Input.PersonalIdCard" inputmode="numeric" maxlength="13" required /></label>
-    <label>วันเกิด<input asp-for="Input.BirthDate" type="date" data-birth-date data-age-target="#calculated-age" required /></label>
+    <label>วันเกิด (พ.ศ.)<input asp-for="Input.BirthDate" type="hidden" value="@(Model.Input.BirthDate?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))" data-birth-date data-age-target="#calculated-age" /><input type="text" inputmode="numeric" placeholder="วว/ดด/พ.ศ." data-birth-date-be data-birth-target="#Input_BirthDate" required /></label>
     <label>อายุ<span class="hint">คำนวณจากวันเกิดอัตโนมัติ</span><input id="calculated-age" readonly /></label>
-    <label>กลุ่มสมาชิก <span class="hint">กลุ่มสำหรับรวบรวมเงินและออกบิล</span><input asp-for="Input.GroupNo" required /></label>
+    <label>กลุ่มสมาชิก<input asp-for="Input.GroupNo" required readonly data-member-group /></label>
     <label>บ้านเลขที่<input asp-for="Input.HouseNo" required /></label>
-    <label>หมู่ที่<input asp-for="Input.Moo" required /></label>
-    <label>ตำบล<input asp-for="Input.Subdistrict" list="rong-kwang-subdistricts" required /></label>
-    <label>รหัสไปรษณีย์ <span class="hint">ช่วยเติมอำเภอและจังหวัดอัตโนมัติ</span><input asp-for="Input.PostalCode" inputmode="numeric" maxlength="5" required data-address-postal /></label>
-    <label>อำเภอ<input asp-for="Input.District" required data-address-district /></label>
-    <label>จังหวัด<input asp-for="Input.Province" required data-address-province /></label>
-    <label>โทรศัพท์<input asp-for="Input.Mobile" required /></label>
-    <label>ชื่อหมู่บ้าน <span class="hint">ชื่อข้อความที่สัมพันธ์กับหมู่ที่</span><input asp-for="Input.Under" required /></label>
+    <label>หมู่ที่<input asp-for="Input.Moo" list="moo-numbers" required data-moo /></label>
+    <label>ชื่อหมู่บ้าน<input asp-for="Input.Under" required data-village /></label>
+    <label>ตำบล<input asp-for="Input.Subdistrict" list="rong-kwang-subdistricts" required data-member-subdistrict /></label>
+    <label>รหัสไปรษณีย์<input asp-for="Input.PostalCode" inputmode="numeric" maxlength="5" required data-address-postal readonly /></label>
+    <label>อำเภอ<input asp-for="Input.District" required data-address-district readonly /></label>
+    <label>จังหวัด<input asp-for="Input.Province" required data-address-province readonly /></label>
+    <label>โทรศัพท์<input asp-for="Input.Mobile" /></label>
 </div>
 <datalist id="thai-titles"><option value="นาย"></option><option value="นาง"></option><option value="นางสาว"></option><option value="น.ส."></option></datalist>
 <datalist id="rong-kwang-subdistricts"><option value="ร้องกวาง"></option><option value="ร้องเข็ม"></option><option value="น้ำเลา"></option><option value="บ้านเวียง"></option><option value="ทุ่งศรี"></option><option value="แม่ยางตาล"></option><option value="แม่ยางฮ่อ"></option><option value="ไผ่โทน"></option><option value="ห้วยโรง"></option><option value="แม่ทราย"></option><option value="แม่ยางร้อง"></option></datalist>
+<datalist id="moo-numbers">@for (var i = 1; i <= 20; i++) { <option value="@i"></option> }</datalist>
 
 <h3 class="section-title">วันที่สำคัญ</h3>
 <div class="grid three">
-    <label>วันที่สมัคร<input asp-for="Input.ApplicationDate" type="date" required /></label>
-    <label>วันอนุมัติ<span class="hint">เริ่มต้นเป็นวันนี้และแก้ไขได้</span><input asp-for="Input.ApprovalDate" type="date" required data-approval-date data-wait-days="@Model.CoverageWaitDays" data-coverage-target="#coverage-date" /></label>
-    <label>วันคุ้มครอง<span class="hint">คำนวณอัตโนมัติจากค่าระยะรอ</span><input id="coverage-date" type="date" readonly /></label>
+    <label>วันที่สมัคร (พ.ศ.)<input asp-for="Input.ApplicationDate" type="hidden" value="@Model.Input.ApplicationDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)" /><input type="text" inputmode="numeric" placeholder="วว/ดด/พ.ศ." data-birth-date-be data-birth-target="#Input_ApplicationDate" required /></label>
+    <label>วันอนุมัติ (พ.ศ.)<input asp-for="Input.ApprovalDate" type="hidden" value="@Model.Input.ApprovalDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)" data-approval-date data-wait-days="@Model.CoverageWaitDays" data-coverage-target="#coverage-date" /><input type="text" inputmode="numeric" placeholder="วว/ดด/พ.ศ." data-birth-date-be data-birth-target="#Input_ApprovalDate" required /></label>
+    <label>วันคุ้มครอง (พ.ศ.)<span class="hint">คำนวณอัติโนมัติจากวันอนุมัติ</span><input id="coverage-date" type="hidden" /><input type="text" readonly data-be-date-output data-be-target="#coverage-date" /></label>
 </div>
 
 <h3 class="section-title">ผู้รับเงินสงเคราะห์</h3>
-<p class="muted">บันทึกได้สูงสุด 2 คน หากมี 2 คน ระบบจะแบ่งเงินให้เท่ากัน เศษสตางค์ให้คนที่ 1</p>
+<p class="muted">บันทึกได้สูงสุด 2 คน หากมี 2 คน ระบบจะแบ่งเงินให้เท่ากัน</p>
 @for (var slot = 1; slot <= 2; slot++)
 {
     var prefix = slot == 1 ? "Input.Beneficiary1" : "Input.Beneficiary2";

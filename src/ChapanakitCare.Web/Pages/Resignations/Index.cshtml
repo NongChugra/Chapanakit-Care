@@ -1,0 +1,35 @@
+@page
+@model ChapanakitCare.Web.Pages.Resignations.IndexModel
+@using ChapanakitCare.Domain.Entities
+@{ ViewData["Title"] = "ปรับสถานะสมาชิกลาออก"; }
+<section class="card narrow-card">
+    <div class="card-head"><div><h2>ปรับสถานะสมาชิกลาออก</h2><div class="muted">เมื่อยืนยันแล้ว สถานะลาออกย้อนกลับไม่ได้ หากกลับเข้าสมาคมให้เพิ่มสมาชิกใหม่</div></div></div>
+    <form method="post" asp-page-handler="Search" class="filters">
+        <label>เลขทะเบียนสมาชิก<input asp-for="RunNo" inputmode="numeric" maxlength="5" autofocus /></label>
+        <button class="button" type="submit">ค้นหาสมาชิก</button>
+    </form>
+    <div asp-validation-summary="ModelOnly"></div>
+</section>
+@if (Model.Preview is not null)
+{
+    var member = Model.Preview.Member;
+    <section class="card" style="margin-top:18px">
+        <h2>ข้อมูลสมาชิก</h2>
+        <div class="grid four metadata-grid">
+            <div><span class="label">เลขทะเบียน</span><strong>@member.RunNo</strong></div>
+            <div><span class="label">ชื่อสมาชิก</span><strong>@member.Title@member.FirstName @member.LastName</strong></div>
+            <div><span class="label">กลุ่มสมาชิก</span><strong>@member.GroupNo</strong></div>
+            <div><span class="label">สถานะปัจจุบัน</span><strong>@(member.Status == MemberStatus.Normal ? "ปกติ" : "ลาออกแล้ว")</strong></div>
+            <div><span class="label">เงินล่วงหน้าคงเหลือ</span><strong>@member.AdvanceUnitsBalance คน</strong></div>
+            <div><span class="label">เงินที่ได้รับคืน</span><strong>@((Model.Preview.RefundSatang / 100m).ToString("N2")) บาท</strong></div>
+        </div>
+        @if (member.Status == MemberStatus.Normal)
+        {
+            <form method="post" asp-page-handler="Confirm" class="form-footer">
+                <input type="hidden" asp-for="RunNo" />
+                <button class="button danger" type="submit" onclick="return confirm('ยืนยันให้สมาชิกลาออก? การทำงานนี้ย้อนกลับไม่ได้')">ยืนยันลาออกและคืนเงิน</button>
+                <a class="button secondary" asp-page="/Members/Index">ยกเลิก</a>
+            </form>
+        }
+    </section>
+}

@@ -17,6 +17,16 @@ public sealed class IndexModel(
     public IReadOnlyDictionary<Guid, IReadOnlyList<MemberBeneficiary>> BeneficiariesByMember { get; private set; }
         = new Dictionary<Guid, IReadOnlyList<MemberBeneficiary>>();
     public TablePreference Preference { get; private set; } = new([], [], MemberTableComponents.All);
+    public string FilterSummary => string.Join(" · ", new[]
+    {
+        string.IsNullOrWhiteSpace(Search) ? null : $"ค้นหา: {Search}",
+        Status is null ? null : $"สถานะ: {Status switch { MemberStatus.Normal => "ปกติ", MemberStatus.Deceased => "เสียชีวิต", _ => "ลาออก" }}",
+        string.IsNullOrWhiteSpace(Subdistrict) ? null : $"ตำบล: {Subdistrict}",
+        string.IsNullOrWhiteSpace(GroupNo) ? null : $"กลุ่มสมาชิก: {GroupNo}",
+        string.IsNullOrWhiteSpace(Moo) ? null : $"หมู่ที่: {Moo}",
+        From is null ? null : $"ตั้งแต่: {ThaiDate(From.Value)}",
+        To is null ? null : $"ถึง: {ThaiDate(To.Value)}"
+    }.Where(value => value is not null)) is { Length: > 0 } summary ? summary : "ทั้งหมด";
 
     [BindProperty(SupportsGet = true)] public string? Search { get; set; }
     [BindProperty(SupportsGet = true)] public MemberDateField? DateField { get; set; }
@@ -63,7 +73,7 @@ public sealed class IndexModel(
         return new JsonResult(new { reset = true });
     }
 
-    public static string ThaiDate(DateOnly date) => $"{date:dd/MM}/{date.Year + 543}";
+    public static string ThaiDate(DateOnly date) => $"{date.Day:00}/{date.Month:00}/{date.Year + 543}";
 
     public static int? Age(Member member)
     {

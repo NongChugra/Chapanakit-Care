@@ -2,6 +2,11 @@
 .tools/
 artifacts/
 .assurance/
+.dotnet-sdk*/
+*.stdout.log
+*.stderr.log
+build.log
+publish.log
 
 # .NET build and test outputs
 **/bin/

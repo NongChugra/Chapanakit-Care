@@ -4,25 +4,26 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@ViewData["Title"] · Chapanakit Care</title>
+    <link rel="icon" type="image/jpeg" href="~/images/association-deer-logo.jpg" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
-    <aside class="sidebar">
-        <a class="brand" asp-page="/Index">
-            <span class="brand-mark">ช</span>
-            <span><strong>Chapanakit Care</strong><small>ระบบงานฌาปนกิจสงเคราะห์</small></span>
-        </a>
+    <aside class="top-nav" aria-label="เมนูหลัก">
         <nav>
-            <a asp-page="/Index">ภาพรวมและค่าตั้งต้น</a>
-            <a asp-page="/Members/Index">ทะเบียนสมาชิก</a>
-            <a asp-page="/Deaths/Index">ทะเบียนผู้เสียชีวิต</a>
-            <a asp-page="/Advances/Index">ยอดสงเคราะห์ล่วงหน้า</a>
-            <a asp-page="/Reports/Index">รายงาน PDF</a>
-            <a asp-page="/History/Index">ประวัติการเปลี่ยนแปลง</a>
+            <a asp-page="/Index">ภาพรวม</a>
+            <div class="nav-menu">
+                <button type="button" class="nav-menu-trigger" aria-haspopup="true" aria-controls="management-submenu">ระบบจัดการและบันทึกข้อมูล</button>
+                <div class="nav-submenu" id="management-submenu">
+                    <span class="muted">กำหนดผู้ประสานงาน <small>เร็ว ๆ นี้</small></span>
+                    <a asp-page="/Members/Index">ทะเบียนสมาชิก</a>
+                    <a asp-page="/Members/Create">เพิ่มสมาชิก</a>
+                    <a asp-page="/Resignations/Index">ปรับสถานะสมาชิกลาออก</a>
+                    <a asp-page="/Deaths/Index">ทะเบียนผู้เสียชีวิต</a>
+                    <a asp-page="/Deaths/Create">บันทึกการเสียชีวิต</a>
+                </div>
+            </div>
+            <a asp-page="/Reports/Index">ระบบรายงาน</a>
         </nav>
-        <div class="sidebar-note">
-            <span class="status-dot"></span> รุ่นสาธิต · เก็บข้อมูลในเครื่อง
-        </div>
     </aside>
     <main>
         <header class="topbar">

@@ -17,9 +17,10 @@ intentionally excluded from Git. See [GitHub handoff](docs/github-setup.md) befo
 
 ## Run a delivered package
 
-Open `artifacts\final\ChapanakitCare.exe` and keep the complete `final` folder together. The
-package contains its own .NET runtime, stores SQLite beside the executable in `App_Data`, listens
-only on `127.0.0.1:5188`, and opens the user interface in the default browser.
+Open `artifacts\final\ChapanakitCare.Desktop.exe` and keep the complete `final` folder together.
+It opens as a native Windows desktop window with the Chapanakit Care icon in the taskbar. The
+package contains its own .NET runtime, stores SQLite beside the executable in `App_Data`, and the
+embedded interface listens only on `127.0.0.1:5188`; it does not open a browser window.
 
 The launcher provides editable development constants, synthetic demo-member import, demo-data
 clearing, and database backup. Demo import is safe when members already exist: new fixture members
@@ -33,7 +34,7 @@ Important data behavior:
 - **สำรองฐานข้อมูล** downloads a verified SQLite backup. Keep backups outside the app folder.
 - **ล้างข้อมูลสมาชิกสาธิต** is destructive demo tooling, not production user management.
 
-For a completely fresh demo, close the launcher and delete only
+For a completely fresh demo, close the desktop application and delete only
 `artifacts\final\App_Data\chapanakit-care-demo.db`. The next launch creates an empty migrated
 database. The delivered folder intentionally contains no runtime database or previous user data.
 
@@ -71,3 +72,13 @@ dotnet test ChapanakitCare.sln --no-build --configuration Release
 
 The previous implementation was archived at
 `D:\Programing\Personal Projects\Chapanakit-Care-previous-version-2569-08-25` before this restart.
+
+## Publish the Windows desktop package
+
+```powershell
+.\.dotnet-sdk\dotnet.exe publish src\ChapanakitCare.Desktop\ChapanakitCare.Desktop.csproj --configuration Release --runtime win-x64 --self-contained true --output artifacts\final
+```
+
+The WebView2 Runtime is included with supported Windows 10 and Windows 11 installations through
+Microsoft Edge. If it has been removed from a PC, install the Microsoft Edge WebView2 Runtime
+before opening the application.

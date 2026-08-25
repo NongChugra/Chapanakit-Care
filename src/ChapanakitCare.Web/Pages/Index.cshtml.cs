@@ -41,15 +41,16 @@ public sealed class IndexModel(
             return Page();
         }
 
+        var current = await settingsService.GetAsync();
         await settingsService.SaveAsync(
             new SettingsCommand(
-                Input.RegistrationFeeBaht is null ? null : checked((long)Math.Round(Input.RegistrationFeeBaht.Value * 100m)),
+                current.RegistrationFeeSatang,
                 checked((int)Math.Round(Input.ServiceFeePercent * 100m)),
                 checked((long)Math.Round(Input.WelfarePerMemberBaht * 100m)),
-                Input.ResetTargetUnits,
-                Input.CoverageWaitDays,
-                Input.SpecialNonPayWindowDays,
-                Input.DeathWarningThreshold),
+                current.ResetTargetUnits,
+                current.CoverageWaitDays,
+                current.SpecialNonPayWindowDays,
+                current.DeathWarningThreshold),
             DateTimeOffset.UtcNow,
             "ผู้ใช้งานเครื่องนี้");
         TempData["Success"] = "บันทึกค่าตั้งต้นแล้ว ค่าชุดใหม่นี้จะใช้กับรายการที่สร้างหลังจากนี้";

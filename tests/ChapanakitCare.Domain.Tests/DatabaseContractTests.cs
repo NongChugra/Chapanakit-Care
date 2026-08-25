@@ -69,12 +69,12 @@ public sealed class DatabaseContractTests
         Assert.Equal(1, settings.Id);
         Assert.Null(settings.RegistrationFeeSatang);
         Assert.Equal(400, settings.ServiceFeeBasisPoints);
-        Assert.Equal(1_500, settings.WelfarePerMemberSatang);
+        Assert.Equal(900, settings.WelfarePerMemberSatang);
         Assert.Equal(30, settings.ResetTargetUnits);
         Assert.Equal(180, settings.CoverageWaitDays);
         Assert.Equal(365, settings.SpecialNonPayWindowDays);
         Assert.Equal(25, settings.DeathWarningThreshold);
-        Assert.Equal("round_up_to_satang", settings.ServiceFeeRoundingMode);
+        Assert.Equal("round_down_to_satang", settings.ServiceFeeRoundingMode);
     }
 
     [Fact]

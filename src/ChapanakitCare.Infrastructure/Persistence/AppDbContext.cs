@@ -39,15 +39,15 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
     private static void ConfigureMembers(ModelBuilder modelBuilder)
     {
         var statusConverter = new ValueConverter<MemberStatus, string>(
-            value => value == MemberStatus.Normal ? "normal" : "deceased",
-            value => value == "normal" ? MemberStatus.Normal : MemberStatus.Deceased);
+            value => value == MemberStatus.Normal ? "normal" : value == MemberStatus.Deceased ? "deceased" : "resigned",
+            value => value == "normal" ? MemberStatus.Normal : value == "deceased" ? MemberStatus.Deceased : MemberStatus.Resigned);
 
         modelBuilder.Entity<Member>(entity =>
         {
             entity.ToTable("members", table =>
             {
                 table.HasCheckConstraint("ck_members_run_no_length", "length(run_no) = 5");
-                table.HasCheckConstraint("ck_members_status", "status IN ('normal', 'deceased')");
+                table.HasCheckConstraint("ck_members_status", "status IN ('normal', 'deceased', 'resigned')");
                 table.HasCheckConstraint("ck_members_version", "version >= 1");
                 table.HasCheckConstraint("ck_members_postal_code", "postal_code IS NULL OR length(postal_code) = 5");
                 table.HasCheckConstraint("ck_members_archive", "archived_at_utc IS NULL OR archive_reason IS NOT NULL");
@@ -99,8 +99,8 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
         {
             entity.ToTable("member_status_events", table =>
             {
-                table.HasCheckConstraint("ck_member_status_events_from", "from_status IS NULL OR from_status IN ('normal', 'deceased')");
-                table.HasCheckConstraint("ck_member_status_events_to", "to_status IN ('normal', 'deceased')");
+                table.HasCheckConstraint("ck_member_status_events_from", "from_status IS NULL OR from_status IN ('normal', 'deceased', 'resigned')");
+                table.HasCheckConstraint("ck_member_status_events_to", "to_status IN ('normal', 'deceased', 'resigned')");
             });
             entity.HasKey(value => value.Id);
             entity.Property(value => value.Id).ValueGeneratedNever();
@@ -132,12 +132,12 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
                 SettingsRevision = 1,
                 RegistrationFeeSatang = null,
                 ServiceFeeBasisPoints = 400,
-                WelfarePerMemberSatang = 1_500,
+                WelfarePerMemberSatang = 900,
                 ResetTargetUnits = 30,
                 CoverageWaitDays = 180,
                 SpecialNonPayWindowDays = 365,
                 DeathWarningThreshold = 25,
-                ServiceFeeRoundingMode = "round_up_to_satang",
+                ServiceFeeRoundingMode = "round_down_to_satang",
                 UpdatedAtUtc = new DateTimeOffset(2026, 8, 25, 0, 0, 0, TimeSpan.Zero),
                 UpdatedBy = "system_seed"
             });
@@ -238,9 +238,9 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
         {
             entity.ToTable("advance_ledger_entries", table =>
             {
-                table.HasCheckConstraint("ck_advance_ledger_entries_type", "entry_type IN ('opening_30', 'death_contribution', 'reset_to_30', 'correction')");
+                table.HasCheckConstraint("ck_advance_ledger_entries_type", "entry_type IN ('opening_30', 'death_contribution', 'reset_to_30', 'correction', 'resignation_refund')");
                 table.HasCheckConstraint("ck_advance_ledger_entries_arithmetic", "balance_before + units_delta = balance_after");
-                table.HasCheckConstraint("ck_advance_ledger_entries_source", "(entry_type = 'death_contribution' AND source_death_case_id IS NOT NULL AND source_reset_batch_id IS NULL) OR (entry_type = 'reset_to_30' AND source_reset_batch_id IS NOT NULL AND source_death_case_id IS NULL) OR (entry_type IN ('opening_30', 'correction'))");
+                table.HasCheckConstraint("ck_advance_ledger_entries_source", "(entry_type = 'death_contribution' AND source_death_case_id IS NOT NULL AND source_reset_batch_id IS NULL) OR (entry_type = 'reset_to_30' AND source_reset_batch_id IS NOT NULL AND source_death_case_id IS NULL) OR (entry_type IN ('opening_30', 'correction', 'resignation_refund'))");
             });
             entity.HasKey(value => value.Id);
             entity.Property(value => value.Id).ValueGeneratedNever();

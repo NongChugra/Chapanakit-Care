@@ -14,14 +14,20 @@ FIRST_NAMES = [
     "อรทัย", "อาทิตย์", "กัลยาณี", "ธีรภัทร",
 ]
 LAST_NAMES = ["ใจดี", "สุขสันต์", "มั่นคง", "รุ่งเรือง", "ศรีแพร่", "บุญมี", "พูนผล", "ทองแท้"]
-SUBDISTRICTS = ["ร้องกวาง", "ร้องเข็ม", "น้ำเลา", "บ้านเวียง", "ทุ่งศรี"]
-VILLAGES = ["บ้านกลาง", "บ้านใหม่", "บ้านเหนือ", "บ้านใต้", "บ้านดอน"]
+SUBDISTRICTS = ["ร้องกวาง", "ร้องเข็ม", "ทุ่งศรี"]
+GROUP_PREFIX = {"ร้องกวาง": "01", "ร้องเข็ม": "02", "น้ำเลา": "03", "บ้านเวียง": "04", "ทุ่งศรี": "05", "แม่ยางตาล": "06", "แม่ยางฮ่อ": "07", "ไผ่โทน": "08", "ห้วยโรง": "09", "แม่ทราย": "10", "แม่ยางร้อง": "11"}
+VILLAGES_BY_MOO = {
+    "ร้องกวาง": {"1": "บ้านร้องกวาง", "2": "บ้านร้องกวาง", "4": "บ้านกาศผาแพร่", "5": "บ้านวังโป่ง", "7": "บ้านร้องกวาง", "9": "บ้านร้องกวาง", "12": "บ้านกาศใต้", "13": "บ้านร้องกวาง"},
+    "ร้องเข็ม": {"1": "บ้านร้องเข็ม", "2": "บ้านร้องเข็ม", "3": "บ้านน้ำโค้ง", "4": "บ้านดอนมูล", "5": "บ้านใหม่จัดสรร", "6": "บ้านปากทางร้องเข็ม", "7": "บ้านร้องเข็ม", "8": "บ้านหัวดง", "9": "บ้านร้องเข็ม"},
+    "ทุ่งศรี": {"1": "บ้านวังหม้อ", "2": "บ้านผาราง", "3": "บ้านทุ่งศรี", "4": "บ้านต้นเดื่อ", "5": "บ้านปากทางทุ่งศรี"},
+}
 RELATIONSHIPS = ["บุตร", "คู่สมรส", "พี่น้อง", "หลาน"]
 
 
 def beneficiary(member_index: int, slot: int) -> dict[str, object]:
     female = (member_index + slot) % 2 == 0
     subdistrict = SUBDISTRICTS[(member_index + slot) % len(SUBDISTRICTS)]
+    moo, village = list(VILLAGES_BY_MOO[subdistrict].items())[(member_index + slot) % len(VILLAGES_BY_MOO[subdistrict])]
     return {
         "SlotNo": slot,
         "Title": "นาง" if female else "นาย",
@@ -31,8 +37,8 @@ def beneficiary(member_index: int, slot: int) -> dict[str, object]:
         "PersonalIdCard": f"2{member_index:010d}{slot:02d}",
         "Mobile": f"082{member_index:04d}{slot:03d}",
         "HouseNo": f"{20 + member_index}/{slot}",
-        "Under": VILLAGES[(member_index + slot) % len(VILLAGES)],
-        "Moo": str((member_index + slot) % 12 + 1),
+        "Under": village,
+        "Moo": moo,
         "Subdistrict": subdistrict,
         "District": "ร้องกวาง",
         "Province": "แพร่",
@@ -47,6 +53,8 @@ def member(index: int) -> dict[str, object]:
     beneficiaries = [beneficiary(index, 1)]
     if index % 4 == 0:
         beneficiaries.append(beneficiary(index, 2))
+    subdistrict = SUBDISTRICTS[(index - 1) % len(SUBDISTRICTS)]
+    moo, village = list(VILLAGES_BY_MOO[subdistrict].items())[(index - 1) % len(VILLAGES_BY_MOO[subdistrict])]
     return {
         "Title": "นาง" if female else "นาย",
         "FirstName": FIRST_NAMES[(index - 1) % len(FIRST_NAMES)],
@@ -55,12 +63,12 @@ def member(index: int) -> dict[str, object]:
         "PersonalIdCard": f"1{index:012d}",
         "BirthDate": birth.isoformat(),
         "HouseNo": f"{100 + index}/{index % 3 + 1}",
-        "Under": VILLAGES[(index - 1) % len(VILLAGES)],
-        "Moo": str(index % 12 + 1),
-        "Subdistrict": SUBDISTRICTS[(index - 1) % len(SUBDISTRICTS)],
+        "Under": village,
+        "Moo": moo,
+        "Subdistrict": subdistrict,
         "PostalCode": "54140",
         "Mobile": f"081{index:07d}",
-        "GroupNo": f"G{(index - 1) // 10 + 1:02d}",
+        "GroupNo": f"{GROUP_PREFIX[subdistrict]}{int(moo):02d}",
         "ApplicationDate": application.isoformat(),
         "ApprovalDate": (application + timedelta(days=7)).isoformat(),
         "Beneficiaries": beneficiaries,

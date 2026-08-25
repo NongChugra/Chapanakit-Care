@@ -81,7 +81,7 @@ public sealed class BusinessRuleTests
     }
 
     [Fact]
-    public void Service_fee_rounds_up_to_the_next_satang_and_first_beneficiary_gets_remainder()
+    public void Expense_deduction_rounds_down_to_whole_satang_and_splits_half_baht_exactly()
     {
         var result = DeathBenefitCalculator.Calculate(new DeathBenefitInput(
             RecordedDate: new DateOnly(2027, 2, 21),
@@ -93,9 +93,9 @@ public sealed class BusinessRuleTests
             DeceasedAdvanceUnits: 0,
             BeneficiaryCount: 2));
 
-        Assert.Equal(50, result.ServiceFeeSatang);
-        Assert.Equal(1_451, result.TotalBenefitSatang);
-        Assert.Equal([726L, 725L], result.BeneficiarySharesSatang);
+        Assert.Equal(49, result.ServiceFeeSatang);
+        Assert.Equal(1_452, result.TotalBenefitSatang);
+        Assert.Equal([726L, 726L], result.BeneficiarySharesSatang);
     }
 
     [Theory]

@@ -86,7 +86,8 @@ public static class DeathBenefitCalculator
 
         var grossCollection = checked(input.OtherLivingMemberCount * input.WelfarePerMemberSatang);
         var feeNumerator = checked(grossCollection * input.ServiceFeeBasisPoints);
-        var serviceFee = DivideRoundingUp(feeNumerator, BasisPointDenominator);
+        // The association keeps whole satang only.  Fractional satang is never collected.
+        var serviceFee = feeNumerator / BasisPointDenominator;
         var netCollection = checked(grossCollection - serviceFee);
         var advanceValue = checked(input.DeceasedAdvanceUnits * input.WelfarePerMemberSatang);
         var totalBenefit = checked(netCollection + advanceValue);
@@ -119,16 +120,6 @@ public static class DeathBenefitCalculator
         }
     }
 
-    private static long DivideRoundingUp(long numerator, long denominator)
-    {
-        if (numerator == 0)
-        {
-            return 0;
-        }
-
-        return checked(((numerator - 1) / denominator) + 1);
-    }
-
     private static IReadOnlyList<long> ZeroShares(int beneficiaryCount) =>
         beneficiaryCount switch
         {
@@ -154,4 +145,3 @@ public static class DeathBenefitCalculator
         return [total - secondShare, secondShare];
     }
 }
-

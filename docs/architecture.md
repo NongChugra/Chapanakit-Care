@@ -1,8 +1,8 @@
 # First-day MVP architecture
 
 ```text
-Browser UI / local Windows launcher
-  Razor Pages + JavaScript table/form assistance
+Windows desktop shell (own taskbar icon)
+  WebView2 embedded Razor Pages + JavaScript table/form assistance
                     |
                     v
 Application services (single local process)
@@ -15,7 +15,9 @@ EF Core + SQLite beside the executable
 
 The application remains a modular monolith because member state, death snapshots, calculations,
 advance-unit movements, and audit records must commit atomically. It is local-only: Kestrel binds
-to loopback and the launcher opens the browser as its presentation surface.
+to loopback and the desktop shell embeds it through WebView2. The desktop executable owns the
+application window and taskbar icon, while the web host is an internal component rather than a
+browser-facing application.
 
 ## Data boundaries
 

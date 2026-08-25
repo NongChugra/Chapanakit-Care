@@ -1,5 +1,6 @@
 @page
 @model ChapanakitCare.Web.Pages.Deaths.IndexModel
+@using System.Globalization
 @{ ViewData["Title"] = "ทะเบียนผู้เสียชีวิต"; }
 <section class="card">
     <div class="card-head">
@@ -7,11 +8,22 @@
         <a class="button danger" asp-page="Create">+ บันทึกการเสียชีวิต</a>
     </div>
 </section>
+<section class="card" style="margin-top:18px">
+    <form method="get" class="filters">
+        <label>ค้นหา<input asp-for="Search" placeholder="เลขกรณี เลขสมาชิก ชื่อ เลขประชาชน หรือเอกสาร" /></label>
+        <label>วันที่บันทึกตั้งแต่<input asp-for="From" type="date" value="@(Model.From?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))" /></label>
+        <label>ถึงวันที่<input asp-for="To" type="date" value="@(Model.To?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))" /></label>
+        <label>ผลการพิจารณา<select asp-for="Decision"><option value="">ทั้งหมด</option><option value="payable">จ่าย</option><option value="nonpay">ไม่จ่าย</option></select></label>
+        <button class="button secondary" type="submit">กรองรายการ</button>
+        <a class="button secondary" asp-page="Index">ล้างตัวกรอง</a>
+    </form>
+    <p class="muted filter-summary">ตัวกรองปัจจุบัน: @Model.FilterSummary</p>
+</section>
 <section class="card" style="margin-top:18px;padding:0">
     <div class="table-wrap"><table><thead><tr>
         <th>เลขกรณี</th><th>เลขสมาชิก</th><th>ชื่อ</th><th>เลขประชาชน</th><th>กลุ่มสมาชิก</th><th>วันที่บันทึก</th><th>วันที่ในใบมรณะ</th>
         <th>เลขที่ใบมรณะบัตร</th><th>สาเหตุ</th><th>ผู้รับเงินสงเคราะห์</th><th>ผลพิจารณา</th><th>ผู้ร่วมจ่าย</th>
-        <th>เรียกเก็บรวม</th><th>ค่าบริการระบบ</th><th>สุทธิหลังหัก</th><th>คืนเงินล่วงหน้า</th><th>ผลประโยชน์รวม</th><th>เอกสาร</th>
+        <th>เรียกเก็บรวม</th><th>หักค่าใช้จ่าย 4%</th><th>สุทธิหลังหัก</th><th>คืนเงินล่วงหน้า</th><th>ผลประโยชน์รวม</th><th>เอกสาร</th>
     </tr></thead><tbody>
     @foreach (var row in Model.Rows)
     {
