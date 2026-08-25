@@ -1,0 +1,17 @@
+@page
+@model ChapanakitCare.Web.Pages.Reports.IndexModel
+@{ ViewData["Title"] = "รายงาน PDF"; }
+<section class="card">
+    <div class="card-head"><div><h2>รายงานหัวตารางคงที่</h2><div class="muted">วันที่ในรายงานแสดงเป็นพุทธศักราช ไฟล์ถูกสร้างจาก snapshot และฐานข้อมูลปัจจุบัน</div></div></div>
+    <form method="get" class="filters">
+        <label>ตั้งแต่วันที่<input asp-for="From" type="date" /></label>
+        <label>ถึงวันที่<input asp-for="To" type="date" /></label>
+        <button class="button secondary" type="submit">ใช้ช่วงวันที่นี้</button>
+    </form>
+</section>
+<section class="grid three" style="margin-top:18px">
+    <article class="card"><h2>รายงานสมาชิกประจำเดือน</h2><p class="muted">ยอดยกมา เข้าใหม่ เสียชีวิต คงเหลือ และรายละเอียดผู้เสียชีวิต</p><a class="button" asp-page-handler="Monthly" asp-route-from="@Model.From.ToString("yyyy-MM-dd")" asp-route-to="@Model.To.ToString("yyyy-MM-dd")">ดาวน์โหลด PDF</a></article>
+    <article class="card"><h2>รายงานผู้เสียชีวิต</h2><p class="muted">สมาชิก ใบมรณะบัตร ผู้รับเงิน และส่วนแบ่ง ผู้รับเงิน 2 คนแสดงคนละบรรทัด</p><a class="button" asp-page-handler="Deaths" asp-route-from="@Model.From.ToString("yyyy-MM-dd")" asp-route-to="@Model.To.ToString("yyyy-MM-dd")">ดาวน์โหลด PDF</a></article>
+    <article class="card"><h2>แบบ ส.ฌ.ก.๑</h2><p class="muted">ทะเบียนสมาชิกเข้าใหม่ตามช่วงวันที่ พร้อมที่อยู่และผู้รับเงินสงเคราะห์</p><a class="button" asp-page-handler="SakOne" asp-route-from="@Model.From.ToString("yyyy-MM-dd")" asp-route-to="@Model.To.ToString("yyyy-MM-dd")">ดาวน์โหลด PDF</a></article>
+</section>
+<div class="alert" style="margin-top:18px">ข้อจำกัดรอเจ้าของงานยืนยัน: ชื่อองค์กรทางการ ผู้ลงนาม ขนาดกระดาษสุดท้าย และการสะกดชื่อแบบราชการ ส.ฌ.ก.๑ ขณะนี้ใช้รูปแบบอ้างอิงสำหรับเดโม</div>

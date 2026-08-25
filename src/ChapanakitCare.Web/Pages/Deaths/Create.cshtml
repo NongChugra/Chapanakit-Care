@@ -1,0 +1,84 @@
+@page
+@model ChapanakitCare.Web.Pages.Deaths.CreateModel
+@{ ViewData["Title"] = "บันทึกการเสียชีวิต"; }
+<form method="post" enctype="multipart/form-data" class="card" data-button-only-submit>
+    <div asp-validation-summary="All" class="validation"></div>
+    <div class="form-grid">
+        <label>เลขกรณีเสียชีวิต <span class="hint">ระบบออกให้อัตโนมัติเมื่อยืนยัน</span><input value="@Model.NextDeathCaseNo" readonly /></label>
+        <label>เลขสมาชิก<input asp-for="RunNo" required /></label>
+        <div class="actions" style="align-self:end"><button class="button secondary" type="submit" asp-page-handler="Preview">ตรวจสอบและคำนวณ</button></div>
+        <label>วันที่บันทึก <span class="hint">ล็อกเป็นวันนี้ แก้ไขไม่ได้</span><input value="@DateTime.Today.ToString("dd/MM/yyyy")" readonly /></label>
+    </div>
+    @if (Model.Preview is not null && Model.PayablePreview is not null && Model.NonPayPreview is not null)
+    {
+        var p = Model.Preview;
+        var payable = Model.PayablePreview;
+        var nonPay = Model.NonPayPreview;
+        <div class="alert member-death-summary"><strong>@p.Member.Title@p.Member.FirstName @p.Member.LastName</strong> · เลขประชาชน @(p.Member.PersonalIdCard ?? "–") · ยอดล่วงหน้า @p.Member.AdvanceUnitsBalance คน</div>
+        @if (p.IsWithinSpecialNonPayWindow)
+        {
+            <div class="alert warning">คำเตือนเพื่อความปลอดภัย: สมาชิกอยู่ในช่วงเฝ้าระวัง @p.SpecialNonPayWindowDays วันแรกหลังเริ่มคุ้มครอง (ผ่านแล้ว @p.DaysSinceCoverage วัน) กรุณาตรวจสอบเงื่อนไขโรคกับเอกสารจริง หากเจ้าหน้าที่พิจารณาว่าเข้าข่ายจึงเลือก “เคสไม่จ่าย” และระบุเหตุผล</div>
+        }
+        <div class="form-grid death-member-details">
+            <label>วันที่สมัคร<input value="@ChapanakitCare.Web.Pages.Members.IndexModel.ThaiDate(p.Member.ApplicationDate)" readonly /></label>
+            <label>วันเกิด<input value="@(p.Member.BirthDate is null ? "–" : ChapanakitCare.Web.Pages.Members.IndexModel.ThaiDate(p.Member.BirthDate.Value))" readonly /></label>
+            <label>อายุ<input value="@(ChapanakitCare.Web.Pages.Members.IndexModel.Age(p.Member)?.ToString() ?? "–") ปี" readonly /></label>
+            <label>กลุ่มสมาชิก<input value="@(p.Member.GroupNo ?? "–")" readonly /></label>
+            <label>วันคุ้มครอง<input value="@ChapanakitCare.Web.Pages.Members.IndexModel.ThaiDate(p.Member.CoverageStartDate)" readonly /></label>
+        </div>
+        <div class="form-grid two">
+            <label>เลขที่ใบมรณะบัตร<input asp-for="CertificateNo" required /></label>
+            <label>สาเหตุการเสียชีวิต<input asp-for="Cause" required /></label>
+        </div>
+        <div class="form-grid two">
+            <label>วันที่เสียชีวิตตามใบมรณะบัตร<input asp-for="CertificateDate" type="date" required /></label>
+            <label>ไฟล์ใบมรณะบัตร PDF <span class="hint">สูงสุด 10 MB และเก็บพร้อมข้อมูลในฐานข้อมูล</span><input asp-for="CertificatePdf" type="file" accept="application/pdf,.pdf" required /></label>
+        </div>
+        <div class="nonpay-row">
+            <label class="checkbox-explanation"><span><input asp-for="NonPay" class="large-checkbox" data-nonpay-toggle /> เคสไม่จ่าย — เลือกเมื่อเจ้าหน้าที่ตัดสินว่ากรณีพิเศษนี้ไม่จ่ายเงิน</span></label>
+            <label>เหตุผลเพิ่มเติม<input asp-for="NonPayReason" placeholder="ต้องระบุเมื่อเลือกเคสไม่จ่าย" data-nonpay-reason /></label>
+        </div>
+        <section class="calculation-panel" data-death-calculation>
+            <h2>รายการคำนวณเงินสงเคราะห์</h2>
+            <table><tbody>
+                <tr><th>1. สมาชิกปกติที่ร่วมจ่ายเงินสงเคราะห์</th><td data-money-value data-unit="คน" data-pay="@payable.Calculation.ContributorCount" data-nonpay="@nonPay.Calculation.ContributorCount"></td></tr>
+                <tr><th>2. เงินสงเคราะห์ต่อคน</th><td data-money-value data-unit="บาท" data-satang="true" data-pay="@(payable.Calculation.ContributorCount == 0 ? 0 : payable.Calculation.GrossCollectionSatang / payable.Calculation.ContributorCount)" data-nonpay="@(nonPay.Calculation.ContributorCount == 0 ? 0 : nonPay.Calculation.GrossCollectionSatang / nonPay.Calculation.ContributorCount)"></td></tr>
+                <tr><th>3. รวมเงินเรียกเก็บจากสมาชิกปกติ</th><td data-money-value data-unit="บาท" data-satang="true" data-pay="@payable.Calculation.GrossCollectionSatang" data-nonpay="@nonPay.Calculation.GrossCollectionSatang"></td></tr>
+                <tr><th>4. หักค่าบริการระบบ @((p.ServiceFeeBasisPoints / 100m).ToString("0.##"))%</th><td data-money-value data-unit="บาท" data-satang="true" data-pay="@payable.Calculation.ServiceFeeSatang" data-nonpay="@nonPay.Calculation.ServiceFeeSatang"></td></tr>
+                <tr><th>5. เงินเรียกเก็บสุทธิหลังหักค่าบริการ</th><td data-money-value data-unit="บาท" data-satang="true" data-pay="@payable.Calculation.NetCollectionSatang" data-nonpay="@nonPay.Calculation.NetCollectionSatang"></td></tr>
+                <tr><th>6. เงินล่วงหน้าของผู้เสียชีวิต</th><td>@p.Member.AdvanceUnitsBalance.ToString("N0") คน</td></tr>
+                <tr><th>7. มูลค่าเงินล่วงหน้าคืนผู้เสียชีวิต</th><td data-money-value data-unit="บาท" data-satang="true" data-pay="@payable.Calculation.DeceasedAdvanceValueSatang" data-nonpay="@nonPay.Calculation.DeceasedAdvanceValueSatang"></td></tr>
+                <tr class="total"><th>8. เงินสงเคราะห์รวมที่จะได้รับ</th><td data-money-value data-unit="บาท" data-satang="true" data-pay="@payable.Calculation.TotalBenefitSatang" data-nonpay="@nonPay.Calculation.TotalBenefitSatang"></td></tr>
+                @for (var index = 0; index < p.Beneficiaries.Count; index++)
+                {
+                    var beneficiary = p.Beneficiaries[index];
+                    <tr><th>@(9 + index). ผู้รับเงินสงเคราะห์ @(index + 1): @beneficiary.Title@beneficiary.FirstName @beneficiary.LastName <span class="hint">แบ่งเท่ากัน@(index == 0 && payable.BeneficiarySharesSatang.Count == 2 && payable.BeneficiarySharesSatang[0] != payable.BeneficiarySharesSatang[1] ? " (คนที่ 1 รับเศษสตางค์)" : "")</span></th><td data-money-value data-unit="บาท" data-satang="true" data-pay="@payable.BeneficiarySharesSatang[index]" data-nonpay="@nonPay.BeneficiarySharesSatang[index]"></td></tr>
+                }
+            </tbody></table>
+        </section>
+        <div class="actions"><button class="button danger" type="submit" asp-page-handler="Confirm">ยืนยันการเสียชีวิต</button><a class="button secondary" asp-page="/Members/Index">ยกเลิก</a></div>
+    }
+</form>
+
+@section Scripts {
+<script>
+(() => {
+    const checkbox = document.querySelector('[data-nonpay-toggle]');
+    const reason = document.querySelector('[data-nonpay-reason]');
+    if (!checkbox) return;
+    const update = () => {
+        document.querySelectorAll('[data-money-value]').forEach(cell => {
+            const raw = Number(checkbox.checked ? cell.dataset.nonpay : cell.dataset.pay);
+            const value = cell.dataset.satang === 'true' ? raw / 100 : raw;
+            cell.textContent = `${value.toLocaleString('th-TH', { minimumFractionDigits: cell.dataset.satang === 'true' ? 2 : 0, maximumFractionDigits: 2 })} ${cell.dataset.unit}`;
+        });
+        if (reason) {
+            reason.required = checkbox.checked;
+            reason.disabled = !checkbox.checked;
+        }
+    };
+    checkbox.addEventListener('change', update);
+    update();
+})();
+</script>
+}

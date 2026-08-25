@@ -1,0 +1,115 @@
+@page
+@model ChapanakitCare.Web.Pages.Members.IndexModel
+@using System.Text.Json
+@{
+    ViewData["Title"] = "ทะเบียนสมาชิก";
+    var columns = new[]
+    {
+        ("runNo", "เลขทะเบียน"), ("name", "ชื่อ–นามสกุล"), ("personalIdCard", "เลขประชาชน"),
+        ("gender", "เพศ"), ("birthDate", "วันเกิด"), ("age", "อายุ"), ("groupNo", "กลุ่มสมาชิก"),
+        ("applicationDate", "วันที่สมัคร"), ("approvalDate", "วันอนุมัติ"), ("coverageDate", "วันคุ้มครอง"),
+        ("address", "ที่อยู่"), ("beneficiary1", "ผู้รับเงิน 1"), ("relationship1", "ความสัมพันธ์ 1"),
+        ("beneficiary2", "ผู้รับเงิน 2"), ("relationship2", "ความสัมพันธ์ 2"),
+        ("advanceUnits", "เงินล่วงหน้า (คน)"), ("status", "สถานะ"),
+        ("deathAction", "บันทึกการเสียชีวิต"), ("actions", "จัดการ")
+    };
+    var components = new[]
+    {
+        ("name.title", "ชื่อ: คำนำหน้า"), ("name.firstName", "ชื่อ: ชื่อจริง"), ("name.lastName", "ชื่อ: นามสกุล"),
+        ("address.houseNo", "ที่อยู่: บ้านเลขที่"), ("address.moo", "ที่อยู่: หมู่ที่"),
+        ("address.under", "ที่อยู่: ชื่อหมู่บ้าน"), ("address.subdistrict", "ที่อยู่: ตำบล"),
+        ("address.district", "ที่อยู่: อำเภอ"), ("address.province", "ที่อยู่: จังหวัด"),
+        ("address.postalCode", "ที่อยู่: รหัสไปรษณีย์")
+    };
+}
+
+<section class="card">
+    <div class="card-head">
+        <div><h2>สมาชิก @Model.Members.Count.ToString("N0") รายการ</h2><div class="muted">ค้นหาทุกข้อความ กรองรายละเอียด และคลิกหัวคอลัมน์เพื่อเรียง น้อย → มาก → ปกติ</div></div>
+        <div class="actions">
+            <div class="dropdown">
+                <button class="button secondary" type="button" data-dropdown-trigger aria-controls="column-picker">เลือกคอลัมน์</button>
+                <div class="dropdown-panel column-picker" id="column-picker">
+                    <strong>คอลัมน์ที่แสดง</strong>
+                    @foreach (var column in columns.Where(value => value.Item1 is not "actions" and not "deathAction"))
+                    {
+                        <label><input type="checkbox" value="@column.Item1" data-column-toggle checked /> @column.Item2</label>
+                    }
+                    <div class="picker-divider"></div>
+                    <strong>ส่วนประกอบของข้อมูลรวม</strong>
+                    @foreach (var component in components)
+                    {
+                        <label><input type="checkbox" value="@component.Item1" data-component-toggle checked /> @component.Item2</label>
+                    }
+                </div>
+            </div>
+            <button class="button secondary" type="button" id="reset-columns">คืนค่าหัวตาราง</button>
+            <a class="button" asp-page="/Members/Create">+ เพิ่มสมาชิกใหม่</a>
+        </div>
+    </div>
+
+    <form method="get" class="filters member-filters">
+        <label>ค้นหาทุกข้อความ<input asp-for="Search" placeholder="เลขทะเบียน ชื่อ โทรศัพท์ ที่อยู่ ผู้รับเงิน..." /></label>
+        <label>สถานะ<select asp-for="Status"><option value="">ทุกสถานะ</option><option value="Normal">ปกติ</option><option value="Deceased">เสียชีวิต</option></select></label>
+        <label>กลุ่มสมาชิก<input asp-for="GroupNo" /></label>
+        <label>ตำบล<input asp-for="Subdistrict" /></label>
+        <label>อำเภอ<input asp-for="District" /></label>
+        <label>หมู่ที่<input asp-for="Moo" /></label>
+        <label>ชื่อหมู่บ้าน<input asp-for="Under" /></label>
+        <label>กรองวันที่<select asp-for="DateField"><option value="">ไม่กรอง</option><option value="Application">วันที่สมัคร</option><option value="Approval">วันอนุมัติ</option><option value="Coverage">วันคุ้มครอง</option></select></label>
+        <label>ตั้งแต่<input asp-for="From" type="date" /></label>
+        <label>ถึง<input asp-for="To" type="date" /></label>
+        <div class="actions"><button class="button" type="submit">กรอง</button><a class="button secondary" asp-page="/Members/Index">ล้าง</a></div>
+    </form>
+</section>
+
+<section class="card" style="margin-top:18px;padding:0">
+    <form id="preference-token">@Html.AntiForgeryToken()</form>
+    <div class="table-wrap">
+        <table id="member-table">
+            <thead><tr>
+                @foreach (var column in columns)
+                {
+                    <th draggable="true" data-column="@column.Item1" data-sortable="@(column.Item1 is not "actions" and not "deathAction" ? "true" : "false")"><span>@column.Item2</span><span class="sort-indicator" aria-hidden="true"></span></th>
+                }
+            </tr></thead>
+            <tbody>
+            @for (var rowIndex = 0; rowIndex < Model.Members.Count; rowIndex++)
+            {
+                var member = Model.Members[rowIndex];
+                var beneficiaries = Model.BeneficiariesByMember.GetValueOrDefault(member.Id) ?? [];
+                var beneficiary1 = beneficiaries.SingleOrDefault(value => value.SlotNo == 1);
+                var beneficiary2 = beneficiaries.SingleOrDefault(value => value.SlotNo == 2);
+                var age = IndexModel.Age(member);
+                <tr data-original-order="@rowIndex">
+                    <td data-column="runNo" data-sort-value="@member.RunNo"><strong>@member.RunNo</strong></td>
+                    <td data-column="name" class="member-name" data-title="@member.Title" data-first-name="@member.FirstName" data-last-name="@member.LastName" data-sort-value="@member.FirstName @member.LastName"></td>
+                    <td data-column="personalIdCard" data-sort-value="@member.PersonalIdCard">@(member.PersonalIdCard ?? "–")</td>
+                    <td data-column="gender" data-sort-value="@member.Gender">@(member.Gender ?? "–")</td>
+                    <td data-column="birthDate" data-sort-value="@member.BirthDate?.ToString("yyyy-MM-dd")">@(member.BirthDate is null ? "–" : IndexModel.ThaiDate(member.BirthDate.Value))</td>
+                    <td data-column="age" data-sort-value="@age">@(age?.ToString() ?? "–")</td>
+                    <td data-column="groupNo" data-sort-value="@member.GroupNo">@(member.GroupNo ?? "–")</td>
+                    <td data-column="applicationDate" data-sort-value="@member.ApplicationDate.ToString("yyyy-MM-dd")">@IndexModel.ThaiDate(member.ApplicationDate)</td>
+                    <td data-column="approvalDate" data-sort-value="@member.ApprovalDate.ToString("yyyy-MM-dd")">@IndexModel.ThaiDate(member.ApprovalDate)</td>
+                    <td data-column="coverageDate" data-sort-value="@member.CoverageStartDate.ToString("yyyy-MM-dd")">@IndexModel.ThaiDate(member.CoverageStartDate)</td>
+                    <td data-column="address" data-house-no="@member.HouseNo" data-moo="@member.Moo" data-under="@member.Under" data-subdistrict="@member.Subdistrict" data-district="@member.District" data-province="@member.Province" data-postal-code="@member.PostalCode" data-sort-value="@member.Subdistrict @member.Moo @member.HouseNo"></td>
+                    <td data-column="beneficiary1" data-sort-value="@beneficiary1?.FirstName">@(beneficiary1 is null ? "–" : $"{beneficiary1.Title}{beneficiary1.FirstName} {beneficiary1.LastName}")</td>
+                    <td data-column="relationship1" data-sort-value="@beneficiary1?.Relationship">@(beneficiary1?.Relationship ?? "–")</td>
+                    <td data-column="beneficiary2" data-sort-value="@beneficiary2?.FirstName">@(beneficiary2 is null ? "–" : $"{beneficiary2.Title}{beneficiary2.FirstName} {beneficiary2.LastName}")</td>
+                    <td data-column="relationship2" data-sort-value="@beneficiary2?.Relationship">@(beneficiary2?.Relationship ?? "–")</td>
+                    <td data-column="advanceUnits" data-sort-value="@member.AdvanceUnitsBalance">@member.AdvanceUnitsBalance</td>
+                    <td data-column="status" data-sort-value="@member.Status"><span class="badge @(member.Status == MemberStatus.Deceased ? "deceased" : "")">@(member.Status == MemberStatus.Normal ? "ปกติ" : "เสียชีวิต")</span></td>
+                    <td data-column="deathAction">@if(member.Status == MemberStatus.Normal){<a class="button danger small" asp-page="/Deaths/Create" asp-route-runNo="@member.RunNo">แจ้งเสียชีวิต</a>}else{<span class="muted">บันทึกแล้ว</span>}</td>
+                    <td data-column="actions"><a class="button secondary small" asp-page="/Members/Edit" asp-route-id="@member.Id">แก้ไข</a></td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        @if (Model.Members.Count == 0) { <div class="empty">ยังไม่พบสมาชิกตามเงื่อนไขนี้</div> }
+    </div>
+</section>
+
+@section Scripts {
+<script>window.memberTablePreference = @Html.Raw(JsonSerializer.Serialize(Model.Preference));</script>
+<script src="~/js/member-table.js" asp-append-version="true"></script>
+}

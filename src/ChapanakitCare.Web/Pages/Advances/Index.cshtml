@@ -1,0 +1,26 @@
+@page
+@model ChapanakitCare.Web.Pages.Advances.IndexModel
+@{ ViewData["Title"] = "เงินสงเคราะห์ล่วงหน้า"; }
+
+<section class="card">
+    <div class="card-head">
+        <div><h2>ตัวนับเงินสงเคราะห์ล่วงหน้า</h2><div class="muted">MVP นี้รีเซ็ตเฉพาะจำนวนหน่วย สมาชิกเสียชีวิตคงยอด 0 และไม่เข้าร่วมครั้งถัดไป</div></div>
+        <form method="post" asp-page-handler="Reset" onsubmit="return confirm('ยืนยันรีเซ็ตยอดสมาชิกปกติทุกคนเป็น @Model.TargetUnits คน?')">
+            <input asp-for="ResetToken" type="hidden" />
+            <button class="button" type="submit">รีเซ็ตยอดสมาชิกปกติเป็น @Model.TargetUnits คน</button>
+        </form>
+    </div>
+    @if (Model.Latest is not null) { <p>ครั้งล่าสุด: <strong>@Model.Latest.ResetNo</strong> · เสียชีวิตก่อนรีเซ็ต @Model.Latest.DeathsSincePreviousReset ราย</p> }
+</section>
+
+@if (Model.Notices.Count > 0)
+{
+    <section class="card" style="margin-top:18px"><h2>การแจ้งเตือน</h2>@foreach (var notice in Model.Notices) { <div class="alert">@notice.Message</div> }</section>
+}
+
+<section class="card" style="margin-top:18px">
+    <h2>ยอดปัจจุบันของสมาชิก</h2>
+    <div class="table-wrap"><table><thead><tr><th>เลขสมาชิก</th><th>ชื่อสมาชิก</th><th>สถานะ</th><th>ยอดล่วงหน้า (คน)</th></tr></thead><tbody>
+    @foreach (var member in Model.Members) { <tr><td>@member.RunNo</td><td>@member.Title@member.FirstName @member.LastName</td><td>@(member.Status == ChapanakitCare.Domain.Entities.MemberStatus.Normal ? "ปกติ" : "เสียชีวิต")</td><td>@member.AdvanceUnitsBalance</td></tr> }
+    </tbody></table></div>
+</section>

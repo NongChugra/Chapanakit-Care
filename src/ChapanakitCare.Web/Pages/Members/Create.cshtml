@@ -1,0 +1,12 @@
+@page
+@model ChapanakitCare.Web.Pages.Members.CreateModel
+@{
+    ViewData["Title"] = "เพิ่มสมาชิกใหม่";
+}
+<form method="post" class="card" data-button-only-submit>
+    <partial name="_MemberForm" model="Model" />
+    <div class="form-footer">
+        <a class="button secondary" asp-page="/Members/Index">ยกเลิก</a>
+        <button class="button" type="submit">บันทึกสมาชิก</button>
+    </div>
+</form>

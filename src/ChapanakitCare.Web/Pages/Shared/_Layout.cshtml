@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] · Chapanakit Care</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <aside class="sidebar">
+        <a class="brand" asp-page="/Index">
+            <span class="brand-mark">ช</span>
+            <span><strong>Chapanakit Care</strong><small>ระบบงานฌาปนกิจสงเคราะห์</small></span>
+        </a>
+        <nav>
+            <a asp-page="/Index">ภาพรวมและค่าตั้งต้น</a>
+            <a asp-page="/Members/Index">ทะเบียนสมาชิก</a>
+            <a asp-page="/Deaths/Index">ทะเบียนผู้เสียชีวิต</a>
+            <a asp-page="/Advances/Index">ยอดสงเคราะห์ล่วงหน้า</a>
+            <a asp-page="/Reports/Index">รายงาน PDF</a>
+            <a asp-page="/History/Index">ประวัติการเปลี่ยนแปลง</a>
+        </nav>
+        <div class="sidebar-note">
+            <span class="status-dot"></span> รุ่นสาธิต · เก็บข้อมูลในเครื่อง
+        </div>
+    </aside>
+    <main>
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">อำเภอร้องกวาง จังหวัดแพร่</p>
+                <h1>@ViewData["Title"]</h1>
+            </div>
+            <div class="date-chip">@DateTime.Today.ToString("d MMMM yyyy")</div>
+        </header>
+        @if (TempData["Success"] is string success)
+        {
+            <div class="alert success">@success</div>
+        }
+        @RenderBody()
+    </main>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

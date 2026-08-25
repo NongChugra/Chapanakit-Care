@@ -1,0 +1,28 @@
+# Local SDK/tooling, delivery packages, and assurance working state
+.tools/
+artifacts/
+.assurance/
+
+# .NET build and test outputs
+**/bin/
+**/obj/
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# Local SQLite runtime data. Keep source fixtures, including demo-members.json.
+src/ChapanakitCare.Web/App_Data/*.db
+src/ChapanakitCare.Web/App_Data/*.db-shm
+src/ChapanakitCare.Web/App_Data/*.db-wal
+src/ChapanakitCare.Web/App_Data/Backups/
+
+# IDE and operating-system files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.rsuser
+.DS_Store
+Thumbs.db

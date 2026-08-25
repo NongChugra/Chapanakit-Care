@@ -1,0 +1,13 @@
+@page "{id:guid}"
+@model ChapanakitCare.Web.Pages.Members.EditModel
+@{
+    ViewData["Title"] = $"แก้ไขสมาชิก {Model.RunNo}";
+}
+<form method="post" class="card" data-button-only-submit>
+    <div class="alert" style="background:#f2f5f3;border:1px solid #dce3df">เลขทะเบียน <strong>@Model.RunNo</strong> จะไม่เปลี่ยนเมื่อแก้ไขข้อมูล</div>
+    <partial name="_MemberForm" model="Model" />
+    <div class="form-footer">
+        <a class="button secondary" asp-page="/Members/Index">ยกเลิก</a>
+        <button class="button" type="submit">บันทึกการแก้ไข</button>
+    </div>
+</form>

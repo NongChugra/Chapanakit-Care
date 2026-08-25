@@ -1,0 +1,29 @@
+@page
+@model ChapanakitCare.Web.Pages.Deaths.IndexModel
+@{ ViewData["Title"] = "ทะเบียนผู้เสียชีวิต"; }
+<section class="card">
+    <div class="card-head">
+        <div><h2>รายการเสียชีวิต @Model.Rows.Count รายการ</h2><div class="muted">ข้อมูลและใบมรณะบัตรที่ยืนยันแล้วเป็น snapshot แก้ไขไม่ได้</div></div>
+        <a class="button danger" asp-page="Create">+ บันทึกการเสียชีวิต</a>
+    </div>
+</section>
+<section class="card" style="margin-top:18px;padding:0">
+    <div class="table-wrap"><table><thead><tr>
+        <th>เลขกรณี</th><th>เลขสมาชิก</th><th>ชื่อ</th><th>เลขประชาชน</th><th>กลุ่มสมาชิก</th><th>วันที่บันทึก</th><th>วันที่ในใบมรณะ</th>
+        <th>เลขที่ใบมรณะบัตร</th><th>สาเหตุ</th><th>ผู้รับเงินสงเคราะห์</th><th>ผลพิจารณา</th><th>ผู้ร่วมจ่าย</th>
+        <th>เรียกเก็บรวม</th><th>ค่าบริการระบบ</th><th>สุทธิหลังหัก</th><th>คืนเงินล่วงหน้า</th><th>ผลประโยชน์รวม</th><th>เอกสาร</th>
+    </tr></thead><tbody>
+    @foreach (var row in Model.Rows)
+    {
+        var beneficiaries = Model.BeneficiariesByCase.GetValueOrDefault(row.Case.Id) ?? [];
+        <tr>
+            <td>@row.Case.DeathCaseNo</td><td>@row.Member.RunNo</td><td>@row.Member.Title@row.Member.FirstName @row.Member.LastName</td><td>@row.Member.PersonalIdCard</td><td>@row.Member.GroupNo</td>
+            <td>@ChapanakitCare.Web.Pages.Members.IndexModel.ThaiDate(row.Case.RecordedBusinessDate)</td><td>@ChapanakitCare.Web.Pages.Members.IndexModel.ThaiDate(row.Case.DeathCertificateDate)</td>
+            <td>@row.Case.DeathCertificateNo</td><td>@row.Case.CauseOfDeathText</td><td>@string.Join(" / ", beneficiaries.Select(value => $"{value.Title}{value.FirstName} {value.LastName}"))</td>
+            <td>@(row.Case.IsManualNonPayCase ? $"เคสไม่จ่าย: {row.Case.ManualNonPayReason}" : row.Case.EligibilityResult == "payable" ? "จ่าย" : "ไม่จ่ายก่อนคุ้มครอง")</td>
+            <td>@row.Calculation.ContributorCount</td><td>@((row.Calculation.GrossCollectionSatang / 100m).ToString("N2"))</td><td>@((row.Calculation.ServiceFeeSatang / 100m).ToString("N2"))</td><td>@((row.Calculation.NetCollectionSatang / 100m).ToString("N2"))</td><td>@((row.Calculation.DeceasedAdvanceValueSatang / 100m).ToString("N2"))</td><td>@((row.Calculation.TotalBenefitSatang / 100m).ToString("N2")) บาท</td>
+            <td><a class="button secondary small" asp-page-handler="Certificate" asp-route-id="@row.Case.Id">ดาวน์โหลด PDF</a></td>
+        </tr>
+    }
+    </tbody></table></div>
+</section>

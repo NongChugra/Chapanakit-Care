@@ -1,0 +1,44 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "ภาพรวมและค่าตั้งต้น";
+}
+
+<section class="grid three">
+    <article class="card stat"><div class="label">สมาชิกทั้งหมด</div><div class="value">@Model.TotalMembers.ToString("N0")<span class="unit">คน</span></div></article>
+    <article class="card stat"><div class="label">สถานะปกติ</div><div class="value">@Model.NormalMembers.ToString("N0")<span class="unit">คน</span></div></article>
+    <article class="card stat"><div class="label">เสียชีวิต</div><div class="value">@Model.DeceasedMembers.ToString("N0")<span class="unit">คน</span></div></article>
+</section>
+
+<section class="card" style="margin-top:18px">
+    <div class="card-head" style="margin:0">
+        <div><h2>ข้อมูลสาธิตสังเคราะห์</h2><div class="muted">40 รายการสมมติที่กรอกข้อมูลบังคับครบ อยู่ในอำเภอร้องกวาง จังหวัดแพร่ และมีผู้รับเงิน 1–2 คน</div></div>
+        <div class="actions">
+            <form method="post" asp-page-handler="ImportDemo"><button class="button secondary" type="submit">นำเข้ารายการสาธิต</button></form>
+            <form method="post" asp-page-handler="Backup"><button class="button secondary" type="submit">สำรองฐานข้อมูล</button></form>
+            <form method="post" asp-page-handler="ClearMembers" onsubmit="return confirm('ยืนยันล้างสมาชิกทั้งหมด รวมเหตุเสียชีวิต ประวัติ และยอดล่วงหน้าที่เกี่ยวข้อง? การทำงานนี้ย้อนกลับไม่ได้')"><button class="button danger" type="submit">ล้างข้อมูลสมาชิก</button></form>
+        </div>
+    </div>
+</section>
+
+<div class="alert" style="margin-top:18px">หมายเหตุที่ทราบ: เมื่อยังไม่มีสมาชิก การกดรีเซ็ตเงินสงเคราะห์ล่วงหน้าจะไม่มีรายการสมาชิกให้เปลี่ยน ระบบจึงไม่จำเป็นต้องสร้างผลลัพธ์การรีเซ็ตที่ใช้งานได้</div>
+
+<section class="card" style="margin-top:18px">
+    <div class="card-head">
+        <div><h2>ค่าคงที่สำหรับตรวจสอบระหว่างพัฒนา</h2><div class="muted">Revision @Model.Revision · ค่าที่บันทึกมีผลกับรายการใหม่ ไม่ย้อนแก้ข้อมูลเดิม</div></div>
+        <a class="button secondary" asp-page="/Members/Index">เปิดทะเบียนสมาชิก</a>
+    </div>
+    <form method="post">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="grid four">
+            <label>ค่าลงทะเบียน (บาท)<span class="hint">เว้นว่างได้ในรุ่นสาธิต</span><input asp-for="Input.RegistrationFeeBaht" type="number" step="0.01" min="0" /></label>
+            <label>ค่าบริการระบบ (%)<span class="hint">เริ่มต้น 4%</span><input asp-for="Input.ServiceFeePercent" type="number" step="0.01" min="0" max="100" required /></label>
+            <label>เงินสงเคราะห์ล่วงหน้าต่อคน (บาท)<span class="hint">เริ่มต้น 15 บาท</span><input asp-for="Input.WelfarePerMemberBaht" type="number" step="0.01" min="0.01" required /></label>
+            <label>จำนวนเงินล่วงหน้าเป้าหมาย (คน)<span class="hint">สมาชิกใหม่ต้องชำระแล้วก่อนบันทึก</span><input asp-for="Input.ResetTargetUnits" type="number" min="0" required /></label>
+            <label>ระยะรอคุ้มครอง (วัน)<span class="hint">วันที่อนุมัติ + จำนวนวันนี้</span><input asp-for="Input.CoverageWaitDays" type="number" min="0" required /></label>
+            <label>ระยะเฝ้าระวังเคสไม่จ่าย (วัน)<span class="hint">ระบบช่วยเตือน แต่ผู้ใช้เป็นผู้ตัดสิน</span><input asp-for="Input.SpecialNonPayWindowDays" type="number" min="0" required /></label>
+            <label>แจ้งเตือนจำนวนผู้เสียชีวิต<span class="hint">นับตั้งแต่รีเซ็ตล่าสุด</span><input asp-for="Input.DeathWarningThreshold" type="number" min="1" required /></label>
+        </div>
+        <div class="form-footer"><button class="button" type="submit">บันทึกค่าตั้งต้น</button></div>
+    </form>
+</section>
