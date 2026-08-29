@@ -8,7 +8,7 @@ internal static class OfficialReportDocuments
 {
     static OfficialReportDocuments() => QuestPDF.Settings.License = LicenseType.Evaluation;
     private const string ThaiFont = "Leelawadee UI";
-    private const string Organization = "สมาคมฌาปนกิจสงเคราะห์ บริษัท GoodApplication";
+    private const string Organization = OfficialReportText.Organization;
 
     public static byte[] MemberByManager(string group, IReadOnlyList<MemberByManagerReportRow> rows) => Document.Create(d => d.Page(page =>
     {
@@ -18,17 +18,25 @@ internal static class OfficialReportDocuments
         page.Footer().AlignRight().Text(t => { t.Span("หน้า "); t.CurrentPageNumber(); });
     })).GeneratePdf();
 
+    public static byte[] AllMembers(IReadOnlyList<MemberByManagerReportRow> rows) => Document.Create(d => d.Page(page =>
+    {
+        Portrait(page);
+        page.Header().Column(c => { c.Item().AlignCenter().Text(Organization).FontSize(8); c.Item().AlignCenter().Text("รายงานสมาชิกทั้งหมด").FontSize(8); c.Item().PaddingTop(8).LineHorizontal(0.5f); });
+        page.Content().PaddingTop(5).Element(c => ManagerTable(c, rows, "ยังไม่มีสมาชิกในระบบ"));
+        page.Footer().AlignRight().Text(t => { t.Span("หน้า "); t.CurrentPageNumber(); });
+    })).GeneratePdf();
+
     public static byte[] Monthly(ReportPeriod period, int opening, int added, int resigned, int deaths, int expelled, int remaining, IReadOnlyList<MonthlyMemberReportRow> rows) => Document.Create(d => d.Page(page =>
     {
         Landscape(page);
-        page.Header().Column(c => { c.Item().Text("ตัวอย่างรายงานประจำเดือนต่างๆ").FontSize(11); c.Item().PaddingTop(16).AlignCenter().Text(Organization).FontSize(8); c.Item().AlignCenter().Text($"รายงานจำนวนสมาชิก เดือน{ThaiReportFormat.Date(period.From)} ถึง {ThaiReportFormat.Date(period.To)}").FontSize(9); c.Item().AlignCenter().Text("จำนวนสมาชิก").FontSize(8); c.Item().PaddingTop(3).Element(x => SummaryTable(x, opening, added, resigned, deaths, expelled, remaining)); });
-        page.Content().PaddingTop(42).Column(c => { c.Item().AlignCenter().Text(Organization).FontSize(6); c.Item().AlignCenter().Text("รายงานสมาชิกเข้าใหม่").FontSize(7); c.Item().AlignCenter().Text($"ประจำเดือน {ThaiReportFormat.Date(period.From)} ถึง {ThaiReportFormat.Date(period.To)}").FontSize(6); c.Item().PaddingTop(4).Element(x => MonthlyTable(x, rows)); });
+        page.Header().Column(c => { c.Item().PaddingTop(16).AlignCenter().Text(Organization).FontSize(8); c.Item().AlignCenter().Text($"รายงานเดือน {ThaiReportFormat.Month(period.From)}").FontSize(9); c.Item().AlignCenter().Text("รายงานจำนวนสมาชิก").FontSize(8); c.Item().PaddingTop(3).Element(x => SummaryTable(x, opening, added, resigned, deaths, expelled, remaining)); });
+        page.Content().PaddingTop(42).Column(c => { c.Item().AlignCenter().Text(Organization).FontSize(6); c.Item().AlignCenter().Text($"รายงานเดือน {ThaiReportFormat.Month(period.From)}").FontSize(7); c.Item().AlignCenter().Text("รายงานสมาชิกเข้าใหม่").FontSize(6); c.Item().PaddingTop(4).Element(x => MonthlyTable(x, rows)); });
     })).GeneratePdf();
 
     public static byte[] SakOne(ReportPeriod period, IReadOnlyList<SakOneReportRow> rows) => Document.Create(d => d.Page(page =>
     {
         Landscape(page);
-        page.Header().Column(c => { c.Item().Text("ตัวอย่างรูปแบบ ส.ฌ.ก").FontSize(16); c.Item().PaddingTop(22).AlignCenter().Text(Organization).FontSize(8); c.Item().AlignCenter().Text("แบบทะเบียนสมาชิกเข้าใหม่(ประจำเดือน)").FontSize(10); c.Item().AlignCenter().Text($"ตั้งแต่เดือน {ThaiReportFormat.Date(period.From)} ถึงเดือน {ThaiReportFormat.Date(period.To)}").FontSize(8); c.Item().AlignRight().Text("หน้า     1\nแบบ ส.ฌ.ก.๑").Bold().FontSize(8); });
+        page.Header().Column(c => { c.Item().PaddingTop(22).AlignCenter().Text(Organization).FontSize(8); c.Item().AlignCenter().Text($"รายงานเดือน {ThaiReportFormat.Month(period.From)}").FontSize(10); c.Item().AlignCenter().Text("แบบทะเบียนสมาชิกเข้าใหม่(ประจำเดือน)").FontSize(8); c.Item().AlignRight().Text("หน้า     1\nแบบ ส.ฌ.ก.๑").Bold().FontSize(8); });
         page.Content().PaddingTop(5).Element(c => SakOneTable(c, rows));
     })).GeneratePdf();
 
@@ -36,12 +44,12 @@ internal static class OfficialReportDocuments
     private static void Landscape(PageDescriptor page) { page.Size(PageSizes.A4.Landscape()); page.MarginHorizontal(24); page.MarginVertical(16); page.DefaultTextStyle(t => t.FontFamily(ThaiFont).FontSize(6)); }
     private static IContainer Cell(IContainer c, bool header = false) => c.Border(0.45f).PaddingHorizontal(1.5f).PaddingVertical(header ? 3 : 1.5f).AlignMiddle();
 
-    private static void ManagerTable(IContainer container, IReadOnlyList<MemberByManagerReportRow> rows) => container.Table(table =>
+    private static void ManagerTable(IContainer container, IReadOnlyList<MemberByManagerReportRow> rows, string emptyMessage = "ยังไม่มีสมาชิกในกลุ่มนี้") => container.Table(table =>
     {
         table.ColumnsDefinition(c => { c.ConstantColumn(16); c.ConstantColumn(23); c.RelativeColumn(1.1f); c.RelativeColumn(1.1f); c.ConstantColumn(27); c.ConstantColumn(27); c.ConstantColumn(27); c.ConstantColumn(27); c.RelativeColumn(1.7f); c.RelativeColumn(1.2f); });
         table.Header(h => { foreach (var label in new[] { "ที่", "เลข\nสมาชิก", "ชื่อ นามสกุล", "เลขประจำตัว\nประชาชน", "วันสมัคร", "วันอนุมัติ", "วันคุ้มครอง", "วันเกิด", "ที่อยู่", "ผู้รับผลประโยชน์" }) Cell(h.Cell(), true).AlignCenter().Text(label).SemiBold(); });
         foreach (var row in rows) foreach (var value in new[] { row.SequenceNo, row.RunNo, row.MemberName, row.PersonalIdCard, row.ApplicationDate, row.ApprovalDate, row.CoverageStartDate, row.BirthDate, row.Address, row.BeneficiaryName }) Cell(table.Cell()).Text(value);
-        if (rows.Count == 0) Cell(table.Cell().ColumnSpan(10)).AlignCenter().Text("ยังไม่มีสมาชิกในกลุ่มนี้");
+        if (rows.Count == 0) Cell(table.Cell().ColumnSpan(10)).AlignCenter().Text(emptyMessage);
     });
 
     private static void SummaryTable(IContainer container, params int[] values) => container.Table(table =>

@@ -73,7 +73,7 @@ public sealed class IndexModel(
         return new JsonResult(new { reset = true });
     }
 
-    public static string ThaiDate(DateOnly date) => $"{date.Day:00}/{date.Month:00}/{date.Year + 543}";
+    public static string ThaiDate(DateOnly date) => Domain.ThaiBuddhistDate.Format(date);
 
     public static int? Age(Member member)
     {

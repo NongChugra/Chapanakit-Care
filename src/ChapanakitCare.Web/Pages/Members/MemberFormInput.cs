@@ -26,9 +26,9 @@ public sealed class MemberFormInput
     public string? PostalCode { get; set; }
     public string? Mobile { get; set; }
     public string? GroupNo { get; set; }
-    [Required]
+    [Required(ErrorMessage = "กรุณากรอกวันที่สมัคร")]
     public DateOnly ApplicationDate { get; set; }
-    [Required]
+    [Required(ErrorMessage = "กรุณากรอกวันอนุมัติ")]
     public DateOnly ApprovalDate { get; set; }
     public BeneficiaryInput Beneficiary1 { get; set; } = new() { SlotNo = 1 };
     public BeneficiaryInput Beneficiary2 { get; set; } = new() { SlotNo = 2 };

@@ -10,6 +10,7 @@
 <body>
     <aside class="top-nav" aria-label="เมนูหลัก">
         <nav>
+            <a class="brand" asp-page="/Index"><img src="~/images/association-deer-logo.jpg" alt="ตราสมาคม" /><span>Chapanakit Care</span></a>
             <a asp-page="/Index">ภาพรวม</a>
             <div class="nav-menu">
                 <button type="button" class="nav-menu-trigger" aria-haspopup="true" aria-controls="management-submenu">ระบบจัดการและบันทึกข้อมูล</button>
@@ -31,7 +32,7 @@
                 <p class="eyebrow">อำเภอร้องกวาง จังหวัดแพร่</p>
                 <h1>@ViewData["Title"]</h1>
             </div>
-            <div class="date-chip">@DateTime.Today.ToString("d MMMM yyyy")</div>
+            <div class="date-chip">@ChapanakitCare.Domain.ThaiBuddhistDate.Format(DateOnly.FromDateTime(DateTime.Today))</div>
         </header>
         @if (TempData["Success"] is string success)
         {
@@ -39,6 +40,8 @@
         }
         @RenderBody()
     </main>
+    <script src="~/js/thai-date.js" asp-append-version="true"></script>
+    <script src="~/js/thai-validation.js" asp-append-version="true"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

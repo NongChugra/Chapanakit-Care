@@ -5,6 +5,7 @@ using ChapanakitCare.Infrastructure.Members;
 using ChapanakitCare.Infrastructure.Deaths;
 using ChapanakitCare.Infrastructure.Persistence;
 using ChapanakitCare.Infrastructure.Reports;
+using ChapanakitCare.Web.Validation;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,7 +17,7 @@ var appData = Path.Combine(builder.Environment.ContentRootPath, "App_Data");
 Directory.CreateDirectory(appData);
 var databasePath = Path.Combine(appData, "chapanakit-care-demo.db");
 
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages().AddMvcOptions(options => ThaiModelBindingMessages.Configure(options.ModelBindingMessageProvider));
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite($"Data Source={databasePath}"));
 builder.Services.AddScoped<MemberApplicationService>();
 builder.Services.AddScoped<ResignationApplicationService>();
@@ -58,13 +59,24 @@ await using (var scope = app.Services.CreateAsyncScope())
     if (!await database.NumberSequences.AnyAsync(value => value.SequenceKey == "reset_no")) database.NumberSequences.Add(new NumberSequence { SequenceKey = "reset_no", Prefix = "R", NextValue = 1, Width = 5, UpdatedAtUtc = DateTimeOffset.UtcNow });
     // Upgrade only the untouched first-day defaults; never overwrite an operator's own setting.
     var settings = await database.SystemSettings.SingleAsync();
-    if (settings.WelfarePerMemberSatang == 1_500 && settings.ServiceFeeRoundingMode == "round_up_to_satang")
+    if (settings.ServiceFeeRoundingMode is "round_up_to_satang" or "round_down_to_satang")
     {
-        settings.WelfarePerMemberSatang = 900;
-        settings.ServiceFeeRoundingMode = "round_down_to_satang";
+        if (settings.WelfarePerMemberSatang == 1_500)
+        {
+            settings.WelfarePerMemberSatang = 900;
+        }
+        settings.ServiceFeeRoundingMode = "round_down_to_baht";
         settings.SettingsRevision++;
         settings.UpdatedAtUtc = DateTimeOffset.UtcNow;
         settings.UpdatedBy = "system_default_upgrade";
+    }
+    var membersWithBuddhistYears = await database.Members.ToListAsync();
+    foreach (var member in membersWithBuddhistYears)
+    {
+        member.BirthDate = member.BirthDate is null ? null : ChapanakitCare.Domain.ThaiBuddhistDate.NormalizeStoredDate(member.BirthDate.Value);
+        member.ApplicationDate = ChapanakitCare.Domain.ThaiBuddhistDate.NormalizeStoredDate(member.ApplicationDate);
+        member.ApprovalDate = ChapanakitCare.Domain.ThaiBuddhistDate.NormalizeStoredDate(member.ApprovalDate);
+        member.CoverageStartDate = ChapanakitCare.Domain.ThaiBuddhistDate.NormalizeStoredDate(member.CoverageStartDate);
     }
     await database.SaveChangesAsync();
     await scope.ServiceProvider.GetRequiredService<NotificationService>().RefreshAsync(DateOnly.FromDateTime(DateTime.Today), DateTimeOffset.UtcNow);

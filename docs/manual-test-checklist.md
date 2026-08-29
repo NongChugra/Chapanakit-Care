@@ -8,7 +8,7 @@ Use a new database or the **ล้างข้อมูลสมาชิก** a
 - Create a complete member, verify a five-digit run number, then edit the address without changing it.
 - Leave a required field empty and use Enter; no member should be created. Complete fields and use the button.
 - Select a Thai title, verify gender is suggested but remains editable.
-- Check birth-date age, approval-date default, editable approval date, and coverage date = approval + configured wait days.
+- Check birth-date age, approval-date default, editable approval date, and coverage date = approval date + configured wait days (the 181st day when the wait is 180 days).
 - Enter a postal code and verify address assistance; manually edit the suggested district/province.
 - Search by name, address components, group, and beneficiary fields. Filter by dates/status/location/group.
 - Reorder, hide, select components, and sort columns. Close/reopen and confirm the preference remains. Use reset columns.

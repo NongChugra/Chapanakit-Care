@@ -17,7 +17,7 @@ public sealed class CheckpointThreeFormGuardTests
     }
 
     [Fact]
-    public void Interactive_registration_rejects_every_missing_member_field()
+    public void Interactive_registration_allows_missing_member_phone_but_rejects_other_required_fields()
     {
         var command = CompleteRegistration() with
         {
@@ -39,8 +39,25 @@ public sealed class CheckpointThreeFormGuardTests
         var errors = InteractiveMemberRegistrationPolicy.Validate(command);
 
         Assert.Equal(
-            ["Title", "Gender", "PersonalIdCard", "BirthDate", "HouseNo", "Under", "Moo", "Subdistrict", "District", "Province", "PostalCode", "Mobile", "GroupNo"],
+            ["Title", "Gender", "PersonalIdCard", "BirthDate", "HouseNo", "Under", "Moo", "Subdistrict", "District", "Province", "PostalCode", "GroupNo"],
             errors.Select(value => value.Field).ToArray());
+    }
+
+    [Theory]
+    [InlineData("123456789012")]
+    [InlineData("12345678901234")]
+    [InlineData("123456789012x")]
+    public void Interactive_registration_rejects_beneficiary_personal_id_that_is_not_exactly_13_digits(string personalId)
+    {
+        var command = CompleteRegistration() with
+        {
+            Beneficiaries = [CompleteBeneficiary(1) with { PersonalIdCard = personalId }]
+        };
+
+        var error = Assert.Single(InteractiveMemberRegistrationPolicy.Validate(command),
+            value => value.Field == "Beneficiary1.PersonalIdCard");
+
+        Assert.Equal("เลขประจำตัวประชาชนผู้รับเงินสงเคราะห์ต้องมี 13 หลัก", error.Message);
     }
 
     [Fact]

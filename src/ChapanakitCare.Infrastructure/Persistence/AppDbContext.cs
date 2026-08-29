@@ -137,7 +137,7 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
                 CoverageWaitDays = 180,
                 SpecialNonPayWindowDays = 365,
                 DeathWarningThreshold = 25,
-                ServiceFeeRoundingMode = "round_down_to_satang",
+                ServiceFeeRoundingMode = "round_down_to_baht",
                 UpdatedAtUtc = new DateTimeOffset(2026, 8, 25, 0, 0, 0, TimeSpan.Zero),
                 UpdatedBy = "system_seed"
             });

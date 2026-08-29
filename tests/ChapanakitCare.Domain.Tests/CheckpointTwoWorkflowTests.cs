@@ -47,6 +47,55 @@ public sealed class CheckpointTwoWorkflowTests
     }
 
     [Fact]
+    public async Task Registration_calculates_coverage_from_approval_date_not_application_date()
+    {
+        await using var database = await TestDatabase.CreateAsync();
+        var service = new MemberApplicationService(database.Context);
+        var command = ValidRegistration() with
+        {
+            ApplicationDate = new DateOnly(2026, 1, 1),
+            ApprovalDate = new DateOnly(2026, 1, 15)
+        };
+
+        var member = await service.RegisterAsync(command, Today, Now, "เจ้าหน้าที่ทดสอบ");
+
+        Assert.Equal(new DateOnly(2026, 7, 14), member.CoverageStartDate);
+    }
+
+    [Fact]
+    public async Task Editing_member_recalculates_coverage_from_approval_date_not_application_date()
+    {
+        await using var database = await TestDatabase.CreateAsync();
+        var service = new MemberApplicationService(database.Context);
+        var registered = await service.RegisterAsync(ValidRegistration(), Today, Now, "เจ้าหน้าที่ทดสอบ");
+
+        var updated = await service.UpdateAsync(
+            registered.Id,
+            new UpdateMemberCommand(
+                registered.Version,
+                registered.Title,
+                registered.FirstName,
+                registered.LastName,
+                registered.Gender,
+                registered.PersonalIdCard,
+                registered.BirthDate,
+                registered.HouseNo,
+                registered.Under,
+                registered.Moo,
+                registered.Subdistrict,
+                registered.PostalCode,
+                registered.Mobile,
+                registered.GroupNo,
+                new DateOnly(2026, 1, 1),
+                new DateOnly(2026, 1, 15),
+                []),
+            Now.AddHours(1),
+            "เจ้าหน้าที่ทดสอบ");
+
+        Assert.Equal(new DateOnly(2026, 7, 14), updated.CoverageStartDate);
+    }
+
+    [Fact]
     public async Task Registering_member_rejects_more_than_two_beneficiaries()
     {
         await using var database = await TestDatabase.CreateAsync();

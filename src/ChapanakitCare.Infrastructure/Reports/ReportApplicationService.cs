@@ -1,3 +1,4 @@
+using ChapanakitCare.Domain;
 using ChapanakitCare.Domain.Entities;
 using ChapanakitCare.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -20,17 +21,29 @@ public static class DeathReportRows
     public static IReadOnlyList<DeathReportRow> Expand(DeathReportSource source) => source.Beneficiaries.Count == 0
         ? [new(source.RunNo, source.MemberName, ThaiDate(source.RecordedDate), source.CertificateNo, "-", source.TotalBenefitSatang)]
         : source.Beneficiaries.Select((name, i) => new DeathReportRow(i == 0 ? source.RunNo : "", i == 0 ? source.MemberName : "", i == 0 ? ThaiDate(source.RecordedDate) : "", i == 0 ? source.CertificateNo : "", name, i == 0 ? source.TotalBenefitSatang : null, i > 0)).ToArray();
-    private static string ThaiDate(DateOnly value) => $"{value:dd/MM}/{value.Year + 543}";
+    private static string ThaiDate(DateOnly value) => ThaiBuddhistDate.Format(value);
 }
 
 public sealed class ReportApplicationService(AppDbContext database)
 {
     public async Task<IReadOnlyList<string>> GetManagerGroupsAsync(CancellationToken ct = default) => await database.Members.AsNoTracking().Where(x => x.GroupNo != null && x.GroupNo != "").Select(x => x.GroupNo!).Distinct().OrderBy(x => x).ToListAsync(ct);
+    public async Task<DateOnly?> GetLatestMemberApplicationMonthAsync(CancellationToken ct = default)
+    {
+        var latest = await database.Members.AsNoTracking().Where(x => x.ArchivedAtUtc == null).Select(x => (DateOnly?)x.ApplicationDate).MaxAsync(ct);
+        return latest is null ? null : new DateOnly(latest.Value.Year, latest.Value.Month, 1);
+    }
+
+    public async Task<byte[]> GenerateAllMembersAsync(CancellationToken ct = default)
+    {
+        var members = await LoadMembersAsync(_ => true, ct);
+        return OfficialReportDocuments.AllMembers(ExpandMemberRows(members));
+    }
+
     public async Task<byte[]> GenerateMemberByManagerAsync(string groupNo, CancellationToken ct = default)
     {
         if (string.IsNullOrWhiteSpace(groupNo)) throw new ArgumentException("ต้องเลือกกลุ่มสมาชิก", nameof(groupNo));
         var members = await LoadMembersAsync(x => x.GroupNo == groupNo, ct);
-        var rows = members.SelectMany((x, i) => MemberByManagerReportRows.Expand(new MemberByManagerReportSource(x.Member.RunNo, x.Member.Title, x.Member.FirstName, x.Member.LastName, x.Member.PersonalIdCard, x.Member.ApplicationDate, x.Member.ApprovalDate, x.Member.CoverageStartDate, x.Member.BirthDate, Address(x.Member), x.Beneficiaries.Select(Name).ToArray()), i + 1)).ToArray();
+        var rows = ExpandMemberRows(members);
         QuestPDF.Settings.License = LicenseType.Evaluation;
         return OfficialReportDocuments.MemberByManager(groupNo, rows);
     }
@@ -63,12 +76,12 @@ public sealed class ReportApplicationService(AppDbContext database)
         {
             page.Size(PageSizes.A4.Landscape()); page.Margin(24);
             page.DefaultTextStyle(text => text.FontFamily("Leelawadee UI").FontSize(10));
-            page.Header().AlignCenter().Column(column => { column.Item().Text("สมาคมฌาปนกิจสงเคราะห์ อำเภอร้องกวาง จังหวัดแพร่").Bold(); column.Item().Text(title).Bold(); column.Item().Text($"ตั้งแต่วันที่ {ThaiDate(period.From)} ถึงวันที่ {ThaiDate(period.To)}"); });
+            page.Header().AlignCenter().Column(column => { column.Item().Text(OfficialReportText.Organization).Bold(); column.Item().Text(title).Bold(); column.Item().Text($"ตั้งแต่วันที่ {ThaiDate(period.From)} ถึงวันที่ {ThaiDate(period.To)}"); });
             page.Content().PaddingTop(20).Text("ไม่มีรายการในช่วงวันที่");
             page.Footer().AlignRight().Text(text => { text.Span("หน้า "); text.CurrentPageNumber(); text.Span(" / "); text.TotalPages(); });
         })).GeneratePdf();
     }
-    private static string ThaiDate(DateOnly value) => $"{value:dd/MM}/{value.Year + 543}";
+    private static string ThaiDate(DateOnly value) => ThaiBuddhistDate.Format(value);
     private static string ThaiDate(DateOnly? value) => value is null ? "-" : ThaiDate(value.Value);
     private async Task<IReadOnlyList<(Member Member, IReadOnlyList<MemberBeneficiary> Beneficiaries)>> LoadMembersAsync(System.Linq.Expressions.Expression<Func<Member, bool>> filter, CancellationToken ct)
     {
@@ -77,6 +90,9 @@ public sealed class ReportApplicationService(AppDbContext database)
         var beneficiaries = await database.MemberBeneficiaries.AsNoTracking().Where(x => ids.Contains(x.MemberId) && x.IsActive).OrderBy(x => x.SlotNo).ToListAsync(ct);
         return members.Select(x => (x, (IReadOnlyList<MemberBeneficiary>)beneficiaries.Where(b => b.MemberId == x.Id).ToArray())).ToArray();
     }
+    private static IReadOnlyList<MemberByManagerReportRow> ExpandMemberRows(IReadOnlyList<(Member Member, IReadOnlyList<MemberBeneficiary> Beneficiaries)> members) => members
+        .SelectMany((x, i) => MemberByManagerReportRows.Expand(new MemberByManagerReportSource(x.Member.RunNo, x.Member.Title, x.Member.FirstName, x.Member.LastName, x.Member.PersonalIdCard, x.Member.ApplicationDate, x.Member.ApprovalDate, x.Member.CoverageStartDate, x.Member.BirthDate, Address(x.Member), x.Beneficiaries.Select(Name).ToArray()), i + 1))
+        .ToArray();
     private static IReadOnlyList<MonthlyMemberReportRow> ExpandMonthly((Member Member, IReadOnlyList<MemberBeneficiary> Beneficiaries) item, int sequence, DateOnly asOf)
     {
         var beneficiaries = item.Beneficiaries.Count == 0 ? ["-"] : item.Beneficiaries.Select(Name).ToArray();

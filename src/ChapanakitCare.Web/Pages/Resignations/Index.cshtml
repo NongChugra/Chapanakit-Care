@@ -4,7 +4,7 @@
 @{ ViewData["Title"] = "ปรับสถานะสมาชิกลาออก"; }
 <section class="card narrow-card">
     <div class="card-head"><div><h2>ปรับสถานะสมาชิกลาออก</h2><div class="muted">เมื่อยืนยันแล้ว สถานะลาออกย้อนกลับไม่ได้ หากกลับเข้าสมาคมให้เพิ่มสมาชิกใหม่</div></div></div>
-    <form method="post" asp-page-handler="Search" class="filters">
+    <form method="post" asp-page-handler="Search" class="filters" autocomplete="off">
         <label>เลขทะเบียนสมาชิก<input asp-for="RunNo" inputmode="numeric" maxlength="5" autofocus /></label>
         <button class="button" type="submit">ค้นหาสมาชิก</button>
     </form>
@@ -25,7 +25,7 @@
         </div>
         @if (member.Status == MemberStatus.Normal)
         {
-            <form method="post" asp-page-handler="Confirm" class="form-footer">
+            <form method="post" asp-page-handler="Confirm" class="form-footer" autocomplete="off">
                 <input type="hidden" asp-for="RunNo" />
                 <button class="button danger" type="submit" onclick="return confirm('ยืนยันให้สมาชิกลาออก? การทำงานนี้ย้อนกลับไม่ได้')">ยืนยันลาออกและคืนเงิน</button>
                 <a class="button secondary" asp-page="/Members/Index">ยกเลิก</a>

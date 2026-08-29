@@ -81,21 +81,21 @@ public sealed class BusinessRuleTests
     }
 
     [Fact]
-    public void Expense_deduction_rounds_down_to_whole_satang_and_splits_half_baht_exactly()
+    public void Four_percent_expense_deduction_rounds_down_to_whole_baht_before_splitting()
     {
         var result = DeathBenefitCalculator.Calculate(new DeathBenefitInput(
             RecordedDate: new DateOnly(2027, 2, 21),
             CoverageStartDate: new DateOnly(2027, 2, 21),
             IsManualNonPayCase: false,
             OtherLivingMemberCount: 1,
-            WelfarePerMemberSatang: 1_501,
-            ServiceFeeBasisPoints: 333,
+            WelfarePerMemberSatang: 15_099,
+            ServiceFeeBasisPoints: 400,
             DeceasedAdvanceUnits: 0,
             BeneficiaryCount: 2));
 
-        Assert.Equal(49, result.ServiceFeeSatang);
-        Assert.Equal(1_452, result.TotalBenefitSatang);
-        Assert.Equal([726L, 726L], result.BeneficiarySharesSatang);
+        Assert.Equal(600, result.ServiceFeeSatang);
+        Assert.Equal(14_499, result.TotalBenefitSatang);
+        Assert.Equal([7_250L, 7_249L], result.BeneficiarySharesSatang);
     }
 
     [Theory]

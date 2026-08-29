@@ -8,7 +8,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ChapanakitCare.Web.Pages.Deaths;
 
-public sealed class IndexModel(AppDbContext database, DeathApplicationService deathService) : PageModel
+public sealed class IndexModel(
+    AppDbContext database,
+    DeathApplicationService deathService,
+    TablePreferenceService preferenceService) : PageModel
 {
     [BindProperty(SupportsGet = true)] public string? Search { get; set; }
     [BindProperty(SupportsGet = true)] public DateOnly? From { get; set; }
@@ -17,6 +20,7 @@ public sealed class IndexModel(AppDbContext database, DeathApplicationService de
     public IReadOnlyList<Row> Rows { get; private set; } = [];
     public IReadOnlyDictionary<Guid, IReadOnlyList<DeathBeneficiarySnapshot>> BeneficiariesByCase { get; private set; }
         = new Dictionary<Guid, IReadOnlyList<DeathBeneficiarySnapshot>>();
+    public TablePreference Preference { get; private set; } = new([], [], []);
     public string FilterSummary => string.Join(" · ", new[]
     {
         string.IsNullOrWhiteSpace(Search) ? null : $"ค้นหา: {Search}",
@@ -48,6 +52,21 @@ public sealed class IndexModel(AppDbContext database, DeathApplicationService de
                 .ToListAsync())
             .GroupBy(value => value.DeathCaseId)
             .ToDictionary(value => value.Key, value => (IReadOnlyList<DeathBeneficiarySnapshot>)value.ToArray());
+        Preference = await preferenceService.GetAsync("local-user", "death-library");
+    }
+
+    public async Task<IActionResult> OnPostPreferenceAsync([FromBody] DeathPreferenceRequest request)
+    {
+        await preferenceService.SaveAsync(
+            "local-user", "death-library", request.ColumnOrder, request.HiddenColumns, [],
+            request.SortColumn, request.SortDirection, DateTimeOffset.UtcNow);
+        return new JsonResult(new { saved = true });
+    }
+
+    public async Task<IActionResult> OnPostResetPreferenceAsync()
+    {
+        await preferenceService.ResetAsync("local-user", "death-library");
+        return new JsonResult(new { reset = true });
     }
 
     public async Task<IActionResult> OnGetCertificateAsync(Guid id)
@@ -64,5 +83,11 @@ public sealed class IndexModel(AppDbContext database, DeathApplicationService de
     }
 
     public sealed record Row(DeathCase Case, DeathMemberSnapshot Member, DeathCalculation Calculation);
-    private static string ThaiDate(DateOnly value) => $"{value.Day:00}/{value.Month:00}/{value.Year + 543}";
+    private static string ThaiDate(DateOnly value) => ChapanakitCare.Domain.ThaiBuddhistDate.Format(value);
 }
+
+public sealed record DeathPreferenceRequest(
+    string[] ColumnOrder,
+    string[] HiddenColumns,
+    string? SortColumn,
+    string? SortDirection);

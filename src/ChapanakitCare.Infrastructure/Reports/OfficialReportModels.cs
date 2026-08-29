@@ -1,3 +1,5 @@
+using ChapanakitCare.Domain;
+
 namespace ChapanakitCare.Infrastructure.Reports;
 
 public sealed record MemberByManagerReportSource(
@@ -31,7 +33,8 @@ public sealed record SakOneReportRow(string SequenceNo, string MemberName, strin
 
 public static class ThaiReportFormat
 {
-    public static string Date(DateOnly? value) => value is null ? "-" : $"{value.Value:dd/MM}/{value.Value.Year + 543}";
+    public static string Date(DateOnly? value) => value is null ? "-" : ThaiBuddhistDate.Format(value.Value);
+    public static string Month(DateOnly value) => $"{value.Month:00}/{value.Year + 543:0000}";
     public static string Age(DateOnly? birthDate, DateOnly asOf)
     {
         if (birthDate is null) return "-";
@@ -39,4 +42,9 @@ public static class ThaiReportFormat
         if (birthDate.Value.AddYears(years) > asOf) years--;
         return years.ToString();
     }
+}
+
+internal static class OfficialReportText
+{
+    public const string Organization = "สมาคมฌาปนกิจสงเคราะห์";
 }

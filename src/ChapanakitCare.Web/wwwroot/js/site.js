@@ -1,3 +1,8 @@
+document.querySelectorAll('form').forEach(form => {
+    form.autocomplete = 'off';
+    form.querySelectorAll('input:not([type="hidden"]), textarea, select').forEach(field => field.autocomplete = 'off');
+});
+
 document.addEventListener('click', event => {
     const trigger = event.target.closest('[data-dropdown-trigger]');
     document.querySelectorAll('.dropdown.open').forEach(item => {
@@ -19,40 +24,6 @@ document.querySelectorAll('[data-birth-date]').forEach(input => {
         output.value = age >= 0 ? `${age} ปี` : '';
     };
     input.addEventListener('change', update);
-    update();
-});
-
-document.querySelectorAll('[data-birth-date-be]').forEach(input => {
-    const target = document.querySelector(input.dataset.birthTarget);
-    if (!target) return;
-    const showBuddhistDate = () => {
-        if (!target.value) return;
-        const [year, month, day] = target.value.split('-');
-        input.value = `${day}/${month}/${Number(year) + 543}`;
-    };
-    const saveBuddhistDate = () => {
-        const match = input.value.trim().match(/^(\d{1,2})[/-](\d{1,2})[/-](\d{4})$/);
-        if (!match) { target.value = ''; return; }
-        const day = Number(match[1]); const month = Number(match[2]); const buddhistYear = Number(match[3]);
-        const date = new Date(buddhistYear - 543, month - 1, day);
-        if (date.getFullYear() !== buddhistYear - 543 || date.getMonth() !== month - 1 || date.getDate() !== day) { target.value = ''; return; }
-        target.value = `${date.getFullYear()}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-        target.dispatchEvent(new Event('change'));
-    };
-    input.addEventListener('change', saveBuddhistDate);
-    input.addEventListener('blur', saveBuddhistDate);
-    showBuddhistDate();
-});
-
-document.querySelectorAll('[data-be-date-output]').forEach(output => {
-    const target = document.querySelector(output.dataset.beTarget);
-    if (!target) return;
-    const update = () => {
-        if (!target.value) { output.value = ''; return; }
-        const [year, month, day] = target.value.split('-');
-        output.value = `${day}/${month}/${Number(year) + 543}`;
-    };
-    target.addEventListener('change', update);
     update();
 });
 

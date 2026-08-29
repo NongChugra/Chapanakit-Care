@@ -2,10 +2,40 @@ namespace ChapanakitCare.Domain;
 
 public static class CoveragePolicy
 {
-    public static DateOnly CalculateStart(DateOnly approvalDate, int waitDays)
+    public static DateOnly CalculateStart(DateOnly registrationDate, int waitDays)
     {
         ArgumentOutOfRangeException.ThrowIfNegative(waitDays);
-        return approvalDate.AddDays(waitDays);
+        // Registration is day 1, so a 180-day wait first becomes payable on day 181.
+        return registrationDate.AddDays(waitDays);
+    }
+}
+
+public static class ThaiBuddhistDate
+{
+    private const int BuddhistEraOffset = 543;
+
+    public static string Format(DateOnly value) => $"{value.Day:00}/{value.Month:00}/{value.Year + BuddhistEraOffset:0000}";
+
+    public static DateOnly Parse(string value)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(value);
+        var parts = value.Split('/');
+        if (parts.Length != 3 || !int.TryParse(parts[0], out var day) || !int.TryParse(parts[1], out var month) || !int.TryParse(parts[2], out var buddhistYear))
+        {
+            throw new FormatException("Date must use the format วว/ดด/ปปปป.");
+        }
+
+        return new DateOnly(buddhistYear - BuddhistEraOffset, month, day);
+    }
+
+    public static DateOnly NormalizeStoredDate(DateOnly value)
+    {
+        while (value.Year >= 2400)
+        {
+            value = new DateOnly(value.Year - BuddhistEraOffset, value.Month, value.Day);
+        }
+
+        return value;
     }
 }
 
@@ -86,8 +116,9 @@ public static class DeathBenefitCalculator
 
         var grossCollection = checked(input.OtherLivingMemberCount * input.WelfarePerMemberSatang);
         var feeNumerator = checked(grossCollection * input.ServiceFeeBasisPoints);
-        // The association keeps whole satang only.  Fractional satang is never collected.
-        var serviceFee = feeNumerator / BasisPointDenominator;
+        // The association records the deduction in whole baht. Calculate in satang,
+        // then discard any sub-baht remainder so the displayed amount always ends in .00.
+        var serviceFee = (feeNumerator / BasisPointDenominator / 100) * 100;
         var netCollection = checked(grossCollection - serviceFee);
         var advanceValue = checked(input.DeceasedAdvanceUnits * input.WelfarePerMemberSatang);
         var totalBenefit = checked(netCollection + advanceValue);

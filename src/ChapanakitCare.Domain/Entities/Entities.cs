@@ -95,7 +95,7 @@ public sealed class SystemSettings
     public int CoverageWaitDays { get; set; } = 180;
     public int SpecialNonPayWindowDays { get; set; } = 365;
     public int DeathWarningThreshold { get; set; } = 25;
-    public string ServiceFeeRoundingMode { get; set; } = "round_down_to_satang";
+    public string ServiceFeeRoundingMode { get; set; } = "round_down_to_baht";
     public DateTimeOffset UpdatedAtUtc { get; set; }
     public string UpdatedBy { get; set; } = string.Empty;
 }

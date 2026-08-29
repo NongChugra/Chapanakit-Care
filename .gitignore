@@ -2,6 +2,7 @@
 .tools/
 artifacts/
 .assurance/
+.codex-work/
 .dotnet-sdk*/
 *.stdout.log
 *.stderr.log

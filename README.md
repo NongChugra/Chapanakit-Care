@@ -48,7 +48,7 @@ database. The delivered folder intentionally contains no runtime database or pre
 - Death entry, 365-day operator safeguard, live configurable service-fee calculation, advance return, immutable snapshots,
   certificate PDF storage/download, and death registry.
 - Advance-unit reset counter and first-day/over-25-deaths notifications.
-- Monthly member, death, and ส.ฌ.ก.1 PDF reports.
+- รายงานสมาชิกทั้งหมด, รายงานสมาชิกประจำเดือน, รายงานแยกกลุ่ม และ ส.ฌ.ก.1 PDF reports.
 - Change history and database backup.
 
 ## Known MVP boundaries
@@ -82,3 +82,9 @@ The previous implementation was archived at
 The WebView2 Runtime is included with supported Windows 10 and Windows 11 installations through
 Microsoft Edge. If it has been removed from a PC, install the Microsoft Edge WebView2 Runtime
 before opening the application.
+
+## Demo
+
+Follow the Thai end-to-end demonstration sequence in [docs/demo-script.md](docs/demo-script.md).
+The included fixture is synthesized from the supplied workbook structure while replacing personal
+identifiers and names with demo values; it is not a production data migration.

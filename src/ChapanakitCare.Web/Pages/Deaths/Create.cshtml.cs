@@ -8,12 +8,12 @@ namespace ChapanakitCare.Web.Pages.Deaths;
 
 public sealed class CreateModel(DeathApplicationService service) : PageModel
 {
-    [BindProperty, Required] public string RunNo { get; set; } = string.Empty;
-    [BindProperty, Required] public string CertificateNo { get; set; } = string.Empty;
-    [BindProperty, Required] public DateOnly? CertificateDate { get; set; }
-    [BindProperty, Required] public DateOnly? ReportedCertificateDate { get; set; }
+    [BindProperty, Required(ErrorMessage = "กรุณากรอกเลขทะเบียนสมาชิก")] public string RunNo { get; set; } = string.Empty;
+    [BindProperty, Required(ErrorMessage = "กรุณากรอกเลขที่ใบมรณะบัตร")] public string CertificateNo { get; set; } = string.Empty;
+    [BindProperty, Required(ErrorMessage = "กรุณากรอกวันที่เสียชีวิตตามใบมรณะบัตร")] public DateOnly? CertificateDate { get; set; }
+    [BindProperty, Required(ErrorMessage = "กรุณากรอกวันที่แจ้งตามใบมรณะบัตร")] public DateOnly? ReportedCertificateDate { get; set; }
     [BindProperty] public IFormFile? CertificatePdf { get; set; }
-    [BindProperty, Required] public string Cause { get; set; } = string.Empty;
+    [BindProperty, Required(ErrorMessage = "กรุณากรอกสาเหตุการเสียชีวิต")] public string Cause { get; set; } = string.Empty;
     [BindProperty] public bool NonPay { get; set; }
     [BindProperty] public string? NonPayReason { get; set; }
     public DeathPreview? Preview { get; private set; }

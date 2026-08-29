@@ -1,18 +1,44 @@
 @page
 @model ChapanakitCare.Web.Pages.Deaths.IndexModel
-@using System.Globalization
-@{ ViewData["Title"] = "ทะเบียนผู้เสียชีวิต"; }
+@using System.Text.Json
+@using ChapanakitCare.Infrastructure.Deaths
+@{
+    ViewData["Title"] = "ทะเบียนผู้เสียชีวิต";
+    var columns = new[]
+    {
+        ("caseNo", "เลขกรณี"), ("runNo", "เลขสมาชิก"), ("memberName", "ชื่อ"),
+        ("personalId", "เลขประชาชน"), ("groupNo", "กลุ่มสมาชิก"), ("recordedDate", "วันที่บันทึก"),
+        ("deathDate", "วันที่ในใบมรณะ"), ("certificateNo", "เลขที่ใบมรณะบัตร"), ("cause", "สาเหตุ"),
+        ("beneficiary1", "ผู้รับเงินสงเคราะห์ 1"), ("beneficiary2", "ผู้รับเงินสงเคราะห์ 2"),
+        ("decision", "ผลพิจารณา"), ("contributors", "ผู้ร่วมจ่าย"), ("gross", "เรียกเก็บรวม"),
+        ("fee", "หักค่าใช้จ่าย 4%"), ("net", "สุทธิหลังหัก"), ("advance", "คืนเงินล่วงหน้า"),
+        ("total", "ผลประโยชน์รวม"), ("document", "เอกสาร")
+    };
+}
 <section class="card">
     <div class="card-head">
-        <div><h2>รายการเสียชีวิต @Model.Rows.Count รายการ</h2><div class="muted">ข้อมูลและใบมรณะบัตรที่ยืนยันแล้วเป็น snapshot แก้ไขไม่ได้</div></div>
-        <a class="button danger" asp-page="Create">+ บันทึกการเสียชีวิต</a>
+        <div><h2>รายการเสียชีวิต @Model.Rows.Count รายการ</h2><div class="muted">ข้อมูลและใบมรณะบัตรที่ยืนยันแล้วแก้ไขไม่ได้</div></div>
+        <div class="actions">
+            <div class="dropdown">
+                <button class="button secondary" type="button" data-dropdown-trigger aria-controls="death-column-picker">เลือกคอลัมน์</button>
+                <div class="dropdown-panel column-picker" id="death-column-picker">
+                    <strong>คอลัมน์ที่แสดง</strong>
+                    @foreach (var column in columns.Where(value => value.Item1 != "document"))
+                    {
+                        <label><input type="checkbox" value="@column.Item1" data-column-toggle checked /> @column.Item2</label>
+                    }
+                </div>
+            </div>
+            <button class="button secondary" type="button" id="reset-death-columns">คืนค่าหัวตาราง</button>
+            <a class="button danger" asp-page="Create">+ บันทึกการเสียชีวิต</a>
+        </div>
     </div>
 </section>
 <section class="card" style="margin-top:18px">
     <form method="get" class="filters">
         <label>ค้นหา<input asp-for="Search" placeholder="เลขกรณี เลขสมาชิก ชื่อ เลขประชาชน หรือเอกสาร" /></label>
-        <label>วันที่บันทึกตั้งแต่<input asp-for="From" type="date" value="@(Model.From?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))" /></label>
-        <label>ถึงวันที่<input asp-for="To" type="date" value="@(Model.To?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))" /></label>
+        <label>วันที่บันทึกตั้งแต่<input asp-for="From" type="hidden" value="@(Model.From?.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))" /><input type="text" inputmode="numeric" maxlength="10" placeholder="วว/ดด/ปปปป" data-thai-date data-thai-date-target="#From" /></label>
+        <label>ถึงวันที่<input asp-for="To" type="hidden" value="@(Model.To?.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))" /><input type="text" inputmode="numeric" maxlength="10" placeholder="วว/ดด/ปปปป" data-thai-date data-thai-date-target="#To" /></label>
         <label>ผลการพิจารณา<select asp-for="Decision"><option value="">ทั้งหมด</option><option value="payable">จ่าย</option><option value="nonpay">ไม่จ่าย</option></select></label>
         <button class="button secondary" type="submit">กรองรายการ</button>
         <a class="button secondary" asp-page="Index">ล้างตัวกรอง</a>
@@ -20,22 +46,44 @@
     <p class="muted filter-summary">ตัวกรองปัจจุบัน: @Model.FilterSummary</p>
 </section>
 <section class="card" style="margin-top:18px;padding:0">
-    <div class="table-wrap"><table><thead><tr>
-        <th>เลขกรณี</th><th>เลขสมาชิก</th><th>ชื่อ</th><th>เลขประชาชน</th><th>กลุ่มสมาชิก</th><th>วันที่บันทึก</th><th>วันที่ในใบมรณะ</th>
-        <th>เลขที่ใบมรณะบัตร</th><th>สาเหตุ</th><th>ผู้รับเงินสงเคราะห์</th><th>ผลพิจารณา</th><th>ผู้ร่วมจ่าย</th>
-        <th>เรียกเก็บรวม</th><th>หักค่าใช้จ่าย 4%</th><th>สุทธิหลังหัก</th><th>คืนเงินล่วงหน้า</th><th>ผลประโยชน์รวม</th><th>เอกสาร</th>
+    <form id="death-preference-token">@Html.AntiForgeryToken()</form>
+    <div class="table-wrap"><table id="death-table"><thead><tr>
+        @foreach (var column in columns)
+        {
+            <th draggable="true" data-column="@column.Item1" data-sortable="@(column.Item1 == "document" ? "false" : "true")"><span>@column.Item2</span><span class="sort-indicator" aria-hidden="true"></span></th>
+        }
     </tr></thead><tbody>
-    @foreach (var row in Model.Rows)
+    @for (var rowIndex = 0; rowIndex < Model.Rows.Count; rowIndex++)
     {
-        var beneficiaries = Model.BeneficiariesByCase.GetValueOrDefault(row.Case.Id) ?? [];
-        <tr>
-            <td>@row.Case.DeathCaseNo</td><td>@row.Member.RunNo</td><td>@row.Member.Title@row.Member.FirstName @row.Member.LastName</td><td>@row.Member.PersonalIdCard</td><td>@row.Member.GroupNo</td>
-            <td>@ChapanakitCare.Web.Pages.Members.IndexModel.ThaiDate(row.Case.RecordedBusinessDate)</td><td>@ChapanakitCare.Web.Pages.Members.IndexModel.ThaiDate(row.Case.DeathCertificateDate)</td>
-            <td>@row.Case.DeathCertificateNo</td><td>@row.Case.CauseOfDeathText</td><td>@string.Join(" / ", beneficiaries.Select(value => $"{value.Title}{value.FirstName} {value.LastName}"))</td>
-            <td>@(row.Case.IsManualNonPayCase ? $"เคสไม่จ่าย: {row.Case.ManualNonPayReason}" : row.Case.EligibilityResult == "payable" ? "จ่าย" : "ไม่จ่ายก่อนคุ้มครอง")</td>
-            <td>@row.Calculation.ContributorCount</td><td>@((row.Calculation.GrossCollectionSatang / 100m).ToString("N2"))</td><td>@((row.Calculation.ServiceFeeSatang / 100m).ToString("N2"))</td><td>@((row.Calculation.NetCollectionSatang / 100m).ToString("N2"))</td><td>@((row.Calculation.DeceasedAdvanceValueSatang / 100m).ToString("N2"))</td><td>@((row.Calculation.TotalBenefitSatang / 100m).ToString("N2")) บาท</td>
-            <td><a class="button secondary small" asp-page-handler="Certificate" asp-route-id="@row.Case.Id">ดาวน์โหลด PDF</a></td>
+        var row = Model.Rows[rowIndex];
+        var beneficiaries = DeathRegistryBeneficiaryColumns.From(Model.BeneficiariesByCase.GetValueOrDefault(row.Case.Id) ?? []);
+        var decision = row.Case.IsManualNonPayCase ? $"เคสไม่จ่าย: {row.Case.ManualNonPayReason}" : row.Case.EligibilityResult == "payable" ? "จ่าย" : "ไม่จ่ายก่อนคุ้มครอง";
+        <tr data-original-order="@rowIndex">
+            <td data-column="caseNo" data-sort-value="@row.Case.DeathSequenceNo">@row.Case.DeathCaseNo</td>
+            <td data-column="runNo" data-sort-value="@row.Member.RunNo">@row.Member.RunNo</td>
+            <td data-column="memberName" data-sort-value="@row.Member.FirstName @row.Member.LastName">@row.Member.Title@row.Member.FirstName @row.Member.LastName</td>
+            <td data-column="personalId" data-sort-value="@row.Member.PersonalIdCard">@(row.Member.PersonalIdCard ?? "–")</td>
+            <td data-column="groupNo" data-sort-value="@row.Member.GroupNo">@(row.Member.GroupNo ?? "–")</td>
+            <td data-column="recordedDate" data-sort-value="@row.Case.RecordedBusinessDate.ToString("yyyy-MM-dd")">@ChapanakitCare.Web.Pages.Members.IndexModel.ThaiDate(row.Case.RecordedBusinessDate)</td>
+            <td data-column="deathDate" data-sort-value="@row.Case.DeathCertificateDate.ToString("yyyy-MM-dd")">@ChapanakitCare.Web.Pages.Members.IndexModel.ThaiDate(row.Case.DeathCertificateDate)</td>
+            <td data-column="certificateNo" data-sort-value="@row.Case.DeathCertificateNo">@row.Case.DeathCertificateNo</td>
+            <td data-column="cause" data-sort-value="@row.Case.CauseOfDeathText">@row.Case.CauseOfDeathText</td>
+            <td data-column="beneficiary1" data-sort-value="@beneficiaries.First">@beneficiaries.First</td>
+            <td data-column="beneficiary2" data-sort-value="@beneficiaries.Second">@beneficiaries.Second</td>
+            <td data-column="decision" data-sort-value="@decision">@decision</td>
+            <td data-column="contributors" data-sort-value="@row.Calculation.ContributorCount">@row.Calculation.ContributorCount</td>
+            <td data-column="gross" data-sort-value="@row.Calculation.GrossCollectionSatang">@((row.Calculation.GrossCollectionSatang / 100m).ToString("N2"))</td>
+            <td data-column="fee" data-sort-value="@row.Calculation.ServiceFeeSatang">@((row.Calculation.ServiceFeeSatang / 100m).ToString("N2"))</td>
+            <td data-column="net" data-sort-value="@row.Calculation.NetCollectionSatang">@((row.Calculation.NetCollectionSatang / 100m).ToString("N2"))</td>
+            <td data-column="advance" data-sort-value="@row.Calculation.DeceasedAdvanceValueSatang">@((row.Calculation.DeceasedAdvanceValueSatang / 100m).ToString("N2"))</td>
+            <td data-column="total" data-sort-value="@row.Calculation.TotalBenefitSatang">@((row.Calculation.TotalBenefitSatang / 100m).ToString("N2")) บาท</td>
+            <td data-column="document"><a class="button secondary small" asp-page-handler="Certificate" asp-route-id="@row.Case.Id">ดาวน์โหลด PDF</a></td>
         </tr>
     }
     </tbody></table></div>
 </section>
+
+@section Scripts {
+<script>window.deathTablePreference = @Html.Raw(JsonSerializer.Serialize(Model.Preference));</script>
+<script src="~/js/death-table.js" asp-append-version="true"></script>
+}

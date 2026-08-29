@@ -1,7 +1,6 @@
 @page
 @model ChapanakitCare.Web.Pages.Members.IndexModel
 @using System.Text.Json
-@using System.Globalization
 @{
     ViewData["Title"] = "ทะเบียนสมาชิก";
     var columns = new[]
@@ -55,8 +54,8 @@
         <label>ตำบล<input asp-for="Subdistrict" list="rong-kwang-subdistricts" placeholder="เลือกหรือพิมพ์" /></label>
         <label>หมู่ที่<input asp-for="Moo" list="moo-numbers" placeholder="เลือกหรือพิมพ์" /></label>
         <label>กรองวันที่<select asp-for="DateField"><option value="">ไม่กรอง</option><option value="Application">วันที่สมัคร</option><option value="Approval">วันอนุมัติ</option><option value="Coverage">วันคุ้มครอง</option></select></label>
-        <label>ตั้งแต่<input asp-for="From" type="date" value="@(Model.From?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))" /></label>
-        <label>ถึง<input asp-for="To" type="date" value="@(Model.To?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))" /></label>
+        <label>ตั้งแต่<input asp-for="From" type="hidden" value="@(Model.From?.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))" /><input type="text" inputmode="numeric" maxlength="10" placeholder="วว/ดด/ปปปป" data-thai-date data-thai-date-target="#From" /></label>
+        <label>ถึง<input asp-for="To" type="hidden" value="@(Model.To?.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))" /><input type="text" inputmode="numeric" maxlength="10" placeholder="วว/ดด/ปปปป" data-thai-date data-thai-date-target="#To" /></label>
         <div class="actions"><button class="button" type="submit">กรอง</button><a class="button secondary" asp-page="/Members/Index">ล้าง</a></div>
     </form>
     <p class="muted filter-summary">ตัวกรองปัจจุบัน: @Model.FilterSummary</p>

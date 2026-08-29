@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Net.Http;
 using System.Windows;
 using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.Wpf;
@@ -47,6 +48,8 @@ public partial class MainWindow : Window
                 ?? throw new InvalidOperationException("The local Chapanakit Care server could not be started.");
 
             await Browser.EnsureCoreWebView2Async();
+            Browser.CoreWebView2.NavigationStarting += OnNavigationStarting;
+            Browser.CoreWebView2.DownloadStarting += OnDownloadStarting;
             Browser.CoreWebView2.Navigate(LocalUrl);
         }
         catch (Exception exception)
@@ -60,6 +63,55 @@ public partial class MainWindow : Window
                 MessageBoxImage.Error);
             Close();
         }
+    }
+
+    private async void OnNavigationStarting(object? sender, CoreWebView2NavigationStartingEventArgs e)
+    {
+        if (!Uri.TryCreate(e.Uri, UriKind.Absolute, out var requestUri)) return;
+
+        var downloadsFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+        var report = DesktopReportDownload.TryCreate(requestUri, downloadsFolder);
+        if (report is null) return;
+
+        e.Cancel = true;
+        Directory.CreateDirectory(downloadsFolder);
+        var destination = report.DestinationPath;
+        if (File.Exists(destination))
+        {
+            destination = Path.Combine(downloadsFolder, $"{Path.GetFileNameWithoutExtension(destination)}-{DateTime.Now:yyyyMMdd-HHmmss}{Path.GetExtension(destination)}");
+        }
+
+        try
+        {
+            using var client = new HttpClient();
+            var bytes = await client.GetByteArrayAsync(requestUri);
+            await File.WriteAllBytesAsync(destination, bytes);
+            MessageBox.Show($"บันทึกรายงานแล้ว\n{destination}", "ดาวน์โหลด PDF", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+        catch (Exception exception)
+        {
+            MessageBox.Show($"ไม่สามารถดาวน์โหลดรายงานได้\n\n{exception.Message}", "ดาวน์โหลด PDF", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+    }
+
+    private void OnDownloadStarting(object? sender, CoreWebView2DownloadStartingEventArgs e)
+    {
+        var downloadsFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+        Directory.CreateDirectory(downloadsFolder);
+        var destination = DesktopDownloadPath.Create(e.ResultFilePath, downloadsFolder);
+        if (File.Exists(destination))
+        {
+            destination = Path.Combine(downloadsFolder, $"{Path.GetFileNameWithoutExtension(destination)}-{DateTime.Now:yyyyMMdd-HHmmss}{Path.GetExtension(destination)}");
+        }
+        e.ResultFilePath = destination;
+        e.Handled = true;
+        e.DownloadOperation.StateChanged += (_, _) =>
+        {
+            if (e.DownloadOperation.State == CoreWebView2DownloadState.Completed)
+            {
+                Dispatcher.BeginInvoke(() => MessageBox.Show($"บันทึกรายงานแล้ว\n{destination}", "ดาวน์โหลด PDF", MessageBoxButton.OK, MessageBoxImage.Information));
+            }
+        };
     }
 
     private void OnClosed(object? sender, EventArgs e)

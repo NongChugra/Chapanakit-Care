@@ -13,6 +13,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\association-deer-logo.jpg" />
+    <Resource Include="Assets\association-deer-logo.ico" />
   </ItemGroup>
   <Target Name="PublishLocalWebHost" BeforeTargets="Publish">
     <MSBuild Projects="..\ChapanakitCare.Web\ChapanakitCare.Web.csproj"

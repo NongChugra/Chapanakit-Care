@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.Text.Json;
+using ChapanakitCare.Domain;
 using ChapanakitCare.Domain.Entities;
 using ChapanakitCare.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -125,7 +126,7 @@ public sealed class MemberApplicationService(AppDbContext database)
             GroupNo = Clean(command.GroupNo),
             ApplicationDate = command.ApplicationDate,
             ApprovalDate = command.ApprovalDate,
-            CoverageStartDate = command.ApprovalDate.AddDays(settings.CoverageWaitDays),
+            CoverageStartDate = CoveragePolicy.CalculateStart(command.ApprovalDate, settings.CoverageWaitDays),
             Status = MemberStatus.Normal,
             AdvanceUnitsBalance = settings.ResetTargetUnits,
             Version = 1,
@@ -221,7 +222,7 @@ public sealed class MemberApplicationService(AppDbContext database)
         member.GroupNo = Clean(command.GroupNo);
         member.ApplicationDate = command.ApplicationDate;
         member.ApprovalDate = command.ApprovalDate;
-        member.CoverageStartDate = command.ApprovalDate.AddDays(settings.CoverageWaitDays);
+        member.CoverageStartDate = CoveragePolicy.CalculateStart(command.ApprovalDate, settings.CoverageWaitDays);
         member.Version++;
         member.UpdatedAtUtc = now;
         member.UpdatedBy = actor;

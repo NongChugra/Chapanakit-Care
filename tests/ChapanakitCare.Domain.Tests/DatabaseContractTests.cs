@@ -74,7 +74,7 @@ public sealed class DatabaseContractTests
         Assert.Equal(180, settings.CoverageWaitDays);
         Assert.Equal(365, settings.SpecialNonPayWindowDays);
         Assert.Equal(25, settings.DeathWarningThreshold);
-        Assert.Equal("round_down_to_satang", settings.ServiceFeeRoundingMode);
+        Assert.Equal("round_down_to_baht", settings.ServiceFeeRoundingMode);
     }
 
     [Fact]

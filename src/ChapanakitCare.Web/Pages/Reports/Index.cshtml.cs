@@ -1,6 +1,7 @@
 using ChapanakitCare.Infrastructure.Reports;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Globalization;
 
 namespace ChapanakitCare.Web.Pages.Reports;
 
@@ -8,17 +9,22 @@ public sealed class IndexModel(ReportApplicationService reports) : PageModel
 {
     [BindProperty(SupportsGet = true)] public DateOnly From { get; set; }
     [BindProperty(SupportsGet = true)] public DateOnly To { get; set; }
-    public string DefaultMonth => $"{From:yyyy-MM}";
+    public string DefaultMonth => From.ToString("yyyy-MM", CultureInfo.InvariantCulture);
     public IReadOnlyList<string> ManagerGroups { get; private set; } = [];
 
     public async Task OnGetAsync()
     {
-        if (From == default) From = new DateOnly(DateTime.Today.Year, DateTime.Today.Month, 1);
+        if (From == default) From = await reports.GetLatestMemberApplicationMonthAsync(HttpContext.RequestAborted) ?? new DateOnly(DateTime.Today.Year, DateTime.Today.Month, 1);
         if (To == default) To = From.AddMonths(1).AddDays(-1);
         ManagerGroups = await reports.GetManagerGroupsAsync(HttpContext.RequestAborted);
     }
 
     public Task<IActionResult> OnGetMemberByManagerAsync(string groupNo) => DownloadByManagerAsync(groupNo);
+    public async Task<IActionResult> OnGetAllMembersAsync()
+    {
+        var bytes = await reports.GenerateAllMembersAsync(HttpContext.RequestAborted);
+        return File(bytes, "application/pdf", "all-members.pdf");
+    }
     public Task<IActionResult> OnGetMonthlyAsync(string month) => DownloadMonthAsync("monthly-members", month, reports.GenerateMonthlySummaryAsync);
     public Task<IActionResult> OnGetSakOneAsync(string month) => DownloadMonthAsync("sak-one", month, reports.GenerateSakOneAsync);
 
@@ -32,7 +38,7 @@ public sealed class IndexModel(ReportApplicationService reports) : PageModel
 
     private async Task<IActionResult> DownloadMonthAsync(string name, string month, Func<ReportPeriod, CancellationToken, Task<byte[]>> generate)
     {
-        if (!DateOnly.TryParseExact($"{month}-01", "yyyy-MM-dd", out var from))
+        if (!DateOnly.TryParseExact($"{month}-01", "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var from))
         {
             return BadRequest("กรุณาเลือกเดือนรายงาน");
         }

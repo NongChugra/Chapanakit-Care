@@ -38,7 +38,6 @@ public static class InteractiveMemberRegistrationPolicy
         Required(issues, "District", command.District, "กรุณากรอกอำเภอ");
         Required(issues, "Province", command.Province, "กรุณากรอกจังหวัด");
         Required(issues, "PostalCode", command.PostalCode, "กรุณากรอกรหัสไปรษณีย์");
-        Required(issues, "Mobile", command.Mobile, "กรุณากรอกโทรศัพท์");
         Required(issues, "GroupNo", command.GroupNo, "กรุณากรอกกลุ่ม");
 
         if (command.Beneficiaries.Count == 0)
@@ -54,6 +53,11 @@ public static class InteractiveMemberRegistrationPolicy
             Required(issues, $"{prefix}.LastName", beneficiary.LastName, "กรุณากรอกนามสกุลผู้รับเงินสงเคราะห์");
             Required(issues, $"{prefix}.Relationship", beneficiary.Relationship, "กรุณากรอกความสัมพันธ์");
             Required(issues, $"{prefix}.PersonalIdCard", beneficiary.PersonalIdCard, "กรุณากรอกเลขประจำตัวประชาชนผู้รับเงินสงเคราะห์");
+            if (!string.IsNullOrWhiteSpace(beneficiary.PersonalIdCard) &&
+                (beneficiary.PersonalIdCard.Length != 13 || beneficiary.PersonalIdCard.Any(character => !char.IsAsciiDigit(character))))
+            {
+                issues.Add(new($"{prefix}.PersonalIdCard", "เลขประจำตัวประชาชนผู้รับเงินสงเคราะห์ต้องมี 13 หลัก"));
+            }
             Required(issues, $"{prefix}.Mobile", beneficiary.Mobile, "กรุณากรอกโทรศัพท์ผู้รับเงินสงเคราะห์");
             Required(issues, $"{prefix}.HouseNo", beneficiary.HouseNo, "กรุณากรอกบ้านเลขที่ผู้รับเงินสงเคราะห์");
             Required(issues, $"{prefix}.Under", beneficiary.Under, "กรุณากรอกสังกัด/ใต้ของผู้รับเงินสงเคราะห์");

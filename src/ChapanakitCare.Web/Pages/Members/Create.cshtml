@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "เพิ่มสมาชิกใหม่";
 }
-<form method="post" class="card" data-button-only-submit>
+<form method="post" class="card" data-button-only-submit autocomplete="off">
     <partial name="_MemberForm" model="Model" />
     <div class="form-footer">
         <a class="button secondary" asp-page="/Members/Index">ยกเลิก</a>

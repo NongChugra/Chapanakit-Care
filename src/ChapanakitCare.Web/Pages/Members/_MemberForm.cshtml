@@ -10,7 +10,7 @@
     <label>นามสกุล<input asp-for="Input.LastName" required /></label>
     <label>เพศ<select asp-for="Input.Gender" data-gender-select required><option value="">เลือก</option><option>ชาย</option><option>หญิง</option></select></label>
     <label>เลขประจำตัวประชาชน<input asp-for="Input.PersonalIdCard" inputmode="numeric" maxlength="13" required /></label>
-    <label>วันเกิด (พ.ศ.)<input asp-for="Input.BirthDate" type="hidden" value="@(Model.Input.BirthDate?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))" data-birth-date data-age-target="#calculated-age" /><input type="text" inputmode="numeric" placeholder="วว/ดด/พ.ศ." data-birth-date-be data-birth-target="#Input_BirthDate" required /></label>
+    <label>วันเกิด (พ.ศ.)<input asp-for="Input.BirthDate" type="hidden" value="@(Model.Input.BirthDate?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))" data-birth-date data-age-target="#calculated-age" /><input type="text" inputmode="numeric" maxlength="10" placeholder="วว/ดด/ปปปป" data-thai-date data-thai-date-target="#Input_BirthDate" required /></label>
     <label>อายุ<span class="hint">คำนวณจากวันเกิดอัตโนมัติ</span><input id="calculated-age" readonly /></label>
     <label>กลุ่มสมาชิก<input asp-for="Input.GroupNo" required readonly data-member-group /></label>
     <label>บ้านเลขที่<input asp-for="Input.HouseNo" required /></label>
@@ -20,7 +20,7 @@
     <label>รหัสไปรษณีย์<input asp-for="Input.PostalCode" inputmode="numeric" maxlength="5" required data-address-postal readonly /></label>
     <label>อำเภอ<input asp-for="Input.District" required data-address-district readonly /></label>
     <label>จังหวัด<input asp-for="Input.Province" required data-address-province readonly /></label>
-    <label>โทรศัพท์<input asp-for="Input.Mobile" /></label>
+    <label>โทรศัพท์ <span class="hint">ไม่บังคับ</span><input asp-for="Input.Mobile" inputmode="tel" /></label>
 </div>
 <datalist id="thai-titles"><option value="นาย"></option><option value="นาง"></option><option value="นางสาว"></option><option value="น.ส."></option></datalist>
 <datalist id="rong-kwang-subdistricts"><option value="ร้องกวาง"></option><option value="ร้องเข็ม"></option><option value="น้ำเลา"></option><option value="บ้านเวียง"></option><option value="ทุ่งศรี"></option><option value="แม่ยางตาล"></option><option value="แม่ยางฮ่อ"></option><option value="ไผ่โทน"></option><option value="ห้วยโรง"></option><option value="แม่ทราย"></option><option value="แม่ยางร้อง"></option></datalist>
@@ -28,9 +28,9 @@
 
 <h3 class="section-title">วันที่สำคัญ</h3>
 <div class="grid three">
-    <label>วันที่สมัคร (พ.ศ.)<input asp-for="Input.ApplicationDate" type="hidden" value="@Model.Input.ApplicationDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)" /><input type="text" inputmode="numeric" placeholder="วว/ดด/พ.ศ." data-birth-date-be data-birth-target="#Input_ApplicationDate" required /></label>
-    <label>วันอนุมัติ (พ.ศ.)<input asp-for="Input.ApprovalDate" type="hidden" value="@Model.Input.ApprovalDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)" data-approval-date data-wait-days="@Model.CoverageWaitDays" data-coverage-target="#coverage-date" /><input type="text" inputmode="numeric" placeholder="วว/ดด/พ.ศ." data-birth-date-be data-birth-target="#Input_ApprovalDate" required /></label>
-    <label>วันคุ้มครอง (พ.ศ.)<span class="hint">คำนวณอัติโนมัติจากวันอนุมัติ</span><input id="coverage-date" type="hidden" /><input type="text" readonly data-be-date-output data-be-target="#coverage-date" /></label>
+    <label>วันที่สมัคร (พ.ศ.)<input asp-for="Input.ApplicationDate" type="hidden" value="@Model.Input.ApplicationDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)" /><input type="text" inputmode="numeric" maxlength="10" placeholder="วว/ดด/ปปปป" data-thai-date data-thai-date-target="#Input_ApplicationDate" required /></label>
+    <label>วันอนุมัติ (พ.ศ.)<input asp-for="Input.ApprovalDate" type="hidden" value="@Model.Input.ApprovalDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)" data-approval-date data-wait-days="@Model.CoverageWaitDays" data-coverage-target="#coverage-date" /><input type="text" inputmode="numeric" maxlength="10" placeholder="วว/ดด/ปปปป" data-thai-date data-thai-date-target="#Input_ApprovalDate" required /></label>
+    <label>วันคุ้มครอง (พ.ศ.)<span class="hint">คำนวณอัติโนมัติจากวันอนุมัติ (วันที่ 181)</span><input id="coverage-date" type="hidden" /><input type="text" readonly data-thai-date-output="#coverage-date" /></label>
 </div>
 
 <h3 class="section-title">ผู้รับเงินสงเคราะห์</h3>
@@ -46,7 +46,7 @@
             <label>ชื่อ<input name="@(prefix).FirstName" value="@(slot == 1 ? Model.Input.Beneficiary1.FirstName : Model.Input.Beneficiary2.FirstName)" required="@(slot == 1)" /></label>
             <label>นามสกุล<input name="@(prefix).LastName" value="@(slot == 1 ? Model.Input.Beneficiary1.LastName : Model.Input.Beneficiary2.LastName)" required="@(slot == 1)" /></label>
             <label>ความสัมพันธ์<input name="@(prefix).Relationship" value="@(slot == 1 ? Model.Input.Beneficiary1.Relationship : Model.Input.Beneficiary2.Relationship)" required="@(slot == 1)" /></label>
-            <label>เลขประจำตัวประชาชน<input name="@(prefix).PersonalIdCard" value="@(slot == 1 ? Model.Input.Beneficiary1.PersonalIdCard : Model.Input.Beneficiary2.PersonalIdCard)" maxlength="13" required="@(slot == 1)" /></label>
+            <label>เลขประจำตัวประชาชน<input name="@(prefix).PersonalIdCard" value="@(slot == 1 ? Model.Input.Beneficiary1.PersonalIdCard : Model.Input.Beneficiary2.PersonalIdCard)" inputmode="numeric" pattern="[0-9]{13}" maxlength="13" required="@(slot == 1)" /></label>
             <label>โทรศัพท์<input name="@(prefix).Mobile" value="@(slot == 1 ? Model.Input.Beneficiary1.Mobile : Model.Input.Beneficiary2.Mobile)" required="@(slot == 1)" /></label>
             <label>บ้านเลขที่<input name="@(prefix).HouseNo" value="@(slot == 1 ? Model.Input.Beneficiary1.HouseNo : Model.Input.Beneficiary2.HouseNo)" required="@(slot == 1)" /></label>
             <label>ชื่อหมู่บ้าน<input name="@(prefix).Under" value="@(slot == 1 ? Model.Input.Beneficiary1.Under : Model.Input.Beneficiary2.Under)" required="@(slot == 1)" /></label>
