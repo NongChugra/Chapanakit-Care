@@ -111,20 +111,6 @@
         "resolved": "2.1.12",
         "contentHash": "fWi8Dbknuhgg72fWinIdjXVaqO1hHL4YBBwVLnr7e1c9TAZwJ0QE38j9syW1hwx6HaqEVTwI+O07WPdZn8Rp0w=="
       }
-    },
-    "net10.0/win-x64": {
-      "QuestPDF": {
-        "type": "CentralTransitive",
-        "requested": "[2026.8.0, )",
-        "resolved": "2026.8.0",
-        "contentHash": "6c/YtDiZm8NgxnFdUDom+IWGVXKhiwBVJ3cvlyIXZYH7Wp0HaXWoR2XWj/RAsZfjpW7J5LMVc1EF6JnJFouoXQ=="
-      },
-      "SQLitePCLRaw.lib.e_sqlite3": {
-        "type": "CentralTransitive",
-        "requested": "[2.1.12, )",
-        "resolved": "2.1.12",
-        "contentHash": "fWi8Dbknuhgg72fWinIdjXVaqO1hHL4YBBwVLnr7e1c9TAZwJ0QE38j9syW1hwx6HaqEVTwI+O07WPdZn8Rp0w=="
-      }
     }
   }
 }

@@ -21,15 +21,33 @@
             <div><span class="label">กลุ่มสมาชิก</span><strong>@member.GroupNo</strong></div>
             <div><span class="label">สถานะปัจจุบัน</span><strong>@(member.Status == MemberStatus.Normal ? "ปกติ" : "ลาออกแล้ว")</strong></div>
             <div><span class="label">เงินล่วงหน้าคงเหลือ</span><strong>@member.AdvanceUnitsBalance คน</strong></div>
-            <div><span class="label">เงินที่ได้รับคืน</span><strong>@((Model.Preview.RefundSatang / 100m).ToString("N2")) บาท</strong></div>
+            <div><span class="label">@(Model.Preview.AccountingActive ? "ยอดเงินจริงสุทธิ (ยังไม่จ่ายคืน / ติดลบคือค้างชำระ)" : "เงินที่ได้รับคืน")</span><strong>@((Model.Preview.RefundSatang / 100m).ToString("N2")) บาท</strong></div>
         </div>
         @if (member.Status == MemberStatus.Normal)
         {
-            <form method="post" asp-page-handler="Confirm" class="form-footer" autocomplete="off">
-                <input type="hidden" asp-for="RunNo" />
-                <button class="button danger" type="submit" onclick="return confirm('ยืนยันให้สมาชิกลาออก? การทำงานนี้ย้อนกลับไม่ได้')">ยืนยันลาออกและคืนเงิน</button>
+            <div class="form-footer">
+                <button class="button danger" type="button" data-resignation-open>@(Model.Preview.AccountingActive ? "ยืนยันลาออก (ยังไม่จ่ายคืนเงิน)" : "ยืนยันลาออกและคืนเงิน")</button>
                 <a class="button secondary" asp-page="/Members/Index">ยกเลิก</a>
-            </form>
+            </div>
+            <dialog class="confirmation-dialog" id="resignation-dialog" aria-labelledby="resignation-dialog-title">
+                <h2 id="resignation-dialog-title">ยืนยันการลาออก</h2>
+                <p>สมาชิก @member.RunNo · @member.Title@member.FirstName @member.LastName</p>
+                <p class="muted">เมื่อยืนยันแล้ว สถานะสมาชิกจะเปลี่ยนเป็นลาออกและย้อนกลับไม่ได้</p>
+                <form method="post" asp-page-handler="Confirm" class="actions" autocomplete="off">
+                    <input type="hidden" asp-for="RunNo" />
+                    <button class="button secondary" type="button" data-resignation-close>กลับไปตรวจสอบ</button>
+                    <button class="button danger" type="submit">ยืนยันการลาออก</button>
+                </form>
+            </dialog>
         }
     </section>
+}
+@section Scripts {
+<script>
+(() => {
+    const dialog = document.querySelector('#resignation-dialog');
+    document.querySelector('[data-resignation-open]')?.addEventListener('click', () => dialog.showModal());
+    document.querySelector('[data-resignation-close]')?.addEventListener('click', () => dialog.close());
+})();
+</script>
 }

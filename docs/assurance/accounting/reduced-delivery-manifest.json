@@ -1,0 +1,406 @@
+[
+  {
+    "Path": "artifacts/accounting-reduced-demo\\ChapanakitCare.deps.json",
+    "SHA256": "06C63BD4F358FCBEFDD65F6CD19A01BE8FA44A65F22B9253B79955D6842BB6EF"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\ChapanakitCare.dll",
+    "SHA256": "F574455835C9D059A9813C87FA76F02DC23BA0250B6B7A18D3FC6305036C64B7"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\ChapanakitCare.Domain.dll",
+    "SHA256": "1274C6B1C4729CCD9FA3814217B21A6606180036AF1BC85457C45FB56EDD0B63"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\ChapanakitCare.Domain.pdb",
+    "SHA256": "7B43843733CCCCCCC4218F4039CD174791A4E59F7FB00CADFB6F7055E549B0CE"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\ChapanakitCare.exe",
+    "SHA256": "019C4052E823E596EB80BC8B9A5A85DBB9BE8C2A162860DF09ECD6BA04CF8955"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\ChapanakitCare.Infrastructure.dll",
+    "SHA256": "D4EDA9E7B209878442B3B64DB6316E1D9FDC3E865F6FA20DABEF79AE5C9737AD"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\ChapanakitCare.Infrastructure.pdb",
+    "SHA256": "A25D47845B36D9558AD8C7B979481C44A6C8EEB69D917B5E0423F28731738198"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\ChapanakitCare.pdb",
+    "SHA256": "2B291DEF324589B1CE7A73148222931E29405D71A6FBF348B0EB01CC870C832C"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\ChapanakitCare.runtimeconfig.json",
+    "SHA256": "5A26DE741A59E2654C7BADFE3D6D9A134BF09FE67F621F584E7746147C9D2686"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\ChapanakitCare.staticwebassets.endpoints.json",
+    "SHA256": "F3626C2DED4BD32BEFB6B2642433142299AAEDD690D48BE68D6DE649E7521E8F"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\LatoFont\\Lato-BlackItalic.ttf",
+    "SHA256": "3214F75BF96783A571BD25338C867C669E7C5E7C08A227F18A7B63766D6E6CBE"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\LatoFont\\Lato-Black.ttf",
+    "SHA256": "808C62839C62DBCE7DE689AF7603666FC7F8B81E0DF537D8A5212C87580D4337"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\LatoFont\\Lato-BoldItalic.ttf",
+    "SHA256": "62C1B7F0D2E74B45960154C3520EFC337B553DB0961BFDC950D5618334596CC8"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\LatoFont\\Lato-Bold.ttf",
+    "SHA256": "8A0AACE75D33794EECE4B28187BFC1DF0BBD2888B5D8A56E01788C8D65D16BE1"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\LatoFont\\Lato-ExtraBoldItalic.ttf",
+    "SHA256": "A42B384B9C37913A61023E3A47C07FEAD26E776127BBC9E6A0C96FE413089374"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\LatoFont\\Lato-ExtraBold.ttf",
+    "SHA256": "61018DE62BDAF90D4AC80B1D53C5C130756C8E9219AEA3D2773FC9BD5869AF97"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\LatoFont\\Lato-ExtraLightItalic.ttf",
+    "SHA256": "FC56526250B9B64CE0908C52350B03E91B84AFECB08FD2834A12E57B91ABDB31"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\LatoFont\\Lato-ExtraLight.ttf",
+    "SHA256": "989989B481DB5DF0827D90C51FD08D024FE7BC4E367046E2584A0D3B0487936D"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\LatoFont\\Lato-Italic.ttf",
+    "SHA256": "E399C44EFE1387100531D26C7E4800C5D12251B890D6654A3098C7C679CB1786"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\LatoFont\\Lato-LightItalic.ttf",
+    "SHA256": "700E6722FD14A10E7646347A6B14C486D4C364A373BA61C70E0B5CCEE7811635"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\LatoFont\\Lato-Light.ttf",
+    "SHA256": "CF2A774503BAF418D584F49967BD160E1E03F087C13B25602F28024EC7788F08"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\LatoFont\\Lato-MediumItalic.ttf",
+    "SHA256": "ECBCE6CFFA42D8A67AFEB27A9D6E85D515E81481D4B2CECE989E833A48048405"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\LatoFont\\Lato-Medium.ttf",
+    "SHA256": "D3AC182A6833E005745DD75679FBAD081C0B12535DF4E93AD8ED57817A31A338"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\LatoFont\\Lato-Regular.ttf",
+    "SHA256": "D636E4683231F931EDA222D588E944D082BFD3BDBA02F928BEE461C0F185B251"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\LatoFont\\Lato-SemiBoldItalic.ttf",
+    "SHA256": "5ADEB6B334D8FB99EF053BC052B952773D544315E0E1D668A12C0CE8BD51375C"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\LatoFont\\Lato-SemiBold.ttf",
+    "SHA256": "71B8B7DECBE75A881ED267BE539D402BD1E9420B799658AADA4E0D1BD5AF803C"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\LatoFont\\Lato-ThinItalic.ttf",
+    "SHA256": "E5E86E219CE6987B175470D94D57753A387D1860B635DA6327A60E8D19A33BEB"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\LatoFont\\Lato-Thin.ttf",
+    "SHA256": "663C55BFE9A38270FFF44DA273BF4D792EAFC3E7E1201F62C3064CAD80C5D5E7"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\LatoFont\\OFL.txt",
+    "SHA256": "14B8609FD8281CB961730DE7D3B2964DCC6E0E395E759B1422E52E39A0FDC6B2"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\Microsoft.Data.Sqlite.dll",
+    "SHA256": "1078D41C6C0F2CEE48A8B706E3A54CE145705993F19F703D2B3BDF2ABCC59088"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\Microsoft.EntityFrameworkCore.Abstractions.dll",
+    "SHA256": "98C8252995283EF0884B904DBAB03696CA7F71A05B8DDE34DACE5EEB9BF4382C"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\Microsoft.EntityFrameworkCore.dll",
+    "SHA256": "ACB89DFF050D681FAB6F86D2175929471200B9BED66AC9321CBE6A17EAA26933"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\Microsoft.EntityFrameworkCore.Relational.dll",
+    "SHA256": "AC1146E68D53D56B79E9473F68C557999DE99674BE392BBBBB02AE93A296B93E"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\Microsoft.EntityFrameworkCore.Sqlite.dll",
+    "SHA256": "B8C5027B27BE2012094699CBD5260239778A1891DC5C1887797D331B67F0EF89"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\Microsoft.Extensions.DependencyModel.dll",
+    "SHA256": "2385BFBC9344E03ACB2FF44F1ED21A3770FBAFDF1BA4BE2DBCACD42027B8C3BD"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\QuestPDF.dll",
+    "SHA256": "A204F75B5CED855997A4B6045E5E4F5F2C2D413171BAB101D9FC698BB6DA2459"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\browser-wasm\\nativeassets\\net9.0\\e_sqlite3.a",
+    "SHA256": "C64AE8D44DC3E1AA03ACA4E79CCC501CBC3A3C490E8E2EA9E369367F68CF0F21"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\linux-arm64\\native\\libe_sqlite3.so",
+    "SHA256": "707FFF6B18C1F083158E7A543C8D2545D5485F547FFD96DB29679A95F52878D5"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\linux-arm64\\native\\libqpdf.so",
+    "SHA256": "15FA002E9F6DA9E408AA6C1D1E790AF3E526EC545808A401511D752BD8D79C1C"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\linux-arm64\\native\\libQuestPdfSkia.so",
+    "SHA256": "827EF4FB53E342195954EAA9C6E1038BAF3F7F1C3262E4CCEABBE219EAC4656A"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\linux-armel\\native\\libe_sqlite3.so",
+    "SHA256": "3F4D9B9CA49BB3F100882E78BA85807398CEE19B481BFD4C301A8F5F58D48540"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\linux-arm\\native\\libe_sqlite3.so",
+    "SHA256": "43556C2F5075857BF57BE1136D556733BDC27195884FBDDE127CD976D1C25AD5"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\linux-mips64\\native\\libe_sqlite3.so",
+    "SHA256": "985884523E512414F3E50AA359F08DAD3CE635E99405E7823DE9B26A7DB38D09"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\linux-musl-arm64\\native\\libe_sqlite3.so",
+    "SHA256": "530E2F74F259FE04FAA4B595336E671FAB5EEDBB6F4E94DAD59494EFB7B00C2A"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\linux-musl-arm\\native\\libe_sqlite3.so",
+    "SHA256": "7FEC7057D16E8B5AE54FED0C42A0E6B85E40DF0D57092EF20CD647A4E1C1E0ED"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\linux-musl-riscv64\\native\\libe_sqlite3.so",
+    "SHA256": "D8E54EB7DC52EA0A7DF9B78AC6FEB85AF429E7264613099DF478825DEA5805D4"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\linux-musl-s390x\\native\\libe_sqlite3.so",
+    "SHA256": "64260C0460AD6EFA7DCE9263BFF7A4B64AD66172CCC580CB09181C845E1A3407"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\linux-musl-x64\\native\\libe_sqlite3.so",
+    "SHA256": "647B7B5886526691AED58E0FCBB56DC1E6DEA8B1F9F5390782F0C95269250DB1"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\linux-musl-x64\\native\\libqpdf.so",
+    "SHA256": "F7B5DE3560E3CBAA5FD12C733D7701EB713A0BC3104425C0143314673272A3C0"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\linux-musl-x64\\native\\libQuestPdfSkia.so",
+    "SHA256": "4B8B54A4443BED866B484256AE710A8D7EDDE7F7A33493F41F40F2EE2039BE1D"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\linux-ppc64le\\native\\libe_sqlite3.so",
+    "SHA256": "1EF00B5E3AC63E491F59ECF587680FC52AD844CEA62E0A879A1315EF6BD10FC6"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\linux-riscv64\\native\\libe_sqlite3.so",
+    "SHA256": "6B390EECBC6F55C44D9AB8A774F1FE4283DFB33A72E6F29F4E0B173065E7E105"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\linux-s390x\\native\\libe_sqlite3.so",
+    "SHA256": "DFD5AB35F6D61155A3C629D0BCEFF4D6E0F0F190983F3FB8F681FB34EC08C67E"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\linux-x64\\native\\libe_sqlite3.so",
+    "SHA256": "B0F5C48026FEDCF9F05CF31C6FADF9E1E001CA59CD85AA68B8B6814E52C18A07"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\linux-x64\\native\\libqpdf.so",
+    "SHA256": "F2C01D3BE0734BB376FCB1BDEED6291F6BFE2F8C8B9F2D2887487986C41E11D0"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\linux-x64\\native\\libQuestPdfSkia.so",
+    "SHA256": "26965ABB11AB5D9D9913A80586E16E518F89796B9C422A7C8F26672D9EB72E29"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\linux-x86\\native\\libe_sqlite3.so",
+    "SHA256": "FE8229E5BAEAF21E721CF65626A6B07EC22D9B17D07BD624E7A77927174277F1"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\maccatalyst-arm64\\native\\libe_sqlite3.dylib",
+    "SHA256": "8D63D80BC6CAA754679D6FC89FD741A32C156F136C34759CC8FFF8CD51468A93"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\maccatalyst-x64\\native\\libe_sqlite3.dylib",
+    "SHA256": "43D27ADBC5BA40850BAC42A12AEA08314A22A43D3CE77CDC7A6CC47ECFFB5746"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\osx-arm64\\native\\libe_sqlite3.dylib",
+    "SHA256": "09FE20A6C050912A7944B2F2F2981DEBE31679F7919F523C87251AE8CF0F2DAA"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\osx-arm64\\native\\libqpdf.dylib",
+    "SHA256": "4F80E78AA864209F89E5BEC36F0018456A96A7A6D5C964B72F272B1208A10FE6"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\osx-arm64\\native\\libQuestPdfSkia.dylib",
+    "SHA256": "34CBC04E71CB5D104D7C326B0514EB9FFA6E6DC354CB030946AFB575A0A59B3B"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\osx-x64\\native\\libe_sqlite3.dylib",
+    "SHA256": "02344E1D0BCB5ED447AD9B79ED19E37A590FB1ECE3EBA1E63EFBC35E36E47BDF"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\osx-x64\\native\\libqpdf.dylib",
+    "SHA256": "A7B34AAF236E72DED2618F18909FCDBE58D9433449977AA4DF03A129D4DAC468"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\osx-x64\\native\\libQuestPdfSkia.dylib",
+    "SHA256": "0AB6BB4A8C6F28B6841E54643062D0D6779325483D9175B84094D11A4CD59BB3"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\win-arm64\\native\\e_sqlite3.dll",
+    "SHA256": "4177542756BD94F75B55FB74367E0CF34E66A88FFAF95755489AF14C6CA2F792"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\win-arm64\\native\\qpdf.dll",
+    "SHA256": "5CEFDDCB3922B29A1690D8CBE49C71BF904378FF9AB642F8395F7F9FCDFCF0B5"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\win-arm64\\native\\QuestPdfSkia.dll",
+    "SHA256": "3548B8D8F36690FD7C451CEA5F9F09D39E97144DEA7E6BA2A38B971225516F2D"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\win-x64\\native\\e_sqlite3.dll",
+    "SHA256": "B7385D722C83FB52142A00477A726723745916D22A555711EE89834C1111FB2E"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\win-x64\\native\\qpdf.dll",
+    "SHA256": "DF7F64888C08D1534E82B4922D94A2E7C977A3EE654D49FC64AC7AE030B7DD18"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\win-x64\\native\\QuestPdfSkia.dll",
+    "SHA256": "3660F0DC2D08AFFD287B666CDC2F74538BC67742EA13F8E6EBA7C133CF417059"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\win-x86\\native\\e_sqlite3.dll",
+    "SHA256": "D13EB819D1353D98C684C88672868BBFCC6A52EB5987BDF2557EC02FABCE4EA7"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\win-x86\\native\\qpdf.dll",
+    "SHA256": "C4088EC40236C83ACE5428E76DCB7BFFB996AC68EBBF3E837EB214FF1130EE0D"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\runtimes\\win-x86\\native\\QuestPdfSkia.dll",
+    "SHA256": "603E684AF2818B1EA6BE74223E3F6CDC199D12F36736CE8DDCE783B86F56588D"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\SQLitePCLRaw.batteries_v2.dll",
+    "SHA256": "94AC800C6B93AE50A025F247547781DEBE18391110667C5E242F51D8AC188FFB"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\SQLitePCLRaw.core.dll",
+    "SHA256": "3D2ED8E186F124F988EBDB45D0354185B424357BE2433BBA0033AB9EC31BD25B"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\SQLitePCLRaw.provider.e_sqlite3.dll",
+    "SHA256": "232990C8372AFF30574EEF9CC280B486EE6F39F8A66F83EA495DD0DBAE98740C"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\web.config",
+    "SHA256": "66104CE6729E4204AAD068ADF77E2D04EA1F97A070ACC2A118260C7B85F389BC"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\wwwroot\\css\\site.css",
+    "SHA256": "D0294A3D3C46AECE6200FF612EE3563C63BBA1D9E846841A9BD465BC03945B2E"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\wwwroot\\css\\site.css.br",
+    "SHA256": "4D581342DFD8D9E174E6E895B11AA39B8804032D985FE65C9EB6C6461D5478F0"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\wwwroot\\css\\site.css.gz",
+    "SHA256": "B5C4219A03B537EC17E345AC9049CBD7FFD5202772C8B229346047F6D6C2D5E5"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\wwwroot\\images\\association-deer-logo.jpg",
+    "SHA256": "98E3263BE586EDBF6EB2A8A2793E4DB449CDC2C9754E443131CA145BE00D7676"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\wwwroot\\images\\exec-3a5e945a-fbfd-49c0-afe1-95781d261508.png",
+    "SHA256": "A0CC727BFD567EC23B9E366F9D346F2E583F18EDAD2273A61FA3B7B3425FD33F"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\wwwroot\\js\\coordinator-search.js",
+    "SHA256": "519E05123AB192D56F330FCD891EEA17F72A7344C6505A366E3A80ECAA1D9DFD"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\wwwroot\\js\\coordinator-search.js.br",
+    "SHA256": "1F0DE1CF766FD614B4103D83BC20C07DF7964A646F89A422A1D5748F1D3CB6E2"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\wwwroot\\js\\coordinator-search.js.gz",
+    "SHA256": "6DE3B463771F13E0A39A74ECBB1FCEBC5E96E623554CBBBAB5115620C6C19D46"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\wwwroot\\js\\death-table.js",
+    "SHA256": "A9CA89468312440E81AB65EB427FB656DCF3A4562A80276C9347F02C15F2AF7F"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\wwwroot\\js\\death-table.js.br",
+    "SHA256": "E23CBDE5F705826DBA4AD6F0D499A3DAB32701089AE6922BAD21B0A829EC022B"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\wwwroot\\js\\death-table.js.gz",
+    "SHA256": "548CCAF2636DD425D8C894D6857FD1DE273CF59FEC617112512BAC247217E357"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\wwwroot\\js\\member-table.js",
+    "SHA256": "D9645EAAEB6C29925115D3564DAE629D13C779D3A04371C9D59C73710B1561E2"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\wwwroot\\js\\member-table.js.br",
+    "SHA256": "1F5B9B62FC753E29A40A690DB5B6C1F0DF46DA5C490D949E738E04870448BC9B"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\wwwroot\\js\\member-table.js.gz",
+    "SHA256": "CC98B1F41B33093D3D3ECC3F02471D75D91E27A34CFB937D898C579AA496C830"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\wwwroot\\js\\site.js",
+    "SHA256": "5B4EA7F06918A58AD4F3C321CA8909AF7903E7DB2B2FFF649ECCBCBE9E5C402C"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\wwwroot\\js\\site.js.br",
+    "SHA256": "972CFB397C3A3BC8F8731AF0143BAEBC7B7B4B9C08C8B7EDB2F41C932580C9BD"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\wwwroot\\js\\site.js.gz",
+    "SHA256": "FA13D84EE239E2F29439BC1CCFA824E141AB45D17ABC835D87B8073FA6F120BA"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\wwwroot\\js\\thai-date.js",
+    "SHA256": "3C1306803DD51C05CF6493C2A01F2FF33FA4A95E9094D83CC35C3CE316A1DFE0"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\wwwroot\\js\\thai-date.js.br",
+    "SHA256": "B371366103C7F1E8F31BF00BE6B660624E9728B4839EFB40AA254C5DACF70C0F"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\wwwroot\\js\\thai-date.js.gz",
+    "SHA256": "595A71A5F19ED08DF24523BFC508DDFF52E77560DFEB763FA14B2BF1E5C81E87"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\wwwroot\\js\\thai-validation.js",
+    "SHA256": "F61CA929408FBA97EE0CFD2C99BD06B7177370ECB79F62945E56B958FE7A9B24"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\wwwroot\\js\\thai-validation.js.br",
+    "SHA256": "A9CCE2D30169F280DA7D6D494E5E2193B84FC6C7E0D5BD83F98923F78B33C8C8"
+  },
+  {
+    "Path": "artifacts/accounting-reduced-demo\\wwwroot\\js\\thai-validation.js.gz",
+    "SHA256": "D6D540F3D1408262671A96DD11F4CE41772AA6228D782F2C23309ADEA5049BA8"
+  }
+]

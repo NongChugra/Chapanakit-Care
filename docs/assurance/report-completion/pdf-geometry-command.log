@@ -1,0 +1,130 @@
+[
+  {
+    "file": "all-empty.pdf",
+    "pages": 1,
+    "sha256": "5e111cfdc13b4f8059d7be256db457e5ad1b3b2ed00c2062c7df7a78a280e26e",
+    "bounds": "pass",
+    "numericFields": "not-applicable",
+    "memberBlocks": "pass"
+  },
+  {
+    "file": "all-multipage.pdf",
+    "pages": 8,
+    "sha256": "31f65e3f21f5dbcf876a88d48347adcb5cd28ec48c1e5ca55192fdfc1871626a",
+    "bounds": "pass",
+    "numericFields": "pass",
+    "memberBlocks": "pass"
+  },
+  {
+    "file": "all-sequence-1000.pdf",
+    "pages": 1,
+    "sha256": "2807034ba1bea140e1df6676e219c89e473fa31998d9dd846f819ee0e9bd65cd",
+    "bounds": "pass",
+    "numericFields": "pass",
+    "memberBlocks": "pass"
+  },
+  {
+    "file": "all-sequence-2147483647.pdf",
+    "pages": 1,
+    "sha256": "34d55c9929a0779603e52023bca7aa4e49b0244642061366715c2d28d3ec8336",
+    "bounds": "pass",
+    "numericFields": "pass",
+    "memberBlocks": "pass"
+  },
+  {
+    "file": "group-empty.pdf",
+    "pages": 1,
+    "sha256": "5f0a1f40540159fd656b2b932c6d9b661533c6f8579d1cff3f237b2fd9f9f1f7",
+    "bounds": "pass",
+    "numericFields": "not-applicable",
+    "memberBlocks": "pass"
+  },
+  {
+    "file": "group-multipage.pdf",
+    "pages": 8,
+    "sha256": "a194a56aea61bc3c0c68792a90b74e41e6a50f02a843c5ca0b0ac2790f287fcc",
+    "bounds": "pass",
+    "numericFields": "pass",
+    "memberBlocks": "pass"
+  },
+  {
+    "file": "group-sequence-1000.pdf",
+    "pages": 1,
+    "sha256": "90100e1e00fef09a4d860d40940a01bbac591457377022d9b13affe707220286",
+    "bounds": "pass",
+    "numericFields": "pass",
+    "memberBlocks": "pass"
+  },
+  {
+    "file": "group-sequence-2147483647.pdf",
+    "pages": 1,
+    "sha256": "3ffaaf90b2cba6ca8e8008113b2337b40e9e58de1c5b1bb4b527de086ebb71f9",
+    "bounds": "pass",
+    "numericFields": "pass",
+    "memberBlocks": "pass"
+  },
+  {
+    "file": "monthly-empty.pdf",
+    "pages": 1,
+    "sha256": "08596687767228eaabd3c34a7499ac607b54a1f937b9e4afdce43d13608495e4",
+    "bounds": "pass",
+    "numericFields": "not-applicable",
+    "memberBlocks": "pass"
+  },
+  {
+    "file": "monthly-multipage.pdf",
+    "pages": 8,
+    "sha256": "9778638981e46d385ec3a3012d16487dcb820b19199b6c2d90a00584a074e5f0",
+    "bounds": "pass",
+    "numericFields": "pass",
+    "memberBlocks": "pass"
+  },
+  {
+    "file": "monthly-sequence-1000.pdf",
+    "pages": 1,
+    "sha256": "046eb5424fe22725dc710e7ed5475d1c37eaf1e62ce48896cce0f19e30634465",
+    "bounds": "pass",
+    "numericFields": "pass",
+    "memberBlocks": "pass"
+  },
+  {
+    "file": "monthly-sequence-2147483647.pdf",
+    "pages": 1,
+    "sha256": "829994d163e8728ba39dca5010d057f0ef41fa004e23091e07716e3a14251210",
+    "bounds": "pass",
+    "numericFields": "pass",
+    "memberBlocks": "pass"
+  },
+  {
+    "file": "sak-empty.pdf",
+    "pages": 1,
+    "sha256": "71c66a7c6c192a22b1ef99e5c5ed070cd82096abd76cf00c9fc2a424e4ba57fc",
+    "bounds": "pass",
+    "numericFields": "not-applicable",
+    "memberBlocks": "pass"
+  },
+  {
+    "file": "sak-multipage.pdf",
+    "pages": 9,
+    "sha256": "8a6af100267ea9d090e8e36e5bd9715e06382acab6a72fdc5aeb61bb6ea9b4b8",
+    "bounds": "pass",
+    "numericFields": "pass",
+    "memberBlocks": "pass"
+  },
+  {
+    "file": "sak-sequence-1000.pdf",
+    "pages": 1,
+    "sha256": "4ba00ad68ecb5284be467ceadf39742116b614f367e0e1d6919f3399d32b068c",
+    "bounds": "pass",
+    "numericFields": "pass",
+    "memberBlocks": "pass"
+  },
+  {
+    "file": "sak-sequence-2147483647.pdf",
+    "pages": 1,
+    "sha256": "a1333340ab95021ce2a8b310fc2285964c2d2b9e521c2753bbbb49a14d939eba",
+    "bounds": "pass",
+    "numericFields": "pass",
+    "memberBlocks": "pass"
+  }
+]

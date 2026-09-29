@@ -1,0 +1,8 @@
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Release\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:   124, Skipped:     0, Total:   124, Duration: 5 s - ChapanakitCare.Domain.Tests.dll (net10.0)
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Desktop.Tests\bin\Release\net10.0-windows\ChapanakitCare.Desktop.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     4, Skipped:     0, Total:     4, Duration: 31 ms - ChapanakitCare.Desktop.Tests.dll (net10.0)

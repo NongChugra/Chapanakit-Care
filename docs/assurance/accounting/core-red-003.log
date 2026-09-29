@@ -1,0 +1,83 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.30]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.44]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.48]   Starting:    ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:02.70]     ChapanakitCare.Domain.Tests.AccountingCoreTests.Posting_rejects_a_negative_amount_even_when_the_other_side_is_positive [FAIL]
+[xUnit.net 00:00:02.71]       Assert.Throws() Failure: Exception type was not an exact match
+[xUnit.net 00:00:02.71]       Expected: typeof(ChapanakitCare.Infrastructure.Accounting.AccountingValidationException)
+[xUnit.net 00:00:02.71]       Actual:   typeof(Microsoft.EntityFrameworkCore.DbUpdateException)
+[xUnit.net 00:00:02.71]       ---- Microsoft.EntityFrameworkCore.DbUpdateException : An error occurred while saving the entity changes. See the inner exception for details.
+[xUnit.net 00:00:02.71]       -------- Microsoft.Data.Sqlite.SqliteException : SQLite Error 19: 'CHECK constraint failed: ck_accounting_journal_lines_amount'.
+[xUnit.net 00:00:02.71]       Stack Trace:
+[xUnit.net 00:00:02.71]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs(101,0): at ChapanakitCare.Domain.Tests.AccountingCoreTests.Posting_rejects_a_negative_amount_even_when_the_other_side_is_positive()
+[xUnit.net 00:00:02.71]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs(115,0): at ChapanakitCare.Domain.Tests.AccountingCoreTests.Posting_rejects_a_negative_amount_even_when_the_other_side_is_positive()
+[xUnit.net 00:00:02.71]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:02.71]         ----- Inner Stack Trace -----
+[xUnit.net 00:00:02.71]            at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+[xUnit.net 00:00:02.71]            at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+[xUnit.net 00:00:02.71]            at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+[xUnit.net 00:00:02.71]            at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+[xUnit.net 00:00:02.71]            at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+[xUnit.net 00:00:02.71]            at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+[xUnit.net 00:00:02.71]            at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+[xUnit.net 00:00:02.71]            at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+[xUnit.net 00:00:02.71]            at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+[xUnit.net 00:00:02.71]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Persistence\CoordinatorWriteGuard.cs(19,0): at ChapanakitCare.Infrastructure.Persistence.AppDbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+[xUnit.net 00:00:02.71]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Accounting\AccountingPostingService.cs(144,0): at ChapanakitCare.Infrastructure.Accounting.AccountingPostingService.PostNewAsync(AccountingPostRequest request, Nullable`1 linkedOperationId, CancellationToken cancellationToken)
+[xUnit.net 00:00:02.71]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Accounting\AccountingPostingService.cs(38,0): at ChapanakitCare.Infrastructure.Accounting.AccountingPostingService.PostAsync(AccountingPostRequest request, CancellationToken cancellationToken)
+[xUnit.net 00:00:02.71]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Accounting\AccountingPostingService.cs(47,0): at ChapanakitCare.Infrastructure.Accounting.AccountingPostingService.PostAsync(AccountingPostRequest request, CancellationToken cancellationToken)
+[xUnit.net 00:00:02.71]         ----- Inner Stack Trace -----
+[xUnit.net 00:00:02.71]            at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+[xUnit.net 00:00:02.71]            at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+[xUnit.net 00:00:02.71]            at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+[xUnit.net 00:00:02.71]            at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+[xUnit.net 00:00:02.71]            at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+[xUnit.net 00:00:02.71]            at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+[xUnit.net 00:00:02.71]            at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+[xUnit.net 00:00:02.71]            at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+[xUnit.net 00:00:02.73]   Finished:    ChapanakitCare.Domain.Tests
+  Failed ChapanakitCare.Domain.Tests.AccountingCoreTests.Posting_rejects_a_negative_amount_even_when_the_other_side_is_positive [2 s]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(ChapanakitCare.Infrastructure.Accounting.AccountingValidationException)
+Actual:   typeof(Microsoft.EntityFrameworkCore.DbUpdateException)
+---- Microsoft.EntityFrameworkCore.DbUpdateException : An error occurred while saving the entity changes. See the inner exception for details.
+-------- Microsoft.Data.Sqlite.SqliteException : SQLite Error 19: 'CHECK constraint failed: ck_accounting_journal_lines_amount'.
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingCoreTests.Posting_rejects_a_negative_amount_even_when_the_other_side_is_positive() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs:line 101
+   at ChapanakitCare.Domain.Tests.AccountingCoreTests.Posting_rejects_a_negative_amount_even_when_the_other_side_is_positive() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs:line 115
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at ChapanakitCare.Infrastructure.Persistence.AppDbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Persistence\CoordinatorWriteGuard.cs:line 19
+   at ChapanakitCare.Infrastructure.Accounting.AccountingPostingService.PostNewAsync(AccountingPostRequest request, Nullable`1 linkedOperationId, CancellationToken cancellationToken) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Accounting\AccountingPostingService.cs:line 144
+   at ChapanakitCare.Infrastructure.Accounting.AccountingPostingService.PostAsync(AccountingPostRequest request, CancellationToken cancellationToken) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Accounting\AccountingPostingService.cs:line 38
+   at ChapanakitCare.Infrastructure.Accounting.AccountingPostingService.PostAsync(AccountingPostRequest request, CancellationToken cancellationToken) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Accounting\AccountingPostingService.cs:line 47
+----- Inner Stack Trace -----
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+
+Test Run Failed.
+Total tests: 1
+     Failed: 1
+ Total time: 3.4033 Seconds

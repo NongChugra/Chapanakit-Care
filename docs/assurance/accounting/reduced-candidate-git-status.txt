@@ -1,0 +1,401 @@
+ M .gitattributes
+ M .github/workflows/ci.yml
+ M .gitignore
+ M AGENTS.md
+ M README.md
+ M docs/github-setup.md
+ M docs/report-references/member-by-manager.png
+ M docs/report-references/monthly-member.png
+ M docs/report-references/sak-one.png
+ M src/ChapanakitCare.Desktop/packages.lock.json
+ M src/ChapanakitCare.Domain/BusinessRules.cs
+ M src/ChapanakitCare.Domain/Entities/Entities.cs
+ M src/ChapanakitCare.Domain/packages.lock.json
+ M src/ChapanakitCare.Infrastructure/Deaths/DeathApplicationServices.cs
+ M src/ChapanakitCare.Infrastructure/Members/InteractiveMemberRegistrationPolicy.cs
+ M src/ChapanakitCare.Infrastructure/Members/MemberApplicationServices.cs
+ M src/ChapanakitCare.Infrastructure/Members/ResignationApplicationService.cs
+ M src/ChapanakitCare.Infrastructure/Persistence/AppDbContext.cs
+ M src/ChapanakitCare.Infrastructure/Persistence/Migrations/AppDbContextModelSnapshot.cs
+ M src/ChapanakitCare.Infrastructure/Reports/OfficialReportDocuments.cs
+ M src/ChapanakitCare.Infrastructure/Reports/OfficialReportModels.cs
+ M src/ChapanakitCare.Infrastructure/Reports/ReportApplicationService.cs
+ M src/ChapanakitCare.Infrastructure/packages.lock.json
+ M src/ChapanakitCare.Web/Pages/Advances/Index.cshtml
+ M src/ChapanakitCare.Web/Pages/Advances/Index.cshtml.cs
+ M src/ChapanakitCare.Web/Pages/Deaths/Create.cshtml
+ M src/ChapanakitCare.Web/Pages/Deaths/Create.cshtml.cs
+ M src/ChapanakitCare.Web/Pages/Deaths/Index.cshtml
+ M src/ChapanakitCare.Web/Pages/Deaths/Index.cshtml.cs
+ M src/ChapanakitCare.Web/Pages/History/Index.cshtml
+ M src/ChapanakitCare.Web/Pages/History/Index.cshtml.cs
+ M src/ChapanakitCare.Web/Pages/Index.cshtml
+ M src/ChapanakitCare.Web/Pages/Index.cshtml.cs
+ M src/ChapanakitCare.Web/Pages/Members/Index.cshtml
+ M src/ChapanakitCare.Web/Pages/Members/Index.cshtml.cs
+ M src/ChapanakitCare.Web/Pages/Members/MemberFormInput.cs
+ M src/ChapanakitCare.Web/Pages/Members/_MemberForm.cshtml
+ M src/ChapanakitCare.Web/Pages/Reports/Index.cshtml
+ M src/ChapanakitCare.Web/Pages/Reports/Index.cshtml.cs
+ M src/ChapanakitCare.Web/Pages/Resignations/Index.cshtml
+ M src/ChapanakitCare.Web/Pages/Resignations/Index.cshtml.cs
+ M src/ChapanakitCare.Web/Pages/Shared/_Layout.cshtml
+ M src/ChapanakitCare.Web/Program.cs
+ M src/ChapanakitCare.Web/packages.lock.json
+ M src/ChapanakitCare.Web/wwwroot/css/site.css
+ M src/ChapanakitCare.Web/wwwroot/js/member-table.js
+ M src/ChapanakitCare.Web/wwwroot/js/site.js
+ M src/ChapanakitCare.Web/wwwroot/js/thai-date.js
+ M tests/ChapanakitCare.Desktop.Tests/packages.lock.json
+ M tests/ChapanakitCare.Domain.Tests/CheckpointFiveWorkflowTests.cs
+ M tests/ChapanakitCare.Domain.Tests/CheckpointFourWorkflowTests.cs
+ M tests/ChapanakitCare.Domain.Tests/CheckpointThreeWorkflowTests.cs
+ M tests/ChapanakitCare.Domain.Tests/CheckpointTwoWorkflowTests.cs
+ M tests/ChapanakitCare.Domain.Tests/DatabaseContractTests.cs
+ M tests/ChapanakitCare.Domain.Tests/ReportPdfText.cs
+ M tests/ChapanakitCare.Domain.Tests/ThaiBuddhistDateTests.cs
+?? docs/assurance/accounting/PROGRESS.md
+?? docs/assurance/accounting/adjustment-green-0925.log
+?? docs/assurance/accounting/adjustment-red-0925.log
+?? docs/assurance/accounting/baseline-git-status.txt
+?? docs/assurance/accounting/baseline-head.txt
+?? docs/assurance/accounting/baseline-manifest.json
+?? docs/assurance/accounting/baseline-source.zip
+?? docs/assurance/accounting/benefit-green.log
+?? docs/assurance/accounting/benefit-red.log
+?? docs/assurance/accounting/collection-red-0924.log
+?? docs/assurance/accounting/collections-red-0925.log
+?? docs/assurance/accounting/combined-red-0922.log
+?? docs/assurance/accounting/core-green-001.md
+?? docs/assurance/accounting/core-green-0920-linked-savepoint.log
+?? docs/assurance/accounting/core-green-0920-tracker.log
+?? docs/assurance/accounting/core-handoff.md
+?? docs/assurance/accounting/core-parent-red-0915.log
+?? docs/assurance/accounting/core-red-001.md
+?? docs/assurance/accounting/core-red-002.md
+?? docs/assurance/accounting/core-red-003.log
+?? docs/assurance/accounting/core-red-004.log
+?? docs/assurance/accounting/core-red-005.log
+?? docs/assurance/accounting/core-red-0920-setup-period-reversal.log
+?? docs/assurance/accounting/core-red-0920-tracker.log
+?? docs/assurance/accounting/core-red-0920.log
+?? docs/assurance/accounting/death-payments-green-0915.log
+?? docs/assurance/accounting/death-payments-green-0920.log
+?? docs/assurance/accounting/deferred/AccountingMoneyReportPageTests.cs.deferred
+?? docs/assurance/accounting/deferred/MemberMoneyReportService.cs.deferred
+?? docs/assurance/accounting/deferred/MemberMoneyReportTests.cs.deferred
+?? docs/assurance/accounting/deferred/MoneyReports.cshtml.cs.deferred
+?? docs/assurance/accounting/deferred/MoneyReports.cshtml.deferred
+?? docs/assurance/accounting/deferred/README.md
+?? docs/assurance/accounting/document-samples/empty-report-page.png
+?? docs/assurance/accounting/document-samples/empty-report.pdf
+?? docs/assurance/accounting/document-samples/empty-report.txt
+?? docs/assurance/accounting/document-samples/long-report-last-page.png
+?? docs/assurance/accounting/document-samples/long-report-p3.png
+?? docs/assurance/accounting/document-samples/long-report-p4-high.png
+?? docs/assurance/accounting/document-samples/long-report-p4.png
+?? docs/assurance/accounting/document-samples/long-report-p5.png
+?? docs/assurance/accounting/document-samples/long-report-page.png
+?? docs/assurance/accounting/document-samples/long-report-second-page.png
+?? docs/assurance/accounting/document-samples/long-report.pdf
+?? docs/assurance/accounting/document-samples/long-report.txt
+?? docs/assurance/accounting/document-samples/voucher-original-page.png
+?? docs/assurance/accounting/document-samples/voucher-original.pdf
+?? docs/assurance/accounting/document-samples/voucher-original.txt
+?? docs/assurance/accounting/documents-green.log
+?? docs/assurance/accounting/documents-handoff.md
+?? docs/assurance/accounting/documents-red.log
+?? docs/assurance/accounting/documents-visual-qa.md
+?? docs/assurance/accounting/independent-review-0925.md
+?? docs/assurance/accounting/integrated-reports-red-0925.log
+?? docs/assurance/accounting/management-http-green-0923.log
+?? docs/assurance/accounting/management-period-red-0923.log
+?? docs/assurance/accounting/opening-http-red-0924.log
+?? docs/assurance/accounting/opening-page-green-0922.log
+?? docs/assurance/accounting/opening-page-red-0920.log
+?? docs/assurance/accounting/operational-examples.md
+?? docs/assurance/accounting/operations-green-0915.log
+?? docs/assurance/accounting/operations-red-0915.log
+?? docs/assurance/accounting/operations-red.log
+?? docs/assurance/accounting/pages-checkpoint-0920.log
+?? docs/assurance/accounting/pages-red-0920.log
+?? docs/assurance/accounting/parent-checkpoint-1.log
+?? docs/assurance/accounting/period-audit-red-0923.log
+?? docs/assurance/accounting/period-http-red-0923.log
+?? docs/assurance/accounting/published-http-smoke-0925.json
+?? docs/assurance/accounting/published-http-smoke-2-0925.json
+?? docs/assurance/accounting/published-pages-diagnostic-0925.log
+?? docs/assurance/accounting/published-pages-green-0925.log
+?? docs/assurance/accounting/published-pages-red-0925.log
+?? docs/assurance/accounting/rate-guard-red-0925.log
+?? docs/assurance/accounting/rate-page-red-0925.log
+?? docs/assurance/accounting/receipts-green-0915.log
+?? docs/assurance/accounting/reduced-candidate-git-status.txt
+?? docs/assurance/accounting/reduced-candidate-manifest.json
+?? docs/assurance/accounting/reduced-delivery-manifest.json
+?? docs/assurance/accounting/reduced-final-suite-0925.log
+?? docs/assurance/accounting/reduced-final-suite-2-0925.log
+?? docs/assurance/accounting/reduced-final-suite-3-0925.log
+?? docs/assurance/accounting/reduced-full-suite-0925.log
+?? docs/assurance/accounting/reduced-publish-0925.log
+?? docs/assurance/accounting/reduced-publish-2-0925.log
+?? docs/assurance/accounting/reduced-release-verification.md
+?? docs/assurance/accounting/reduced-scope-check-0925.log
+?? docs/assurance/accounting/refund-reversal-red-0923.log
+?? docs/assurance/accounting/refund-workflow-0923.log
+?? docs/assurance/accounting/refund-workflow-green-0923.log
+?? docs/assurance/accounting/report-pages-green-0924.log
+?? docs/assurance/accounting/report-pages-handoff.md
+?? docs/assurance/accounting/report-query-checkpoint-003.log
+?? docs/assurance/accounting/report-query-document-red-004.log
+?? docs/assurance/accounting/report-query-green-003.log
+?? docs/assurance/accounting/report-query-handoff.md
+?? docs/assurance/accounting/report-query-red-001.log
+?? docs/assurance/accounting/report-query-red-002.log
+?? docs/assurance/accounting/resume-0914.log
+?? docs/assurance/accounting/resume-verification-0922.log
+?? docs/assurance/accounting/reversals-green-0920.log
+?? docs/assurance/accounting/reversals-red-0920.log
+?? docs/assurance/accounting/review-attempt.json
+?? docs/assurance/accounting/schema-build-before-migration-0924.log
+?? docs/assurance/accounting/schema-contract-green-0925.log
+?? docs/assurance/accounting/schema-handoff.md
+?? docs/assurance/accounting/schema-integrity-green-0924.log
+?? docs/assurance/accounting/schema-integrity-red-0923.log
+?? docs/assurance/accounting/schema-integrity-red-0924.log
+?? docs/assurance/accounting/schema-migration-remove-0924.log
+?? docs/assurance/accounting/schema-migration-scaffold-0923.log
+?? docs/assurance/accounting/schema-migration-scaffold-0924.log
+?? docs/assurance/accounting/schema-opening-cash-green-0925.log
+?? docs/assurance/accounting/schema-red-0922.log
+?? docs/assurance/accounting/schema-startup-build-0924.log
+?? docs/assurance/accounting/schema-tooling-0923.log
+?? docs/assurance/accounting/schema-triggers-red-0924.log
+?? docs/assurance/accounting/voucher-export-red-0920.log
+?? docs/assurance/accounting/workflow-checkpoint-0920.log
+?? docs/assurance/accounting/workflow-guards-red-0920.log
+?? docs/assurance/coordinator-selection/attempts-before-call-1.json
+?? docs/assurance/coordinator-selection/attempts.json
+?? docs/assurance/coordinator-selection/backend-green.log
+?? docs/assurance/coordinator-selection/backend-red.log
+?? docs/assurance/coordinator-selection/base-state.json
+?? docs/assurance/coordinator-selection/browser-server.log
+?? docs/assurance/coordinator-selection/candidate-1-manifest.json
+?? docs/assurance/coordinator-selection/candidate-1-tests-failed.log
+?? docs/assurance/coordinator-selection/candidate-build.log
+?? docs/assurance/coordinator-selection/candidate-format-src.log
+?? docs/assurance/coordinator-selection/candidate-format-tests.log
+?? docs/assurance/coordinator-selection/candidate-manifest.json
+?? docs/assurance/coordinator-selection/candidate-publish.log
+?? docs/assurance/coordinator-selection/candidate-receipt.md
+?? docs/assurance/coordinator-selection/candidate-restore.log
+?? docs/assurance/coordinator-selection/candidate-tests.log
+?? docs/assurance/coordinator-selection/complete-call-1.json
+?? docs/assurance/coordinator-selection/coordination-preflight.json
+?? docs/assurance/coordinator-selection/format-apply.log
+?? docs/assurance/coordinator-selection/format-scope.txt
+?? docs/assurance/coordinator-selection/freeze_candidate.py
+?? docs/assurance/coordinator-selection/integrated-focused.log
+?? docs/assurance/coordinator-selection/integrity-red.log
+?? docs/assurance/coordinator-selection/intended-call-1.json
+?? docs/assurance/coordinator-selection/ledger-call-1.md
+?? docs/assurance/coordinator-selection/ledger.md
+?? docs/assurance/coordinator-selection/legacy-expectation-fix.log
+?? docs/assurance/coordinator-selection/migration-green.log
+?? docs/assurance/coordinator-selection/migration-red.log
+?? docs/assurance/coordinator-selection/parent-audit.md
+?? docs/assurance/coordinator-selection/parent-runtime.json
+?? docs/assurance/coordinator-selection/prepare-review.py
+?? docs/assurance/coordinator-selection/readiness-command.txt
+?? docs/assurance/coordinator-selection/readiness-proof.json
+?? docs/assurance/coordinator-selection/readiness.json
+?? docs/assurance/coordinator-selection/reservation-call-1.json
+?? docs/assurance/coordinator-selection/reservation.ps1
+?? docs/assurance/coordinator-selection/review-packet.md
+?? docs/assurance/coordinator-selection/reviewer-runtime.json
+?? docs/assurance/coordinator-selection/reviewer-verdict.md
+?? docs/assurance/coordinator-selection/start-call-1.json
+?? docs/assurance/coordinator-selection/ui-contract.md
+?? docs/assurance/coordinator-selection/ui-followup.md
+?? docs/assurance/coordinator-selection/ui-tdd.md
+?? docs/assurance/coordinator-selection/verify-candidate.ps1
+?? docs/assurance/coordinator-selection/worker-runtime.json
+?? docs/assurance/report-completion/attempts-before-call-1.json
+?? docs/assurance/report-completion/attempts-before-call-2.json
+?? docs/assurance/report-completion/attempts.json
+?? docs/assurance/report-completion/base-state.json
+?? docs/assurance/report-completion/browser-server-final.log
+?? docs/assurance/report-completion/browser-server.log
+?? docs/assurance/report-completion/call-1-candidate-build.log
+?? docs/assurance/report-completion/call-1-candidate-format-src.log
+?? docs/assurance/report-completion/call-1-candidate-format-tests.log
+?? docs/assurance/report-completion/call-1-candidate-publish.log
+?? docs/assurance/report-completion/call-1-candidate-restore.log
+?? docs/assurance/report-completion/call-1-candidate-tests.log
+?? docs/assurance/report-completion/candidate-1-manifest.json
+?? docs/assurance/report-completion/candidate-2-candidate-build.log
+?? docs/assurance/report-completion/candidate-2-candidate-format-src.log
+?? docs/assurance/report-completion/candidate-2-candidate-format-tests.log
+?? docs/assurance/report-completion/candidate-2-candidate-publish.log
+?? docs/assurance/report-completion/candidate-2-candidate-restore.log
+?? docs/assurance/report-completion/candidate-2-candidate-tests.log
+?? docs/assurance/report-completion/candidate-2-manifest.json
+?? docs/assurance/report-completion/candidate-build.log
+?? docs/assurance/report-completion/candidate-format-src.log
+?? docs/assurance/report-completion/candidate-format-tests.log
+?? docs/assurance/report-completion/candidate-manifest.json
+?? docs/assurance/report-completion/candidate-publish.log
+?? docs/assurance/report-completion/candidate-receipt-call-1.md
+?? docs/assurance/report-completion/candidate-receipt.md
+?? docs/assurance/report-completion/candidate-restore.log
+?? docs/assurance/report-completion/candidate-tests.log
+?? docs/assurance/report-completion/check_pdf_geometry.py
+?? docs/assurance/report-completion/complete-call-1.json
+?? docs/assurance/report-completion/complete-call-2.json
+?? docs/assurance/report-completion/coordination-preflight.json
+?? docs/assurance/report-completion/data-red-layout-green.log
+?? docs/assurance/report-completion/data-red.log
+?? docs/assurance/report-completion/focused-green.log
+?? docs/assurance/report-completion/format-scope.txt
+?? docs/assurance/report-completion/freeze_candidate.py
+?? docs/assurance/report-completion/init.py
+?? docs/assurance/report-completion/intended-call-1.json
+?? docs/assurance/report-completion/intended-call-2.json
+?? docs/assurance/report-completion/layout-green.log
+?? docs/assurance/report-completion/layout-red.log
+?? docs/assurance/report-completion/ledger-call-1.md
+?? docs/assurance/report-completion/ledger-call-2.md
+?? docs/assurance/report-completion/ledger.md
+?? docs/assurance/report-completion/parent-audit.md
+?? docs/assurance/report-completion/parent-runtime.json
+?? docs/assurance/report-completion/pdf-geometry-candidate-1.json
+?? docs/assurance/report-completion/pdf-geometry-command.log
+?? docs/assurance/report-completion/pdf-geometry.json
+?? docs/assurance/report-completion/prepare-review-2.py
+?? docs/assurance/report-completion/prepare-review.py
+?? docs/assurance/report-completion/re-review-closure.md
+?? docs/assurance/report-completion/readiness-call-1.json
+?? docs/assurance/report-completion/readiness-command.txt
+?? docs/assurance/report-completion/readiness-proof-call-1.json
+?? docs/assurance/report-completion/readiness-proof.json
+?? docs/assurance/report-completion/readiness.json
+?? docs/assurance/report-completion/reservation-call-1.json
+?? docs/assurance/report-completion/reservation-call-2.json
+?? docs/assurance/report-completion/reservation-call-2.ps1
+?? docs/assurance/report-completion/reservation.ps1
+?? docs/assurance/report-completion/review-packet-call-1.md
+?? docs/assurance/report-completion/review-packet.md
+?? docs/assurance/report-completion/reviewer-runtime-call-1.json
+?? docs/assurance/report-completion/reviewer-runtime-call-2.json
+?? docs/assurance/report-completion/reviewer-runtime.json
+?? docs/assurance/report-completion/reviewer-verdict-call-1.md
+?? docs/assurance/report-completion/reviewer-verdict-call-2.md
+?? docs/assurance/report-completion/sequence-green.log
+?? docs/assurance/report-completion/sequence-red.log
+?? docs/assurance/report-completion/start-call-1.json
+?? docs/assurance/report-completion/start-call-2.json
+?? docs/assurance/report-completion/verify-candidate.ps1
+?? docs/assurance/report-completion/worker-runtime.json
+?? docs/design/accounting-implementation-contract.md
+?? docs/design/accounting-learning-guide.md
+?? docs/design/accounting-reporting-scope.md
+?? docs/design/coordinator-roles.md
+?? docs/report-references/README.md
+?? docs/report-references/all-members.png
+?? dotnet-tools.json
+?? run-dev.bat
+?? scripts/dev.ps1
+?? src/ChapanakitCare.Domain/Entities/AccountingEntities.cs
+?? src/ChapanakitCare.Domain/Entities/Coordinators.cs
+?? src/ChapanakitCare.Domain/Entities/DeathRecipientPhoto.cs
+?? src/ChapanakitCare.Domain/Entities/WelfareCollection.cs
+?? src/ChapanakitCare.Domain/FinanceMoney.cs
+?? src/ChapanakitCare.Infrastructure/Accounting/AccountingContracts.cs
+?? src/ChapanakitCare.Infrastructure/Accounting/AccountingPostingService.cs
+?? src/ChapanakitCare.Infrastructure/Accounting/AccountingSetupService.cs
+?? src/ChapanakitCare.Infrastructure/AccountingOperations/DeathAccountingService.cs
+?? src/ChapanakitCare.Infrastructure/AccountingOperations/FinanceCommands.cs
+?? src/ChapanakitCare.Infrastructure/AccountingOperations/FinanceOperationService.Adjustments.cs
+?? src/ChapanakitCare.Infrastructure/AccountingOperations/FinanceOperationService.Disbursements.cs
+?? src/ChapanakitCare.Infrastructure/AccountingOperations/FinanceOperationService.Receipts.cs
+?? src/ChapanakitCare.Infrastructure/AccountingOperations/FinanceOperationService.Reconciliation.cs
+?? src/ChapanakitCare.Infrastructure/AccountingOperations/FinanceOperationService.Refunds.cs
+?? src/ChapanakitCare.Infrastructure/AccountingOperations/FinanceOperationService.Reversals.cs
+?? src/ChapanakitCare.Infrastructure/AccountingOperations/FinanceOperationService.cs
+?? src/ChapanakitCare.Infrastructure/AccountingOperations/WelfareCollectionService.cs
+?? src/ChapanakitCare.Infrastructure/AccountingReports/AccountingReportDocuments.cs
+?? src/ChapanakitCare.Infrastructure/AccountingReports/AccountingReportModels.cs
+?? src/ChapanakitCare.Infrastructure/AccountingReports/AccountingReportQueryService.cs
+?? src/ChapanakitCare.Infrastructure/AccountingReports/CollectionReportService.cs
+?? src/ChapanakitCare.Infrastructure/Coordinators/CoordinatorApplicationService.cs
+?? src/ChapanakitCare.Infrastructure/Deaths/RecipientPhotoDocument.cs
+?? src/ChapanakitCare.Infrastructure/Members/ActivityAudit.cs
+?? src/ChapanakitCare.Infrastructure/Members/RegistrationAgePolicy.cs
+?? src/ChapanakitCare.Infrastructure/Persistence/AppDbContext.Accounting.cs
+?? src/ChapanakitCare.Infrastructure/Persistence/AppDbContext.Collections.cs
+?? src/ChapanakitCare.Infrastructure/Persistence/CoordinatorWriteGuard.cs
+?? src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260904022726_CoordinatorSelection.Designer.cs
+?? src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260904022726_CoordinatorSelection.cs
+?? src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260908160800_RecipientPhotosAndDurableHistory.Designer.cs
+?? src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260908160800_RecipientPhotosAndDurableHistory.cs
+?? src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260924113236_AccountingLedgerIntegrity.Designer.cs
+?? src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260924113236_AccountingLedgerIntegrity.cs
+?? src/ChapanakitCare.Infrastructure/Reports/AccountingDocumentModels.cs
+?? src/ChapanakitCare.Infrastructure/Reports/AccountingDocumentRenderer.cs
+?? src/ChapanakitCare.Web/Pages/Accounting/Collections.cshtml
+?? src/ChapanakitCare.Web/Pages/Accounting/Collections.cshtml.cs
+?? src/ChapanakitCare.Web/Pages/Accounting/Index.cshtml
+?? src/ChapanakitCare.Web/Pages/Accounting/Index.cshtml.cs
+?? src/ChapanakitCare.Web/Pages/Accounting/Manage.cshtml
+?? src/ChapanakitCare.Web/Pages/Accounting/Manage.cshtml.cs
+?? src/ChapanakitCare.Web/Pages/Accounting/Opening.cshtml
+?? src/ChapanakitCare.Web/Pages/Accounting/Opening.cshtml.cs
+?? src/ChapanakitCare.Web/Pages/Accounting/Reports.cshtml
+?? src/ChapanakitCare.Web/Pages/Accounting/Reports.cshtml.cs
+?? src/ChapanakitCare.Web/Pages/Accounting/Transaction.cshtml
+?? src/ChapanakitCare.Web/Pages/Accounting/Transaction.cshtml.cs
+?? src/ChapanakitCare.Web/Pages/Accounting/Voucher.cshtml
+?? src/ChapanakitCare.Web/Pages/Accounting/Voucher.cshtml.cs
+?? src/ChapanakitCare.Web/Pages/Coordinators/Index.cshtml
+?? src/ChapanakitCare.Web/Pages/Coordinators/Index.cshtml.cs
+?? src/ChapanakitCare.Web/Properties/launchSettings.json
+?? src/ChapanakitCare.Web/Validation/GregorianDateAttribute.cs
+?? src/ChapanakitCare.Web/wwwroot/js/coordinator-search.js
+?? tests/ChapanakitCare.Domain.Tests/AccountingAdjustmentTests.cs
+?? tests/ChapanakitCare.Domain.Tests/AccountingBenefitTests.cs
+?? tests/ChapanakitCare.Domain.Tests/AccountingCashAccountTests.cs
+?? tests/ChapanakitCare.Domain.Tests/AccountingCollectionPageTests.cs
+?? tests/ChapanakitCare.Domain.Tests/AccountingCoreTests.cs
+?? tests/ChapanakitCare.Domain.Tests/AccountingDeathIntegrationTests.cs
+?? tests/ChapanakitCare.Domain.Tests/AccountingDocumentTests.cs
+?? tests/ChapanakitCare.Domain.Tests/AccountingHttpFormTests.cs
+?? tests/ChapanakitCare.Domain.Tests/AccountingManagementPageTests.cs
+?? tests/ChapanakitCare.Domain.Tests/AccountingMigrationTests.cs
+?? tests/ChapanakitCare.Domain.Tests/AccountingOpeningIntegrityTests.cs
+?? tests/ChapanakitCare.Domain.Tests/AccountingOpeningPageTests.cs
+?? tests/ChapanakitCare.Domain.Tests/AccountingPageTests.cs
+?? tests/ChapanakitCare.Domain.Tests/AccountingReconciliationTests.cs
+?? tests/ChapanakitCare.Domain.Tests/AccountingReportPageTests.cs
+?? tests/ChapanakitCare.Domain.Tests/AccountingReportQueryTests.cs
+?? tests/ChapanakitCare.Domain.Tests/AccountingResignationTests.cs
+?? tests/ChapanakitCare.Domain.Tests/AccountingTestDatabase.cs
+?? tests/ChapanakitCare.Domain.Tests/AccountingWorkflowGuardTests.cs
+?? tests/ChapanakitCare.Domain.Tests/ActivityHistoryTests.cs
+?? tests/ChapanakitCare.Domain.Tests/CollectionReportTests.cs
+?? tests/ChapanakitCare.Domain.Tests/CoordinatorIntegrityTests.cs
+?? tests/ChapanakitCare.Domain.Tests/CoordinatorMigrationTests.cs
+?? tests/ChapanakitCare.Domain.Tests/CoordinatorPageTests.cs
+?? tests/ChapanakitCare.Domain.Tests/CoordinatorWorkflowTests.cs
+?? tests/ChapanakitCare.Domain.Tests/DeathPhotoIntegrityTests.cs
+?? tests/ChapanakitCare.Domain.Tests/FinanceDisbursementTests.cs
+?? tests/ChapanakitCare.Domain.Tests/FinanceMoneyTests.cs
+?? tests/ChapanakitCare.Domain.Tests/FinanceOperationTests.cs
+?? tests/ChapanakitCare.Domain.Tests/FinanceReversalTests.cs
+?? tests/ChapanakitCare.Domain.Tests/FinanceTestStore.cs
+?? tests/ChapanakitCare.Domain.Tests/MemberDateSubmissionTests.cs
+?? tests/ChapanakitCare.Domain.Tests/RegistrationAgeTests.cs
+?? tests/ChapanakitCare.Domain.Tests/ReportCompletionDataTests.cs
+?? tests/ChapanakitCare.Domain.Tests/ReportFormSubmissionTests.cs
+?? tests/ChapanakitCare.Domain.Tests/ReportLayoutTests.cs
+?? tests/ChapanakitCare.Domain.Tests/WelfareCollectionTests.cs
+?? tests/js/thai-date.test.mjs

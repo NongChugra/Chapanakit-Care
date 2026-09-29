@@ -1,0 +1,34 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.13]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.23]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.27]   Starting:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.AccountingCoreTests.Catalog_separates_welfare_from_association_and_only_exposes_the_4_percent_income_account [2 s]
+[xUnit.net 00:00:03.32]     ChapanakitCare.Domain.Tests.AccountingCoreTests.Linked_fee_accrual_posts_one_balanced_journal_per_book_as_one_atomic_operation [FAIL]
+[xUnit.net 00:00:03.32]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:03.32]       Stack Trace:
+[xUnit.net 00:00:03.32]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs(157,0): at ChapanakitCare.Domain.Tests.AccountingCoreTests.Linked_fee_accrual_posts_one_balanced_journal_per_book_as_one_atomic_operation()
+[xUnit.net 00:00:03.32]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs(189,0): at ChapanakitCare.Domain.Tests.AccountingCoreTests.Linked_fee_accrual_posts_one_balanced_journal_per_book_as_one_atomic_operation()
+[xUnit.net 00:00:03.32]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:03.39]   Finished:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.AccountingCoreTests.Balanced_welfare_posting_records_dimensions_and_audit_without_creating_an_association_journal [620 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingCoreTests.Idempotency_tokens_are_scoped_to_their_separate_accounting_books [190 ms]
+  Failed ChapanakitCare.Domain.Tests.AccountingCoreTests.Linked_fee_accrual_posts_one_balanced_journal_per_book_as_one_atomic_operation [71 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingCoreTests.Linked_fee_accrual_posts_one_balanced_journal_per_book_as_one_atomic_operation() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs:line 157
+   at ChapanakitCare.Domain.Tests.AccountingCoreTests.Linked_fee_accrual_posts_one_balanced_journal_per_book_as_one_atomic_operation() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs:line 189
+--- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.AccountingCoreTests.Posting_rejects_a_negative_amount_even_when_the_other_side_is_positive [74 ms]
+
+Test Run Failed.
+Total tests: 5
+     Passed: 4
+     Failed: 1
+ Total time: 4.0217 Seconds

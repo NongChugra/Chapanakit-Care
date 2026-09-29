@@ -1,0 +1,59 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:01.85]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:02.11]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:02.22]   Starting:    ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:09.20]     ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_accounting_replaces_reset_reminders_with_collection_guidance_without_creating_money [FAIL]
+[xUnit.net 00:00:09.20]       Assert.DoesNotContain() Failure: Filter matched in collection
+[xUnit.net 00:00:09.20]                    ↓ (pos 0)
+[xUnit.net 00:00:09.20]       Collection: [Notification { AcknowledgedAtUtc = null, AcknowledgedBy = null, CycleKey = "2026-09", DeathsSinceLatestReset = null, Id = 6ac505e2-6e0f-4ce5-8b16-799062838d86, ··· }, Notification { AcknowledgedAtUtc = null, AcknowledgedBy = null, CycleKey = "2026-10", DeathsSinceLatestReset = null, Id = 844043fd-4d03-43d6-a2a8-4d839ced08c6, ··· }]
+[xUnit.net 00:00:09.20]       Stack Trace:
+[xUnit.net 00:00:09.21]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingWorkflowGuardTests.cs(21,0): at ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_accounting_replaces_reset_reminders_with_collection_guidance_without_creating_money()
+[xUnit.net 00:00:09.21]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingWorkflowGuardTests.cs(24,0): at ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_accounting_replaces_reset_reminders_with_collection_guidance_without_creating_money()
+[xUnit.net 00:00:09.21]         --- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_accounting_replaces_reset_reminders_with_collection_guidance_without_creating_money [6 s]
+  Error Message:
+   Assert.DoesNotContain() Failure: Filter matched in collection
+             ↓ (pos 0)
+Collection: [Notification { AcknowledgedAtUtc = null, AcknowledgedBy = null, CycleKey = "2026-09", DeathsSinceLatestReset = null, Id = 6ac505e2-6e0f-4ce5-8b16-799062838d86, ··· }, Notification { AcknowledgedAtUtc = null, AcknowledgedBy = null, CycleKey = "2026-10", DeathsSinceLatestReset = null, Id = 844043fd-4d03-43d6-a2a8-4d839ced08c6, ··· }]
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_accounting_replaces_reset_reminders_with_collection_guidance_without_creating_money() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingWorkflowGuardTests.cs:line 21
+   at ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_accounting_replaces_reset_reminders_with_collection_guidance_without_creating_money() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingWorkflowGuardTests.cs:line 24
+--- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_displays_an_error_for_an_overpayment_without_writing_a_journal [7 s]
+[xUnit.net 00:00:10.32]     ChapanakitCare.Domain.Tests.CollectionReportTests.Outstanding_document_excludes_settled_rows_and_keeps_only_open_amounts [FAIL]
+[xUnit.net 00:00:10.32]       Assert.Contains() Failure: Filter not matched in collection
+[xUnit.net 00:00:10.32]       Collection: ["ยอดค้างชำระ 6.00 บาท", "แสดงทุกรอบและทุกกลุ่มที่เกิดไม่เกินวันที่อ้างอิง"]
+[xUnit.net 00:00:10.32]       Stack Trace:
+[xUnit.net 00:00:10.32]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CollectionReportTests.cs(139,0): at ChapanakitCare.Domain.Tests.CollectionReportTests.Outstanding_document_excludes_settled_rows_and_keeps_only_open_amounts()
+[xUnit.net 00:00:10.32]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:10.32]            at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Passed ChapanakitCare.Domain.Tests.AccountingCollectionHttpFormTests.Collection_browser_form_accepts_only_its_visible_create_fields [3 s]
+  Passed ChapanakitCare.Domain.Tests.CollectionReportTests.Balance_report_honors_business_date_cutoffs_for_requests_and_reversals [7 s]
+  Failed ChapanakitCare.Domain.Tests.CollectionReportTests.Outstanding_document_excludes_settled_rows_and_keeps_only_open_amounts [18 ms]
+  Error Message:
+   Assert.Contains() Failure: Filter not matched in collection
+Collection: ["ยอดค้างชำระ 6.00 บาท", "แสดงทุกรอบและทุกกลุ่มที่เกิดไม่เกินวันที่อ้างอิง"]
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.CollectionReportTests.Outstanding_document_excludes_settled_rows_and_keeps_only_open_amounts() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CollectionReportTests.cs:line 139
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Passed ChapanakitCare.Domain.Tests.CollectionReportTests.Balance_report_uses_frozen_collection_snapshot_and_net_posted_allocations [273 ms]
+  Passed ChapanakitCare.Domain.Tests.CollectionReportTests.Balance_report_filters_by_frozen_cycle_and_group_snapshots [174 ms]
+[xUnit.net 00:00:12.34]   Finished:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_exports_a_read_only_due_reminder(format: "pdf", contentType: "application/pdf") [1 s]
+  Passed ChapanakitCare.Domain.Tests.CollectionReportTests.Collection_documents_are_read_only_and_reminders_include_only_due_outstanding_rows [950 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_exports_a_read_only_due_reminder(format: "csv", contentType: "text/csv; charset=utf-8") [153 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_creates_selected_normal_members_without_recording_cash [204 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_posts_selected_receipt_allocation_without_marking_the_request_paid_by_itself [277 ms]
+
+Total tests: 12
+     Passed: 10
+Test Run Failed.
+     Failed: 2
+ Total time: 15.7819 Seconds

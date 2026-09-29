@@ -1,0 +1,66 @@
+using System.Text;
+using ChapanakitCare.Domain.Entities;
+using ChapanakitCare.Infrastructure.Accounting;
+using ChapanakitCare.Infrastructure.AccountingReports;
+using ChapanakitCare.Web.Pages.Accounting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+namespace ChapanakitCare.Domain.Tests;
+
+public sealed class AccountingMoneyReportPageTests
+{
+    [Theory]
+    [InlineData("csv", "text/csv; charset=utf-8")]
+    [InlineData("pdf", "application/pdf")]
+    public async Task Money_report_page_reads_posted_receipts_and_exports_without_a_write(string format, string contentType)
+    {
+        await using var store = await FinanceTestStore.CreateAsync();
+        var member = await store.AddMemberAsync("00001");
+        var setup = new AccountingSetupService(store.Db);
+        await setup.EnsureCatalogAsync();
+        await setup.ActivateBookAsync(new(AccountingBookCode.Welfare, FinanceTestStore.Date, "ยอดยกมา", Actor()));
+        var posting = new AccountingPostingService(store.Db);
+        await posting.PostAsync(new(AccountingBookCode.Welfare, "advance_receipt", "รับเงินจริง", FinanceTestStore.Date,
+            "page-receipt", "page-receipt-fingerprint", Actor(),
+            [new("1000", 900, 0), new("2000", 0, 900, new(MemberId: member.Id, PartySnapshot: "00001 สมาชิกทดสอบ"))]));
+        var journalsBefore = store.Db.AccountingJournals.Count();
+        var page = new MoneyReportsModel(store.Db)
+        {
+            Report = "annualreceipts",
+            Book = "welfare",
+            From = "01/09/2569",
+            To = "30/09/2569"
+        };
+
+        var result = Assert.IsType<FileContentResult>(await page.OnGetAsync(format));
+
+        Assert.Equal(contentType, result.ContentType);
+        Assert.EndsWith("." + format, result.FileDownloadName, StringComparison.Ordinal);
+        if (format == "pdf")
+            Assert.Equal("%PDF", Encoding.ASCII.GetString(result.FileContents, 0, 4));
+        else
+            Assert.Contains("ทะเบียนใบรับเงินจริงรายปี", Encoding.UTF8.GetString(result.FileContents), StringComparison.Ordinal);
+        Assert.Equal(journalsBefore, store.Db.AccountingJournals.Count());
+    }
+
+    [Fact]
+    public async Task Money_report_page_requires_a_member_only_for_the_member_passbook()
+    {
+        await using var store = await FinanceTestStore.CreateAsync();
+        var page = new MoneyReportsModel(store.Db)
+        {
+            Report = "memberhistory",
+            Book = "welfare",
+            From = "01/09/2569",
+            To = "30/09/2569"
+        };
+
+        var result = await page.OnGetAsync();
+
+        Assert.IsType<PageResult>(result);
+        Assert.False(page.ModelState.IsValid);
+    }
+
+    private static AccountingActor Actor() => new("money-page-test", "ผู้ทดสอบหน้า", "TEST-PC", "test");
+}

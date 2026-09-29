@@ -1,0 +1,171 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:06.96]     ChapanakitCare.Domain.Tests.ReportLayoutTests.Multipage_reports_keep_every_member_and_beneficiary_and_number_every_page(kind: "monthly") [FAIL]
+  Failed ChapanakitCare.Domain.Tests.ReportLayoutTests.Multipage_reports_keep_every_member_and_beneficiary_and_number_every_page(kind: "monthly") [4 s]
+  Error Message:
+   Microsoft.EntityFrameworkCore.DbUpdateException : An error occurred while saving the entity changes. See the inner exception for details.
+---- Microsoft.Data.Sqlite.SqliteException : SQLite Error 19: 'UNIQUE constraint failed: members.personal_id_card'.
+  Stack Trace:
+     at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at ChapanakitCare.Infrastructure.Persistence.AppDbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Persistence\CoordinatorWriteGuard.cs:line 19
+   at ChapanakitCare.Domain.Tests.ReportLayoutTests.Multipage_reports_keep_every_member_and_beneficiary_and_number_every_page(String kind) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportLayoutTests.cs:line 83
+   at ChapanakitCare.Domain.Tests.ReportLayoutTests.Multipage_reports_keep_every_member_and_beneficiary_and_number_every_page(String kind) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportLayoutTests.cs:line 100
+   at ChapanakitCare.Domain.Tests.ReportLayoutTests.Multipage_reports_keep_every_member_and_beneficiary_and_number_every_page(String kind) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportLayoutTests.cs:line 100
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+[xUnit.net 00:00:07.36]     ChapanakitCare.Domain.Tests.ReportLayoutTests.Multipage_reports_keep_every_member_and_beneficiary_and_number_every_page(kind: "group") [FAIL]
+[xUnit.net 00:00:07.54]     ChapanakitCare.Domain.Tests.ReportLayoutTests.Multipage_reports_keep_every_member_and_beneficiary_and_number_every_page(kind: "all") [FAIL]
+[xUnit.net 00:00:07.62]     ChapanakitCare.Domain.Tests.ReportCompletionDataTests.Group_options_keep_the_exact_group_number_and_show_the_current_leader_or_vacancy [FAIL]
+[xUnit.net 00:00:07.72]     ChapanakitCare.Domain.Tests.ReportLayoutTests.Multipage_reports_keep_every_member_and_beneficiary_and_number_every_page(kind: "sak") [FAIL]
+[xUnit.net 00:00:07.92]     ChapanakitCare.Domain.Tests.ReportCompletionHttpTests.Missing_or_invalid_report_parameters_return_bad_request_instead_of_a_server_error(target: "/Reports?handler=SakOne&month=9999-12") [FAIL]
+  Failed ChapanakitCare.Domain.Tests.ReportLayoutTests.Multipage_reports_keep_every_member_and_beneficiary_and_number_every_page(kind: "group") [402 ms]
+  Error Message:
+   Microsoft.EntityFrameworkCore.DbUpdateException : An error occurred while saving the entity changes. See the inner exception for details.
+---- Microsoft.Data.Sqlite.SqliteException : SQLite Error 19: 'UNIQUE constraint failed: members.personal_id_card'.
+  Stack Trace:
+     at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at ChapanakitCare.Infrastructure.Persistence.AppDbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Persistence\CoordinatorWriteGuard.cs:line 19
+   at ChapanakitCare.Domain.Tests.ReportLayoutTests.Multipage_reports_keep_every_member_and_beneficiary_and_number_every_page(String kind) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportLayoutTests.cs:line 83
+   at ChapanakitCare.Domain.Tests.ReportLayoutTests.Multipage_reports_keep_every_member_and_beneficiary_and_number_every_page(String kind) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportLayoutTests.cs:line 100
+   at ChapanakitCare.Domain.Tests.ReportLayoutTests.Multipage_reports_keep_every_member_and_beneficiary_and_number_every_page(String kind) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportLayoutTests.cs:line 100
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Failed ChapanakitCare.Domain.Tests.ReportLayoutTests.Multipage_reports_keep_every_member_and_beneficiary_and_number_every_page(kind: "all") [174 ms]
+  Error Message:
+   Microsoft.EntityFrameworkCore.DbUpdateException : An error occurred while saving the entity changes. See the inner exception for details.
+---- Microsoft.Data.Sqlite.SqliteException : SQLite Error 19: 'UNIQUE constraint failed: members.personal_id_card'.
+  Stack Trace:
+     at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at ChapanakitCare.Infrastructure.Persistence.AppDbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Persistence\CoordinatorWriteGuard.cs:line 19
+   at ChapanakitCare.Domain.Tests.ReportLayoutTests.Multipage_reports_keep_every_member_and_beneficiary_and_number_every_page(String kind) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportLayoutTests.cs:line 83
+   at ChapanakitCare.Domain.Tests.ReportLayoutTests.Multipage_reports_keep_every_member_and_beneficiary_and_number_every_page(String kind) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportLayoutTests.cs:line 100
+   at ChapanakitCare.Domain.Tests.ReportLayoutTests.Multipage_reports_keep_every_member_and_beneficiary_and_number_every_page(String kind) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportLayoutTests.cs:line 100
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Failed ChapanakitCare.Domain.Tests.ReportCompletionDataTests.Group_options_keep_the_exact_group_number_and_show_the_current_leader_or_vacancy [5 s]
+  Error Message:
+   Assert.Equal() Failure: Strings differ
+Expected: "นายหัวหน้า กลุ่ม"
+Actual:   null
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.ReportCompletionDataTests.Group_options_keep_the_exact_group_number_and_show_the_current_leader_or_vacancy() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportCompletionDataTests.cs:line 99
+   at ChapanakitCare.Domain.Tests.ReportCompletionDataTests.Group_options_keep_the_exact_group_number_and_show_the_current_leader_or_vacancy() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportCompletionDataTests.cs:line 101
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.ReportLayoutTests.Multipage_reports_keep_every_member_and_beneficiary_and_number_every_page(kind: "sak") [183 ms]
+  Error Message:
+   Microsoft.EntityFrameworkCore.DbUpdateException : An error occurred while saving the entity changes. See the inner exception for details.
+---- Microsoft.Data.Sqlite.SqliteException : SQLite Error 19: 'UNIQUE constraint failed: members.personal_id_card'.
+  Stack Trace:
+     at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalDatabase.SaveChangesAsync(IList`1 entries, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at ChapanakitCare.Infrastructure.Persistence.AppDbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Persistence\CoordinatorWriteGuard.cs:line 19
+   at ChapanakitCare.Domain.Tests.ReportLayoutTests.Multipage_reports_keep_every_member_and_beneficiary_and_number_every_page(String kind) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportLayoutTests.cs:line 83
+   at ChapanakitCare.Domain.Tests.ReportLayoutTests.Multipage_reports_keep_every_member_and_beneficiary_and_number_every_page(String kind) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportLayoutTests.cs:line 100
+   at ChapanakitCare.Domain.Tests.ReportLayoutTests.Multipage_reports_keep_every_member_and_beneficiary_and_number_every_page(String kind) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportLayoutTests.cs:line 100
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+  Failed ChapanakitCare.Domain.Tests.ReportCompletionHttpTests.Missing_or_invalid_report_parameters_return_bad_request_instead_of_a_server_error(target: "/Reports?handler=SakOne&month=9999-12") [57 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: BadRequest
+Actual:   InternalServerError
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.ReportCompletionHttpTests.Missing_or_invalid_report_parameters_return_bad_request_instead_of_a_server_error(String target) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportCompletionDataTests.cs:line 259
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:08.41]     ChapanakitCare.Domain.Tests.ReportCompletionHttpTests.Missing_or_invalid_report_parameters_return_bad_request_instead_of_a_server_error(target: "/Reports?handler=MemberByManager") [FAIL]
+[xUnit.net 00:00:08.92]     ChapanakitCare.Domain.Tests.ReportCompletionHttpTests.Report_page_renders_an_exact_group_option_with_current_leader_or_vacancy [FAIL]
+  Failed ChapanakitCare.Domain.Tests.ReportCompletionHttpTests.Missing_or_invalid_report_parameters_return_bad_request_instead_of_a_server_error(target: "/Reports?handler=MemberByManager") [122 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: BadRequest
+Actual:   InternalServerError
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.ReportCompletionHttpTests.Missing_or_invalid_report_parameters_return_bad_request_instead_of_a_server_error(String target) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportCompletionDataTests.cs:line 259
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.ReportCompletionHttpTests.Report_page_renders_an_exact_group_option_with_current_leader_or_vacancy [347 ms]
+  Error Message:
+   Assert.Matches() Failure: Pattern not found in value
+Regex: "<option value=\"010\">010\\s*—\\s*นายหัวหน้า กลุ่ม"···
+Value: "<!DOCTYPE html>\n<html lang=\"th\">\n<head>\n    <"···
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.ReportCompletionHttpTests.Report_page_renders_an_exact_group_option_with_current_leader_or_vacancy() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportCompletionDataTests.cs:line 247
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:09.57]     ChapanakitCare.Domain.Tests.ReportCompletionDataTests.Monthly_summary_excludes_exits_before_the_period_and_counts_a_confirmed_death_once [FAIL]
+  Failed ChapanakitCare.Domain.Tests.ReportCompletionDataTests.Monthly_summary_excludes_exits_before_the_period_and_counts_a_confirmed_death_once [1 s]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "สมาคมฌาปนกิจสงเคราะห์รายงานเดือน03/2569รา"···
+Not found: "311102"
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.ReportCompletionDataTests.Monthly_summary_excludes_exits_before_the_period_and_counts_a_confirmed_death_once() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportCompletionDataTests.cs:line 48
+   at ChapanakitCare.Domain.Tests.ReportCompletionDataTests.Monthly_summary_excludes_exits_before_the_period_and_counts_a_confirmed_death_once() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportCompletionDataTests.cs:line 48
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     9, Passed:     7, Skipped:     0, Total:    16, Duration: 7 s - ChapanakitCare.Domain.Tests.dll (net10.0)

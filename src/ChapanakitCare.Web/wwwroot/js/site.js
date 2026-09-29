@@ -15,15 +15,14 @@ document.addEventListener('click', event => {
 
 document.querySelectorAll('[data-birth-date]').forEach(input => {
     const output = document.querySelector(input.dataset.ageTarget);
+    const registration = document.querySelector('#Input_ApplicationDate');
     const update = () => {
-        if (!input.value || !output) return;
-        const birth = new Date(`${input.value}T00:00:00`);
-        const today = new Date();
-        let age = today.getFullYear() - birth.getFullYear();
-        if (today < new Date(today.getFullYear(), birth.getMonth(), birth.getDate())) age--;
-        output.value = age >= 0 ? `${age} ปี` : '';
+        if (!output) return;
+        const age = window.ThaiDate.completedAge(input.value, registration?.value);
+        output.value = age === null ? '' : `${age} ปี`;
     };
     input.addEventListener('change', update);
+    registration?.addEventListener('change', update);
     update();
 });
 
@@ -54,7 +53,8 @@ document.querySelectorAll('[data-approval-date]').forEach(input => {
     const output = document.querySelector(input.dataset.coverageTarget);
     const days = Number(input.dataset.waitDays || '180');
     const update = () => {
-        if (!input.value || !output) return;
+        if (!output) return;
+        if (!window.ThaiDate.isoToDisplay(input.value)) { output.value = ''; output.dispatchEvent(new Event('change')); return; }
         const date = new Date(`${input.value}T00:00:00`);
         date.setDate(date.getDate() + days);
         const year = date.getFullYear();
@@ -131,4 +131,23 @@ document.querySelectorAll('[data-demo-toggle]').forEach(button => {
     const update = () => button.textContent = panel?.hidden ? 'แสดงข้อมูลสาธิต' : 'ซ่อนข้อมูลสาธิต';
     button.addEventListener('click', () => { if (panel) panel.hidden = !panel.hidden; update(); });
     update();
+});
+
+// A checked box follows the member's address, including assisted address updates.
+document.querySelectorAll('[data-use-member-address]').forEach(checkbox => {
+    const prefix = checkbox.dataset.useMemberAddress;
+    const addressFields = ['HouseNo', 'Under', 'Moo', 'Subdistrict', 'District', 'Province', 'PostalCode'];
+    const sync = () => addressFields.forEach(name => {
+        const source = document.querySelector(`[name="Input.${name}"]`);
+        const target = document.querySelector(`[name="${prefix}.${name}"]`);
+        if (!source || !target) return;
+        target.readOnly = checkbox.checked;
+        if (checkbox.checked) target.value = source.value;
+    });
+    checkbox.addEventListener('change', sync);
+    const form = checkbox.closest('form');
+    form.addEventListener('input', sync);
+    form.addEventListener('change', sync);
+    form.addEventListener('submit', sync);
+    sync();
 });

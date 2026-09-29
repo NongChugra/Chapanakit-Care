@@ -1,0 +1,81 @@
+@page
+@model ChapanakitCare.Web.Pages.Accounting.ReportsModel
+@using ChapanakitCare.Infrastructure.Reports
+@{ ViewData["Title"] = "รายงานบัญชี"; }
+<p><a asp-page="./Index">บัญชีและการเงิน</a> / รายงานบัญชี</p>
+<section class="card">
+    <h2>รายงานบัญชี</h2>
+    <p class="muted">เลือกสมุดบัญชีและช่วงวันที่เพื่ออ่านข้อมูลจากรายการบัญชีที่บันทึกแล้ว รายได้ของสมาคมมีเฉพาะค่าหักเงินสงเคราะห์ร้อยละ 4</p>
+    <form method="get" class="stack" autocomplete="off">
+        <div asp-validation-summary="All" class="alert"></div>
+        <div class="grid two">
+            <label>ประเภทรายงาน
+                <select asp-for="Report" required>
+                @foreach (var choice in ReportsModel.ReportChoices)
+                {
+                    <option value="@choice.Value">@choice.Label</option>
+                }
+                </select>
+            </label>
+            <label>สมุดบัญชี
+                <select asp-for="Book" required>
+                @foreach (var book in Model.Books)
+                {
+                    <option value="@(book.Code == AccountingBookCode.Welfare ? "welfare" : "association")">@book.Name</option>
+                }
+                </select>
+            </label>
+            @if (Model.UsesPeriod)
+            {
+                <label>ตั้งแต่วันที่ (พ.ศ.)<input asp-for="From" placeholder="วว/ดด/ปปปป" maxlength="10" required /></label>
+                <label>ถึงวันที่ (พ.ศ.)<input asp-for="To" placeholder="วว/ดด/ปปปป" maxlength="10" required /></label>
+            }
+            else
+            {
+                <label>ณ วันที่ (พ.ศ.)<input asp-for="AsOf" placeholder="วว/ดด/ปปปป" maxlength="10" required /></label>
+            }
+            @if (Model.UsesAccount)
+            {
+                <label>รหัสบัญชี
+                    <select asp-for="AccountCode" required>
+                        <option value="">เลือกรหัสบัญชี</option>
+                        @foreach (var account in Model.Accounts)
+                        {
+                            <option value="@account.Code">@account.Code · @account.Name</option>
+                        }
+                    </select>
+                </label>
+            }
+        </div>
+        <div class="form-footer"><button class="button" type="submit">แสดงรายงาน</button><a class="button secondary" asp-page="./Index">กลับ</a></div>
+    </form>
+</section>
+@if (Model.Document is { } document)
+{
+    <section class="card" style="margin-top:18px">
+        <div class="card-head"><div><h2>@document.Title</h2><p class="muted">@document.BookName</p></div><div>
+            <a class="button" asp-route-report="@Model.Report" asp-route-book="@Model.Book" asp-route-from="@Model.From" asp-route-to="@Model.To" asp-route-asOf="@Model.AsOf" asp-route-accountCode="@Model.AccountCode" asp-route-format="pdf">พิมพ์ / บันทึก PDF</a>
+            <a class="button secondary" asp-route-report="@Model.Report" asp-route-book="@Model.Book" asp-route-from="@Model.From" asp-route-to="@Model.To" asp-route-asOf="@Model.AsOf" asp-route-accountCode="@Model.AccountCode" asp-route-format="csv">ดาวน์โหลด CSV</a>
+        </div></div>
+        <div class="table-wrap"><table>
+            <thead><tr>@foreach (var column in document.Columns) { <th>@column.Heading</th> }</tr></thead>
+            <tbody>
+            @if (document.Rows.Count == 0)
+            {
+                <tr><td colspan="@document.Columns.Count" class="muted">ไม่มีรายการในช่วงเวลาที่เลือก</td></tr>
+            }
+            else
+            {
+                @foreach (var row in document.Rows)
+                {
+                    <tr>@foreach (var cell in row) { <td>@cell</td> }</tr>
+                }
+            }
+            </tbody>
+        </table></div>
+        @if (document.Notes is { Count: > 0 })
+        {
+            <ul class="muted">@foreach (var note in document.Notes) { <li>@note</li> }</ul>
+        }
+    </section>
+}

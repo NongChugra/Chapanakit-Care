@@ -1,0 +1,25 @@
+{
+  "assuranceUnitId": "chapanakit-care/reports/reference-completion",
+  "reopenGeneration": 0,
+  "reviewBudgetMode": "default",
+  "maxReviewCalls": 3,
+  "reviewCallsUsed": 1,
+  "activeReviewReservation": null,
+  "attempts": [
+    {
+      "reviewAttemptId": "58e074c5-b8fa-489e-8596-afea60935e88",
+      "call": 1,
+      "state": "completed",
+      "frozenCandidateId": "sha256:f55014fc0be0667f287ec337364cbd50de8bae95ec8af33edc7495a6a2b2e0c1",
+      "assurancePacketId": "report-final-packet-v1:0f2f5fb3-e3e9-4bdd-9f49-9c2e72fbbe90",
+      "reservedAt": "2026-09-05T00:03:12.740293+07:00",
+      "childId": "01a06d60-01f0-7e63-982f-4db46bf34823",
+      "startedAt": "2026-09-05T00:03:45.700624+07:00",
+      "verdict": "fix-first",
+      "runtimeGate": "pass",
+      "outcome": "revise",
+      "completedAt": "2026-09-04T17:16:16.4787452+00:00"
+    }
+  ],
+  "unitStatus": "open"
+}

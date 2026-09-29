@@ -1,0 +1,10 @@
+{
+  "call": 1,
+  "finding": "F1 sequence 1000 wraps",
+  "verdict": "fix-first",
+  "remainingCalls": 2,
+  "primitive": "FileMode.CreateNew/FileShare.None",
+  "unitStatus": "open",
+  "transition": "complete",
+  "release": "finally dispose and remove exact lock path"
+}

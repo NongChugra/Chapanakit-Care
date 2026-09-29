@@ -24,7 +24,7 @@ public sealed class CheckpointThreeWorkflowTests
             new ConfirmDeathCommand("00001", "DC-1", Today, "ชรา", false, null, Certificate), Today, Now, "tester");
 
         Assert.Equal("payable", result.DeathCase.EligibilityResult);
-        Assert.Equal(13_380, result.Calculation.TotalBenefitSatang); // 2*15 baht - 4% + 7*15
+        Assert.Equal(8_100, result.Calculation.TotalBenefitSatang); // 2*9 baht, fee rounded down to baht, plus 7*9 baht advance.
         Assert.Equal(0, deceased.AdvanceUnitsBalance);
         Assert.Equal(MemberStatus.Deceased, deceased.Status);
         var survivorBalances = await db.Context.Members.Where(x => x.Status == MemberStatus.Normal).OrderBy(x => x.RunNo).Select(x => x.AdvanceUnitsBalance).ToArrayAsync();
@@ -58,8 +58,12 @@ public sealed class CheckpointThreeWorkflowTests
         var deceased = await db.AddMember("00002", 0, Today.AddDays(-1), "สอง", MemberStatus.Deceased);
         db.Context.Notifications.Add(new Notification
         {
-            Id = Guid.NewGuid(), NotificationType = "death_threshold", CycleKey = "initial",
-            TriggeredBusinessDate = Today, TriggeredAtUtc = Now, Message = "เตือน"
+            Id = Guid.NewGuid(),
+            NotificationType = "death_threshold",
+            CycleKey = "initial",
+            TriggeredBusinessDate = Today,
+            TriggeredAtUtc = Now,
+            Message = "เตือน"
         });
         await db.Context.SaveChangesAsync();
         var service = new AdvanceResetService(db.Context);

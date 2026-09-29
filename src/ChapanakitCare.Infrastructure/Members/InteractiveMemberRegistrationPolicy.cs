@@ -15,6 +15,9 @@ public static class TitleGenderPolicy
 public static class InteractiveMemberRegistrationPolicy
 {
     public static IReadOnlyList<RegistrationValidationIssue> Validate(RegisterMemberCommand command)
+        => Validate(command, checkAge: true);
+
+    private static IReadOnlyList<RegistrationValidationIssue> Validate(RegisterMemberCommand command, bool checkAge)
     {
         var issues = new List<RegistrationValidationIssue>();
         Required(issues, "Title", command.Title, "กรุณากรอกคำนำหน้า");
@@ -29,6 +32,10 @@ public static class InteractiveMemberRegistrationPolicy
         else if (command.BirthDate > command.ApplicationDate)
         {
             issues.Add(new("BirthDate", "วันเกิดต้องไม่อยู่หลังวันที่สมัคร"));
+        }
+        else if (checkAge && !RegistrationAgePolicy.IsEligible(command.BirthDate, command.ApplicationDate))
+        {
+            issues.Add(new("BirthDate", RegistrationAgePolicy.Message));
         }
 
         Required(issues, "HouseNo", command.HouseNo, "กรุณากรอกบ้านเลขที่");
@@ -74,7 +81,7 @@ public static class InteractiveMemberRegistrationPolicy
     public static IReadOnlyList<RegistrationValidationIssue> Validate(UpdateMemberCommand command) => Validate(new RegisterMemberCommand(
         command.Title, command.FirstName, command.LastName, command.Gender, command.PersonalIdCard, command.BirthDate,
         command.HouseNo, command.Under, command.Moo, command.Subdistrict, command.PostalCode, command.Mobile, command.GroupNo,
-        command.ApplicationDate, command.ApprovalDate, command.Beneficiaries, command.District, command.Province));
+        command.ApplicationDate, command.ApprovalDate, command.Beneficiaries, command.District, command.Province), checkAge: false);
 
     private static void Required(List<RegistrationValidationIssue> issues, string field, string? value, string message)
     {

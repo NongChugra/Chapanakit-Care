@@ -1,0 +1,8 @@
+{
+  "releasedBy": "finally dispose/remove exact lock",
+  "attemptId": "58e074c5-b8fa-489e-8596-afea60935e88",
+  "journalSha256": "7660ced7aab8a67e1259ad3bda7ad4e0d557e73e5e7872b0b2015f7b5578cf8e",
+  "acquired": "2026-09-04T17:03:45.7006240+00:00",
+  "primitive": "FileMode.CreateNew",
+  "transition": "start"
+}

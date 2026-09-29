@@ -1,4 +1,5 @@
 using ChapanakitCare.Infrastructure.Members;
+using ChapanakitCare.Infrastructure.Coordinators;
 using ChapanakitCare.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -9,6 +10,7 @@ namespace ChapanakitCare.Web.Pages;
 
 public sealed class IndexModel(
     AppDbContext database,
+    CoordinatorApplicationService coordinatorService,
     SettingsApplicationService settingsService,
     DemoImportService demoImportService,
     DemoDataMaintenanceService demoDataMaintenanceService,
@@ -22,6 +24,10 @@ public sealed class IndexModel(
     public int NormalMembers { get; private set; }
     public int DeceasedMembers { get; private set; }
     public int Revision { get; private set; }
+    public IReadOnlyList<CoordinatorPositionView> CoordinatorPositions { get; private set; } = [];
+    public CoordinatorPositionView? Chairperson => CoordinatorPositions.SingleOrDefault(value => value.RoleCode == CoordinatorRoles.Chairperson);
+    public IReadOnlyList<CoordinatorPositionView> GroupLeaders => CoordinatorPositions.Where(value => value.RoleCode == CoordinatorRoles.GroupLeader).ToList();
+    public IReadOnlyList<CoordinatorPositionView> VacantGroups => GroupLeaders.Where(value => value.MemberId is null).ToList();
 
     public async Task OnGetAsync()
     {
@@ -31,6 +37,7 @@ public sealed class IndexModel(
         TotalMembers = await database.Members.CountAsync(value => value.ArchivedAtUtc == null);
         NormalMembers = await database.Members.CountAsync(value => value.ArchivedAtUtc == null && value.Status == Domain.Entities.MemberStatus.Normal);
         DeceasedMembers = TotalMembers - NormalMembers;
+        CoordinatorPositions = await coordinatorService.GetPositionsAsync();
     }
 
     public async Task<IActionResult> OnPostAsync()
@@ -41,8 +48,10 @@ public sealed class IndexModel(
             return Page();
         }
 
-        var current = await settingsService.GetAsync();
-        await settingsService.SaveAsync(
+        try
+        {
+            var current = await settingsService.GetAsync();
+            await settingsService.SaveAsync(
             new SettingsCommand(
                 current.RegistrationFeeSatang,
                 checked((int)Math.Round(Input.ServiceFeePercent * 100m)),
@@ -52,7 +61,14 @@ public sealed class IndexModel(
                 current.SpecialNonPayWindowDays,
                 current.DeathWarningThreshold),
             DateTimeOffset.UtcNow,
-            "ผู้ใช้งานเครื่องนี้");
+                "ผู้ใช้งานเครื่องนี้");
+        }
+        catch (MemberValidationException error)
+        {
+            ModelState.AddModelError(string.Empty, error.Message);
+            await OnGetAsync();
+            return Page();
+        }
         TempData["Success"] = "บันทึกค่าตั้งต้นแล้ว ค่าชุดใหม่นี้จะใช้กับรายการที่สร้างหลังจากนี้";
         return RedirectToPage();
     }

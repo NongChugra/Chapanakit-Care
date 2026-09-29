@@ -1,0 +1,83 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.23]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.35]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.40]   Starting:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Opening_income_and_unsupported_member_dimensions_are_rejected_without_activation [2 s]
+[xUnit.net 00:00:03.57]     ChapanakitCare.Domain.Tests.FinanceDisbursementTests.Transfer_moves_cash_to_bank_in_same_book_without_income_or_expense [FAIL]
+[xUnit.net 00:00:03.57]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:03.57]       Stack Trace:
+[xUnit.net 00:00:03.57]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.cs(85,0): at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.TransferAsync(TransferBookMoney command, DateTimeOffset now, String actor, CancellationToken ct)
+[xUnit.net 00:00:03.57]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceDisbursementTests.cs(35,0): at ChapanakitCare.Domain.Tests.FinanceDisbursementTests.Transfer_moves_cash_to_bank_in_same_book_without_income_or_expense()
+[xUnit.net 00:00:03.57]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceDisbursementTests.cs(42,0): at ChapanakitCare.Domain.Tests.FinanceDisbursementTests.Transfer_moves_cash_to_bank_in_same_book_without_income_or_expense()
+[xUnit.net 00:00:03.57]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:03.67]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:03.67]     ChapanakitCare.Domain.Tests.FinanceDisbursementTests.Operating_expense_reduces_association_cash_and_replay_does_not_spend_twice [FAIL]
+[xUnit.net 00:00:03.67]       Stack Trace:
+[xUnit.net 00:00:03.67]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.cs(83,0): at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.PayExpenseAsync(PayOperatingExpense command, DateTimeOffset now, String actor, CancellationToken ct)
+[xUnit.net 00:00:03.67]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceDisbursementTests.cs(18,0): at ChapanakitCare.Domain.Tests.FinanceDisbursementTests.Operating_expense_reduces_association_cash_and_replay_does_not_spend_twice()
+[xUnit.net 00:00:03.67]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceDisbursementTests.cs(24,0): at ChapanakitCare.Domain.Tests.FinanceDisbursementTests.Operating_expense_reduces_association_cash_and_replay_does_not_spend_twice()
+[xUnit.net 00:00:03.67]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:04.37]     ChapanakitCare.Domain.Tests.FinanceOperationTests.Failed_group_receipt_cannot_leak_counter_changes_into_a_later_save [FAIL]
+[xUnit.net 00:00:04.37]       Assert.Equal() Failure: Values differ
+[xUnit.net 00:00:04.37]       Expected: 30
+[xUnit.net 00:00:04.37]       Actual:   1
+[xUnit.net 00:00:04.37]       Stack Trace:
+[xUnit.net 00:00:04.37]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs(104,0): at ChapanakitCare.Domain.Tests.FinanceOperationTests.Failed_group_receipt_cannot_leak_counter_changes_into_a_later_save()
+[xUnit.net 00:00:04.37]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs(106,0): at ChapanakitCare.Domain.Tests.FinanceOperationTests.Failed_group_receipt_cannot_leak_counter_changes_into_a_later_save()
+[xUnit.net 00:00:04.37]         --- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.FinanceDisbursementTests.Transfer_moves_cash_to_bank_in_same_book_without_income_or_expense [3 s]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.TransferAsync(TransferBookMoney command, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.cs:line 85
+   at ChapanakitCare.Domain.Tests.FinanceDisbursementTests.Transfer_moves_cash_to_bank_in_same_book_without_income_or_expense() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceDisbursementTests.cs:line 35
+   at ChapanakitCare.Domain.Tests.FinanceDisbursementTests.Transfer_moves_cash_to_bank_in_same_book_without_income_or_expense() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceDisbursementTests.cs:line 42
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.FinanceDisbursementTests.Operating_expense_reduces_association_cash_and_replay_does_not_spend_twice [112 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.PayExpenseAsync(PayOperatingExpense command, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.cs:line 83
+   at ChapanakitCare.Domain.Tests.FinanceDisbursementTests.Operating_expense_reduces_association_cash_and_replay_does_not_spend_twice() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceDisbursementTests.cs:line 18
+   at ChapanakitCare.Domain.Tests.FinanceDisbursementTests.Operating_expense_reduces_association_cash_and_replay_does_not_spend_twice() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceDisbursementTests.cs:line 24
+--- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_adds_real_member_advance_and_replay_cannot_add_money_twice [1 s]
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_clears_recorded_shortfall_before_adding_advance [204 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Opening_records_supplied_money_in_separate_books_without_creating_income [106 ms]
+  Failed ChapanakitCare.Domain.Tests.FinanceOperationTests.Failed_group_receipt_cannot_leak_counter_changes_into_a_later_save [118 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 30
+Actual:   1
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.FinanceOperationTests.Failed_group_receipt_cannot_leak_counter_changes_into_a_later_save() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs:line 104
+   at ChapanakitCare.Domain.Tests.FinanceOperationTests.Failed_group_receipt_cannot_leak_counter_changes_into_a_later_save() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs:line 106
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:04.67]     ChapanakitCare.Domain.Tests.FinanceOperationTests.Collection_receipt_records_partial_payment_and_rejects_overpayment_without_side_effects [FAIL]
+[xUnit.net 00:00:04.67]       ChapanakitCare.Infrastructure.Accounting.AccountingValidationException : กรุณาระบุสมาชิกไม่ซ้ำและจำนวนเงินบวก การจัดสรรใบเรียกเก็บยังไม่เปิดใช้งาน
+[xUnit.net 00:00:04.67]       Stack Trace:
+[xUnit.net 00:00:04.67]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.Receipts.cs(16,0): at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.ReceiveAsync(ReceiveWelfareMoney command, DateTimeOffset now, String actor, CancellationToken ct)
+[xUnit.net 00:00:04.67]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs(82,0): at ChapanakitCare.Domain.Tests.FinanceOperationTests.Collection_receipt_records_partial_payment_and_rejects_overpayment_without_side_effects()
+[xUnit.net 00:00:04.67]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs(89,0): at ChapanakitCare.Domain.Tests.FinanceOperationTests.Collection_receipt_records_partial_payment_and_rejects_overpayment_without_side_effects()
+[xUnit.net 00:00:04.67]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:04.68]   Finished:    ChapanakitCare.Domain.Tests
+  Failed ChapanakitCare.Domain.Tests.FinanceOperationTests.Collection_receipt_records_partial_payment_and_rejects_overpayment_without_side_effects [302 ms]
+  Error Message:
+   ChapanakitCare.Infrastructure.Accounting.AccountingValidationException : กรุณาระบุสมาชิกไม่ซ้ำและจำนวนเงินบวก การจัดสรรใบเรียกเก็บยังไม่เปิดใช้งาน
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.ReceiveAsync(ReceiveWelfareMoney command, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.Receipts.cs:line 16
+   at ChapanakitCare.Domain.Tests.FinanceOperationTests.Collection_receipt_records_partial_payment_and_rejects_overpayment_without_side_effects() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs:line 82
+   at ChapanakitCare.Domain.Tests.FinanceOperationTests.Collection_receipt_records_partial_payment_and_rejects_overpayment_without_side_effects() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs:line 89
+--- End of stack trace from previous location ---
+
+Test Run Failed.
+Total tests: 8
+     Passed: 4
+     Failed: 4
+ Total time: 5.4426 Seconds

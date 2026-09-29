@@ -1,0 +1,58 @@
+@page
+@model ChapanakitCare.Web.Pages.Accounting.IndexModel
+@using ChapanakitCare.Domain
+@using ChapanakitCare.Domain.Entities
+@{ ViewData["Title"] = "บัญชีและการเงิน"; }
+<section class="card">
+    <h2>เงินสมาชิกและเงินสมาคม</h2>
+    <p>เงินสงเคราะห์ล่วงหน้าของสมาชิกแยกจากเงินดำเนินงานสมาคม รายได้สมาคมเกิดจากค่าหักเงินสงเคราะห์ร้อยละ 4 การนำส่งเงินภายหลังไม่เป็นรายได้ซ้ำ</p>
+    <p class="muted">ยอดสะสมถึง @ThaiBuddhistDate.Format(Model.AsOf) · เลือกสมุดบัญชีให้ตรงกับรายการ</p>
+    <a class="button secondary" asp-page="./Opening">ตั้งยอดยกมา / เริ่มใช้บัญชี</a>
+    <a class="button secondary" asp-page="./Reports">รายงานบัญชี</a>
+    <a class="button secondary" asp-page="./Collections">รอบเรียกเก็บ / รับเงินเป็นกลุ่ม</a>
+    <a class="button secondary" asp-page="./Manage">ตั้งค่า / กระทบยอด / ปิดงวด</a>
+</section>
+<div class="grid two" style="margin-top:18px">
+@foreach (var summary in Model.Books)
+{
+    var welfare = summary.Book.Code == AccountingBookCode.Welfare;
+    var code = welfare ? "welfare" : "association";
+    <section class="card">
+        <h2>@summary.Book.Name</h2>
+        @if (!summary.Book.IsActivated) { <p class="alert">ยังไม่เริ่มใช้บัญชี กรุณาตรวจสอบและบันทึกยอดยกมาก่อน</p> }
+        else { <p class="muted">เปิดบัญชี @ThaiBuddhistDate.Format(summary.Book.CutoverStartDate!.Value)</p> }
+        <dl>
+        @foreach (var cash in summary.CashAccounts)
+        { <dt>@cash.AccountName</dt><dd>@FinanceMoney.Format(cash.DebitBalanceSatang - cash.CreditBalanceSatang) บาท</dd> }
+        @if (welfare)
+        { <dt>เงินล่วงหน้าที่เก็บรักษาให้สมาชิก</dt><dd>@FinanceMoney.Format(summary.AdvanceSatang) บาท</dd><dt>ค่าหักค้างนำส่งสมาคม</dt><dd>@FinanceMoney.Format(summary.DueSatang) บาท</dd> }
+        else
+        { <dt>ค่าหักค้างรับจากบัญชีสมาชิก</dt><dd>@FinanceMoney.Format(summary.DueSatang) บาท</dd><dt>รายได้ค่าหักสะสม</dt><dd>@FinanceMoney.Format(summary.IncomeSatang) บาท</dd><dt>ค่าใช้จ่ายสะสม</dt><dd>@FinanceMoney.Format(summary.ExpenseSatang) บาท</dd> }
+        </dl>
+        @if (summary.Book.IsActivated)
+        {
+            <a class="button" asp-page="./Transaction" asp-route-kind="@(welfare ? "receipt" : "expense")">@(welfare ? "รับเงินสมาชิก" : "จ่ายค่าใช้จ่าย")</a>
+            <a class="button secondary" asp-page="./Transaction" asp-route-kind="transfer" asp-route-book="@code">โอนเงินในสมุดบัญชีนี้</a>
+            @if (welfare)
+            {
+                <a class="button secondary" asp-page="./Transaction" asp-route-kind="benefit">จ่ายผู้รับผลประโยชน์</a>
+                <a class="button secondary" asp-page="./Transaction" asp-route-kind="remittance">นำส่งค่าหักให้สมาคม</a>
+                <a class="button secondary" asp-page="./Transaction" asp-route-kind="refund">จ่ายคืนเงินล่วงหน้า</a>
+            }
+            else
+            { <a class="button secondary" asp-page="./Transaction" asp-route-kind="reclassify">แก้หมวดค่าใช้จ่าย</a> }
+        }
+    </section>
+}
+</div>
+<section class="card" style="margin-top:18px">
+    <h2>เอกสารล่าสุด</h2>
+    @if (Model.Recent.Count == 0) { <p class="muted">ยังไม่มีรายการบัญชี</p> }
+    else
+    {
+        <div class="table-wrap"><table><thead><tr><th>วันที่</th><th>เลขที่</th><th>รายละเอียด</th><th>ผู้บันทึก</th></tr></thead><tbody>
+        @foreach (var journal in Model.Recent)
+        { <tr><td>@ThaiBuddhistDate.Format(journal.BusinessDate)</td><td><a asp-page="./Voucher" asp-route-id="@journal.Id">@journal.JournalNumber</a></td><td>@journal.DescriptionSnapshot</td><td>@journal.ActorDisplayName</td></tr> }
+        </tbody></table></div>
+    }
+</section>

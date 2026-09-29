@@ -1,0 +1,220 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:01.46]     ChapanakitCare.Domain.Tests.DatabaseContractTests.Ef_model_creates_every_first_day_table_in_real_sqlite [FAIL]
+[xUnit.net 00:00:01.67]     ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.One_member_cannot_hold_chair_and_group_leader_roles [FAIL]
+[xUnit.net 00:00:01.77]     ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Explicit_action_incumbent_version_and_reason_protect_existing_selection(action: "replace", version: 0, correctIncumbent: True, reason: "stale") [FAIL]
+[xUnit.net 00:00:01.80]     ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Explicit_action_incumbent_version_and_reason_protect_existing_selection(action: "appoint", version: 1, correctIncumbent: True, reason: null) [FAIL]
+[xUnit.net 00:00:01.84]     ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Explicit_action_incumbent_version_and_reason_protect_existing_selection(action: "invalid", version: 1, correctIncumbent: True, reason: "reason") [FAIL]
+[xUnit.net 00:00:01.87]     ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Explicit_action_incumbent_version_and_reason_protect_existing_selection(action: "replace", version: 1, correctIncumbent: False, reason: "wrong incumbent") [FAIL]
+[xUnit.net 00:00:01.90]     ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Explicit_action_incumbent_version_and_reason_protect_existing_selection(action: "replace", version: 1, correctIncumbent: True, reason: null) [FAIL]
+[xUnit.net 00:00:01.94]     ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Explicit_action_incumbent_version_and_reason_protect_existing_selection(action: "end", version: 1, correctIncumbent: True, reason: " ") [FAIL]
+[xUnit.net 00:00:01.99]     ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Wrong_group_or_unknown_position_cannot_be_forged(position: "treasurer") [FAIL]
+  Failed ChapanakitCare.Domain.Tests.DatabaseContractTests.Ef_model_creates_every_first_day_table_in_real_sqlite [1 s]
+  Error Message:
+   Assert.Equal() Failure: Collections differ
+                        ↓ (pos 0)
+Expected: string[]     ["advance_ledger_entries", "advance_reset_batches", "advance_reset_lines", "audit_events", "audit_field_changes", ···]
+Actual:   List<string> ["CoordinatorEvents", "CoordinatorPositions", "advance_ledger_entries", "advance_reset_batches", "advance_reset_lines", ···]
+                        ↑ (pos 0)
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.DatabaseContractTests.Ef_model_creates_every_first_day_table_in_real_sqlite() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\DatabaseContractTests.cs:line 44
+   at ChapanakitCare.Domain.Tests.DatabaseContractTests.Ef_model_creates_every_first_day_table_in_real_sqlite() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\DatabaseContractTests.cs:line 44
+   at ChapanakitCare.Domain.Tests.DatabaseContractTests.Ef_model_creates_every_first_day_table_in_real_sqlite() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\DatabaseContractTests.cs:line 44
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.One_member_cannot_hold_chair_and_group_leader_roles [1 s]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.Coordinators.CoordinatorApplicationService.ChangeAsync(CoordinatorChangeCommand command, DateOnly businessDate, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Coordinators\CoordinatorApplicationService.cs:line 37
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Fixture.Change(String key, String action, Nullable`1 member, Int32 version, Nullable`1 incumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 125
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.One_member_cannot_hold_chair_and_group_leader_roles() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 49
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.One_member_cannot_hold_chair_and_group_leader_roles() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 52
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Explicit_action_incumbent_version_and_reason_protect_existing_selection(action: "replace", version: 0, correctIncumbent: True, reason: "stale") [105 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.Coordinators.CoordinatorApplicationService.ChangeAsync(CoordinatorChangeCommand command, DateOnly businessDate, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Coordinators\CoordinatorApplicationService.cs:line 37
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Fixture.Change(String key, String action, Nullable`1 member, Int32 version, Nullable`1 incumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 125
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Explicit_action_incumbent_version_and_reason_protect_existing_selection(String action, Int32 version, Boolean correctIncumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 100
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Explicit_action_incumbent_version_and_reason_protect_existing_selection(String action, Int32 version, Boolean correctIncumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 104
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Explicit_action_incumbent_version_and_reason_protect_existing_selection(action: "appoint", version: 1, correctIncumbent: True, reason: null) [31 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.Coordinators.CoordinatorApplicationService.ChangeAsync(CoordinatorChangeCommand command, DateOnly businessDate, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Coordinators\CoordinatorApplicationService.cs:line 37
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Fixture.Change(String key, String action, Nullable`1 member, Int32 version, Nullable`1 incumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 125
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Explicit_action_incumbent_version_and_reason_protect_existing_selection(String action, Int32 version, Boolean correctIncumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 100
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Explicit_action_incumbent_version_and_reason_protect_existing_selection(String action, Int32 version, Boolean correctIncumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 104
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Explicit_action_incumbent_version_and_reason_protect_existing_selection(action: "invalid", version: 1, correctIncumbent: True, reason: "reason") [33 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.Coordinators.CoordinatorApplicationService.ChangeAsync(CoordinatorChangeCommand command, DateOnly businessDate, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Coordinators\CoordinatorApplicationService.cs:line 37
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Fixture.Change(String key, String action, Nullable`1 member, Int32 version, Nullable`1 incumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 125
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Explicit_action_incumbent_version_and_reason_protect_existing_selection(String action, Int32 version, Boolean correctIncumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 100
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Explicit_action_incumbent_version_and_reason_protect_existing_selection(String action, Int32 version, Boolean correctIncumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 104
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Explicit_action_incumbent_version_and_reason_protect_existing_selection(action: "replace", version: 1, correctIncumbent: False, reason: "wrong incumbent") [30 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.Coordinators.CoordinatorApplicationService.ChangeAsync(CoordinatorChangeCommand command, DateOnly businessDate, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Coordinators\CoordinatorApplicationService.cs:line 37
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Fixture.Change(String key, String action, Nullable`1 member, Int32 version, Nullable`1 incumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 125
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Explicit_action_incumbent_version_and_reason_protect_existing_selection(String action, Int32 version, Boolean correctIncumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 100
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Explicit_action_incumbent_version_and_reason_protect_existing_selection(String action, Int32 version, Boolean correctIncumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 104
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Explicit_action_incumbent_version_and_reason_protect_existing_selection(action: "replace", version: 1, correctIncumbent: True, reason: null) [31 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.Coordinators.CoordinatorApplicationService.ChangeAsync(CoordinatorChangeCommand command, DateOnly businessDate, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Coordinators\CoordinatorApplicationService.cs:line 37
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Fixture.Change(String key, String action, Nullable`1 member, Int32 version, Nullable`1 incumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 125
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Explicit_action_incumbent_version_and_reason_protect_existing_selection(String action, Int32 version, Boolean correctIncumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 100
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Explicit_action_incumbent_version_and_reason_protect_existing_selection(String action, Int32 version, Boolean correctIncumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 104
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Explicit_action_incumbent_version_and_reason_protect_existing_selection(action: "end", version: 1, correctIncumbent: True, reason: " ") [33 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.Coordinators.CoordinatorApplicationService.ChangeAsync(CoordinatorChangeCommand command, DateOnly businessDate, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Coordinators\CoordinatorApplicationService.cs:line 37
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Fixture.Change(String key, String action, Nullable`1 member, Int32 version, Nullable`1 incumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 125
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Explicit_action_incumbent_version_and_reason_protect_existing_selection(String action, Int32 version, Boolean correctIncumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 100
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Explicit_action_incumbent_version_and_reason_protect_existing_selection(String action, Int32 version, Boolean correctIncumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 104
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Wrong_group_or_unknown_position_cannot_be_forged(position: "treasurer") [53 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(ChapanakitCare.Infrastructure.Members.MemberValidationException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Wrong_group_or_unknown_position_cannot_be_forged(String position) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 62
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Wrong_group_or_unknown_position_cannot_be_forged(String position) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 63
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at ChapanakitCare.Infrastructure.Coordinators.CoordinatorApplicationService.ChangeAsync(CoordinatorChangeCommand command, DateOnly businessDate, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Coordinators\CoordinatorApplicationService.cs:line 37
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Fixture.Change(String key, String action, Nullable`1 member, Int32 version, Nullable`1 incumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 125
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.<>c__DisplayClass5_1.<Wrong_group_or_unknown_position_cannot_be_forged>b__0() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 62
+[xUnit.net 00:00:02.03]     ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Wrong_group_or_unknown_position_cannot_be_forged(position: "group:missing") [FAIL]
+[xUnit.net 00:00:02.07]     ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Wrong_group_or_unknown_position_cannot_be_forged(position: "group:B") [FAIL]
+[xUnit.net 00:00:02.10]     ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Candidate_search_enforces_group_and_excludes_members_already_holding_roles [FAIL]
+[xUnit.net 00:00:02.14]     ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Vacancy_version_survives_end_and_prevents_old_form_reuse [FAIL]
+[xUnit.net 00:00:02.18]     ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Ineligible_members_cannot_be_assigned(status: Deceased, archived: False) [FAIL]
+[xUnit.net 00:00:02.22]     ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Ineligible_members_cannot_be_assigned(status: Resigned, archived: False) [FAIL]
+[xUnit.net 00:00:02.26]     ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Ineligible_members_cannot_be_assigned(status: Normal, archived: True) [FAIL]
+[xUnit.net 00:00:02.30]     ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Vacancies_include_chair_and_existing_groups_without_writing_on_read [FAIL]
+[xUnit.net 00:00:02.34]     ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Appoint_replace_and_end_persist_history_snapshots_and_current_projection [FAIL]
+  Failed ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Wrong_group_or_unknown_position_cannot_be_forged(position: "group:missing") [38 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(ChapanakitCare.Infrastructure.Members.MemberValidationException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Wrong_group_or_unknown_position_cannot_be_forged(String position) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 62
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Wrong_group_or_unknown_position_cannot_be_forged(String position) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 63
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at ChapanakitCare.Infrastructure.Coordinators.CoordinatorApplicationService.ChangeAsync(CoordinatorChangeCommand command, DateOnly businessDate, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Coordinators\CoordinatorApplicationService.cs:line 37
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Fixture.Change(String key, String action, Nullable`1 member, Int32 version, Nullable`1 incumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 125
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.<>c__DisplayClass5_1.<Wrong_group_or_unknown_position_cannot_be_forged>b__0() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 62
+  Failed ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Wrong_group_or_unknown_position_cannot_be_forged(position: "group:B") [36 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(ChapanakitCare.Infrastructure.Members.MemberValidationException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Wrong_group_or_unknown_position_cannot_be_forged(String position) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 62
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Wrong_group_or_unknown_position_cannot_be_forged(String position) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 63
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at ChapanakitCare.Infrastructure.Coordinators.CoordinatorApplicationService.ChangeAsync(CoordinatorChangeCommand command, DateOnly businessDate, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Coordinators\CoordinatorApplicationService.cs:line 37
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Fixture.Change(String key, String action, Nullable`1 member, Int32 version, Nullable`1 incumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 125
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.<>c__DisplayClass5_1.<Wrong_group_or_unknown_position_cannot_be_forged>b__0() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 62
+  Failed ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Candidate_search_enforces_group_and_excludes_members_already_holding_roles [35 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.Coordinators.CoordinatorApplicationService.ChangeAsync(CoordinatorChangeCommand command, DateOnly businessDate, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Coordinators\CoordinatorApplicationService.cs:line 37
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Fixture.Change(String key, String action, Nullable`1 member, Int32 version, Nullable`1 incumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 125
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Candidate_search_enforces_group_and_excludes_members_already_holding_roles() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 83
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Candidate_search_enforces_group_and_excludes_members_already_holding_roles() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 87
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Vacancy_version_survives_end_and_prevents_old_form_reuse [36 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.Coordinators.CoordinatorApplicationService.ChangeAsync(CoordinatorChangeCommand command, DateOnly businessDate, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Coordinators\CoordinatorApplicationService.cs:line 37
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Fixture.Change(String key, String action, Nullable`1 member, Int32 version, Nullable`1 incumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 125
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Vacancy_version_survives_end_and_prevents_old_form_reuse() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 111
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Vacancy_version_survives_end_and_prevents_old_form_reuse() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 115
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Ineligible_members_cannot_be_assigned(status: Deceased, archived: False) [43 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(ChapanakitCare.Infrastructure.Members.MemberValidationException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Ineligible_members_cannot_be_assigned(MemberStatus status, Boolean archived) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 76
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Ineligible_members_cannot_be_assigned(MemberStatus status, Boolean archived) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 76
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at ChapanakitCare.Infrastructure.Coordinators.CoordinatorApplicationService.ChangeAsync(CoordinatorChangeCommand command, DateOnly businessDate, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Coordinators\CoordinatorApplicationService.cs:line 37
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Fixture.Change(String key, String action, Nullable`1 member, Int32 version, Nullable`1 incumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 125
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.<>c__DisplayClass6_0.<Ineligible_members_cannot_be_assigned>b__0() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 76
+  Failed ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Ineligible_members_cannot_be_assigned(status: Resigned, archived: False) [37 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(ChapanakitCare.Infrastructure.Members.MemberValidationException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Ineligible_members_cannot_be_assigned(MemberStatus status, Boolean archived) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 76
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Ineligible_members_cannot_be_assigned(MemberStatus status, Boolean archived) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 76
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at ChapanakitCare.Infrastructure.Coordinators.CoordinatorApplicationService.ChangeAsync(CoordinatorChangeCommand command, DateOnly businessDate, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Coordinators\CoordinatorApplicationService.cs:line 37
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Fixture.Change(String key, String action, Nullable`1 member, Int32 version, Nullable`1 incumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 125
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.<>c__DisplayClass6_0.<Ineligible_members_cannot_be_assigned>b__0() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 76
+  Failed ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Ineligible_members_cannot_be_assigned(status: Normal, archived: True) [36 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(ChapanakitCare.Infrastructure.Members.MemberValidationException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Ineligible_members_cannot_be_assigned(MemberStatus status, Boolean archived) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 76
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Ineligible_members_cannot_be_assigned(MemberStatus status, Boolean archived) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 76
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at ChapanakitCare.Infrastructure.Coordinators.CoordinatorApplicationService.ChangeAsync(CoordinatorChangeCommand command, DateOnly businessDate, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Coordinators\CoordinatorApplicationService.cs:line 37
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Fixture.Change(String key, String action, Nullable`1 member, Int32 version, Nullable`1 incumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 125
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.<>c__DisplayClass6_0.<Ineligible_members_cannot_be_assigned>b__0() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 76
+  Failed ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Vacancies_include_chair_and_existing_groups_without_writing_on_read [37 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.Coordinators.CoordinatorApplicationService.GetPositionsAsync(CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Coordinators\CoordinatorApplicationService.cs:line 33
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Vacancies_include_chair_and_existing_groups_without_writing_on_read() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 19
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Vacancies_include_chair_and_existing_groups_without_writing_on_read() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 22
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Appoint_replace_and_end_persist_history_snapshots_and_current_projection [40 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.Coordinators.CoordinatorApplicationService.ChangeAsync(CoordinatorChangeCommand command, DateOnly businessDate, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Coordinators\CoordinatorApplicationService.cs:line 37
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Fixture.Change(String key, String action, Nullable`1 member, Int32 version, Nullable`1 incumbent, String reason) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 125
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Appoint_replace_and_end_persist_history_snapshots_and_current_projection() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 29
+   at ChapanakitCare.Domain.Tests.CoordinatorWorkflowTests.Appoint_replace_and_end_persist_history_snapshots_and_current_projection() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorWorkflowTests.cs:line 42
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:    18, Passed:     0, Skipped:     0, Total:    18, Duration: 1 s - ChapanakitCare.Domain.Tests.dll (net10.0)

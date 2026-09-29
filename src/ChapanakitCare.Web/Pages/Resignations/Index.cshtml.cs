@@ -27,7 +27,9 @@ public sealed class IndexModel(ResignationApplicationService resignationService)
         try
         {
             var result = await resignationService.ConfirmAsync(RunNo, DateOnly.FromDateTime(DateTime.Today), DateTimeOffset.UtcNow, "ผู้ใช้งานเครื่องนี้", HttpContext.RequestAborted);
-            TempData["Success"] = $"ปรับสถานะสมาชิกเลขที่ {result.Member.RunNo} เป็นลาออกแล้ว และคืนเงิน {result.RefundSatang / 100m:N2} บาท";
+            TempData["Success"] = result.AccountingActive
+                ? $"ปรับสถานะสมาชิกเลขที่ {result.Member.RunNo} เป็นลาออกแล้ว ยอดเงินสุทธิ {result.RefundSatang / 100m:N2} บาท ยังไม่มีการจ่ายคืนเงิน กรุณาบันทึกรับชำระยอดค้างหรือจ่ายคืนในบัญชี"
+                : $"ปรับสถานะสมาชิกเลขที่ {result.Member.RunNo} เป็นลาออกแล้ว และคืนเงิน {result.RefundSatang / 100m:N2} บาท";
             return RedirectToPage();
         }
         catch (MemberValidationException exception)

@@ -1,0 +1,173 @@
+using ChapanakitCare.Domain.Entities;
+using ChapanakitCare.Infrastructure.Accounting;
+using ChapanakitCare.Infrastructure.AccountingReports;
+using ChapanakitCare.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
+
+namespace ChapanakitCare.Domain.Tests;
+
+public sealed class MemberMoneyReportTests
+{
+    [Fact]
+    public async Task Member_history_uses_posted_control_lines_and_keeps_receipts_refunds_and_death_deductions_separate()
+    {
+        await using var store = await AccountingTestDatabase.CreateAsync();
+        var fixture = await SeedWelfareAsync(store.Context);
+        fixture.Member.FirstName = "ชื่อใหม่";
+        await store.Context.SaveChangesAsync();
+
+        var report = await new MemberMoneyReportService(store.Context).GetMemberHistoryAsync(
+            fixture.Member.Id, new AccountingReportPeriod(new DateOnly(2026, 1, 10), new DateOnly(2026, 1, 22)));
+
+        Assert.Equal("00001", report.MemberRunNo);
+        Assert.Contains("ชื่อเดิม", report.MemberName, StringComparison.Ordinal);
+        Assert.Equal(10_000, report.OpeningAdvanceSatang);
+        Assert.Equal(400, report.OpeningShortfallSatang);
+        Assert.Equal(1_500, report.TotalActualReceiptSatang);
+        Assert.Equal(200, report.TotalRefundSatang);
+        Assert.Equal(500, report.TotalDeathDeductionSatang);
+        Assert.Equal(10_400, report.ClosingAdvanceSatang);
+        Assert.Equal(0, report.ClosingShortfallSatang);
+        Assert.Equal(10_400, report.ClosingNetAdvanceSatang);
+
+        var receipt = Assert.Single(report.Entries, row => row.JournalNumber == fixture.ReceiptJournalNumber);
+        Assert.Equal(1_100, receipt.AdvanceCreditSatang);
+        Assert.Equal(400, receipt.ShortfallCreditSatang);
+        Assert.Equal(1_500, receipt.ActualReceiptSatang);
+        var refund = Assert.Single(report.Entries, row => row.Kind == MemberMoneyMovementKind.MemberRefund);
+        Assert.Equal(200, refund.RefundSatang);
+        var deduction = Assert.Single(report.Entries, row => row.Kind == MemberMoneyMovementKind.DeathDeduction);
+        Assert.Equal(500, deduction.DeathDeductionSatang);
+        var reversal = Assert.Single(report.Entries, row => row.IsReversal);
+        Assert.Equal(-900, reversal.ActualReceiptSatang);
+        Assert.Equal(fixture.ReversedReceiptJournalNumber, reversal.ReversedJournalNumber);
+    }
+
+    [Fact]
+    public async Task Annual_actual_receipts_list_original_member_receipts_once_and_marks_a_reversal_at_the_cutoff()
+    {
+        await using var store = await AccountingTestDatabase.CreateAsync();
+        var fixture = await SeedWelfareAsync(store.Context);
+        var service = new MemberMoneyReportService(store.Context);
+        var journalsBefore = await store.Context.AccountingJournals.CountAsync();
+
+        var beforeReversal = await service.GetAnnualActualReceiptsAsync(
+            new AccountingReportPeriod(new DateOnly(2026, 1, 1), new DateOnly(2026, 1, 20)));
+        var afterReversal = await service.GetAnnualActualReceiptsAsync(
+            new AccountingReportPeriod(new DateOnly(2026, 1, 1), new DateOnly(2026, 1, 31)));
+
+        Assert.Equal(2_400, beforeReversal.TotalRecognizedReceiptSatang);
+        Assert.Equal(2, afterReversal.Rows.Count);
+        Assert.Equal(2_400, afterReversal.TotalIssuedReceiptSatang);
+        Assert.Equal(900, afterReversal.TotalCancelledReceiptSatang);
+        Assert.Equal(1_500, afterReversal.TotalRecognizedReceiptSatang);
+        var cancelled = Assert.Single(afterReversal.Rows, row => row.JournalNumber == fixture.ReversedReceiptJournalNumber);
+        Assert.True(cancelled.IsCancelled);
+        Assert.Equal(0, cancelled.RecognizedReceiptSatang);
+        Assert.Equal(fixture.ReversalJournalNumber, cancelled.CancellationJournalNumber);
+        Assert.Equal(new DateOnly(2026, 1, 21), cancelled.CancellationBusinessDate);
+        Assert.Equal(journalsBefore, await store.Context.AccountingJournals.CountAsync());
+    }
+
+    [Fact]
+    public async Task Daily_register_and_selected_money_account_keep_internal_transfers_separate_from_member_receipts()
+    {
+        await using var store = await AccountingTestDatabase.CreateAsync();
+        await SeedWelfareAsync(store.Context);
+        var service = new MemberMoneyReportService(store.Context);
+        var period = new AccountingReportPeriod(new DateOnly(2026, 1, 10), new DateOnly(2026, 1, 22));
+
+        var register = await service.GetDailyReceiptPaymentRegisterAsync(AccountingBookCode.Welfare, period);
+        var cash = await service.GetCashBankMovementAsync(AccountingBookCode.Welfare, "1000", period);
+
+        Assert.Equal(10_000, register.OpeningBalanceSatang);
+        Assert.Equal(2_400, register.TotalMoneyInSatang);
+        Assert.Equal(1_100, register.TotalMoneyOutSatang);
+        Assert.Equal(400, register.TotalInternalTransferInSatang);
+        Assert.Equal(400, register.TotalInternalTransferOutSatang);
+        Assert.Equal(11_300, register.ClosingBalanceSatang);
+        Assert.Contains(register.Rows, row => row.Kind == MoneyMovementKind.MemberReceipt && row.MoneyInSatang == 1_500);
+        Assert.Contains(register.Rows, row => row.Kind == MoneyMovementKind.InternalTransfer && row.InternalTransferOutSatang == 400);
+        Assert.Contains(register.Rows, row => row.Kind == MoneyMovementKind.InternalTransfer && row.InternalTransferInSatang == 400);
+
+        Assert.Equal(10_000, cash.OpeningBalanceSatang);
+        Assert.Equal(2_400, cash.TotalMoneyInSatang);
+        Assert.Equal(1_100, cash.TotalMoneyOutSatang);
+        Assert.Equal(400, cash.TotalInternalTransferOutSatang);
+        Assert.Equal(10_900, cash.ClosingBalanceSatang);
+        Assert.All(cash.Rows, row => Assert.Equal("1000", row.AccountCode));
+    }
+
+    private static async Task<MemberMoneyFixture> SeedWelfareAsync(AppDbContext database)
+    {
+        var member = TestData.Member();
+        member.RunNo = "00001";
+        member.Title = "นาย";
+        member.FirstName = "ชื่อเดิม";
+        member.LastName = "สมาชิก";
+        database.Members.Add(member);
+        await database.SaveChangesAsync();
+
+        var setup = new AccountingSetupService(database);
+        await setup.EnsureCatalogAsync();
+        await setup.ActivateBookAsync(new(AccountingBookCode.Welfare, new DateOnly(2026, 1, 1), "ยอดยกมาตามหลักฐาน", Actor()));
+        var posting = new AccountingPostingService(database);
+        var party = new AccountingDimensions(MemberId: member.Id, PartySnapshot: "00001 นายชื่อเดิม สมาชิก");
+        await PostAsync(posting, new DateOnly(2026, 1, 1), "opening", "ยอดยกมา", "opening",
+        [
+            new("1000", 10_000, 0),
+            new("2000", 0, 10_000, party),
+            new("1200", 400, 0, party),
+            new("3000", 0, 400)
+        ]);
+        var receipt = await PostAsync(posting, new DateOnly(2026, 1, 10), "receipt", "รับเงินจริง", "advance_receipt",
+        [
+            new("1000", 1_500, 0),
+            new("1200", 0, 400, party),
+            new("2000", 0, 1_100, party)
+        ]);
+        await PostAsync(posting, new DateOnly(2026, 1, 15), "death", "หักเงินเพื่อกรณีเสียชีวิต", "death_accrual",
+        [
+            new("2000", 500, 0, party),
+            new("2100", 0, 500, new(DeathCaseId: Guid.Parse("11111111-1111-1111-1111-111111111111"), BeneficiarySlotNo: 1,
+                PartySnapshot: "ผู้รับผลประโยชน์"))
+        ]);
+        await PostAsync(posting, new DateOnly(2026, 1, 16), "refund", "คืนเงินล่วงหน้า", "member_refund",
+        [
+            new("2000", 200, 0, party),
+            new("1000", 0, 200, party)
+        ]);
+        var reversedReceipt = await PostAsync(posting, new DateOnly(2026, 1, 20), "receipt-to-reverse", "รับเงินที่ยกเลิก", "advance_receipt",
+        [
+            new("1000", 900, 0),
+            new("2000", 0, 900, party)
+        ]);
+        var reversal = await PostAsync(posting, new DateOnly(2026, 1, 21), "reverse-receipt", "ยกเลิกรับเงิน", "reversal",
+        [
+            new("2000", 900, 0, party),
+            new("1000", 0, 900)
+        ], reversedReceipt.JournalId);
+        await PostAsync(posting, new DateOnly(2026, 1, 22), "transfer", "นำเงินเข้าธนาคาร", "cash_transfer",
+        [
+            new("1100", 400, 0),
+            new("1000", 0, 400)
+        ]);
+
+        return new(member, receipt.JournalNumber, reversedReceipt.JournalNumber, reversal.JournalNumber);
+    }
+
+    private static Task<AccountingPostingResult> PostAsync(
+        AccountingPostingService posting,
+        DateOnly date,
+        string token,
+        string description,
+        string voucherType,
+        IReadOnlyList<AccountingPostLine> lines,
+        Guid? reversesJournalId = null) =>
+        posting.PostAsync(new(AccountingBookCode.Welfare, voucherType, description, date, token, token + "-fingerprint", Actor(), lines,
+            ReversesJournalId: reversesJournalId));
+
+    private static AccountingActor Actor() => new("money-report-test", "ผู้ทดสอบรายงาน", "TEST-PC", "test");
+
+    private sealed record MemberMoneyFixture(Member Member, string ReceiptJournalNumber, string ReversedReceiptJournalNumber, string ReversalJournalNumber);
+}

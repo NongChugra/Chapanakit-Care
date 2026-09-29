@@ -24,12 +24,15 @@ Use an SSH remote instead if your GitHub account is configured for SSH.
 - `src/`: application, domain, migrations, and the tracked `App_Data/demo-members.json` fixture.
 - `tests/`: automated test source and test fixture.
 - `docs/`: architecture, verification profile, manual test checklist, and this handoff.
+- `scripts/dev.ps1`: the consolidated run, test, publish, and clean command.
+- `run-dev.bat`: the double-click development website launcher.
 - `.github/workflows/ci.yml`: GitHub Actions build/test workflow.
 
 ## What must stay out of Git
 
 - Real SQLite databases, WAL/SHM files, backups, certificates, and member data.
-- `.tools/`, `bin/`, `obj/`, test coverage, and `artifacts/` packages.
+- Local SDK copies, `bin/`, `obj/`, test coverage, and `artifacts/` packages.
+- Runtime databases, generated reports, screenshots, logs, and Python caches.
 
 The `.gitignore` protects these boundaries. Before every commit, run `git status --ignored`
 and ensure no real member or death-document data is staged.

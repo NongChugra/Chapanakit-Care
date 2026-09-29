@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ChapanakitCare.Infrastructure.Persistence;
 
-public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
+public sealed partial class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
 {
     public DbSet<Member> Members => Set<Member>();
     public DbSet<MemberBeneficiary> MemberBeneficiaries => Set<MemberBeneficiary>();
@@ -13,6 +13,7 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
     public DbSet<SystemSettings> SystemSettings => Set<SystemSettings>();
     public DbSet<NumberSequence> NumberSequences => Set<NumberSequence>();
     public DbSet<DeathCase> DeathCases => Set<DeathCase>();
+    public DbSet<DeathRecipientPhoto> DeathRecipientPhotos => Set<DeathRecipientPhoto>();
     public DbSet<DeathMemberSnapshot> DeathMemberSnapshots => Set<DeathMemberSnapshot>();
     public DbSet<DeathBeneficiarySnapshot> DeathBeneficiarySnapshots => Set<DeathBeneficiarySnapshot>();
     public DbSet<DeathCalculation> DeathCalculations => Set<DeathCalculation>();
@@ -25,6 +26,8 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
     public DbSet<AuditEvent> AuditEvents => Set<AuditEvent>();
     public DbSet<AuditFieldChange> AuditFieldChanges => Set<AuditFieldChange>();
     public DbSet<BackupRun> BackupRuns => Set<BackupRun>();
+    public DbSet<CoordinatorPosition> CoordinatorPositions => Set<CoordinatorPosition>();
+    public DbSet<CoordinatorEvent> CoordinatorEvents => Set<CoordinatorEvent>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -33,7 +36,41 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
         ConfigureDeath(modelBuilder);
         ConfigureAdvance(modelBuilder);
         ConfigureSupportingTables(modelBuilder);
+        ConfigureCoordinators(modelBuilder);
+        ConfigureCollections(modelBuilder);
+        ConfigureAccounting(modelBuilder);
         ApplySnakeCaseColumnNames(modelBuilder);
+    }
+
+    private static void ConfigureCoordinators(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<CoordinatorPosition>(entity =>
+        {
+            entity.ToTable("coordinator_positions", table =>
+            {
+                table.HasCheckConstraint("ck_coordinator_position_scope", "(role_code = 'chairperson' AND group_no IS NULL AND position_key = 'chairperson') OR (role_code = 'group_leader' AND group_no IS NOT NULL AND length(trim(group_no)) > 0 AND group_no = trim(group_no) AND position_key = 'group:' || group_no)");
+                table.HasCheckConstraint("ck_coordinator_position_holder", "(member_id IS NULL AND appointed_on IS NULL) OR (member_id IS NOT NULL AND appointed_on IS NOT NULL)");
+                table.HasCheckConstraint("ck_coordinator_position_version", "version >= 1");
+            });
+            entity.HasKey(x => x.PositionKey);
+            entity.Property(x => x.Version).IsConcurrencyToken();
+            entity.HasIndex(x => x.MemberId).IsUnique().HasFilter("member_id IS NOT NULL");
+            entity.HasOne<Member>().WithMany().HasForeignKey(x => x.MemberId).OnDelete(DeleteBehavior.Restrict);
+        });
+        modelBuilder.Entity<CoordinatorEvent>(entity =>
+        {
+            entity.ToTable("coordinator_events", table =>
+            {
+                table.HasCheckConstraint("ck_coordinator_event_action", "(action = 'appoint' AND previous_member_id IS NULL AND member_id IS NOT NULL) OR (action = 'replace' AND previous_member_id IS NOT NULL AND member_id IS NOT NULL AND previous_member_id <> member_id) OR (action = 'end' AND previous_member_id IS NOT NULL AND member_id IS NULL)");
+                table.HasCheckConstraint("ck_coordinator_event_reason", "action = 'appoint' OR (reason IS NOT NULL AND length(trim(reason)) > 0)");
+                table.HasCheckConstraint("ck_coordinator_event_version", "position_version >= 1");
+            });
+            entity.HasKey(x => x.Id);
+            entity.Property(x => x.Id).ValueGeneratedNever();
+            entity.HasIndex(x => new { x.PositionKey, x.PositionVersion }).IsUnique();
+            entity.Property(x => x.OccurredAtUtc).HasConversion<long>();
+            entity.HasOne<CoordinatorPosition>().WithMany().HasForeignKey(x => x.PositionKey).OnDelete(DeleteBehavior.Restrict);
+        });
     }
 
     private static void ConfigureMembers(ModelBuilder modelBuilder)
@@ -157,6 +194,19 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
 
     private static void ConfigureDeath(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<DeathRecipientPhoto>(entity =>
+        {
+            entity.ToTable("death_recipient_photos", table =>
+            {
+                table.HasCheckConstraint("ck_recipient_photo_slot", "beneficiary_slot_no IN (1, 2)");
+                table.HasCheckConstraint("ck_recipient_photo_bytes", "length(bytes) BETWEEN 1 AND 10485760 AND length(sha256) = 64");
+                table.HasCheckConstraint("ck_recipient_photo_type", "content_type IN ('image/png', 'image/jpeg')");
+            });
+            entity.HasKey(x => x.Id);
+            entity.Property(x => x.Id).ValueGeneratedNever();
+            entity.HasIndex(x => new { x.DeathCaseId, x.BeneficiarySlotNo }).IsUnique();
+            entity.HasOne<DeathCase>().WithMany().HasForeignKey(x => x.DeathCaseId).OnDelete(DeleteBehavior.Restrict);
+        });
         modelBuilder.Entity<DeathCase>(entity =>
         {
             entity.ToTable("death_cases", table =>
@@ -349,7 +399,8 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
             entity.Property(value => value.AppVersion).IsRequired();
             entity.HasIndex(value => value.OperationId);
             entity.HasIndex(value => value.MemberId);
-            entity.HasOne<Member>().WithMany().HasForeignKey(value => value.MemberId).OnDelete(DeleteBehavior.Restrict);
+            // Historical identity survives an explicit demo-data clear. Do not cascade,
+            // null, or delete audit records when their former member no longer exists.
         });
 
         modelBuilder.Entity<AuditFieldChange>(entity =>

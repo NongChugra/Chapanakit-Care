@@ -1,0 +1,7 @@
+src/ChapanakitCare.Infrastructure/Reports/OfficialReportDocuments.cs
+src/ChapanakitCare.Infrastructure/Reports/OfficialReportModels.cs
+src/ChapanakitCare.Infrastructure/Reports/ReportApplicationService.cs
+src/ChapanakitCare.Web/Pages/Reports/Index.cshtml.cs
+tests/ChapanakitCare.Domain.Tests/ReportCompletionDataTests.cs
+tests/ChapanakitCare.Domain.Tests/ReportLayoutTests.cs
+tests/ChapanakitCare.Domain.Tests/ReportPdfText.cs

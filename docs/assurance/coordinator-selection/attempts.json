@@ -1,0 +1,25 @@
+{
+  "assuranceUnitId": "chapanakit-care/coordinators/initial-selection",
+  "reopenGeneration": 0,
+  "reviewBudgetMode": "default",
+  "maxReviewCalls": 3,
+  "reviewCallsUsed": 1,
+  "activeReviewReservation": null,
+  "attempts": [
+    {
+      "reviewAttemptId": "923cca26-6309-4f75-8f5d-da107da3d24e",
+      "call": 1,
+      "state": "completed",
+      "frozenCandidateId": "sha256:e9441d06460c6933b38217f8fa7eb57c1eff9ede7e8db5e10ee2ed1201d6f411",
+      "assurancePacketId": "coordinator-final-packet-v1:0e974574-8e38-4a63-a8fd-42d61202fad6",
+      "reservedAt": "2026-09-04T13:33:08.1365223+07:00",
+      "childId": "01a06b1f-3544-7540-9d8c-1d2e232962f9",
+      "startedAt": "2026-09-04T13:33:39.9250841+07:00",
+      "runtimeGate": "pass",
+      "verdict": "ship",
+      "outcome": "accepted",
+      "completedAt": "2026-09-04T06:41:30.6503786+00:00"
+    }
+  ],
+  "unitStatus": "ship"
+}

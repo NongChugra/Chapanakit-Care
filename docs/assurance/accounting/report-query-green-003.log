@@ -1,0 +1,23 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.13]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.23]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.26]   Starting:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Trial_balance_uses_business_date_cutoff_keeps_books_separate_and_does_not_mutate_journals [2 s]
+  Passed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Income_expense_report_shows_only_the_association_fee_income_and_operating_expense [156 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Journal_report_marks_the_posted_reversal_without_omitting_its_signed_lines [211 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Control_balance_reports_keep_frozen_party_snapshots_when_the_source_record_is_unavailable [174 ms]
+[xUnit.net 00:00:03.36]   Finished:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Member_and_beneficiary_reports_derive_control_balances_from_dimensions [118 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Financial_position_keeps_the_association_fee_result_with_its_own_book [154 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.General_ledger_carries_opening_then_signed_movement_from_a_reversal [197 ms]
+
+Test Run Successful.
+Total tests: 7
+     Passed: 7
+ Total time: 3.9389 Seconds

@@ -4,7 +4,6 @@
 
     const picker = document.querySelector('#column-picker');
     const token = document.querySelector('#preference-token input').value;
-    const tbody = table.querySelector('tbody');
     const allColumns = [...table.querySelectorAll('thead th')].map(cell => cell.dataset.column);
     const allComponents = [...picker.querySelectorAll('[data-component-toggle]')].map(input => input.value);
     const initial = window.memberTablePreference || { columnOrder: [], hiddenColumns: [], visibleComponents: allComponents };
@@ -23,8 +22,14 @@
         });
     };
     const applyOrder = order => {
-        const valid = order.filter(name => allColumns.includes(name));
-        [...valid, ...allColumns.filter(name => !valid.includes(name))].forEach(moveColumn);
+        const valid = [...new Set(order.filter(name => allColumns.includes(name)))];
+        let next = [...valid, ...allColumns.filter(name => !valid.includes(name))];
+        if (!order.includes('role')) {
+            next = next.filter(name => name !== 'role');
+            const nameIndex = next.indexOf('name');
+            next.splice(nameIndex < 0 ? next.length : nameIndex + 1, 0, 'role');
+        }
+        next.forEach(moveColumn);
     };
     const applyVisibility = hidden => {
         allColumns.forEach(name => {
@@ -89,6 +94,7 @@
     const thead = table.querySelector('thead');
     thead.addEventListener('dragstart', event => {
         dragged = event.target.closest('th');
+        if (!dragged) return;
         movedDuringDrag = false;
     });
     thead.addEventListener('dragover', event => {
@@ -113,19 +119,7 @@
             if (indicator) indicator.textContent = active ? (sortDirection === 'asc' ? ' ▲' : ' ▼') : '';
         });
     };
-    const sortRows = () => {
-        const rows = [...tbody.querySelectorAll('tr')];
-        rows.sort((left, right) => {
-            if (!sortColumn) return Number(left.dataset.originalOrder) - Number(right.dataset.originalOrder);
-            const leftValue = left.querySelector(`[data-column="${sortColumn}"]`)?.dataset.sortValue || '';
-            const rightValue = right.querySelector(`[data-column="${sortColumn}"]`)?.dataset.sortValue || '';
-            const comparison = leftValue.localeCompare(rightValue, 'th', { numeric: true, sensitivity: 'base' });
-            return sortDirection === 'asc' ? comparison : -comparison;
-        });
-        rows.forEach(row => tbody.appendChild(row));
-        updateSortIndicator();
-    };
-    thead.addEventListener('click', event => {
+    thead.addEventListener('click', async event => {
         if (ignoreNextClick) { ignoreNextClick = false; return; }
         const header = event.target.closest('th');
         if (!header || header.dataset.sortable !== 'true') return;
@@ -139,10 +133,10 @@
             sortColumn = null;
             sortDirection = null;
         }
-        sortRows();
-        save();
+        await save();
+        window.location.reload();
     });
-    sortRows();
+    updateSortIndicator();
 
     document.querySelector('#reset-columns')?.addEventListener('click', async () => {
         await fetch('?handler=ResetPreference', { method: 'POST', headers: { 'RequestVerificationToken': token } });
@@ -151,6 +145,23 @@
         renderComposites(allComponents);
         sortColumn = null;
         sortDirection = null;
-        sortRows();
+        window.location.reload();
+    });
+
+    document.querySelector('#export-members')?.addEventListener('click', () => {
+        const columns = currentOrder().filter(name => name !== 'actions' && !currentHidden().includes(name));
+        if (!columns.length) {
+            window.alert('กรุณาเลือกอย่างน้อยหนึ่งคอลัมน์ก่อนส่งออก');
+            return;
+        }
+        const url = new URL(window.location.href);
+        url.searchParams.delete('PageNumber');
+        url.searchParams.delete('PageSize');
+        url.searchParams.delete('columns');
+        url.searchParams.delete('components');
+        url.searchParams.set('handler', 'Export');
+        columns.forEach(name => url.searchParams.append('columns', name));
+        currentComponents().forEach(name => url.searchParams.append('components', name));
+        window.location.assign(url);
     });
 })();

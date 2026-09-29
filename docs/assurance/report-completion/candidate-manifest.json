@@ -1,0 +1,953 @@
+{
+  "schemaVersion": "report-candidate-v1",
+  "baseHead": "a252d27364b80a58df4dd660ff97b1f24bba8df4",
+  "recipe": "git ls-files --cached --others --exclude-standard -z union base-state paths; sorted unique paths; SHA256 raw bytes (null for deletion); exclude docs/assurance/report-completion/**; aggregate canonical UTF8 JSON file records",
+  "frozenCandidateId": "sha256:bd8c7ceaef912787ac499b99b50664cb1ac85d07c6d3aa36a6d51bb54982fc46",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "sha256": "d0db033f46d09db0427bc5c640ef69426ebe177cefa99a409bf9e1e480102145"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "cb10ee547297c45c8998accb519655de857eda1af7abf29e8404bbea5983f140"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "69fd7e290113a797de985d6bb574d788d9fd7ca1a51c99bc52af1ffa69c31807"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "c06f5f8832a6f90304bdbd7e9d85ff18d02375ed50b8c15bcad5a8943c18c288"
+    },
+    {
+      "path": "ChapanakitCare.sln",
+      "sha256": "5d455853ce8b377cf7893ccaf7d8c2330787a3f1cce15e1072a0c8fa25f8e984"
+    },
+    {
+      "path": "Directory.Build.props",
+      "sha256": "6e13a4445dcf313ad829cac07bfdfcc36ee95f7cfc66aff82d2750719aa06bac"
+    },
+    {
+      "path": "Directory.Packages.props",
+      "sha256": "4150f00ce90cb3e61fbc68cd18163c491b66d0b9f4e126bd2fbaa7a78353ef93"
+    },
+    {
+      "path": "README.md",
+      "sha256": "bbc1d34d0d0b10ad0e0c50c33ec4a1fe1d2fc70d122a321687f3d4543ac30944"
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "7894eafb5917848844c11edc19ecd2815695013a5c9c8d45500ffc453a1d4cb1"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/attempts-before-call-1.json",
+      "sha256": "2c8ccb65690d1db947d042a51f0dff1e8e78e7ca5cef7e8f83fef5ee97ff951d"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/attempts.json",
+      "sha256": "53ba87e52e9a21862e27ec6ee6ec1a7d1f0f3122c4c2bf407342d49174a99feb"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/backend-green.log",
+      "sha256": "b95e5a0e1d7c8ba648031e1d0c719d11d8aa29a5768801041d2c535d4655aa1b"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/backend-red.log",
+      "sha256": "38be2ccc75ca56a82ee6575441df5dd0feee9dba6f110c70c4a61b55897a1808"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/base-state.json",
+      "sha256": "b4f9a692503af218db7330875edbe6e3884ffee4777434976ad045f5a4567e54"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/browser-server.log",
+      "sha256": "5cf808479f6580032529ea22b7bae3a28a5008cd8acb204a5eafabdcf6859c7a"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/candidate-1-manifest.json",
+      "sha256": "22b64e5458de78de290f3c6905518b604515c5066c44083e11b111933e1f7181"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/candidate-1-tests-failed.log",
+      "sha256": "439ead2b562d54392995a22fa9786a2ba2f62ddd3d562b21ecd1f2d38f661d60"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/candidate-build.log",
+      "sha256": "83db19729668286d405ed7633d03faf6a9d84fc62f131f30cd7c0c1b8eefc455"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/candidate-format-src.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/candidate-format-tests.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/candidate-manifest.json",
+      "sha256": "c77a96d5d8df5093618a9f70efb266bf45537ca2aa5cb4f512b018acc984a4e4"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/candidate-publish.log",
+      "sha256": "96b2f67fcd553f89806820cec8249984e5312339110ff25115d8481df2a4c553"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/candidate-receipt.md",
+      "sha256": "e275bf1b91fa56f52fc22730816edf948b8b9dec6775fa8fd7dbe29ae817a240"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/candidate-restore.log",
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/candidate-tests.log",
+      "sha256": "13e907bf4b6886a3008892edc900326d6bef747f1e1f18882811cd9240d9e91f"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/complete-call-1.json",
+      "sha256": "5f754b8f569a4be2e749344ad6fe1401e7b837bb479262c04ce419d7564a2fa6"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/coordination-preflight.json",
+      "sha256": "f3200f8c4a9ec1666f1e4c82c3badfa921f67a61350ecd43e0c1115a8ec5e96d"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/format-apply.log",
+      "sha256": "f8c283fd70475c8b1b15afd5fba61edd91af40cda96555b6664e330a57e5fecb"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/format-scope.txt",
+      "sha256": "aaca78869001cfb3aa5e62d72533b30c212969caea5cb51fbfd22bf8ad271b09"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/freeze_candidate.py",
+      "sha256": "f6805b8c76b900d7dfc7e947418b24f6ac5ddd5f5694e6c0c17b2375f582af6a"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/integrated-focused.log",
+      "sha256": "dac21cb8065cbfcdd63fe62db8663e68b30d752e4346b489afa8276463eedff6"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/integrity-red.log",
+      "sha256": "c50a84b9e5987127e66408627f9f36ab1d9cb5a0a6ed738666397cc2ccd2af09"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/intended-call-1.json",
+      "sha256": "37a7beb20b19fbe5ff17364ca09071a3a9035cf4a93eaa9beb7295da192b4d3d"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/ledger-call-1.md",
+      "sha256": "5302b6312592ee3d27162ff8442e3f2ad52d5e512616fec6569211896fa97409"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/ledger.md",
+      "sha256": "c03d359c5ec4bc29604cab9d282fe7a84ca991f2a82762aed06acab9ca84cdf4"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/legacy-expectation-fix.log",
+      "sha256": "bf82a90e42233cdf8ba70dcbc3e1f2bf3845ecb03733096e2ca865f77d5a8c80"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/migration-green.log",
+      "sha256": "9b8c34f609280172f1bcf2141c60f925f80500cc37b731989d55dd2ae06d3422"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/migration-red.log",
+      "sha256": "21ff68af4a0f60a2415897d0910288c1fc4bdb536e1fb83128053ae18901aaf3"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/parent-audit.md",
+      "sha256": "5a97142c25a5c878d73bac388d2e168fd4d43b4db009cc1d74bdc46543645864"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/parent-runtime.json",
+      "sha256": "a44080ff2a47a70be835abf2e3ba3f0338da10e10b5d7e10cd16d45fbfa49775"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/prepare-review.py",
+      "sha256": "062bd30078728b3ea73fde4b2fba7c0de457c01768f76c36336dc98c91e6d13e"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/readiness-command.txt",
+      "sha256": "92119d0f38a207702615adea884465f3fa4009c3b2491f991ee114eabcf48260"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/readiness-proof.json",
+      "sha256": "39ccb1a78976ddf839e40a3aedeb7ae91beebd781739417eca99141688bbd53e"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/readiness.json",
+      "sha256": "941b0d91d42f1969faa2eca9aaae57c4040ddb9cbf12f453951974bfe05e17f3"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/reservation-call-1.json",
+      "sha256": "9093881e4c512df4273b498cd3bc15832344805c0ab2ece3d39321f075c28842"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/reservation.ps1",
+      "sha256": "764487c71af4472c3a7c9e6d1094cbc63547253ac6f1212ab331d6ae0cb7f829"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/review-packet.md",
+      "sha256": "7388a66824630a21ad52f0dd91fafc7e93657ecea4cb8452fd34644b4eacf6de"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/reviewer-runtime.json",
+      "sha256": "f4431a58ba43b280534864c735248ae29c75bd20500ed98da4d366fee791f298"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/reviewer-verdict.md",
+      "sha256": "994ba9914dcb733ec29f4f37f3563ac5a09574b2a4ebcccc4cb54e2e3c96bf12"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/start-call-1.json",
+      "sha256": "7fc36d85cdb0f4062758afb1c4febe4a8b4590820bedbb27efa58b4a615269e0"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/ui-contract.md",
+      "sha256": "64ccd906eaa0748c0242abcc66a4eed0bb7e57293a93e8153dd9fdf9fddedfb7"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/ui-followup.md",
+      "sha256": "d7954c960ca447c3fdb49ad6dc29d85aa95163095eac364353b8aaa4bd43f2dd"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/ui-tdd.md",
+      "sha256": "2cd9bcc9ec1f14755ba322cd6fa72ddeb2812851dbfe210029d6fedc4841b5e2"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/verify-candidate.ps1",
+      "sha256": "7a1d533c716132c7378aa37be4e7dfe7e16372b8026b3b809fac2665326ae93a"
+    },
+    {
+      "path": "docs/assurance/coordinator-selection/worker-runtime.json",
+      "sha256": "011c78c7026276ea69f8409e32dccd48eef4693b7eae21da4bb46d308dbc28f6"
+    },
+    {
+      "path": "docs/demo-script.md",
+      "sha256": "c31dbeb92b6b9b3a9de9180adbbbfb6bac074d6c985b595854110e1793b04a38"
+    },
+    {
+      "path": "docs/design/coordinator-roles.md",
+      "sha256": "db5169153dd809e536f6c3063fea1917931d1b89045e8001a710fc31d120a079"
+    },
+    {
+      "path": "docs/github-setup.md",
+      "sha256": "b0438de98c403061190764bf805d0ce3c92086e54d72847832cd8536446c5425"
+    },
+    {
+      "path": "docs/manual-test-checklist.md",
+      "sha256": "3f61ee2be442ff155bb95d7c7b3bc49c3be32d348944bf430269315f8061abb0"
+    },
+    {
+      "path": "docs/report-references/README.md",
+      "sha256": "e2830d554d2f45d9e60be4e0e7de413669f21d35252dcce37336e5549cc4c4b1"
+    },
+    {
+      "path": "docs/report-references/all-members.png",
+      "sha256": "1db5cf28fd3e8770380905e7e99b0ccf3a76cfffe6bac4ccb73647a830f5e005"
+    },
+    {
+      "path": "docs/report-references/member-by-manager.png",
+      "sha256": "d87dad239e3ade762732888cc79c54c97b30464971ad29926ec25e432ff05fa2"
+    },
+    {
+      "path": "docs/report-references/monthly-member.png",
+      "sha256": "9eb0e40b762628cb30b4b954d37c3e94bcf5ab1bfddd6a0fcb0b3699ce30973e"
+    },
+    {
+      "path": "docs/report-references/sak-one.png",
+      "sha256": "b0011db03cbc5200eb7cbc413f08f95b73c7a6fb0f8d6e137b49dc8f28a95ff3"
+    },
+    {
+      "path": "docs/verification-profile.md",
+      "sha256": "5f3abb3c34dbe92617e4677806b4435b8b05867c54ddaaae4eef0790530d0bb2"
+    },
+    {
+      "path": "global.json",
+      "sha256": "11aae2e9b38f121a0709899ed81be66c74f8b6e03c448381b707197e4e81d7ce"
+    },
+    {
+      "path": "run-dev.bat",
+      "sha256": "4064836397b7421e2b721195151c18590e9ce1050433cc6d6885409fd7e254e3"
+    },
+    {
+      "path": "scripts/dev.ps1",
+      "sha256": "b3bd3bf8568b8266fb27cee0e82708a086ba251dca7c7d240f5b996e3e180bfa"
+    },
+    {
+      "path": "src/ChapanakitCare.Desktop/App.xaml",
+      "sha256": "1d010664afcabc5e4f731c452d90f3d29278a43953ce2ba2f58c8fe80ab15f35"
+    },
+    {
+      "path": "src/ChapanakitCare.Desktop/App.xaml.cs",
+      "sha256": "b839de07995f25213eae0ad91c33618f80fc6ea7abcb79a145fa7d2ad5391c61"
+    },
+    {
+      "path": "src/ChapanakitCare.Desktop/Assets/association-deer-logo.ico",
+      "sha256": "6c6da72fbfb5db8de7976667be7e99dfb4f1a8dddf2765ff73b61e58eaec42ec"
+    },
+    {
+      "path": "src/ChapanakitCare.Desktop/Assets/association-deer-logo.jpg",
+      "sha256": "98e3263be586edbf6eb2a8a2793e4db449cdc2c9754e443131ca145be00d7676"
+    },
+    {
+      "path": "src/ChapanakitCare.Desktop/ChapanakitCare.Desktop.csproj",
+      "sha256": "9fe18cbc32dc0d32b7f5d9705a3721989e794d738f95dab6781fd1c67516aaf4"
+    },
+    {
+      "path": "src/ChapanakitCare.Desktop/DesktopBrowserProfile.cs",
+      "sha256": "026bfe0a07c94018dc2db5a86f46f104294444b143a8ca137665cecfa1d981f0"
+    },
+    {
+      "path": "src/ChapanakitCare.Desktop/DesktopDownloadPath.cs",
+      "sha256": "22ff6bb70b7dc2196acd29aec90f29aa750e27810417af7dfcb8fcff3570048d"
+    },
+    {
+      "path": "src/ChapanakitCare.Desktop/DesktopReportDownload.cs",
+      "sha256": "202a5466933b6b0c80c8e79f637c6f620672abcb611a72a9915b8f7744c7b558"
+    },
+    {
+      "path": "src/ChapanakitCare.Desktop/DesktopServerLaunchPlan.cs",
+      "sha256": "0916e8389b759d83ae1c8544e725ee7050937c7db781e5845ac01d4a70a31a5f"
+    },
+    {
+      "path": "src/ChapanakitCare.Desktop/MainWindow.xaml",
+      "sha256": "83bd005189aed913d6ba31810815c4e535acd36d8dc7b6111fe953aaa49dca79"
+    },
+    {
+      "path": "src/ChapanakitCare.Desktop/MainWindow.xaml.cs",
+      "sha256": "597888bba24f4082b1e8ead78c3c87a7a05ca0a2b0934cf7f2a5c80ff4df0902"
+    },
+    {
+      "path": "src/ChapanakitCare.Desktop/packages.lock.json",
+      "sha256": "24b797736ee2d7a189bd2152920b71f6401288441786693253ca057d0ae2ba56"
+    },
+    {
+      "path": "src/ChapanakitCare.Domain/BusinessRules.cs",
+      "sha256": "cc531df1a9e64e087bfa03ccbe3240aad259f890eb53adb930e031b203072a3b"
+    },
+    {
+      "path": "src/ChapanakitCare.Domain/ChapanakitCare.Domain.csproj",
+      "sha256": "635d3416eebb7e7fd2bb67491fca20c86380c58df8d71635c267a5626e0d6255"
+    },
+    {
+      "path": "src/ChapanakitCare.Domain/Entities/Coordinators.cs",
+      "sha256": "5f64bf924661d0e68c893353b0a4a9168fdcc6c798fd05766388f5cfb5a4ba49"
+    },
+    {
+      "path": "src/ChapanakitCare.Domain/Entities/Entities.cs",
+      "sha256": "ce49fc1d9987cb0ae550835bea58c367499ddfdc6d219bedfed0fb4ca620ff45"
+    },
+    {
+      "path": "src/ChapanakitCare.Domain/packages.lock.json",
+      "sha256": "2241481b7e74dcdcd600303146b730ecc12cbd8e49aa55755ef95ee499fe229a"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/ChapanakitCare.Infrastructure.csproj",
+      "sha256": "fc31dccbce59158ef53ce8632761ae64d2e9493b45f1f817e94783329190f71a"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Coordinators/CoordinatorApplicationService.cs",
+      "sha256": "30b002b495fc976c68ffedb496619403de7b7b6ed9fbbae8ce05bdebd41f075a"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Deaths/DeathApplicationServices.cs",
+      "sha256": "a7ba059641119772a1c0560430e7814c88c0a87d8b0bd27185f77c947c043a74"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Deaths/DeathRegistryPresentation.cs",
+      "sha256": "7df90c824fc51f8e8c261b353c821faec99d2e373bde7a8e34bfbf81c02a769d"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Members/InteractiveMemberRegistrationPolicy.cs",
+      "sha256": "c20f2ad74c09182c2851c0d646ee23221bc9eae1eade77425e6209975f286a02"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Members/MemberApplicationServices.cs",
+      "sha256": "03202f57fb8d5a448db00def5343d01e2bf1861ef00e869811a88fb6af88c76c"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Members/ResignationApplicationService.cs",
+      "sha256": "0b8a1c97fcc518bf043a3c1b034820cb386897dfb3a57b44995e7f6ec66d1d6d"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Persistence/AppDbContext.cs",
+      "sha256": "135a693211377185eca3b78b27f4d6c7bb013a548f249b8530d0379a67475539"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Persistence/AppDbContextFactory.cs",
+      "sha256": "aed9126dcc41eeb5208e949f45db5c51b1acb27be7b126b2d9eab2f9b877d328"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Persistence/BackupApplicationService.cs",
+      "sha256": "e9dea3e09ce77fbc03dbf3fbba6222a37332c259475cc08846079221bc548228"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Persistence/CoordinatorWriteGuard.cs",
+      "sha256": "40489b88291b7fb16776955958d34faf42c8ad81e7b14310dffee37a033f1d9d"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260825001432_InitialFirstDaySchema.Designer.cs",
+      "sha256": "9906125688e42b0d2d268c44b55cd6745c75c8c3db2708b82a2634db8f6fe86a"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260825001432_InitialFirstDaySchema.cs",
+      "sha256": "532697bfcccd5ac4d3899e361d751cc6f3e9ccf3dcdce695f4491e287162422b"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260825095425_CheckpointFiveDeathCertificatesAndPreferences.Designer.cs",
+      "sha256": "e76c6fefde88c62cd810e1c5a8147a824ddb51088f6a9e90fa9c4e772d52b33c"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260825095425_CheckpointFiveDeathCertificatesAndPreferences.cs",
+      "sha256": "2137e9bc10e245d1fe7dd43c8ffb626a79f2a256584362d3020feb9983f6653d"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260825110538_FinalReviewerClosure.Designer.cs",
+      "sha256": "aad74f73a3adc48f960b1e5ce1e46c04479fea3f2440d3a73815edcf487f6abd"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260825110538_FinalReviewerClosure.cs",
+      "sha256": "7076637dbd325ced5f020af15f74d0928931c04194839e7f6f687f5046fa9897"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260825193212_DemoReadyRoundingAndResignation.Designer.cs",
+      "sha256": "7f437dff951848e3ed0f1a61302dc518164fc3fd83da3b6044d9524610aa8bd9"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260825193212_DemoReadyRoundingAndResignation.cs",
+      "sha256": "0b2347f6bc6ab71e84b27e76031d4a72416336e5a92b3ef697cbef759f668285"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260825213000_ExpenseDeductionDefaults.cs",
+      "sha256": "f3f5d02fc8880b6499d8a961c9554b7f447d3aa89197dfb21cd3321da6c26252"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260825223000_ResignationWorkflow.cs",
+      "sha256": "8b3a8e2794f9d7a5d00f162cb3aa60243c45c486775db2e32761aec10ca7e0c1"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260904022726_CoordinatorSelection.Designer.cs",
+      "sha256": "9bf1fb6f28d33a77afd5cd9c46612e72183885573697b797c8ddcfd248a774c5"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260904022726_CoordinatorSelection.cs",
+      "sha256": "6809e841c66aa3d5aba782b92e3780efbd8b5663d8e9dd6a9348a98bd2e5c95e"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Persistence/Migrations/AppDbContextModelSnapshot.cs",
+      "sha256": "789710c47f2d8cc16a60f34ccdb03da1125edcb7827226230373b95f6b22d210"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Reports/OfficialReportDocuments.cs",
+      "sha256": "feeef51906452639777a035daab021919c0a86df46f0c6c2647a5d09ebbdf272"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Reports/OfficialReportModels.cs",
+      "sha256": "0867426b9b7e649260ee9ed27f791b36a10e64850ce349ff231fc74e9c250157"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/Reports/ReportApplicationService.cs",
+      "sha256": "87f366c90217ed992d7693bcb56d90460cc73fb399c8429325daa6641d53b9a3"
+    },
+    {
+      "path": "src/ChapanakitCare.Infrastructure/packages.lock.json",
+      "sha256": "17433fa7ec83ce32937efe7cbfc5f7a1c5e05e9d532cfb514550113149702f35"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/App_Data/demo-members.json",
+      "sha256": "e86c9025523c75a440e603d5b9720c1d8256495affb2b3b79bc44369208ebdbe"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/ChapanakitCare.Web.csproj",
+      "sha256": "f252e04ea0b1d4b21f6a522d3e8445fdea7cc8035e0af2dd06ef509f646c093b"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Advances/Index.cshtml",
+      "sha256": "f38dd62e46ad19d75ee2a816e732677e58aa7f58f19b3c978e5d5f117ee69a74"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Advances/Index.cshtml.cs",
+      "sha256": "a03a5ec8af716ed508a431756fadbe5eada2e423f9200ac90c8cd0b63809a945"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Coordinators/Index.cshtml",
+      "sha256": "47f88872ad5c9438cdce2712caf4ace27d6c2434726ca835518d03c03268125c"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Coordinators/Index.cshtml.cs",
+      "sha256": "60f52b153825cb48d680ff1dbe77fd54c112ae287a5043183d0500f7a483f963"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Deaths/Create.cshtml",
+      "sha256": "32ae578af6a01d2596297e7d1472a84447eb7a5c8cc7743712ed4c038e8c2eae"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Deaths/Create.cshtml.cs",
+      "sha256": "a655b2ccbeb26d5e5867be94643224bf3c3491cab7b43a87c19235623d39ecba"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Deaths/Index.cshtml",
+      "sha256": "77a6bd8c8a432eea56397099982ba048df3c820306efaa609e08c9d4ebabaf23"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Deaths/Index.cshtml.cs",
+      "sha256": "dcbb7a46d8f2f497c3544b21df56f8699fae06710cbe9644ea867422aba03f34"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Error.cshtml",
+      "sha256": "16455f1bd2218aa54494adafb65687e11034c3914ce396edaf2908d0bae9c70d"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Error.cshtml.cs",
+      "sha256": "2ed97f3edfdd57233e92f895d6999f1feacbfe4c37d8ace470df725647bc1aa1"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/History/Index.cshtml",
+      "sha256": "86b78731e2ab8c88ec8feb03889b2fb7245e3335e8809a649f31625e44670a1b"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/History/Index.cshtml.cs",
+      "sha256": "29024a96e9108c3bca44d191e6291af60733589a7835ac970ab9b08041888454"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Index.cshtml",
+      "sha256": "770060d3b5b397bbd3b2f20058a7a4312a5cbfbf68068241a822dc41f39315e6"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Index.cshtml.cs",
+      "sha256": "0896972ecca9139b3125d4595159a3a1a86e6d08c4a084ba0876959734324020"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Members/Create.cshtml",
+      "sha256": "1220b24c4f16bcdb0e689c5df5a61b8b645a20f83adf6c6db6c3a5755cb5432d"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Members/Create.cshtml.cs",
+      "sha256": "7823295cbd0d42475cd51d61e9505b5fee2542a04905064965eb1e79b73bcfa0"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Members/Edit.cshtml",
+      "sha256": "69c09a29c06bc8390b102f2818a2064409616bf913b9a521c3823cb54b31fab4"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Members/Edit.cshtml.cs",
+      "sha256": "44cb5bfdd7897d676194d97f7f72dd47f0d33b8dc329a175d33570bb6040ca94"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Members/Index.cshtml",
+      "sha256": "cfa7c0d89afeadd677a47eecf5e93dbbcae7d0e68ab6d49c6ddecf43a28cedc0"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Members/Index.cshtml.cs",
+      "sha256": "6b03a205737c990386b04e0bba0e35222faed9a1b1d3309e201a01bc9c9eef95"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Members/MemberEditorPageModel.cs",
+      "sha256": "2937574ac12eea71424cf7839bc99e18663107ce2e434bb5cd14a127b2f0278d"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Members/MemberFormInput.cs",
+      "sha256": "a23ea292e56e63858a311f5bf73c5c88ec674d88bbcdef99e608224fb862b8ad"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Members/_MemberForm.cshtml",
+      "sha256": "1d499a8c66aac0c6e9eafdc67aa0612a60b0d7a0926ce5c9ed26b0be1fbae881"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Reports/Index.cshtml",
+      "sha256": "cb1a90b2595bb75438bef6d1f44bf83984d2c89a486bb71e109a6001f6b03008"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Reports/Index.cshtml.cs",
+      "sha256": "84d68ff401dba14a3e7e28f19c63686fc65f0c96a47082a59765aee6d2277988"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Resignations/Index.cshtml",
+      "sha256": "01ca81e565f8a1b3536083c3f58cf52108f6f455fbbb5bdc68b67ebb92254f4b"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Resignations/Index.cshtml.cs",
+      "sha256": "15e63ac86ccf231eb322c9263ab7a74f39b9fcbef49b2ff1c870ddd50d49a913"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/Shared/_Layout.cshtml",
+      "sha256": "91833dc5f691ab3420d2d31c4efefa498f67e92e7a73f3333aa4344288b5e90b"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/_ViewImports.cshtml",
+      "sha256": "1c207ade458d1a46e95bc14ce2a1afbe96931a1832c310645109dd6e2ee4b30e"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Pages/_ViewStart.cshtml",
+      "sha256": "62afaee3500962d2262cf59943e45ad8be3d3e0d26698b4152a0c4b7705fc129"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Program.cs",
+      "sha256": "63ff7ab428c26efd5e9c0cf5f11aa6a6adf1ba84d7f741b0051511b46c95793d"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Properties/launchSettings.json",
+      "sha256": "db407070fe6f38c86461a6c8ad2da1f43902250206e184c91d497d63159464ee"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/Validation/ThaiModelBindingMessages.cs",
+      "sha256": "24be7bfdcddf34df4142c08dbfc50e3afc4b3d76f297f5203f2230c9f88e2e10"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/packages.lock.json",
+      "sha256": "34d826aa637495263c01c3ae34e5e6252966ac9633370da303911027ef36d565"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/wwwroot/css/site.css",
+      "sha256": "d0294a3d3c46aece6200ff612ee3563c63bba1d9e846841a9bd465bc03945b2e"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/wwwroot/images/association-deer-logo.jpg",
+      "sha256": "98e3263be586edbf6eb2a8a2793e4db449cdc2c9754e443131ca145be00d7676"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/wwwroot/images/exec-3a5e945a-fbfd-49c0-afe1-95781d261508.png",
+      "sha256": "a0cc727bfd567ec23b9e366f9d346f2e583f18edad2273a61fa3b7b3425fd33f"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/wwwroot/js/coordinator-search.js",
+      "sha256": "519e05123ab192d56f330fcd891eea17f72a7344c6505a366e3a80ecaa1d9dfd"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/wwwroot/js/death-table.js",
+      "sha256": "a9ca89468312440e81ab65eb427fb656dcf3a4562a80276c9347f02c15f2af7f"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/wwwroot/js/member-table.js",
+      "sha256": "d9645eaaeb6c29925115d3564dae629d13c779d3a04371c9d59c73710b1561e2"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/wwwroot/js/site.js",
+      "sha256": "7f529b54bf68d216b6c51cf251886bbdff060f841b2ef5aeac6a30e36fb57740"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/wwwroot/js/thai-date.js",
+      "sha256": "3d6c6086530ce9dec6383fe78a832fd63db34e3a6faf436baaffdd4d1ffadceb"
+    },
+    {
+      "path": "src/ChapanakitCare.Web/wwwroot/js/thai-validation.js",
+      "sha256": "f61ca929408fba97ee0cfd2c99bd06b7177370ecb79f62945e56b958fe7a9b24"
+    },
+    {
+      "path": "tests/ChapanakitCare.Desktop.Tests/ChapanakitCare.Desktop.Tests.csproj",
+      "sha256": "94a8eae47132f109aa601bff45d247c70c567d75368ad61a0da935ee985290ce"
+    },
+    {
+      "path": "tests/ChapanakitCare.Desktop.Tests/DesktopDownloadPathTests.cs",
+      "sha256": "c6416cd681594b7ec86dcbd9792bf6345ade66f357b34812159059dcca0cd9ed"
+    },
+    {
+      "path": "tests/ChapanakitCare.Desktop.Tests/DesktopServerLaunchPlanTests.cs",
+      "sha256": "480ce24bb624955f3f720268553f25f8d624daf5f2ee44284a70f8e8a802db4f"
+    },
+    {
+      "path": "tests/ChapanakitCare.Desktop.Tests/packages.lock.json",
+      "sha256": "74ba330c89c679a92424e3da710cac9292d7fd3789cdbaf5d25a99a62299aa3f"
+    },
+    {
+      "path": "tests/ChapanakitCare.Domain.Tests/BusinessRuleTests.cs",
+      "sha256": "1b410e738c2c0c1c38634c10e69626e7da6480476f00b5533d5d18f4c7280fec"
+    },
+    {
+      "path": "tests/ChapanakitCare.Domain.Tests/ChapanakitCare.Domain.Tests.csproj",
+      "sha256": "e8be855eae67ae02ade80f304564bc565c6d98cee7ccf59297bbff22c0b30f8c"
+    },
+    {
+      "path": "tests/ChapanakitCare.Domain.Tests/CheckpointFiveWorkflowTests.cs",
+      "sha256": "629008fb3bdd8866d0f08288baa9177d2a76e3629b1663ba4c69682c308c6f21"
+    },
+    {
+      "path": "tests/ChapanakitCare.Domain.Tests/CheckpointFourReportTests.cs",
+      "sha256": "90c8c4a9640df3d892b0d3c9411bac332cec538d02397d180f6bed372738ef01"
+    },
+    {
+      "path": "tests/ChapanakitCare.Domain.Tests/CheckpointFourWorkflowTests.cs",
+      "sha256": "52daf4eff0ce0fdb712a357d60bf3b0e022bddf206a51da16107185265f7aa28"
+    },
+    {
+      "path": "tests/ChapanakitCare.Domain.Tests/CheckpointThreeFormGuardTests.cs",
+      "sha256": "dec262d0a5c7aa5e6bdd8a55d691e7261aad8f46fa43267824cfef1ccc3d9d81"
+    },
+    {
+      "path": "tests/ChapanakitCare.Domain.Tests/CheckpointThreeWorkflowTests.cs",
+      "sha256": "6982e016798200a2e7a54356f62bd5f39c7886b74851f9bd5b5ef188197715c5"
+    },
+    {
+      "path": "tests/ChapanakitCare.Domain.Tests/CheckpointTwoWorkflowTests.cs",
+      "sha256": "18679b01dcb053b8abacef4ce7fc5624ea78097c86c7dedefe2c34ac7949bc5c"
+    },
+    {
+      "path": "tests/ChapanakitCare.Domain.Tests/CoordinatorIntegrityTests.cs",
+      "sha256": "a3b47df6423ae290e6258b38d488fcf59b766c49b789930d9d944995ee0424a3"
+    },
+    {
+      "path": "tests/ChapanakitCare.Domain.Tests/CoordinatorMigrationTests.cs",
+      "sha256": "f9b8f51210909fcd08a15afdcc05f9240f5c2efa9fdbd7917e3462d1cd49791a"
+    },
+    {
+      "path": "tests/ChapanakitCare.Domain.Tests/CoordinatorPageTests.cs",
+      "sha256": "aa608c9d779c4b8437b8154be214a18eb7a92f7e172cde03c4dea643de76ff9b"
+    },
+    {
+      "path": "tests/ChapanakitCare.Domain.Tests/CoordinatorWorkflowTests.cs",
+      "sha256": "0f2f48bbf4da079d09c64687067c2c540f978fb67399c4f0f0841ca224536e6b"
+    },
+    {
+      "path": "tests/ChapanakitCare.Domain.Tests/DatabaseContractTests.cs",
+      "sha256": "2cc3dc53319578e65c7a5e1ffdb524836e23f86235b600305b691752ce75453c"
+    },
+    {
+      "path": "tests/ChapanakitCare.Domain.Tests/DeathRegistryPageTests.cs",
+      "sha256": "dc0bde2b134e661b5740ea669aec4e8580f2966aa46f1332b672945285d454d1"
+    },
+    {
+      "path": "tests/ChapanakitCare.Domain.Tests/ReportCompletionDataTests.cs",
+      "sha256": "6a42eecf1301c45bfad29b9d712df39d963649988fb25dd1c16184d8823596ea"
+    },
+    {
+      "path": "tests/ChapanakitCare.Domain.Tests/ReportFormSubmissionTests.cs",
+      "sha256": "b5a7960fe9ac8ba9048271599dc72d35424a5f995d43aeeb8bd98f15ace90c3c"
+    },
+    {
+      "path": "tests/ChapanakitCare.Domain.Tests/ReportLayoutTests.cs",
+      "sha256": "d11cf755d0ac9c470060461d73a5353cb7e40fa62bb052766ba38802436b3d34"
+    },
+    {
+      "path": "tests/ChapanakitCare.Domain.Tests/ReportPdfText.cs",
+      "sha256": "0da89c6b85ad7c09b77cfef78ff98b0b41b825a0c19058274f94a0289d77fda8"
+    },
+    {
+      "path": "tests/ChapanakitCare.Domain.Tests/ResignationWorkflowTests.cs",
+      "sha256": "7d85615a5d790dcd2a6a4194351ebc0fcc39837897acaee0ef76a72755304191"
+    },
+    {
+      "path": "tests/ChapanakitCare.Domain.Tests/TestData.cs",
+      "sha256": "84946ecb85f78f6a6ea70f6c42ae54d4bdf308a174dbfad4f4b0139f77d10ffd"
+    },
+    {
+      "path": "tests/ChapanakitCare.Domain.Tests/ThaiBuddhistDateTests.cs",
+      "sha256": "6c9e8bf1b3593f88bad3fd26d0bd59602c9de7838c8c59db0f1ffeb9df5df828"
+    },
+    {
+      "path": "tests/ChapanakitCare.Domain.Tests/ThaiValidationTests.cs",
+      "sha256": "1ed06b9ba69f1a82e4e98bc73a3972c0dfb8f37f3b7b2bc4b5b66c0275c4bb70"
+    },
+    {
+      "path": "tests/ChapanakitCare.Domain.Tests/packages.lock.json",
+      "sha256": "292be2a40bc27f2fc8043cf7c17c01e2776a92454d5298f29638d11740fc7d6a"
+    },
+    {
+      "path": "tests/js/thai-validation.test.mjs",
+      "sha256": "a7408e05aecb6fb4b1fee8a86f46d19651b334ca1b08bfb80a2beeb43ce2a65b"
+    },
+    {
+      "path": "tests/tools/test_build_demo_import.py",
+      "sha256": "69ed4a6dc443c39effd05facd2a24f3e4116a9b0a3585afe785581130fbba40c"
+    },
+    {
+      "path": "tools/build_demo_import.py",
+      "sha256": "c3348f48f6d3b3fcc7f4c0b74b719e72dd3bae4bde3a6c8c854ec0c8c0c66f34"
+    }
+  ],
+  "changedSinceTaskBase": [
+    "docs/design/coordinator-roles.md",
+    "docs/report-references/README.md",
+    "src/ChapanakitCare.Infrastructure/Reports/OfficialReportDocuments.cs",
+    "src/ChapanakitCare.Infrastructure/Reports/OfficialReportModels.cs",
+    "src/ChapanakitCare.Infrastructure/Reports/ReportApplicationService.cs",
+    "src/ChapanakitCare.Web/Pages/Reports/Index.cshtml",
+    "src/ChapanakitCare.Web/Pages/Reports/Index.cshtml.cs",
+    "tests/ChapanakitCare.Domain.Tests/ReportCompletionDataTests.cs",
+    "tests/ChapanakitCare.Domain.Tests/ReportLayoutTests.cs",
+    "tests/ChapanakitCare.Domain.Tests/ReportPdfText.cs"
+  ],
+  "preservedBaseFiles": [
+    ".gitattributes",
+    ".github/workflows/ci.yml",
+    ".gitignore",
+    "AGENTS.md",
+    "ChapanakitCare.sln",
+    "Directory.Build.props",
+    "Directory.Packages.props",
+    "README.md",
+    "docs/architecture.md",
+    "docs/assurance/coordinator-selection/attempts-before-call-1.json",
+    "docs/assurance/coordinator-selection/attempts.json",
+    "docs/assurance/coordinator-selection/backend-green.log",
+    "docs/assurance/coordinator-selection/backend-red.log",
+    "docs/assurance/coordinator-selection/base-state.json",
+    "docs/assurance/coordinator-selection/browser-server.log",
+    "docs/assurance/coordinator-selection/candidate-1-manifest.json",
+    "docs/assurance/coordinator-selection/candidate-1-tests-failed.log",
+    "docs/assurance/coordinator-selection/candidate-build.log",
+    "docs/assurance/coordinator-selection/candidate-format-src.log",
+    "docs/assurance/coordinator-selection/candidate-format-tests.log",
+    "docs/assurance/coordinator-selection/candidate-manifest.json",
+    "docs/assurance/coordinator-selection/candidate-publish.log",
+    "docs/assurance/coordinator-selection/candidate-receipt.md",
+    "docs/assurance/coordinator-selection/candidate-restore.log",
+    "docs/assurance/coordinator-selection/candidate-tests.log",
+    "docs/assurance/coordinator-selection/complete-call-1.json",
+    "docs/assurance/coordinator-selection/coordination-preflight.json",
+    "docs/assurance/coordinator-selection/format-apply.log",
+    "docs/assurance/coordinator-selection/format-scope.txt",
+    "docs/assurance/coordinator-selection/freeze_candidate.py",
+    "docs/assurance/coordinator-selection/integrated-focused.log",
+    "docs/assurance/coordinator-selection/integrity-red.log",
+    "docs/assurance/coordinator-selection/intended-call-1.json",
+    "docs/assurance/coordinator-selection/ledger-call-1.md",
+    "docs/assurance/coordinator-selection/ledger.md",
+    "docs/assurance/coordinator-selection/legacy-expectation-fix.log",
+    "docs/assurance/coordinator-selection/migration-green.log",
+    "docs/assurance/coordinator-selection/migration-red.log",
+    "docs/assurance/coordinator-selection/parent-audit.md",
+    "docs/assurance/coordinator-selection/parent-runtime.json",
+    "docs/assurance/coordinator-selection/prepare-review.py",
+    "docs/assurance/coordinator-selection/readiness-command.txt",
+    "docs/assurance/coordinator-selection/readiness-proof.json",
+    "docs/assurance/coordinator-selection/readiness.json",
+    "docs/assurance/coordinator-selection/reservation-call-1.json",
+    "docs/assurance/coordinator-selection/reservation.ps1",
+    "docs/assurance/coordinator-selection/review-packet.md",
+    "docs/assurance/coordinator-selection/reviewer-runtime.json",
+    "docs/assurance/coordinator-selection/reviewer-verdict.md",
+    "docs/assurance/coordinator-selection/start-call-1.json",
+    "docs/assurance/coordinator-selection/ui-contract.md",
+    "docs/assurance/coordinator-selection/ui-followup.md",
+    "docs/assurance/coordinator-selection/ui-tdd.md",
+    "docs/assurance/coordinator-selection/verify-candidate.ps1",
+    "docs/assurance/coordinator-selection/worker-runtime.json",
+    "docs/demo-script.md",
+    "docs/github-setup.md",
+    "docs/manual-test-checklist.md",
+    "docs/report-references/all-members.png",
+    "docs/report-references/member-by-manager.png",
+    "docs/report-references/monthly-member.png",
+    "docs/report-references/sak-one.png",
+    "docs/verification-profile.md",
+    "global.json",
+    "run-dev.bat",
+    "scripts/dev.ps1",
+    "src/ChapanakitCare.Desktop/App.xaml",
+    "src/ChapanakitCare.Desktop/App.xaml.cs",
+    "src/ChapanakitCare.Desktop/Assets/association-deer-logo.ico",
+    "src/ChapanakitCare.Desktop/Assets/association-deer-logo.jpg",
+    "src/ChapanakitCare.Desktop/ChapanakitCare.Desktop.csproj",
+    "src/ChapanakitCare.Desktop/DesktopBrowserProfile.cs",
+    "src/ChapanakitCare.Desktop/DesktopDownloadPath.cs",
+    "src/ChapanakitCare.Desktop/DesktopReportDownload.cs",
+    "src/ChapanakitCare.Desktop/DesktopServerLaunchPlan.cs",
+    "src/ChapanakitCare.Desktop/MainWindow.xaml",
+    "src/ChapanakitCare.Desktop/MainWindow.xaml.cs",
+    "src/ChapanakitCare.Desktop/packages.lock.json",
+    "src/ChapanakitCare.Domain/BusinessRules.cs",
+    "src/ChapanakitCare.Domain/ChapanakitCare.Domain.csproj",
+    "src/ChapanakitCare.Domain/Entities/Coordinators.cs",
+    "src/ChapanakitCare.Domain/Entities/Entities.cs",
+    "src/ChapanakitCare.Domain/packages.lock.json",
+    "src/ChapanakitCare.Infrastructure/ChapanakitCare.Infrastructure.csproj",
+    "src/ChapanakitCare.Infrastructure/Coordinators/CoordinatorApplicationService.cs",
+    "src/ChapanakitCare.Infrastructure/Deaths/DeathApplicationServices.cs",
+    "src/ChapanakitCare.Infrastructure/Deaths/DeathRegistryPresentation.cs",
+    "src/ChapanakitCare.Infrastructure/Members/InteractiveMemberRegistrationPolicy.cs",
+    "src/ChapanakitCare.Infrastructure/Members/MemberApplicationServices.cs",
+    "src/ChapanakitCare.Infrastructure/Members/ResignationApplicationService.cs",
+    "src/ChapanakitCare.Infrastructure/Persistence/AppDbContext.cs",
+    "src/ChapanakitCare.Infrastructure/Persistence/AppDbContextFactory.cs",
+    "src/ChapanakitCare.Infrastructure/Persistence/BackupApplicationService.cs",
+    "src/ChapanakitCare.Infrastructure/Persistence/CoordinatorWriteGuard.cs",
+    "src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260825001432_InitialFirstDaySchema.Designer.cs",
+    "src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260825001432_InitialFirstDaySchema.cs",
+    "src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260825095425_CheckpointFiveDeathCertificatesAndPreferences.Designer.cs",
+    "src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260825095425_CheckpointFiveDeathCertificatesAndPreferences.cs",
+    "src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260825110538_FinalReviewerClosure.Designer.cs",
+    "src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260825110538_FinalReviewerClosure.cs",
+    "src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260825193212_DemoReadyRoundingAndResignation.Designer.cs",
+    "src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260825193212_DemoReadyRoundingAndResignation.cs",
+    "src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260825213000_ExpenseDeductionDefaults.cs",
+    "src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260825223000_ResignationWorkflow.cs",
+    "src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260904022726_CoordinatorSelection.Designer.cs",
+    "src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260904022726_CoordinatorSelection.cs",
+    "src/ChapanakitCare.Infrastructure/Persistence/Migrations/AppDbContextModelSnapshot.cs",
+    "src/ChapanakitCare.Infrastructure/packages.lock.json",
+    "src/ChapanakitCare.Web/App_Data/demo-members.json",
+    "src/ChapanakitCare.Web/ChapanakitCare.Web.csproj",
+    "src/ChapanakitCare.Web/Pages/Advances/Index.cshtml",
+    "src/ChapanakitCare.Web/Pages/Advances/Index.cshtml.cs",
+    "src/ChapanakitCare.Web/Pages/Coordinators/Index.cshtml",
+    "src/ChapanakitCare.Web/Pages/Coordinators/Index.cshtml.cs",
+    "src/ChapanakitCare.Web/Pages/Deaths/Create.cshtml",
+    "src/ChapanakitCare.Web/Pages/Deaths/Create.cshtml.cs",
+    "src/ChapanakitCare.Web/Pages/Deaths/Index.cshtml",
+    "src/ChapanakitCare.Web/Pages/Deaths/Index.cshtml.cs",
+    "src/ChapanakitCare.Web/Pages/Error.cshtml",
+    "src/ChapanakitCare.Web/Pages/Error.cshtml.cs",
+    "src/ChapanakitCare.Web/Pages/History/Index.cshtml",
+    "src/ChapanakitCare.Web/Pages/History/Index.cshtml.cs",
+    "src/ChapanakitCare.Web/Pages/Index.cshtml",
+    "src/ChapanakitCare.Web/Pages/Index.cshtml.cs",
+    "src/ChapanakitCare.Web/Pages/Members/Create.cshtml",
+    "src/ChapanakitCare.Web/Pages/Members/Create.cshtml.cs",
+    "src/ChapanakitCare.Web/Pages/Members/Edit.cshtml",
+    "src/ChapanakitCare.Web/Pages/Members/Edit.cshtml.cs",
+    "src/ChapanakitCare.Web/Pages/Members/Index.cshtml",
+    "src/ChapanakitCare.Web/Pages/Members/Index.cshtml.cs",
+    "src/ChapanakitCare.Web/Pages/Members/MemberEditorPageModel.cs",
+    "src/ChapanakitCare.Web/Pages/Members/MemberFormInput.cs",
+    "src/ChapanakitCare.Web/Pages/Members/_MemberForm.cshtml",
+    "src/ChapanakitCare.Web/Pages/Resignations/Index.cshtml",
+    "src/ChapanakitCare.Web/Pages/Resignations/Index.cshtml.cs",
+    "src/ChapanakitCare.Web/Pages/Shared/_Layout.cshtml",
+    "src/ChapanakitCare.Web/Pages/_ViewImports.cshtml",
+    "src/ChapanakitCare.Web/Pages/_ViewStart.cshtml",
+    "src/ChapanakitCare.Web/Program.cs",
+    "src/ChapanakitCare.Web/Properties/launchSettings.json",
+    "src/ChapanakitCare.Web/Validation/ThaiModelBindingMessages.cs",
+    "src/ChapanakitCare.Web/packages.lock.json",
+    "src/ChapanakitCare.Web/wwwroot/css/site.css",
+    "src/ChapanakitCare.Web/wwwroot/images/association-deer-logo.jpg",
+    "src/ChapanakitCare.Web/wwwroot/images/exec-3a5e945a-fbfd-49c0-afe1-95781d261508.png",
+    "src/ChapanakitCare.Web/wwwroot/js/coordinator-search.js",
+    "src/ChapanakitCare.Web/wwwroot/js/death-table.js",
+    "src/ChapanakitCare.Web/wwwroot/js/member-table.js",
+    "src/ChapanakitCare.Web/wwwroot/js/site.js",
+    "src/ChapanakitCare.Web/wwwroot/js/thai-date.js",
+    "src/ChapanakitCare.Web/wwwroot/js/thai-validation.js",
+    "tests/ChapanakitCare.Desktop.Tests/ChapanakitCare.Desktop.Tests.csproj",
+    "tests/ChapanakitCare.Desktop.Tests/DesktopDownloadPathTests.cs",
+    "tests/ChapanakitCare.Desktop.Tests/DesktopServerLaunchPlanTests.cs",
+    "tests/ChapanakitCare.Desktop.Tests/packages.lock.json",
+    "tests/ChapanakitCare.Domain.Tests/BusinessRuleTests.cs",
+    "tests/ChapanakitCare.Domain.Tests/ChapanakitCare.Domain.Tests.csproj",
+    "tests/ChapanakitCare.Domain.Tests/CheckpointFiveWorkflowTests.cs",
+    "tests/ChapanakitCare.Domain.Tests/CheckpointFourReportTests.cs",
+    "tests/ChapanakitCare.Domain.Tests/CheckpointFourWorkflowTests.cs",
+    "tests/ChapanakitCare.Domain.Tests/CheckpointThreeFormGuardTests.cs",
+    "tests/ChapanakitCare.Domain.Tests/CheckpointThreeWorkflowTests.cs",
+    "tests/ChapanakitCare.Domain.Tests/CheckpointTwoWorkflowTests.cs",
+    "tests/ChapanakitCare.Domain.Tests/CoordinatorIntegrityTests.cs",
+    "tests/ChapanakitCare.Domain.Tests/CoordinatorMigrationTests.cs",
+    "tests/ChapanakitCare.Domain.Tests/CoordinatorPageTests.cs",
+    "tests/ChapanakitCare.Domain.Tests/CoordinatorWorkflowTests.cs",
+    "tests/ChapanakitCare.Domain.Tests/DatabaseContractTests.cs",
+    "tests/ChapanakitCare.Domain.Tests/DeathRegistryPageTests.cs",
+    "tests/ChapanakitCare.Domain.Tests/ReportFormSubmissionTests.cs",
+    "tests/ChapanakitCare.Domain.Tests/ResignationWorkflowTests.cs",
+    "tests/ChapanakitCare.Domain.Tests/TestData.cs",
+    "tests/ChapanakitCare.Domain.Tests/ThaiBuddhistDateTests.cs",
+    "tests/ChapanakitCare.Domain.Tests/ThaiValidationTests.cs",
+    "tests/ChapanakitCare.Domain.Tests/packages.lock.json",
+    "tests/js/thai-validation.test.mjs",
+    "tests/tools/test_build_demo_import.py",
+    "tools/build_demo_import.py"
+  ],
+  "deliveryArtifacts": "Not applicable: source delivery. Temporary published output is verification evidence, not an installed or delivered application."
+}

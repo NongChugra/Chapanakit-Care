@@ -1,0 +1,21 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.28]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.50]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.56]   Starting:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.DatabaseContractTests.Migrations_create_the_current_schema_and_seed_settings [3 s]
+[xUnit.net 00:00:05.53]   Finished:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.DatabaseContractTests.Database_rejects_member_run_number_that_is_not_exactly_five_characters [584 ms]
+  Passed ChapanakitCare.Domain.Tests.DatabaseContractTests.Database_rejects_a_third_beneficiary_slot [398 ms]
+  Passed ChapanakitCare.Domain.Tests.DatabaseContractTests.Database_seeds_the_single_launcher_settings_row_with_agreed_defaults [130 ms]
+  Passed ChapanakitCare.Domain.Tests.DatabaseContractTests.Ef_model_creates_all_application_tables_in_real_sqlite [104 ms]
+
+Test Run Successful.
+Total tests: 5
+     Passed: 5
+ Total time: 6.6815 Seconds

@@ -1,0 +1,14 @@
+{
+  "CandidateId": "accounting-reduced-20260925-final-2",
+  "Status": "reduced_release_complete_behaviorally_accepted",
+  "ReviewAttempt": 2,
+  "Reviewer": "reduced_final_review",
+  "SourceManifestSHA256": "CF7057B1EB162B905D76BEF41EF1AFE6C3B3B9DB5CCC700ABCD76A41E4D13F93",
+  "DeliveryManifestSHA256": "E0FBB26E1207D1C6CD884926A74C2ADA9F7B49CB7254EB3C7ACFFBA0FDD20D38",
+  "FullSuiteLogSHA256": "AF0AC88DFA94AB2524737BDAB2E7F789DF761479EE8F96C9716B510C993BBAD2",
+  "PublishLogSHA256": "384F194EC76181C0F776396C73A13108EA093FE84ECCCD41D7965C67B2D4D868",
+  "HttpSmokeSHA256": "48A3A70948A7B0E44BB0A5A4F0CC436B7453C322DC47F66274162D99E9E8E71C",
+  "TestsPassed": 317,
+  "Notes": "Exact on-disk candidate including all staged/unstaged/untracked sources. No source changes after final suite. Delivery excludes mutable demo database and rendered sample artifacts. Direct AGENTS assurance applies; archived Solweaver runtime protocol is not installed or triggered.",
+  "FormalReviewerVerdict": "fix-first: inactive archived-framework metadata only; no behavior blockers; no candidate changes required"
+}

@@ -1,0 +1,9 @@
+{
+  "assuranceUnitId": "chapanakit-care/reports/reference-completion",
+  "reopenGeneration": 0,
+  "reviewBudgetMode": "default",
+  "maxReviewCalls": 3,
+  "reviewCallsUsed": 0,
+  "activeReviewReservation": null,
+  "attempts": []
+}

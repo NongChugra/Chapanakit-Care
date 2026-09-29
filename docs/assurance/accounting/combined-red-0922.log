@@ -1,0 +1,249 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.66]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:01.00]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:01.14]   Starting:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Registration_after_cutover_starts_unpaid_until_actual_receipt [7 s]
+[xUnit.net 00:00:08.75]     ChapanakitCare.Domain.Tests.AccountingReportPageTests.Report_page_returns_the_requested_read_only_document_format(format: "pdf", contentType: "application/pdf") [FAIL]
+[xUnit.net 00:00:08.76]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:08.76]       Stack Trace:
+[xUnit.net 00:00:08.82]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Reports.cshtml.cs(29,0): at ChapanakitCare.Web.Pages.Accounting.ReportsModel.OnGetAsync(String format)
+[xUnit.net 00:00:08.82]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportPageTests.cs(104,0): at ChapanakitCare.Domain.Tests.AccountingReportPageTests.Report_page_returns_the_requested_read_only_document_format(String format, String contentType)
+[xUnit.net 00:00:08.82]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportPageTests.cs(111,0): at ChapanakitCare.Domain.Tests.AccountingReportPageTests.Report_page_returns_the_requested_read_only_document_format(String format, String contentType)
+[xUnit.net 00:00:08.82]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:08.88]     ChapanakitCare.Domain.Tests.AccountingResignationTests.Actual_refund_reduces_resigned_member_liability_once_and_rejects_overpayment [FAIL]
+[xUnit.net 00:00:08.88]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:08.88]       Stack Trace:
+[xUnit.net 00:00:08.88]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.Refunds.cs(6,0): at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.RefundAsync(RefundMemberAdvance command, DateTimeOffset now, String actor, CancellationToken ct)
+[xUnit.net 00:00:08.89]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingResignationTests.cs(37,0): at ChapanakitCare.Domain.Tests.AccountingResignationTests.Actual_refund_reduces_resigned_member_liability_once_and_rejects_overpayment()
+[xUnit.net 00:00:08.89]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingResignationTests.cs(42,0): at ChapanakitCare.Domain.Tests.AccountingResignationTests.Actual_refund_reduces_resigned_member_liability_once_and_rejects_overpayment()
+[xUnit.net 00:00:08.89]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:09.53]     ChapanakitCare.Domain.Tests.AccountingReportPageTests.Report_page_returns_the_requested_read_only_document_format(format: "csv", contentType: "text/csv; charset=utf-8") [FAIL]
+[xUnit.net 00:00:09.54]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:09.54]       Stack Trace:
+[xUnit.net 00:00:09.54]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Reports.cshtml.cs(29,0): at ChapanakitCare.Web.Pages.Accounting.ReportsModel.OnGetAsync(String format)
+[xUnit.net 00:00:09.54]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportPageTests.cs(104,0): at ChapanakitCare.Domain.Tests.AccountingReportPageTests.Report_page_returns_the_requested_read_only_document_format(String format, String contentType)
+[xUnit.net 00:00:09.54]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportPageTests.cs(111,0): at ChapanakitCare.Domain.Tests.AccountingReportPageTests.Report_page_returns_the_requested_read_only_document_format(String format, String contentType)
+[xUnit.net 00:00:09.54]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:09.61]     ChapanakitCare.Domain.Tests.AccountingResignationTests.Resignation_uses_exact_money_and_keeps_it_payable_until_actual_refund [FAIL]
+[xUnit.net 00:00:09.61]       Assert.Equal() Failure: Values differ
+[xUnit.net 00:00:09.61]       Expected: 901
+[xUnit.net 00:00:09.61]       Actual:   900
+[xUnit.net 00:00:09.61]       Stack Trace:
+[xUnit.net 00:00:09.61]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingResignationTests.cs(19,0): at ChapanakitCare.Domain.Tests.AccountingResignationTests.Resignation_uses_exact_money_and_keeps_it_payable_until_actual_refund()
+[xUnit.net 00:00:09.61]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingResignationTests.cs(25,0): at ChapanakitCare.Domain.Tests.AccountingResignationTests.Resignation_uses_exact_money_and_keeps_it_payable_until_actual_refund()
+[xUnit.net 00:00:09.61]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:09.96]     ChapanakitCare.Domain.Tests.AccountingReportPageTests.General_ledger_page_scopes_account_choices_to_the_selected_book_and_parses_a_period [FAIL]
+[xUnit.net 00:00:09.96]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:09.96]       Stack Trace:
+[xUnit.net 00:00:09.96]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Reports.cshtml.cs(29,0): at ChapanakitCare.Web.Pages.Accounting.ReportsModel.OnGetAsync(String format)
+[xUnit.net 00:00:09.96]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportPageTests.cs(58,0): at ChapanakitCare.Domain.Tests.AccountingReportPageTests.General_ledger_page_scopes_account_choices_to_the_selected_book_and_parses_a_period()
+[xUnit.net 00:00:09.96]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportPageTests.cs(65,0): at ChapanakitCare.Domain.Tests.AccountingReportPageTests.General_ledger_page_scopes_account_choices_to_the_selected_book_and_parses_a_period()
+[xUnit.net 00:00:09.96]         --- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingReportPageTests.Report_page_returns_the_requested_read_only_document_format(format: "pdf", contentType: "application/pdf") [7 s]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Web.Pages.Accounting.ReportsModel.OnGetAsync(String format) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Reports.cshtml.cs:line 29
+   at ChapanakitCare.Domain.Tests.AccountingReportPageTests.Report_page_returns_the_requested_read_only_document_format(String format, String contentType) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportPageTests.cs:line 104
+   at ChapanakitCare.Domain.Tests.AccountingReportPageTests.Report_page_returns_the_requested_read_only_document_format(String format, String contentType) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportPageTests.cs:line 111
+--- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_converts_buddhist_date_and_baht_then_redirects_to_saved_voucher [7 s]
+  Failed ChapanakitCare.Domain.Tests.AccountingResignationTests.Actual_refund_reduces_resigned_member_liability_once_and_rejects_overpayment [7 s]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.RefundAsync(RefundMemberAdvance command, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.Refunds.cs:line 6
+   at ChapanakitCare.Domain.Tests.AccountingResignationTests.Actual_refund_reduces_resigned_member_liability_once_and_rejects_overpayment() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingResignationTests.cs:line 37
+   at ChapanakitCare.Domain.Tests.AccountingResignationTests.Actual_refund_reduces_resigned_member_liability_once_and_rejects_overpayment() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingResignationTests.cs:line 42
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingReportPageTests.Report_page_returns_the_requested_read_only_document_format(format: "csv", contentType: "text/csv; charset=utf-8") [791 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Web.Pages.Accounting.ReportsModel.OnGetAsync(String format) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Reports.cshtml.cs:line 29
+   at ChapanakitCare.Domain.Tests.AccountingReportPageTests.Report_page_returns_the_requested_read_only_document_format(String format, String contentType) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportPageTests.cs:line 104
+   at ChapanakitCare.Domain.Tests.AccountingReportPageTests.Report_page_returns_the_requested_read_only_document_format(String format, String contentType) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportPageTests.cs:line 111
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingResignationTests.Resignation_uses_exact_money_and_keeps_it_payable_until_actual_refund [723 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 901
+Actual:   900
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingResignationTests.Resignation_uses_exact_money_and_keeps_it_payable_until_actual_refund() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingResignationTests.cs:line 19
+   at ChapanakitCare.Domain.Tests.AccountingResignationTests.Resignation_uses_exact_money_and_keeps_it_payable_until_actual_refund() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingResignationTests.cs:line 25
+--- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_download_returns_the_selected_document_format(format: "csv", contentType: "text/csv; charset=utf-8") [991 ms]
+  Failed ChapanakitCare.Domain.Tests.AccountingReportPageTests.General_ledger_page_scopes_account_choices_to_the_selected_book_and_parses_a_period [421 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Web.Pages.Accounting.ReportsModel.OnGetAsync(String format) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Reports.cshtml.cs:line 29
+   at ChapanakitCare.Domain.Tests.AccountingReportPageTests.General_ledger_page_scopes_account_choices_to_the_selected_book_and_parses_a_period() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportPageTests.cs:line 58
+   at ChapanakitCare.Domain.Tests.AccountingReportPageTests.General_ledger_page_scopes_account_choices_to_the_selected_book_and_parses_a_period() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportPageTests.cs:line 65
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:10.14]     ChapanakitCare.Domain.Tests.AccountingMigrationTests.Upgrade_from_pre_accounting_database_preserves_member_snapshot_and_unit_ledger [FAIL]
+[xUnit.net 00:00:10.14]       System.InvalidOperationException : An error was generated for warning 'Microsoft.EntityFrameworkCore.Migrations.PendingModelChangesWarning': The model for context 'AppDbContext' has pending changes. Add a new migration before updating the database. See https://aka.ms/efcore-docs-pending-changes. This exception can be suppressed or logged by passing event ID 'RelationalEventId.PendingModelChangesWarning' to the 'ConfigureWarnings' method in 'DbContext.OnConfiguring' or 'AddDbContext'.
+[xUnit.net 00:00:10.14]       Stack Trace:
+[xUnit.net 00:00:10.14]            at Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`1.Log[TLoggerCategory](IDiagnosticsLogger`1 logger, TParam arg)
+[xUnit.net 00:00:10.14]            at Microsoft.EntityFrameworkCore.Diagnostics.RelationalLoggerExtensions.PendingModelChangesWarning(IDiagnosticsLogger`1 diagnostics, Type contextType)
+[xUnit.net 00:00:10.14]            at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.ValidateMigrations(Boolean useTransaction, String targetMigration)
+[xUnit.net 00:00:10.14]            at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.MigrateAsync(String targetMigration, CancellationToken cancellationToken)
+[xUnit.net 00:00:10.14]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs(37,0): at ChapanakitCare.Domain.Tests.AccountingMigrationTests.Upgrade_from_pre_accounting_database_preserves_member_snapshot_and_unit_ledger()
+[xUnit.net 00:00:10.14]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs(56,0): at ChapanakitCare.Domain.Tests.AccountingMigrationTests.Upgrade_from_pre_accounting_database_preserves_member_snapshot_and_unit_ledger()
+[xUnit.net 00:00:10.14]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:10.16]     ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Death_form_displays_accounting_setup_error_without_saving_a_death [FAIL]
+[xUnit.net 00:00:10.16]       ChapanakitCare.Infrastructure.Accounting.AccountingValidationException : กรุณาเปิดสมุดบัญชีสมาคมก่อนยืนยันเงินสงเคราะห์
+[xUnit.net 00:00:10.16]       Stack Trace:
+[xUnit.net 00:00:10.16]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\DeathAccountingService.cs(33,0): at ChapanakitCare.Infrastructure.AccountingOperations.DeathAccountingService.AccrueAsync(DeathCase death, DeathBenefitResult calculation, IReadOnlyList`1 beneficiaries, Int32 feeBasisPoints, String actor, CancellationToken ct)
+[xUnit.net 00:00:10.16]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Deaths\DeathApplicationServices.cs(163,0): at ChapanakitCare.Infrastructure.Deaths.DeathApplicationService.ConfirmAsync(ConfirmDeathCommand command, DateOnly businessDate, DateTimeOffset now, String actor, CancellationToken ct)
+[xUnit.net 00:00:10.16]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Deaths\DeathApplicationServices.cs(171,0): at ChapanakitCare.Infrastructure.Deaths.DeathApplicationService.ConfirmAsync(ConfirmDeathCommand command, DateOnly businessDate, DateTimeOffset now, String actor, CancellationToken ct)
+[xUnit.net 00:00:10.16]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Deaths\DeathApplicationServices.cs(174,0): at ChapanakitCare.Infrastructure.Deaths.DeathApplicationService.ConfirmAsync(ConfirmDeathCommand command, DateOnly businessDate, DateTimeOffset now, String actor, CancellationToken ct)
+[xUnit.net 00:00:10.16]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Deaths\Create.cshtml.cs(90,0): at ChapanakitCare.Web.Pages.Deaths.CreateModel.OnPostConfirmAsync()
+[xUnit.net 00:00:10.16]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingWorkflowGuardTests.cs(21,0): at ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Death_form_displays_accounting_setup_error_without_saving_a_death()
+[xUnit.net 00:00:10.16]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingWorkflowGuardTests.cs(23,0): at ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Death_form_displays_accounting_setup_error_without_saving_a_death()
+[xUnit.net 00:00:10.16]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:10.39]     ChapanakitCare.Domain.Tests.AccountingMigrationTests.Current_model_has_no_unmigrated_accounting_changes [FAIL]
+[xUnit.net 00:00:10.39]       Assert.False() Failure
+[xUnit.net 00:00:10.39]       Expected: False
+[xUnit.net 00:00:10.39]       Actual:   True
+[xUnit.net 00:00:10.39]       Stack Trace:
+[xUnit.net 00:00:10.39]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs(20,0): at ChapanakitCare.Domain.Tests.AccountingMigrationTests.Current_model_has_no_unmigrated_accounting_changes()
+[xUnit.net 00:00:10.39]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:10.39]            at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:10.39]     ChapanakitCare.Domain.Tests.AccountingReportPageTests.Trial_balance_page_uses_the_selected_book_and_business_date_cutoff [FAIL]
+[xUnit.net 00:00:10.39]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:10.39]       Stack Trace:
+[xUnit.net 00:00:10.39]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Reports.cshtml.cs(29,0): at ChapanakitCare.Web.Pages.Accounting.ReportsModel.OnGetAsync(String format)
+[xUnit.net 00:00:10.39]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportPageTests.cs(32,0): at ChapanakitCare.Domain.Tests.AccountingReportPageTests.Trial_balance_page_uses_the_selected_book_and_business_date_cutoff()
+[xUnit.net 00:00:10.40]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportPageTests.cs(40,0): at ChapanakitCare.Domain.Tests.AccountingReportPageTests.Trial_balance_page_uses_the_selected_book_and_business_date_cutoff()
+[xUnit.net 00:00:10.40]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:10.71]     ChapanakitCare.Domain.Tests.AccountingReportPageTests.Report_page_rejects_unknown_book_and_malformed_buddhist_date_without_falling_back [FAIL]
+[xUnit.net 00:00:10.71]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:10.71]       Stack Trace:
+[xUnit.net 00:00:10.71]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Reports.cshtml.cs(29,0): at ChapanakitCare.Web.Pages.Accounting.ReportsModel.OnGetAsync(String format)
+[xUnit.net 00:00:10.71]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportPageTests.cs(81,0): at ChapanakitCare.Domain.Tests.AccountingReportPageTests.Report_page_rejects_unknown_book_and_malformed_buddhist_date_without_falling_back()
+[xUnit.net 00:00:10.71]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportPageTests.cs(87,0): at ChapanakitCare.Domain.Tests.AccountingReportPageTests.Report_page_rejects_unknown_book_and_malformed_buddhist_date_without_falling_back()
+[xUnit.net 00:00:10.71]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:11.13]     ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Legacy_reset_page_displays_validation_instead_of_throwing_when_accounting_is_active [FAIL]
+[xUnit.net 00:00:11.13]       ChapanakitCare.Infrastructure.Members.MemberValidationException : เปิดบัญชีเงินสงเคราะห์แล้ว กรุณาสร้างใบเรียกเก็บและบันทึกรับเงินจริงแทนการรีเซ็ตยอด
+[xUnit.net 00:00:11.13]       Stack Trace:
+[xUnit.net 00:00:11.13]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Deaths\DeathApplicationServices.cs(210,0): at ChapanakitCare.Infrastructure.Deaths.AdvanceResetService.ResetAsync(String trigger, String idempotencyKey, DateOnly date, DateTimeOffset now, String actor, CancellationToken ct)
+[xUnit.net 00:00:11.13]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Advances\Index.cshtml.cs(37,0): at ChapanakitCare.Web.Pages.Advances.IndexModel.OnPostResetAsync()
+[xUnit.net 00:00:11.13]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingWorkflowGuardTests.cs(33,0): at ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Legacy_reset_page_displays_validation_instead_of_throwing_when_accounting_is_active()
+[xUnit.net 00:00:11.13]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingWorkflowGuardTests.cs(35,0): at ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Legacy_reset_page_displays_validation_instead_of_throwing_when_accounting_is_active()
+[xUnit.net 00:00:11.13]         --- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingMigrationTests.Upgrade_from_pre_accounting_database_preserves_member_snapshot_and_unit_ledger [8 s]
+  Error Message:
+   System.InvalidOperationException : An error was generated for warning 'Microsoft.EntityFrameworkCore.Migrations.PendingModelChangesWarning': The model for context 'AppDbContext' has pending changes. Add a new migration before updating the database. See https://aka.ms/efcore-docs-pending-changes. This exception can be suppressed or logged by passing event ID 'RelationalEventId.PendingModelChangesWarning' to the 'ConfigureWarnings' method in 'DbContext.OnConfiguring' or 'AddDbContext'.
+  Stack Trace:
+     at Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`1.Log[TLoggerCategory](IDiagnosticsLogger`1 logger, TParam arg)
+   at Microsoft.EntityFrameworkCore.Diagnostics.RelationalLoggerExtensions.PendingModelChangesWarning(IDiagnosticsLogger`1 diagnostics, Type contextType)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.ValidateMigrations(Boolean useTransaction, String targetMigration)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.MigrateAsync(String targetMigration, CancellationToken cancellationToken)
+   at ChapanakitCare.Domain.Tests.AccountingMigrationTests.Upgrade_from_pre_accounting_database_preserves_member_snapshot_and_unit_ledger() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs:line 37
+   at ChapanakitCare.Domain.Tests.AccountingMigrationTests.Upgrade_from_pre_accounting_database_preserves_member_snapshot_and_unit_ledger() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs:line 56
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Death_form_displays_accounting_setup_error_without_saving_a_death [1 s]
+  Error Message:
+   ChapanakitCare.Infrastructure.Accounting.AccountingValidationException : กรุณาเปิดสมุดบัญชีสมาคมก่อนยืนยันเงินสงเคราะห์
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingOperations.DeathAccountingService.AccrueAsync(DeathCase death, DeathBenefitResult calculation, IReadOnlyList`1 beneficiaries, Int32 feeBasisPoints, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\DeathAccountingService.cs:line 33
+   at ChapanakitCare.Infrastructure.Deaths.DeathApplicationService.ConfirmAsync(ConfirmDeathCommand command, DateOnly businessDate, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Deaths\DeathApplicationServices.cs:line 163
+   at ChapanakitCare.Infrastructure.Deaths.DeathApplicationService.ConfirmAsync(ConfirmDeathCommand command, DateOnly businessDate, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Deaths\DeathApplicationServices.cs:line 171
+   at ChapanakitCare.Infrastructure.Deaths.DeathApplicationService.ConfirmAsync(ConfirmDeathCommand command, DateOnly businessDate, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Deaths\DeathApplicationServices.cs:line 174
+   at ChapanakitCare.Web.Pages.Deaths.CreateModel.OnPostConfirmAsync() in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Deaths\Create.cshtml.cs:line 90
+   at ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Death_form_displays_accounting_setup_error_without_saving_a_death() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingWorkflowGuardTests.cs:line 21
+   at ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Death_form_displays_accounting_setup_error_without_saving_a_death() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingWorkflowGuardTests.cs:line 23
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingMigrationTests.Current_model_has_no_unmigrated_accounting_changes [248 ms]
+  Error Message:
+   Assert.False() Failure
+Expected: False
+Actual:   True
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingMigrationTests.Current_model_has_no_unmigrated_accounting_changes() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs:line 20
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed ChapanakitCare.Domain.Tests.AccountingReportPageTests.Trial_balance_page_uses_the_selected_book_and_business_date_cutoff [429 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Web.Pages.Accounting.ReportsModel.OnGetAsync(String format) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Reports.cshtml.cs:line 29
+   at ChapanakitCare.Domain.Tests.AccountingReportPageTests.Trial_balance_page_uses_the_selected_book_and_business_date_cutoff() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportPageTests.cs:line 32
+   at ChapanakitCare.Domain.Tests.AccountingReportPageTests.Trial_balance_page_uses_the_selected_book_and_business_date_cutoff() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportPageTests.cs:line 40
+--- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_books_preserve_member_history [416 ms]
+  Failed ChapanakitCare.Domain.Tests.AccountingReportPageTests.Report_page_rejects_unknown_book_and_malformed_buddhist_date_without_falling_back [320 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Web.Pages.Accounting.ReportsModel.OnGetAsync(String format) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Reports.cshtml.cs:line 29
+   at ChapanakitCare.Domain.Tests.AccountingReportPageTests.Report_page_rejects_unknown_book_and_malformed_buddhist_date_without_falling_back() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportPageTests.cs:line 81
+   at ChapanakitCare.Domain.Tests.AccountingReportPageTests.Report_page_rejects_unknown_book_and_malformed_buddhist_date_without_falling_back() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportPageTests.cs:line 87
+--- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_books_preserve_the_four_percent_policy [218 ms]
+  Failed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Legacy_reset_page_displays_validation_instead_of_throwing_when_accounting_is_active [320 ms]
+  Error Message:
+   ChapanakitCare.Infrastructure.Members.MemberValidationException : เปิดบัญชีเงินสงเคราะห์แล้ว กรุณาสร้างใบเรียกเก็บและบันทึกรับเงินจริงแทนการรีเซ็ตยอด
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.Deaths.AdvanceResetService.ResetAsync(String trigger, String idempotencyKey, DateOnly date, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Deaths\DeathApplicationServices.cs:line 210
+   at ChapanakitCare.Web.Pages.Advances.IndexModel.OnPostResetAsync() in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Advances\Index.cshtml.cs:line 37
+   at ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Legacy_reset_page_displays_validation_instead_of_throwing_when_accounting_is_active() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingWorkflowGuardTests.cs:line 33
+   at ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Legacy_reset_page_displays_validation_instead_of_throwing_when_accounting_is_active() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingWorkflowGuardTests.cs:line 35
+--- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Failed_death_accounting_cannot_persist_deceased_status_on_later_save [374 ms]
+[xUnit.net 00:00:12.12]       Assert.IsType() Failure: Value is not the exact type
+[xUnit.net 00:00:12.12]     ChapanakitCare.Domain.Tests.AccountingPageTests.Benefit_payment_form_posts_against_the_chosen_beneficiary [FAIL]
+[xUnit.net 00:00:12.12]       Expected: typeof(Microsoft.AspNetCore.Mvc.RedirectToPageResult)
+[xUnit.net 00:00:12.12]       Actual:   typeof(Microsoft.AspNetCore.Mvc.RazorPages.PageResult)
+[xUnit.net 00:00:12.12]       Stack Trace:
+[xUnit.net 00:00:12.12]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs(38,0): at ChapanakitCare.Domain.Tests.AccountingPageTests.Benefit_payment_form_posts_against_the_chosen_beneficiary()
+[xUnit.net 00:00:12.12]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs(39,0): at ChapanakitCare.Domain.Tests.AccountingPageTests.Benefit_payment_form_posts_against_the_chosen_beneficiary()
+[xUnit.net 00:00:12.12]         --- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_download_returns_the_selected_document_format(format: "pdf", contentType: "application/pdf") [1 s]
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_accounting_rejects_unit_reset_without_creating_paid_balances [324 ms]
+  Failed ChapanakitCare.Domain.Tests.AccountingPageTests.Benefit_payment_form_posts_against_the_chosen_beneficiary [518 ms]
+  Error Message:
+   Assert.IsType() Failure: Value is not the exact type
+Expected: typeof(Microsoft.AspNetCore.Mvc.RedirectToPageResult)
+Actual:   typeof(Microsoft.AspNetCore.Mvc.RazorPages.PageResult)
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingPageTests.Benefit_payment_form_posts_against_the_chosen_beneficiary() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs:line 38
+   at ChapanakitCare.Domain.Tests.AccountingPageTests.Benefit_payment_form_posts_against_the_chosen_beneficiary() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs:line 39
+--- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(kind: "expense", target: "5000", expectedTarget: 2500, expectedCash: 7500) [307 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(kind: "transfer", target: "1100", expectedTarget: 2500, expectedCash: 7500) [276 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_rejects_subsatang_input_without_posting [231 ms]
+[xUnit.net 00:00:13.85]     ChapanakitCare.Domain.Tests.AccountingPageTests.Fee_remittance_form_posts_both_books_without_new_income [FAIL]
+[xUnit.net 00:00:13.85]       Assert.IsType() Failure: Value is not the exact type
+[xUnit.net 00:00:13.86]       Expected: typeof(Microsoft.AspNetCore.Mvc.RedirectToPageResult)
+[xUnit.net 00:00:13.86]       Actual:   typeof(Microsoft.AspNetCore.Mvc.RazorPages.PageResult)
+[xUnit.net 00:00:13.86]       Stack Trace:
+[xUnit.net 00:00:13.86]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs(22,0): at ChapanakitCare.Domain.Tests.AccountingPageTests.Fee_remittance_form_posts_both_books_without_new_income()
+[xUnit.net 00:00:13.86]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs(24,0): at ChapanakitCare.Domain.Tests.AccountingPageTests.Fee_remittance_form_posts_both_books_without_new_income()
+[xUnit.net 00:00:13.86]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:13.87]   Finished:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_reissue_keeps_original_number_and_shows_reversed_status [438 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Expense_form_lists_only_association_accounts [232 ms]
+  Failed ChapanakitCare.Domain.Tests.AccountingPageTests.Fee_remittance_form_posts_both_books_without_new_income [241 ms]
+  Error Message:
+   Assert.IsType() Failure: Value is not the exact type
+Expected: typeof(Microsoft.AspNetCore.Mvc.RedirectToPageResult)
+Actual:   typeof(Microsoft.AspNetCore.Mvc.RazorPages.PageResult)
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingPageTests.Fee_remittance_form_posts_both_books_without_new_income() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs:line 22
+   at ChapanakitCare.Domain.Tests.AccountingPageTests.Fee_remittance_form_posts_both_books_without_new_income() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs:line 24
+--- End of stack trace from previous location ---
+
+Test Run Failed.
+Total tests: 26
+     Passed: 13
+     Failed: 13
+ Total time: 15.6235 Seconds

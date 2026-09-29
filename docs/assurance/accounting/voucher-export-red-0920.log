@@ -1,0 +1,57 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.13]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.22]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.27]   Starting:    ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:02.67]     ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_download_returns_the_selected_document_format(format: "csv", contentType: "text/csv; charset=utf-8") [FAIL]
+[xUnit.net 00:00:02.67]       Assert.IsType() Failure: Value is not the exact type
+[xUnit.net 00:00:02.67]       Expected: typeof(Microsoft.AspNetCore.Mvc.FileContentResult)
+[xUnit.net 00:00:02.67]       Actual:   typeof(Microsoft.AspNetCore.Mvc.RazorPages.PageResult)
+[xUnit.net 00:00:02.67]       Stack Trace:
+[xUnit.net 00:00:02.67]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs(22,0): at ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_download_returns_the_selected_document_format(String format, String contentType)
+[xUnit.net 00:00:02.67]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs(26,0): at ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_download_returns_the_selected_document_format(String format, String contentType)
+[xUnit.net 00:00:02.67]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:02.83]       Assert.IsType() Failure: Value is not the exact type
+[xUnit.net 00:00:02.83]     ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_download_returns_the_selected_document_format(format: "pdf", contentType: "application/pdf") [FAIL]
+[xUnit.net 00:00:02.83]       Expected: typeof(Microsoft.AspNetCore.Mvc.FileContentResult)
+[xUnit.net 00:00:02.83]       Actual:   typeof(Microsoft.AspNetCore.Mvc.RazorPages.PageResult)
+[xUnit.net 00:00:02.83]       Stack Trace:
+[xUnit.net 00:00:02.83]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs(22,0): at ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_download_returns_the_selected_document_format(String format, String contentType)
+[xUnit.net 00:00:02.83]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs(26,0): at ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_download_returns_the_selected_document_format(String format, String contentType)
+[xUnit.net 00:00:02.83]         --- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_converts_buddhist_date_and_baht_then_redirects_to_saved_voucher [2 s]
+  Failed ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_download_returns_the_selected_document_format(format: "csv", contentType: "text/csv; charset=utf-8") [147 ms]
+  Error Message:
+   Assert.IsType() Failure: Value is not the exact type
+Expected: typeof(Microsoft.AspNetCore.Mvc.FileContentResult)
+Actual:   typeof(Microsoft.AspNetCore.Mvc.RazorPages.PageResult)
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_download_returns_the_selected_document_format(String format, String contentType) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs:line 22
+   at ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_download_returns_the_selected_document_format(String format, String contentType) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs:line 26
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_download_returns_the_selected_document_format(format: "pdf", contentType: "application/pdf") [167 ms]
+  Error Message:
+   Assert.IsType() Failure: Value is not the exact type
+Expected: typeof(Microsoft.AspNetCore.Mvc.FileContentResult)
+Actual:   typeof(Microsoft.AspNetCore.Mvc.RazorPages.PageResult)
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_download_returns_the_selected_document_format(String format, String contentType) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs:line 22
+   at ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_download_returns_the_selected_document_format(String format, String contentType) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs:line 26
+--- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(kind: "expense", target: "5000", expectedTarget: 2500, expectedCash: 7500) [103 ms]
+[xUnit.net 00:00:03.35]   Finished:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(kind: "transfer", target: "1100", expectedTarget: 2500, expectedCash: 7500) [85 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_rejects_subsatang_input_without_posting [74 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_reissue_keeps_original_number_and_shows_reversed_status [165 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Expense_form_lists_only_association_accounts [85 ms]
+
+Test Run Failed.
+Total tests: 8
+     Passed: 6
+     Failed: 2
+ Total time: 3.9129 Seconds

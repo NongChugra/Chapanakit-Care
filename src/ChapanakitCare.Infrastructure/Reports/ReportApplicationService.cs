@@ -26,7 +26,18 @@ public static class DeathReportRows
 
 public sealed class ReportApplicationService(AppDbContext database)
 {
-    public async Task<IReadOnlyList<string>> GetManagerGroupsAsync(CancellationToken ct = default) => await database.Members.AsNoTracking().Where(x => x.GroupNo != null && x.GroupNo != "").Select(x => x.GroupNo!).Distinct().OrderBy(x => x).ToListAsync(ct);
+    public async Task<IReadOnlyList<ManagerGroupOption>> GetManagerGroupOptionsAsync(CancellationToken ct = default)
+    {
+        var groups = await GetManagerGroupsAsync(ct);
+        var leaders = await (from position in database.CoordinatorPositions.AsNoTracking()
+                             join member in database.Members.AsNoTracking() on position.MemberId equals member.Id
+                             where position.RoleCode == "group_leader" && position.GroupNo == member.GroupNo
+                                 && member.ArchivedAtUtc == null && member.Status == MemberStatus.Normal
+                             select new { GroupNo = position.GroupNo!, Member = member }).ToListAsync(ct);
+        return groups.Select(group => new ManagerGroupOption(group,
+            leaders.FirstOrDefault(leader => leader.GroupNo == group) is { } leader ? Name(leader.Member) : null)).ToArray();
+    }
+    public async Task<IReadOnlyList<string>> GetManagerGroupsAsync(CancellationToken ct = default) => await database.Members.AsNoTracking().Where(x => x.ArchivedAtUtc == null && x.GroupNo != null && x.GroupNo != "").Select(x => x.GroupNo!).Distinct().OrderBy(x => x).ToListAsync(ct);
     public async Task<DateOnly?> GetLatestMemberApplicationMonthAsync(CancellationToken ct = default)
     {
         var latest = await database.Members.AsNoTracking().Where(x => x.ArchivedAtUtc == null).Select(x => (DateOnly?)x.ApplicationDate).MaxAsync(ct);
@@ -45,26 +56,110 @@ public sealed class ReportApplicationService(AppDbContext database)
         var members = await LoadMembersAsync(x => x.GroupNo == groupNo, ct);
         var rows = ExpandMemberRows(members);
         QuestPDF.Settings.License = LicenseType.Evaluation;
-        return OfficialReportDocuments.MemberByManager(groupNo, rows);
+        var group = (await GetManagerGroupOptionsAsync(ct)).FirstOrDefault(x => x.GroupNo == groupNo);
+        return OfficialReportDocuments.MemberByManager(groupNo, rows, group?.LeaderName);
     }
     public async Task<byte[]> GenerateMonthlySummaryAsync(ReportPeriod period, CancellationToken ct = default)
     {
         period.Validate();
-        var opening = await database.Members.CountAsync(x => x.ArchivedAtUtc == null && x.ApplicationDate < period.From, ct);
-        var added = await database.Members.CountAsync(x => x.ArchivedAtUtc == null && x.ApplicationDate >= period.From && x.ApplicationDate <= period.To, ct);
-        var resigned = await database.MemberStatusEvents.CountAsync(x => x.ToStatus == "resigned" && x.EffectiveDate >= period.From && x.EffectiveDate <= period.To, ct);
-        var deaths = await database.DeathCases.CountAsync(x => x.RecordState == "confirmed" && x.RecordedBusinessDate >= period.From && x.RecordedBusinessDate <= period.To, ct);
+        var admitted = await database.Members.AsNoTracking().Where(x => x.ArchivedAtUtc == null && x.ApplicationDate <= period.To).Select(x => new { x.Id, x.ApplicationDate }).ToListAsync(ct);
+        var exits = await LoadExitsAsync(period.To, ct);
+        var opening = admitted.Count(x => x.ApplicationDate < period.From && (!exits.TryGetValue(x.Id, out var exit) || exit.Date >= period.From));
+        var added = admitted.Count(x => x.ApplicationDate >= period.From);
+        var periodExits = admitted.Where(x => exits.TryGetValue(x.Id, out var exit) && exit.Date >= period.From).Select(x => exits[x.Id]).ToArray();
+        var resigned = periodExits.Count(x => x.Status == "resigned");
+        var deaths = periodExits.Count(x => x.Status == "deceased");
+        var expelled = periodExits.Count(x => x.Status == "expelled");
         var members = await LoadMembersAsync(x => x.ApplicationDate >= period.From && x.ApplicationDate <= period.To, ct);
         var rows = members.SelectMany((x, i) => ExpandMonthly(x, i + 1, period.To)).ToArray();
-        return OfficialReportDocuments.Monthly(period, opening, added, resigned, deaths, 0, Math.Max(0, opening + added - resigned - deaths), rows);
+        return OfficialReportDocuments.Monthly(period, opening, added, resigned, deaths, expelled, opening + added - resigned - deaths - expelled, rows);
     }
     public Task<byte[]> GenerateDeathReportAsync(ReportPeriod period, CancellationToken ct = default) => GenerateAsync(period, "รายงานสมาชิกเสียชีวิต", ct);
     public async Task<byte[]> GenerateSakOneAsync(ReportPeriod period, CancellationToken ct = default)
     {
         period.Validate();
-        var members = await LoadMembersAsync(x => x.ApplicationDate >= period.From && x.ApplicationDate <= period.To, ct);
-        var rows = members.Select((x, i) => new SakOneReportRow((i + 1).ToString(), Name(x.Member), x.Member.RunNo, ThaiDate(x.Member.ApplicationDate), "-", ThaiDate(x.Member.BirthDate), Address(x.Member), x.Beneficiaries.Count == 0 ? "-" : string.Join("\n", x.Beneficiaries.Select(Name)), "-", "-", "-", "-", "-", "-", "-")).ToArray();
+        var fromUtc = LocalDayStartUtc(period.From);
+        var throughUtc = LocalDayStartUtc(period.To.AddDays(1));
+        var audits = await database.AuditEvents.FromSqlInterpolated($"SELECT * FROM audit_events WHERE action = 'member.updated' AND member_id IS NOT NULL AND julianday(occurred_at_utc) >= julianday({fromUtc:O}) AND julianday(occurred_at_utc) < julianday({throughUtc:O})")
+            .AsNoTracking().ToListAsync(ct);
+        var auditIds = audits.Select(x => x.Id).ToArray();
+        var changes = await database.AuditFieldChanges.AsNoTracking()
+            .Where(x => auditIds.Contains(x.AuditEventId)).ToListAsync(ct);
+        var changedMemberIds = audits.Where(x => changes.Any(change => change.AuditEventId == x.Id))
+            .Select(x => x.MemberId!.Value).Distinct().ToArray();
+        var members = await LoadMembersAsync(x =>
+            (x.ApplicationDate >= period.From && x.ApplicationDate <= period.To) || changedMemberIds.Contains(x.Id), ct);
+        var exits = await LoadExitsAsync(period.To, ct);
+        var rows = new List<SakOneReportRow>();
+        foreach (var (x, i) in members.Select((member, index) => (member, index)))
+        {
+            exits.TryGetValue(x.Member.Id, out var exit);
+            var memberChanges = (from audit in audits
+                                 where audit.MemberId == x.Member.Id
+                                 from change in changes
+                                 where change.AuditEventId == audit.Id
+                                 orderby audit.OccurredAtUtc, change.FieldName
+                                 select (audit, change)).ToArray();
+            var baseRow = new SakOneReportRow((i + 1).ToString(), Name(x.Member), x.Member.RunNo,
+                ThaiDate(x.Member.ApplicationDate), "-", ThaiDate(x.Member.BirthDate), Address(x.Member),
+                x.Beneficiaries.Count == 0 ? "-" : string.Join("\n", x.Beneficiaries.Select(Name)),
+                "-", "-", "-", "-", exit is null ? "-" : ThaiDate(exit.Date),
+                exit?.Status switch { "resigned" => "ลาออก", "deceased" => "เสียชีวิต", "expelled" => "ให้ออก", _ => "-" }, "-");
+            if (memberChanges.Length == 0) { rows.Add(baseRow); continue; }
+            foreach (var (audit, change) in memberChanges)
+            {
+                rows.Add(baseRow with
+                {
+                    ChangedDate = ThaiDate(DateOnly.FromDateTime(audit.OccurredAtUtc.ToLocalTime().DateTime)),
+                    ChangedFrom = $"{ChangeLabel(change.FieldName)}: {change.OldValueDisplay ?? "–"}",
+                    ChangedTo = change.NewValueDisplay ?? "–"
+                });
+                baseRow = baseRow with { SequenceNo = "", MemberName = "", RunNo = "", ApplicationDate = "",
+                    MemberType = "", BirthDate = "", Address = "", Beneficiary = "", FuneralManager = "",
+                    EndDate = "", EndReason = "", Notes = "", Spouse = "" };
+            }
+        }
         return OfficialReportDocuments.SakOne(period, rows);
+    }
+
+    private static DateTimeOffset LocalDayStartUtc(DateOnly day)
+    {
+        var local = day.ToDateTime(TimeOnly.MinValue);
+        return new DateTimeOffset(local, TimeZoneInfo.Local.GetUtcOffset(local)).ToUniversalTime();
+    }
+
+    private static string ChangeLabel(string field)
+    {
+        var beneficiary = field.Split('.', 2);
+        if (beneficiary.Length == 2 && beneficiary[0].StartsWith("Beneficiary", StringComparison.Ordinal)
+            && int.TryParse(beneficiary[0]["Beneficiary".Length..], out var slot))
+            return $"ผู้รับเงิน {slot}: {ChangeLabel(beneficiary[1])}";
+        return field switch
+        {
+        "Title" => "คำนำหน้า", "FirstName" => "ชื่อ", "LastName" => "นามสกุล",
+        "Gender" => "เพศ", "PersonalIdCard" => "เลขประชาชน", "BirthDate" => "วันเกิด",
+        "Relationship" => "ความสัมพันธ์",
+        "Mobile" => "โทรศัพท์", "HouseNo" => "บ้านเลขที่", "Moo" => "หมู่ที่",
+        "Under" => "หมู่บ้าน", "Subdistrict" => "ตำบล", "District" => "อำเภอ",
+        "Province" => "จังหวัด", "PostalCode" => "รหัสไปรษณีย์", "GroupNo" => "กลุ่มสมาชิก",
+        "ApplicationDate" => "วันที่สมัคร", "ApprovalDate" => "วันอนุมัติ",
+        _ => field
+        };
+    }
+
+    private sealed record MembershipExit(Guid MemberId, DateOnly Date, string Status);
+
+    private async Task<IReadOnlyDictionary<Guid, MembershipExit>> LoadExitsAsync(DateOnly through, CancellationToken ct)
+    {
+        var events = await database.MemberStatusEvents.AsNoTracking()
+            .Where(x => x.EffectiveDate <= through && (x.ToStatus == "resigned" || x.ToStatus == "deceased" || x.ToStatus == "expelled"))
+            .Select(x => new MembershipExit(x.MemberId, x.EffectiveDate, x.ToStatus)).ToListAsync(ct);
+        var deaths = await database.DeathCases.AsNoTracking()
+            .Where(x => x.RecordState == "confirmed" && x.RecordedBusinessDate <= through)
+            .Select(x => new MembershipExit(x.MemberId, x.RecordedBusinessDate, "deceased")).ToListAsync(ct);
+        // Membership has no reinstatement flow. Collapse the event and confirmed case
+        // into one exit so a death never reduces a report total twice.
+        return events.Concat(deaths).GroupBy(x => x.MemberId).ToDictionary(x => x.Key, x => x.OrderBy(exit => exit.Date).First());
     }
 
     private async Task<byte[]> GenerateAsync(ReportPeriod period, string title, CancellationToken ct)
@@ -91,7 +186,7 @@ public sealed class ReportApplicationService(AppDbContext database)
         return members.Select(x => (x, (IReadOnlyList<MemberBeneficiary>)beneficiaries.Where(b => b.MemberId == x.Id).ToArray())).ToArray();
     }
     private static IReadOnlyList<MemberByManagerReportRow> ExpandMemberRows(IReadOnlyList<(Member Member, IReadOnlyList<MemberBeneficiary> Beneficiaries)> members) => members
-        .SelectMany((x, i) => MemberByManagerReportRows.Expand(new MemberByManagerReportSource(x.Member.RunNo, x.Member.Title, x.Member.FirstName, x.Member.LastName, x.Member.PersonalIdCard, x.Member.ApplicationDate, x.Member.ApprovalDate, x.Member.CoverageStartDate, x.Member.BirthDate, Address(x.Member), x.Beneficiaries.Select(Name).ToArray()), i + 1))
+        .SelectMany((x, i) => MemberByManagerReportRows.Expand(new MemberByManagerReportSource(x.Member.RunNo, x.Member.Title, x.Member.FirstName, x.Member.LastName, x.Member.PersonalIdCard, x.Member.ApplicationDate, x.Member.ApprovalDate, x.Member.CoverageStartDate, x.Member.BirthDate, Address(x.Member), x.Beneficiaries.Select(Name).ToArray(), x.Beneficiaries.Select(b => b.Relationship ?? "-").ToArray()), i + 1))
         .ToArray();
     private static IReadOnlyList<MonthlyMemberReportRow> ExpandMonthly((Member Member, IReadOnlyList<MemberBeneficiary> Beneficiaries) item, int sequence, DateOnly asOf)
     {

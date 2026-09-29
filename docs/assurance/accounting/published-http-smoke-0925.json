@@ -1,0 +1,37 @@
+[
+  {
+    "Path": "/Accounting",
+    "Status": 200,
+    "ValidationErrors": false
+  },
+  {
+    "Path": "/Accounting/Reports",
+    "Status": 200,
+    "ValidationErrors": false
+  },
+  {
+    "Path": "/Accounting/Collections",
+    "Status": 200,
+    "ValidationErrors": false
+  },
+  {
+    "Path": "/Accounting/Manage",
+    "Status": 200,
+    "ValidationErrors": false
+  },
+  {
+    "Path": "/Accounting/Opening",
+    "Status": 200,
+    "ValidationErrors": false
+  },
+  {
+    "Path": "/Accounting/Transaction?kind=receipt",
+    "Status": 200,
+    "ValidationErrors": false
+  },
+  {
+    "Path": "/Accounting/Transaction?kind=reclassify",
+    "Status": 200,
+    "ValidationErrors": false
+  }
+]

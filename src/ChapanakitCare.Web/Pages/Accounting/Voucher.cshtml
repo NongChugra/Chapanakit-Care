@@ -1,0 +1,40 @@
+@page
+@model ChapanakitCare.Web.Pages.Accounting.VoucherModel
+@using ChapanakitCare.Domain
+@{ ViewData["Title"] = "เอกสารรายการบัญชี"; }
+<p><a asp-page="./Index">บัญชีและการเงิน</a> / เอกสารรายการบัญชี</p>
+<div asp-validation-summary="All" class="alert"></div>
+@if (Model.Voucher is { } voucher)
+{
+    <section class="card">
+        <h2>@voucher.JournalNumber</h2>
+        <p>@Model.BookName · วันที่ @ThaiBuddhistDate.Format(voucher.BusinessDate)</p>
+        <p><strong>@(Model.DocumentStatus == "REVERSED" ? "ยกเลิกด้วยรายการกลับบัญชีแล้ว" : "บันทึกแล้ว")</strong></p>
+        @if (Model.ReversalId is { } reverse) { <p><a asp-page="./Voucher" asp-route-id="@reverse">ดูเอกสารกลับรายการ</a></p> }
+        @if (voucher.ReversesJournalId is { } original) { <p>เอกสารนี้กลับรายการของ <a asp-page="./Voucher" asp-route-id="@original">เอกสารต้นฉบับ</a></p> }
+        <p>@voucher.DescriptionSnapshot</p>
+        <div class="table-wrap"><table><thead><tr><th>บัญชี</th><th>สมาชิก / ผู้รับเงิน</th><th>เดบิต (บาท)</th><th>เครดิต (บาท)</th></tr></thead><tbody>
+        @foreach (var line in Model.Lines)
+        {
+            <tr><td>@line.AccountCode · @line.AccountName</td><td>@line.PartySnapshot</td><td>@FinanceMoney.Format(line.DebitSatang)</td><td>@FinanceMoney.Format(line.CreditSatang)</td></tr>
+        }
+        </tbody><tfoot><tr><th colspan="2">รวม</th><th>@FinanceMoney.Format(Model.Lines.Sum(x => x.DebitSatang))</th><th>@FinanceMoney.Format(Model.Lines.Sum(x => x.CreditSatang))</th></tr></tfoot></table></div>
+        <p class="muted">ผู้บันทึก @voucher.ActorDisplayName</p>
+        <a class="button" asp-route-id="@voucher.Id" asp-route-format="pdf">พิมพ์ / บันทึก PDF</a>
+        <a class="button secondary" asp-route-id="@voucher.Id" asp-route-format="csv">ดาวน์โหลด CSV</a>
+        <a class="button secondary" asp-page="./Index">กลับบัญชีและการเงิน</a>
+    </section>
+    @if (Model.ReversalId is null && voucher.ReversesJournalId is null && voucher.VoucherType is "advance_receipt" or "operating_expense" or "cash_transfer" or "benefit_payment" or "fee_remittance" or "member_refund")
+    {
+        <section class="card" style="margin-top:18px">
+            <h2>กลับรายการที่บันทึกผิด</h2>
+            <p>เก็บต้นฉบับและสร้างเอกสารกลับรายการ ต้องเป็นรายการล่าสุดในสมุดบัญชีที่เกี่ยวข้อง การกลับรายการไม่ใช่หลักฐานว่ามีการคืนเงินจริง</p>
+            <form method="post" asp-page-handler="Reverse" asp-route-id="@voucher.Id" class="stack">
+                <input asp-for="RequestToken" type="hidden" />
+                <label>วันที่กลับรายการ (พ.ศ.)<input asp-for="ReversalDate" required /></label>
+                <label>เหตุผลและหลักฐาน<textarea asp-for="Reason" required maxlength="2000"></textarea></label>
+                <button class="button danger" type="submit">บันทึกกลับรายการ</button>
+            </form>
+        </section>
+    }
+}

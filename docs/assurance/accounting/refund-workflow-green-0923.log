@@ -1,0 +1,47 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.20]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.33]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.38]   Starting:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Opening_income_and_unsupported_member_dimensions_are_rejected_without_activation [2 s]
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Registration_after_cutover_starts_unpaid_until_actual_receipt [2 s]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_converts_buddhist_date_and_baht_then_redirects_to_saved_voucher [2 s]
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_adds_real_member_advance_and_replay_cannot_add_money_twice [482 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceReversalTests.Reversal_rejects_receipt_with_later_financial_activity [2 s]
+  Passed ChapanakitCare.Domain.Tests.AccountingResignationTests.Resigned_member_can_settle_debt_without_reopening_coverage_or_prepaying [2 s]
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_clears_recorded_shortfall_before_adding_advance [205 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_download_returns_the_selected_document_format(format: "csv", contentType: "text/csv; charset=utf-8") [324 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingResignationTests.Actual_refund_reduces_resigned_member_liability_once_and_rejects_overpayment [246 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Opening_records_supplied_money_in_separate_books_without_creating_income [182 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceReversalTests.Fee_remittance_reversal_restores_both_books_atomically [323 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Failed_group_receipt_cannot_leak_counter_changes_into_a_later_save [195 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingResignationTests.Refund_form_records_actual_payment_and_refund_reversal_preserves_resigned_status [243 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Death_form_displays_accounting_setup_error_without_saving_a_death [788 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceReversalTests.Receipt_reversal_appends_opposite_entries_and_restores_member_projection_once [281 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Welfare_opening_projects_verified_member_money_and_does_not_keep_legacy_paid_units [192 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_books_preserve_member_history [153 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingResignationTests.Resignation_uses_exact_money_and_keeps_it_payable_until_actual_refund [166 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_books_preserve_the_four_percent_policy [95 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_download_returns_the_selected_document_format(format: "pdf", contentType: "application/pdf") [681 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Legacy_reset_page_displays_validation_instead_of_throwing_when_accounting_is_active [130 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Collection_receipt_records_partial_payment_and_rejects_overpayment_without_side_effects [297 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Failed_death_accounting_cannot_persist_deceased_status_on_later_save [97 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_accounting_rejects_unit_reset_without_creating_paid_balances [66 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Benefit_payment_form_posts_against_the_chosen_beneficiary [215 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(kind: "expense", target: "5000", expectedTarget: 2500, expectedCash: 7500) [73 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(kind: "transfer", target: "1100", expectedTarget: 2500, expectedCash: 7500) [69 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_rejects_subsatang_input_without_posting [71 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_reissue_keeps_original_number_and_shows_reversed_status [77 ms]
+[xUnit.net 00:00:04.90]   Finished:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Expense_form_lists_only_association_accounts [70 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Fee_remittance_form_posts_both_books_without_new_income [87 ms]
+
+Test Run Successful.
+Total tests: 31
+     Passed: 31
+ Total time: 5.4456 Seconds

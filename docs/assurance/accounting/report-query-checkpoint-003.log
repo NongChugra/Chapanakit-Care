@@ -1,0 +1,93 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.13]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.23]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.27]   Starting:    ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:02.78]     ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Income_expense_report_shows_only_the_association_fee_income_and_operating_expense [FAIL]
+[xUnit.net 00:00:02.78]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:02.78]       Stack Trace:
+[xUnit.net 00:00:02.78]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingReports\AccountingReportQueryService.cs(103,0): at ChapanakitCare.Infrastructure.AccountingReports.AccountingReportQueryService.GetIncomeExpenseAsync(AccountingBookCode bookCode, AccountingReportPeriod period, CancellationToken cancellationToken)
+[xUnit.net 00:00:02.78]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs(91,0): at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Income_expense_report_shows_only_the_association_fee_income_and_operating_expense()
+[xUnit.net 00:00:02.78]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs(104,0): at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Income_expense_report_shows_only_the_association_fee_income_and_operating_expense()
+[xUnit.net 00:00:02.78]         --- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Trial_balance_uses_business_date_cutoff_keeps_books_separate_and_does_not_mutate_journals [2 s]
+  Failed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Income_expense_report_shows_only_the_association_fee_income_and_operating_expense [257 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingReports.AccountingReportQueryService.GetIncomeExpenseAsync(AccountingBookCode bookCode, AccountingReportPeriod period, CancellationToken cancellationToken) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingReports\AccountingReportQueryService.cs:line 103
+   at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Income_expense_report_shows_only_the_association_fee_income_and_operating_expense() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs:line 91
+   at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Income_expense_report_shows_only_the_association_fee_income_and_operating_expense() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs:line 104
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:03.08]     ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Journal_report_marks_the_posted_reversal_without_omitting_its_signed_lines [FAIL]
+[xUnit.net 00:00:03.08]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:03.08]       Stack Trace:
+[xUnit.net 00:00:03.08]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingReports\AccountingReportQueryService.cs(90,0): at ChapanakitCare.Infrastructure.AccountingReports.AccountingReportQueryService.GetJournalAsync(AccountingBookCode bookCode, AccountingReportPeriod period, CancellationToken cancellationToken)
+[xUnit.net 00:00:03.08]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs(71,0): at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Journal_report_marks_the_posted_reversal_without_omitting_its_signed_lines()
+[xUnit.net 00:00:03.08]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs(80,0): at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Journal_report_marks_the_posted_reversal_without_omitting_its_signed_lines()
+[xUnit.net 00:00:03.08]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:03.25]     ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Member_and_beneficiary_reports_derive_control_balances_from_dimensions [FAIL]
+[xUnit.net 00:00:03.25]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:03.25]       Stack Trace:
+[xUnit.net 00:00:03.25]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingReports\AccountingReportQueryService.cs(114,0): at ChapanakitCare.Infrastructure.AccountingReports.AccountingReportQueryService.GetMemberBalancesAsync(DateOnly asOfDate, CancellationToken cancellationToken)
+[xUnit.net 00:00:03.25]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs(132,0): at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Member_and_beneficiary_reports_derive_control_balances_from_dimensions()
+[xUnit.net 00:00:03.25]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs(145,0): at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Member_and_beneficiary_reports_derive_control_balances_from_dimensions()
+[xUnit.net 00:00:03.25]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:03.39]     ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Financial_position_keeps_the_association_fee_result_with_its_own_book [FAIL]
+[xUnit.net 00:00:03.39]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:03.39]       Stack Trace:
+[xUnit.net 00:00:03.39]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingReports\AccountingReportQueryService.cs(109,0): at ChapanakitCare.Infrastructure.AccountingReports.AccountingReportQueryService.GetFinancialPositionAsync(AccountingBookCode bookCode, DateOnly asOfDate, CancellationToken cancellationToken)
+[xUnit.net 00:00:03.39]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs(114,0): at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Financial_position_keeps_the_association_fee_result_with_its_own_book()
+[xUnit.net 00:00:03.39]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs(122,0): at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Financial_position_keeps_the_association_fee_result_with_its_own_book()
+[xUnit.net 00:00:03.39]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:03.57]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:03.57]     ChapanakitCare.Domain.Tests.AccountingReportQueryTests.General_ledger_carries_opening_then_signed_movement_from_a_reversal [FAIL]
+[xUnit.net 00:00:03.57]       Stack Trace:
+[xUnit.net 00:00:03.57]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingReports\AccountingReportQueryService.cs(97,0): at ChapanakitCare.Infrastructure.AccountingReports.AccountingReportQueryService.GetGeneralLedgerAsync(AccountingBookCode bookCode, String accountCode, AccountingReportPeriod period, CancellationToken cancellationToken)
+[xUnit.net 00:00:03.57]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs(49,0): at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.General_ledger_carries_opening_then_signed_movement_from_a_reversal()
+[xUnit.net 00:00:03.57]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs(61,0): at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.General_ledger_carries_opening_then_signed_movement_from_a_reversal()
+[xUnit.net 00:00:03.57]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:03.58]   Finished:    ChapanakitCare.Domain.Tests
+  Failed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Journal_report_marks_the_posted_reversal_without_omitting_its_signed_lines [307 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingReports.AccountingReportQueryService.GetJournalAsync(AccountingBookCode bookCode, AccountingReportPeriod period, CancellationToken cancellationToken) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingReports\AccountingReportQueryService.cs:line 90
+   at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Journal_report_marks_the_posted_reversal_without_omitting_its_signed_lines() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs:line 71
+   at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Journal_report_marks_the_posted_reversal_without_omitting_its_signed_lines() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs:line 80
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Member_and_beneficiary_reports_derive_control_balances_from_dimensions [167 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingReports.AccountingReportQueryService.GetMemberBalancesAsync(DateOnly asOfDate, CancellationToken cancellationToken) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingReports\AccountingReportQueryService.cs:line 114
+   at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Member_and_beneficiary_reports_derive_control_balances_from_dimensions() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs:line 132
+   at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Member_and_beneficiary_reports_derive_control_balances_from_dimensions() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs:line 145
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Financial_position_keeps_the_association_fee_result_with_its_own_book [142 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingReports.AccountingReportQueryService.GetFinancialPositionAsync(AccountingBookCode bookCode, DateOnly asOfDate, CancellationToken cancellationToken) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingReports\AccountingReportQueryService.cs:line 109
+   at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Financial_position_keeps_the_association_fee_result_with_its_own_book() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs:line 114
+   at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Financial_position_keeps_the_association_fee_result_with_its_own_book() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs:line 122
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.General_ledger_carries_opening_then_signed_movement_from_a_reversal [176 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingReports.AccountingReportQueryService.GetGeneralLedgerAsync(AccountingBookCode bookCode, String accountCode, AccountingReportPeriod period, CancellationToken cancellationToken) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingReports\AccountingReportQueryService.cs:line 97
+   at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.General_ledger_carries_opening_then_signed_movement_from_a_reversal() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs:line 49
+   at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.General_ledger_carries_opening_then_signed_movement_from_a_reversal() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs:line 61
+--- End of stack trace from previous location ---
+
+Total tests: 6
+Test Run Failed.
+     Passed: 1
+     Failed: 5
+ Total time: 4.1501 Seconds

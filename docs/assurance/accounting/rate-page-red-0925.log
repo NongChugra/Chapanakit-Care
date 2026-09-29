@@ -1,0 +1,18 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:02.52]     ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Dashboard_explains_active_rate_change_rejection_without_server_error [FAIL]
+  Failed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Dashboard_explains_active_rate_change_rejection_without_server_error [2 s]
+  Error Message:
+   ChapanakitCare.Infrastructure.Members.MemberValidationException : เมื่อเปิดบัญชีเงินสงเคราะห์แล้ว ยังไม่รองรับการเปลี่ยนอัตราเงินสงเคราะห์ต่อสมาชิก เพราะต้องปรับจำนวนหน่วยตามยอดเงินจริงพร้อมประวัติการแก้ไข
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.Members.SettingsApplicationService.SaveAsync(SettingsCommand command, DateTimeOffset now, String actor, CancellationToken cancellationToken) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Members\MemberApplicationServices.cs:line 518
+   at ChapanakitCare.Web.Pages.IndexModel.OnPostAsync() in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Index.cshtml.cs:line 52
+   at ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Dashboard_explains_active_rate_change_rejection_without_server_error() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingWorkflowGuardTests.cs:line 23
+   at ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Dashboard_explains_active_rate_change_rejection_without_server_error() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingWorkflowGuardTests.cs:line 25
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     1, Passed:     0, Skipped:     0, Total:     1, Duration: 2 s - ChapanakitCare.Domain.Tests.dll (net10.0)

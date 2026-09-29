@@ -33,15 +33,12 @@
             <a class="button danger" asp-page="Create">+ บันทึกการเสียชีวิต</a>
         </div>
     </div>
-</section>
-<section class="card" style="margin-top:18px">
-    <form method="get" class="filters">
+    <form method="get" class="filters death-filters">
         <label>ค้นหา<input asp-for="Search" placeholder="เลขกรณี เลขสมาชิก ชื่อ เลขประชาชน หรือเอกสาร" /></label>
         <label>วันที่บันทึกตั้งแต่<input asp-for="From" type="hidden" value="@(Model.From?.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))" /><input type="text" inputmode="numeric" maxlength="10" placeholder="วว/ดด/ปปปป" data-thai-date data-thai-date-target="#From" /></label>
         <label>ถึงวันที่<input asp-for="To" type="hidden" value="@(Model.To?.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))" /><input type="text" inputmode="numeric" maxlength="10" placeholder="วว/ดด/ปปปป" data-thai-date data-thai-date-target="#To" /></label>
         <label>ผลการพิจารณา<select asp-for="Decision"><option value="">ทั้งหมด</option><option value="payable">จ่าย</option><option value="nonpay">ไม่จ่าย</option></select></label>
-        <button class="button secondary" type="submit">กรองรายการ</button>
-        <a class="button secondary" asp-page="Index">ล้างตัวกรอง</a>
+        <div class="actions filter-actions"><button class="button" type="submit">กรองรายการ</button><a class="button secondary" asp-page="Index">ล้างตัวกรอง</a></div>
     </form>
     <p class="muted filter-summary">ตัวกรองปัจจุบัน: @Model.FilterSummary</p>
 </section>
@@ -64,8 +61,8 @@
             <td data-column="memberName" data-sort-value="@row.Member.FirstName @row.Member.LastName">@row.Member.Title@row.Member.FirstName @row.Member.LastName</td>
             <td data-column="personalId" data-sort-value="@row.Member.PersonalIdCard">@(row.Member.PersonalIdCard ?? "–")</td>
             <td data-column="groupNo" data-sort-value="@row.Member.GroupNo">@(row.Member.GroupNo ?? "–")</td>
-            <td data-column="recordedDate" data-sort-value="@row.Case.RecordedBusinessDate.ToString("yyyy-MM-dd")">@ChapanakitCare.Web.Pages.Members.IndexModel.ThaiDate(row.Case.RecordedBusinessDate)</td>
-            <td data-column="deathDate" data-sort-value="@row.Case.DeathCertificateDate.ToString("yyyy-MM-dd")">@ChapanakitCare.Web.Pages.Members.IndexModel.ThaiDate(row.Case.DeathCertificateDate)</td>
+            <td data-column="recordedDate" data-sort-value="@row.Case.RecordedBusinessDate.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture)">@ChapanakitCare.Web.Pages.Members.IndexModel.ThaiDate(row.Case.RecordedBusinessDate)</td>
+            <td data-column="deathDate" data-sort-value="@row.Case.DeathCertificateDate.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture)">@ChapanakitCare.Web.Pages.Members.IndexModel.ThaiDate(row.Case.DeathCertificateDate)</td>
             <td data-column="certificateNo" data-sort-value="@row.Case.DeathCertificateNo">@row.Case.DeathCertificateNo</td>
             <td data-column="cause" data-sort-value="@row.Case.CauseOfDeathText">@row.Case.CauseOfDeathText</td>
             <td data-column="beneficiary1" data-sort-value="@beneficiaries.First">@beneficiaries.First</td>
@@ -77,7 +74,12 @@
             <td data-column="net" data-sort-value="@row.Calculation.NetCollectionSatang">@((row.Calculation.NetCollectionSatang / 100m).ToString("N2"))</td>
             <td data-column="advance" data-sort-value="@row.Calculation.DeceasedAdvanceValueSatang">@((row.Calculation.DeceasedAdvanceValueSatang / 100m).ToString("N2"))</td>
             <td data-column="total" data-sort-value="@row.Calculation.TotalBenefitSatang">@((row.Calculation.TotalBenefitSatang / 100m).ToString("N2")) บาท</td>
-            <td data-column="document"><a class="button secondary small" asp-page-handler="Certificate" asp-route-id="@row.Case.Id">ดาวน์โหลด PDF</a></td>
+            <td data-column="document"><a class="button secondary small" asp-page-handler="Certificate" asp-route-id="@row.Case.Id">ดาวน์โหลด PDF</a>
+                @foreach (var slot in Model.PhotoSlotsByCase.GetValueOrDefault(row.Case.Id) ?? [])
+                {
+                    <a class="button secondary small" asp-page-handler="RecipientPhoto" asp-route-id="@row.Case.Id" asp-route-slot="@slot">ภาพผู้รับเงิน @slot</a>
+                }
+            </td>
         </tr>
     }
     </tbody></table></div>

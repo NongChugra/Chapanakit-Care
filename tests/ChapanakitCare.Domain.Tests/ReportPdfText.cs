@@ -7,7 +7,7 @@ namespace ChapanakitCare.Domain.Tests;
 
 internal static class ReportPdfText
 {
-    public static string Extract(byte[] pdf)
+    public static string Extract(byte[] pdf, bool separateTextPositions = false)
     {
         var source = Encoding.Latin1.GetString(pdf);
         var objects = ParseObjects(source);
@@ -16,7 +16,7 @@ internal static class ReportPdfText
 
         foreach (var contentObjectId in ContentObjectIds(objects))
         {
-            AppendContentText(text, Inflate(objects[contentObjectId]), fontMaps);
+            AppendContentText(text, Inflate(objects[contentObjectId]), fontMaps, separateTextPositions);
             text.AppendLine();
         }
 
@@ -107,13 +107,18 @@ internal static class ReportPdfText
         }
     }
 
-    private static void AppendContentText(StringBuilder output, string content, IReadOnlyDictionary<string, IReadOnlyDictionary<int, string>> fontMaps)
+    private static void AppendContentText(StringBuilder output, string content, IReadOnlyDictionary<string, IReadOnlyDictionary<int, string>> fontMaps, bool separateTextPositions)
     {
         var currentFont = string.Empty;
         var textContent = ActualTextPattern.Replace(content, string.Empty);
 
         foreach (Match token in ContentTokenPattern.Matches(textContent))
         {
+            if (token.Groups["position"].Success)
+            {
+                if (separateTextPositions) output.AppendLine();
+                continue;
+            }
             if (token.Groups["font"].Success)
             {
                 currentFont = token.Groups["font"].Value;
@@ -170,7 +175,7 @@ internal static class ReportPdfText
     private static readonly Regex ContentsPattern = new("(?s)/Contents\\s+(?:(?<single>\\d+)\\s+\\d+\\s+R|\\[(?<many>.*?)\\])", RegexOptions.Compiled);
     private static readonly Regex ObjectReferencePattern = new("(?<id>\\d+)\\s+\\d+\\s+R", RegexOptions.Compiled);
     private static readonly Regex ActualTextPattern = new("/ActualText\\s+<[^>]+>", RegexOptions.Compiled);
-    private static readonly Regex ContentTokenPattern = new("/(?<font>F\\d+)\\s+[0-9.]+\\s+Tf|<(?<glyphs>[0-9A-Fa-f]+)>", RegexOptions.Compiled);
+    private static readonly Regex ContentTokenPattern = new("(?<position>[-0-9.]+\\s+[-0-9.]+\\s+[-0-9.]+\\s+[-0-9.]+\\s+[-0-9.]+\\s+[-0-9.]+\\s+Tm)|/(?<font>F\\d+)\\s+[0-9.]+\\s+Tf|<(?<glyphs>[0-9A-Fa-f]+)>", RegexOptions.Compiled);
     private static readonly Regex StreamStartPattern = new("stream\\r?\\n", RegexOptions.Compiled);
     private static readonly Regex LengthPattern = new("/Length\\s+(?<length>\\d+)", RegexOptions.Compiled);
 }

@@ -1,0 +1,92 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:02.31]     ChapanakitCare.Domain.Tests.AccountingMigrationTests.SQLite_rejects_updates_and_deletes_of_append_only_accounting_history [FAIL]
+[xUnit.net 00:00:02.32]     ChapanakitCare.Domain.Tests.AccountingManagementPageTests.Management_form_records_statement_difference_without_adjusting_money [FAIL]
+[xUnit.net 00:00:02.42]     ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_reversal_form_keeps_original_and_posts_a_linked_correction [FAIL]
+[xUnit.net 00:00:02.46]     ChapanakitCare.Domain.Tests.AccountingManagementPageTests.Management_form_closes_and_reopens_selected_period_with_evidence [FAIL]
+[xUnit.net 00:00:02.53]     ChapanakitCare.Domain.Tests.AccountingManagementPageTests.Management_form_adds_book_specific_bank_and_association_expense_without_extra_income [FAIL]
+[xUnit.net 00:00:02.75]     ChapanakitCare.Domain.Tests.AccountingMigrationTests.Direct_ef_write_rejects_an_unbalanced_posted_journal_before_sqlite_receives_it [FAIL]
+  Failed ChapanakitCare.Domain.Tests.AccountingManagementPageTests.Management_form_records_statement_difference_without_adjusting_money [1 s]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Web.Pages.Accounting.ManageModel.OnPostAsync() in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Manage.cshtml.cs:line 23
+   at ChapanakitCare.Domain.Tests.AccountingManagementPageTests.Management_form_records_statement_difference_without_adjusting_money() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingManagementPageTests.cs:line 60
+   at ChapanakitCare.Domain.Tests.AccountingManagementPageTests.Management_form_records_statement_difference_without_adjusting_money() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingManagementPageTests.cs:line 65
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingMigrationTests.SQLite_rejects_updates_and_deletes_of_append_only_accounting_history [1 s]
+  Error Message:
+   Assert.Throws() Failure: No exception was thrown
+Expected: typeof(Microsoft.Data.Sqlite.SqliteException)
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingMigrationTests.SQLite_rejects_updates_and_deletes_of_append_only_accounting_history() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs:line 135
+   at ChapanakitCare.Domain.Tests.AccountingMigrationTests.SQLite_rejects_updates_and_deletes_of_append_only_accounting_history() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs:line 141
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_reversal_form_keeps_original_and_posts_a_linked_correction [2 s]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Web.Pages.Accounting.VoucherModel.OnPostReverseAsync(Guid id) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Voucher.cshtml.cs:line 24
+   at ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_reversal_form_keeps_original_and_posts_a_linked_correction() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs:line 22
+   at ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_reversal_form_keeps_original_and_posts_a_linked_correction() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs:line 29
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingManagementPageTests.Management_form_closes_and_reopens_selected_period_with_evidence [153 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Web.Pages.Accounting.ManageModel.OnPostAsync() in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Manage.cshtml.cs:line 23
+   at ChapanakitCare.Domain.Tests.AccountingManagementPageTests.Management_form_closes_and_reopens_selected_period_with_evidence() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingManagementPageTests.cs:line 35
+   at ChapanakitCare.Domain.Tests.AccountingManagementPageTests.Management_form_closes_and_reopens_selected_period_with_evidence() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingManagementPageTests.cs:line 51
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingManagementPageTests.Management_form_adds_book_specific_bank_and_association_expense_without_extra_income [61 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Web.Pages.Accounting.ManageModel.OnPostAsync() in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Manage.cshtml.cs:line 23
+   at ChapanakitCare.Domain.Tests.AccountingManagementPageTests.Management_form_adds_book_specific_bank_and_association_expense_without_extra_income() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingManagementPageTests.cs:line 17
+   at ChapanakitCare.Domain.Tests.AccountingManagementPageTests.Management_form_adds_book_specific_bank_and_association_expense_without_extra_income() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingManagementPageTests.cs:line 26
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingMigrationTests.Direct_ef_write_rejects_an_unbalanced_posted_journal_before_sqlite_receives_it [437 ms]
+  Error Message:
+   Assert.Throws() Failure: No exception was thrown
+Expected: typeof(System.InvalidOperationException)
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingMigrationTests.Direct_ef_write_rejects_an_unbalanced_posted_journal_before_sqlite_receives_it() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs:line 78
+   at ChapanakitCare.Domain.Tests.AccountingMigrationTests.Direct_ef_write_rejects_an_unbalanced_posted_journal_before_sqlite_receives_it() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs:line 82
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:04.29]     ChapanakitCare.Domain.Tests.AccountingMigrationTests.Direct_ef_write_rejects_mutating_or_deleting_append_only_accounting_history [FAIL]
+  Failed ChapanakitCare.Domain.Tests.AccountingMigrationTests.Direct_ef_write_rejects_mutating_or_deleting_append_only_accounting_history [332 ms]
+  Error Message:
+   Assert.Throws() Failure: No exception was thrown
+Expected: typeof(System.InvalidOperationException)
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingMigrationTests.Direct_ef_write_rejects_mutating_or_deleting_append_only_accounting_history() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs:line 93
+   at ChapanakitCare.Domain.Tests.AccountingMigrationTests.Direct_ef_write_rejects_mutating_or_deleting_append_only_accounting_history() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs:line 109
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     7, Passed:     3, Skipped:     0, Total:    10, Duration: 3 s - ChapanakitCare.Domain.Tests.dll (net10.0)
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:02.40]     ChapanakitCare.Domain.Tests.AccountingMigrationTests.SQLite_rejects_a_journal_line_that_uses_an_account_from_another_book [FAIL]
+  Failed ChapanakitCare.Domain.Tests.AccountingMigrationTests.SQLite_rejects_a_journal_line_that_uses_an_account_from_another_book [2 s]
+  Error Message:
+   Assert.Throws() Failure: No exception was thrown
+Expected: typeof(Microsoft.Data.Sqlite.SqliteException)
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingMigrationTests.SQLite_rejects_a_journal_line_that_uses_an_account_from_another_book() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs:line 128
+   at ChapanakitCare.Domain.Tests.AccountingMigrationTests.SQLite_rejects_a_journal_line_that_uses_an_account_from_another_book() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs:line 128
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     1, Passed:     0, Skipped:     0, Total:     1, Duration: 2 s - ChapanakitCare.Domain.Tests.dll (net10.0)

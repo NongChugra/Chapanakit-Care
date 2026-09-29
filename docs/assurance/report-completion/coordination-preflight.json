@@ -1,0 +1,8 @@
+{
+  "release": "finally dispose then Remove-Item exact lock path",
+  "acquired": "2026-09-04T17:22:15.9016229+00:00",
+  "stateRead": "unit generation budget attempts",
+  "result": "pass",
+  "primitive": "System.IO.File.Open(FileMode.CreateNew,FileAccess.Write,FileShare.None)",
+  "path": "D:\\Programing\\Personal Projects\\Chapanakit-Care\\docs\\assurance\\report-completion\\review.lock"
+}

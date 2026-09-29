@@ -1,0 +1,75 @@
+@page
+@model ChapanakitCare.Web.Pages.Accounting.ManageModel
+@using ChapanakitCare.Domain
+@using ChapanakitCare.Domain.Entities
+@{ ViewData["Title"] = "ตั้งค่าและตรวจสอบบัญชี"; }
+<p><a asp-page="./Index">บัญชีและการเงิน</a> / ตั้งค่าและตรวจสอบ</p>
+<section class="card">
+    <h2>ตั้งค่าและตรวจสอบบัญชี</h2>
+    <form method="get" class="filters"><label>สมุดบัญชี<select asp-for="Book"><option value="welfare">เงินสงเคราะห์สมาชิก</option><option value="association">สมาคม</option></select></label><button class="button">เลือก</button></form>
+    <div asp-validation-summary="All" class="alert"></div>
+    <p>รายได้สมาคมมาจากค่าหักร้อยละ 4 เท่านั้น เพิ่มได้เฉพาะบัญชีเงินสด ธนาคาร และหมวดค่าใช้จ่าย</p>
+</section>
+<div class="grid two" style="margin-top:18px">
+    <section class="card">
+        <h2>เพิ่มผู้ถือเงินสด</h2>
+        <p>เช่น เงินสดผู้ประสานงานกลุ่ม เงินที่นำฝากธนาคารภายหลังให้บันทึกโอน ไม่รับเงินสมาชิกซ้ำ</p>
+        <form method="post" class="stack">
+            <input asp-for="Book" type="hidden" /><input name="Action" value="cash" type="hidden" />
+            <label>รหัสเงินสด (1001–1099)<input name="AccountCode" required pattern="10[0-9]{2}" maxlength="4" /></label>
+            <label>ชื่อผู้ถือเงิน / บัญชีเงินสด<input name="AccountName" required maxlength="200" /></label>
+            <button class="button">เพิ่มบัญชีเงินสด</button>
+        </form>
+        <h2>เพิ่มบัญชีธนาคาร</h2>
+        <form method="post" class="stack">
+            <input asp-for="Book" type="hidden" /><input name="Action" value="bank" type="hidden" />
+            <label>รหัสบัญชี (1101–1199)<input name="AccountCode" required pattern="11[0-9]{2}" maxlength="4" /></label>
+            <label>ชื่อบัญชี<input name="AccountName" required maxlength="200" /></label>
+            <label>ธนาคาร / เลขบัญชีอ้างอิง<input name="BankDescription" required maxlength="200" /></label>
+            <button class="button">เพิ่มบัญชีในสมุดที่เลือก</button>
+        </form>
+        @if (Model.Book == "association")
+        {
+            <h3>เพิ่มหมวดค่าใช้จ่าย</h3>
+            <form method="post" class="stack">
+                <input asp-for="Book" type="hidden" /><input name="Action" value="expense" type="hidden" />
+                <label>รหัสหมวด (5001–5099)<input name="AccountCode" required pattern="50[0-9]{2}" maxlength="4" /></label>
+                <label>ชื่อหมวด<input name="AccountName" required maxlength="200" /></label>
+                <button class="button">เพิ่มหมวด</button>
+            </form>
+        }
+        <h3>บัญชีในสมุดนี้</h3>
+        <ul>@foreach (var account in Model.Accounts) { <li>@account.Code · @account.Name @account.BankDisplayName</li> }</ul>
+    </section>
+    <section class="card">
+        <h2>ตรวจยอดเงินจริง</h2>
+        <p>เทียบกับยอดธนาคารหรือเงินสดที่นับได้ ผลต่างจะถูกเก็บเป็นหลักฐาน ไม่ปรับเงินในระบบเอง</p>
+        <form method="post" class="stack">
+            <input asp-for="Book" type="hidden" /><input name="Action" value="reconcile" type="hidden" /><input asp-for="RequestToken" type="hidden" />
+            <label>บัญชี<select name="AccountCode" required>
+                @foreach (var account in Model.Accounts.Where(x => x.Role is AccountingAccountRole.Cash or AccountingAccountRole.Bank)) { <option value="@account.Code">@account.Name</option> }
+            </select></label>
+            <label>วันที่ยอด (พ.ศ.)<input asp-for="AsOf" required placeholder="วว/ดด/ปปปป" /></label>
+            <label>ยอดตามหลักฐาน (บาท)<input asp-for="StatementBalance" required inputmode="decimal" /></label>
+            <label>หลักฐาน / คำอธิบาย<input name="Evidence" required maxlength="2000" /></label>
+            <button class="button">บันทึกผลตรวจยอด</button>
+        </form>
+        @if (Model.Reconciliation is { } result)
+        { <p class="alert">บันทึกแล้ว · ยอดบัญชี @FinanceMoney.Format(result.BookBalanceSatang) · ยอดหลักฐาน @FinanceMoney.Format(result.StatementBalanceSatang) · ผลต่าง @FinanceMoney.Format(result.DifferenceSatang) บาท</p> }
+        <h3>ประวัติผลตรวจยอด</h3>
+        <ul>@foreach (var item in Model.Reconciliations)
+        { <li>@ThaiBuddhistDate.Format(item.Date) · @item.AccountCode · ผลต่าง @FinanceMoney.Format(item.DifferenceSatang) บาท · @item.Evidence</li> }</ul>
+    </section>
+</div>
+<section class="card" style="margin-top:18px">
+    <h2>ปิดงวด / เปิดงวดแก้ไข</h2>
+    <p>ตรวจรายงานและยอดเงินจริงก่อนปิดงวด รายการใหม่ในวันที่ปิดจะถูกปฏิเสธ หากต้องแก้ไขให้ระบุเหตุผลเปิดงวด แล้วตรวจสอบและปิดอีกครั้ง</p>
+    <form method="post" class="stack">
+        <input asp-for="Book" type="hidden" />
+        <div class="grid two"><label>ตั้งแต่ (พ.ศ.)<input asp-for="From" required /></label><label>ถึง (พ.ศ.)<input asp-for="To" required /></label></div>
+        <label>หลักฐาน / เหตุผล<input name="Evidence" required maxlength="2000" /></label>
+        <div class="form-footer"><button class="button" name="Action" value="close">ปิดงวด</button><button class="button secondary" name="Action" value="reopen">เปิดงวดแก้ไข</button></div>
+    </form>
+    <ul>@foreach (var period in Model.Periods)
+    { <li>@ThaiBuddhistDate.Format(period.StartsOn) – @ThaiBuddhistDate.Format(period.EndsOn) · @(period.Status == AccountingPeriodStatus.Closed ? "ปิดแล้ว" : "เปิดแก้ไข") · @period.ClosureEvidence · @period.ReopenReason</li> }</ul>
+</section>

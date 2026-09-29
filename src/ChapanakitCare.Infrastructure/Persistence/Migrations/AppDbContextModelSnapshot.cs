@@ -17,6 +17,470 @@ namespace ChapanakitCare.Infrastructure.Persistence.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.10");
 
+            modelBuilder.Entity("ChapanakitCare.Domain.Entities.AccountingAccount", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("id");
+
+                    b.Property<string>("AccountType")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("account_type");
+
+                    b.Property<string>("BankDisplayName")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("bank_display_name");
+
+                    b.Property<Guid>("BookId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("book_id");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("code");
+
+                    b.Property<DateTimeOffset>("CreatedAtUtc")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("created_at_utc");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("created_by");
+
+                    b.Property<bool>("IsBankAccount")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("is_bank_account");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("name");
+
+                    b.Property<string>("NormalBalance")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("normal_balance");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("role");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId", "Code")
+                        .IsUnique();
+
+                    b.ToTable("accounting_accounts", null, t =>
+                        {
+                            t.HasCheckConstraint("ck_accounting_accounts_bank", "is_bank_account IN (0, 1)");
+
+                            t.HasCheckConstraint("ck_accounting_accounts_code", "length(trim(code)) > 0 AND code = trim(code)");
+
+                            t.HasCheckConstraint("ck_accounting_accounts_normal_balance", "normal_balance IN ('Debit', 'Credit')");
+
+                            t.HasCheckConstraint("ck_accounting_accounts_type", "account_type IN ('Asset', 'Liability', 'Equity', 'Income', 'Expense')");
+                        });
+                });
+
+            modelBuilder.Entity("ChapanakitCare.Domain.Entities.AccountingBook", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("id");
+
+                    b.Property<DateTimeOffset?>("ActivatedAtUtc")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("activated_at_utc");
+
+                    b.Property<string>("ActivatedBy")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("activated_by");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("code");
+
+                    b.Property<DateTimeOffset>("CreatedAtUtc")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("created_at_utc");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("created_by");
+
+                    b.Property<DateOnly?>("CutoverStartDate")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("cutover_start_date");
+
+                    b.Property<bool>("IsActivated")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("is_activated");
+
+                    b.Property<string>("JournalPrefix")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("journal_prefix");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("name");
+
+                    b.Property<long>("NextJournalNumber")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("next_journal_number");
+
+                    b.Property<string>("OpeningEvidence")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("opening_evidence");
+
+                    b.Property<int>("Version")
+                        .IsConcurrencyToken()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("version");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Code")
+                        .IsUnique();
+
+                    b.ToTable("accounting_books", null, t =>
+                        {
+                            t.HasCheckConstraint("ck_accounting_books_activation", "is_activated IN (0, 1)");
+
+                            t.HasCheckConstraint("ck_accounting_books_next_number", "next_journal_number >= 1");
+
+                            t.HasCheckConstraint("ck_accounting_books_version", "version >= 1");
+                        });
+                });
+
+            modelBuilder.Entity("ChapanakitCare.Domain.Entities.AccountingJournal", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("id");
+
+                    b.Property<string>("ActorDisplayName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("actor_display_name");
+
+                    b.Property<string>("ActorUserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("actor_user_id");
+
+                    b.Property<string>("AppVersion")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("app_version");
+
+                    b.Property<Guid>("BookId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("book_id");
+
+                    b.Property<DateOnly>("BusinessDate")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("business_date");
+
+                    b.Property<string>("DescriptionSnapshot")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("description_snapshot");
+
+                    b.Property<string>("JournalNumber")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("journal_number");
+
+                    b.Property<Guid?>("LinkedOperationId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("linked_operation_id");
+
+                    b.Property<string>("MachineName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("machine_name");
+
+                    b.Property<Guid>("OperationId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("operation_id");
+
+                    b.Property<DateTimeOffset>("RecordedAtUtc")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("recorded_at_utc");
+
+                    b.Property<string>("RequestFingerprint")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("request_fingerprint");
+
+                    b.Property<string>("RequestToken")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("request_token");
+
+                    b.Property<Guid?>("ReversesJournalId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("reverses_journal_id");
+
+                    b.Property<string>("SourceId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("source_id");
+
+                    b.Property<string>("SourceSnapshot")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("source_snapshot");
+
+                    b.Property<string>("SourceType")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("source_type");
+
+                    b.Property<string>("VoucherType")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("voucher_type");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReversesJournalId")
+                        .IsUnique();
+
+                    b.HasIndex("BookId", "BusinessDate");
+
+                    b.HasIndex("BookId", "JournalNumber")
+                        .IsUnique();
+
+                    b.HasIndex("BookId", "RequestToken")
+                        .IsUnique();
+
+                    b.HasIndex("ReversesJournalId", "BookId");
+
+                    b.ToTable("accounting_journals", null, t =>
+                        {
+                            t.HasCheckConstraint("ck_accounting_journals_description", "length(trim(description_snapshot)) > 0");
+
+                            t.HasCheckConstraint("ck_accounting_journals_fingerprint", "length(trim(request_fingerprint)) > 0");
+
+                            t.HasCheckConstraint("ck_accounting_journals_number", "length(trim(journal_number)) > 0 AND journal_number = trim(journal_number)");
+
+                            t.HasCheckConstraint("ck_accounting_journals_reversal", "reverses_journal_id IS NULL OR reverses_journal_id <> id");
+
+                            t.HasCheckConstraint("ck_accounting_journals_token", "length(trim(request_token)) > 0 AND request_token = trim(request_token)");
+
+                            t.HasCheckConstraint("ck_accounting_journals_voucher", "length(trim(voucher_type)) > 0");
+                        });
+                });
+
+            modelBuilder.Entity("ChapanakitCare.Domain.Entities.AccountingJournalLine", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("id");
+
+                    b.Property<Guid>("AccountId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("account_id");
+
+                    b.Property<int?>("BeneficiarySlotNo")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("beneficiary_slot_no");
+
+                    b.Property<Guid>("BookId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("book_id");
+
+                    b.Property<Guid?>("CollectionRequestId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("collection_request_id");
+
+                    b.Property<long>("CreditSatang")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("credit_satang");
+
+                    b.Property<Guid?>("DeathCaseId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("death_case_id");
+
+                    b.Property<long>("DebitSatang")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("debit_satang");
+
+                    b.Property<string>("DescriptionSnapshot")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("description_snapshot");
+
+                    b.Property<Guid>("JournalId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("journal_id");
+
+                    b.Property<int>("LineNo")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("line_no");
+
+                    b.Property<Guid?>("MemberId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("member_id");
+
+                    b.Property<string>("PartySnapshot")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("party_snapshot");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AccountId", "BookId");
+
+                    b.HasIndex("BookId", "AccountId");
+
+                    b.HasIndex("JournalId", "BookId");
+
+                    b.HasIndex("JournalId", "LineNo")
+                        .IsUnique();
+
+                    b.ToTable("accounting_journal_lines", null, t =>
+                        {
+                            t.HasCheckConstraint("ck_accounting_journal_lines_amount", "(debit_satang > 0 AND credit_satang = 0) OR (debit_satang = 0 AND credit_satang > 0)");
+
+                            t.HasCheckConstraint("ck_accounting_journal_lines_beneficiary", "beneficiary_slot_no IS NULL OR beneficiary_slot_no IN (1, 2)");
+
+                            t.HasCheckConstraint("ck_accounting_journal_lines_line_no", "line_no >= 1");
+                        });
+                });
+
+            modelBuilder.Entity("ChapanakitCare.Domain.Entities.AccountingPeriod", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("id");
+
+                    b.Property<Guid>("BookId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("book_id");
+
+                    b.Property<DateTimeOffset?>("ClosedAtUtc")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("closed_at_utc");
+
+                    b.Property<string>("ClosedBy")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("closed_by");
+
+                    b.Property<string>("ClosureEvidence")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("closure_evidence");
+
+                    b.Property<DateOnly>("EndsOn")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("ends_on");
+
+                    b.Property<string>("ReopenReason")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("reopen_reason");
+
+                    b.Property<DateTimeOffset?>("ReopenedAtUtc")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("reopened_at_utc");
+
+                    b.Property<string>("ReopenedBy")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("reopened_by");
+
+                    b.Property<DateOnly>("StartsOn")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("starts_on");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("status");
+
+                    b.Property<int>("Version")
+                        .IsConcurrencyToken()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("version");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookId", "StartsOn", "EndsOn")
+                        .IsUnique();
+
+                    b.HasIndex("BookId", "Status", "StartsOn", "EndsOn");
+
+                    b.ToTable("accounting_periods", null, t =>
+                        {
+                            t.HasCheckConstraint("ck_accounting_periods_dates", "ends_on >= starts_on");
+
+                            t.HasCheckConstraint("ck_accounting_periods_status", "status IN ('Open', 'Closed')");
+
+                            t.HasCheckConstraint("ck_accounting_periods_version", "version >= 1");
+                        });
+                });
+
+            modelBuilder.Entity("ChapanakitCare.Domain.Entities.AccountingPostingAudit", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("action");
+
+                    b.Property<string>("ActorDisplayName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("actor_display_name");
+
+                    b.Property<string>("ActorUserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("actor_user_id");
+
+                    b.Property<string>("AppVersion")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("app_version");
+
+                    b.Property<string>("DetailsSnapshot")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("details_snapshot");
+
+                    b.Property<Guid>("JournalId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("journal_id");
+
+                    b.Property<string>("MachineName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("machine_name");
+
+                    b.Property<DateTimeOffset>("OccurredAtUtc")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("occurred_at_utc");
+
+                    b.Property<Guid>("OperationId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("operation_id");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("JournalId")
+                        .IsUnique();
+
+                    b.ToTable("accounting_posting_audits", null, t =>
+                        {
+                            t.HasCheckConstraint("ck_accounting_posting_audits_action", "length(trim(action)) > 0");
+                        });
+                });
+
             modelBuilder.Entity("ChapanakitCare.Domain.Entities.AdvanceLedgerEntry", b =>
                 {
                     b.Property<Guid>("Id")
@@ -356,6 +820,135 @@ namespace ChapanakitCare.Infrastructure.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("ChapanakitCare.Domain.Entities.CoordinatorEvent", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("id");
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("action");
+
+                    b.Property<string>("Actor")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("actor");
+
+                    b.Property<DateOnly>("EffectiveDate")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("effective_date");
+
+                    b.Property<string>("GroupNo")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("group_no");
+
+                    b.Property<Guid?>("MemberId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("member_id");
+
+                    b.Property<string>("MemberName")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("member_name");
+
+                    b.Property<string>("MemberRunNo")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("member_run_no");
+
+                    b.Property<long>("OccurredAtUtc")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("occurred_at_utc");
+
+                    b.Property<string>("PositionKey")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("position_key");
+
+                    b.Property<int>("PositionVersion")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("position_version");
+
+                    b.Property<Guid?>("PreviousMemberId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("previous_member_id");
+
+                    b.Property<string>("PreviousMemberName")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("previous_member_name");
+
+                    b.Property<string>("PreviousRunNo")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("previous_run_no");
+
+                    b.Property<string>("Reason")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("reason");
+
+                    b.Property<string>("RoleCode")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("role_code");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PositionKey", "PositionVersion")
+                        .IsUnique();
+
+                    b.ToTable("coordinator_events", null, t =>
+                        {
+                            t.HasCheckConstraint("ck_coordinator_event_action", "(action = 'appoint' AND previous_member_id IS NULL AND member_id IS NOT NULL) OR (action = 'replace' AND previous_member_id IS NOT NULL AND member_id IS NOT NULL AND previous_member_id <> member_id) OR (action = 'end' AND previous_member_id IS NOT NULL AND member_id IS NULL)");
+
+                            t.HasCheckConstraint("ck_coordinator_event_reason", "action = 'appoint' OR (reason IS NOT NULL AND length(trim(reason)) > 0)");
+
+                            t.HasCheckConstraint("ck_coordinator_event_version", "position_version >= 1");
+                        });
+                });
+
+            modelBuilder.Entity("ChapanakitCare.Domain.Entities.CoordinatorPosition", b =>
+                {
+                    b.Property<string>("PositionKey")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("position_key");
+
+                    b.Property<DateOnly?>("AppointedOn")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("appointed_on");
+
+                    b.Property<string>("GroupNo")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("group_no");
+
+                    b.Property<Guid?>("MemberId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("member_id");
+
+                    b.Property<string>("RoleCode")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("role_code");
+
+                    b.Property<int>("Version")
+                        .IsConcurrencyToken()
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("version");
+
+                    b.HasKey("PositionKey");
+
+                    b.HasIndex("MemberId")
+                        .IsUnique()
+                        .HasFilter("member_id IS NOT NULL");
+
+                    b.ToTable("coordinator_positions", null, t =>
+                        {
+                            t.HasCheckConstraint("ck_coordinator_position_holder", "(member_id IS NULL AND appointed_on IS NULL) OR (member_id IS NOT NULL AND appointed_on IS NOT NULL)");
+
+                            t.HasCheckConstraint("ck_coordinator_position_scope", "(role_code = 'chairperson' AND group_no IS NULL AND position_key = 'chairperson') OR (role_code = 'group_leader' AND group_no IS NOT NULL AND length(trim(group_no)) > 0 AND group_no = trim(group_no) AND position_key = 'group:' || group_no)");
+
+                            t.HasCheckConstraint("ck_coordinator_position_version", "version >= 1");
+                        });
+                });
+
             modelBuilder.Entity("ChapanakitCare.Domain.Entities.DeathBeneficiarySnapshot", b =>
                 {
                     b.Property<Guid>("Id")
@@ -613,6 +1206,10 @@ namespace ChapanakitCare.Infrastructure.Persistence.Migrations
                         .HasColumnType("TEXT")
                         .HasColumnName("recorded_business_date");
 
+                    b.Property<DateOnly?>("ReportedCertificateDate")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("reported_certificate_date");
+
                     b.Property<int>("SettingsRevision")
                         .HasColumnType("INTEGER")
                         .HasColumnName("settings_revision");
@@ -757,6 +1354,64 @@ namespace ChapanakitCare.Infrastructure.Persistence.Migrations
                     b.ToTable("death_member_snapshots", null, t =>
                         {
                             t.HasCheckConstraint("ck_death_member_snapshots_run", "length(run_no) = 5");
+                        });
+                });
+
+            modelBuilder.Entity("ChapanakitCare.Domain.Entities.DeathRecipientPhoto", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("id");
+
+                    b.Property<int>("BeneficiarySlotNo")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("beneficiary_slot_no");
+
+                    b.Property<byte[]>("Bytes")
+                        .IsRequired()
+                        .HasColumnType("BLOB")
+                        .HasColumnName("bytes");
+
+                    b.Property<string>("ContentType")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("content_type");
+
+                    b.Property<DateTimeOffset>("CreatedAtUtc")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("created_at_utc");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("created_by");
+
+                    b.Property<Guid>("DeathCaseId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("death_case_id");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("file_name");
+
+                    b.Property<string>("Sha256")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("sha256");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DeathCaseId", "BeneficiarySlotNo")
+                        .IsUnique();
+
+                    b.ToTable("death_recipient_photos", null, t =>
+                        {
+                            t.HasCheckConstraint("ck_recipient_photo_bytes", "length(bytes) BETWEEN 1 AND 10485760 AND length(sha256) = 64");
+
+                            t.HasCheckConstraint("ck_recipient_photo_slot", "beneficiary_slot_no IN (1, 2)");
+
+                            t.HasCheckConstraint("ck_recipient_photo_type", "content_type IN ('image/png', 'image/jpeg')");
                         });
                 });
 
@@ -1390,6 +2045,155 @@ namespace ChapanakitCare.Infrastructure.Persistence.Migrations
                     b.ToTable("ui_table_preferences", (string)null);
                 });
 
+            modelBuilder.Entity("ChapanakitCare.Domain.Entities.WelfareCollection", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("id");
+
+                    b.Property<long>("AmountSatang")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("amount_satang");
+
+                    b.Property<DateOnly>("BusinessDate")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("business_date");
+
+                    b.Property<long>("CreatedAtUtc")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("created_at_utc");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("created_by");
+
+                    b.Property<string>("CycleKey")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("cycle_key");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("description");
+
+                    b.Property<DateOnly>("DueDate")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("due_date");
+
+                    b.Property<string>("GroupNo")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("group_no");
+
+                    b.Property<Guid>("MemberId")
+                        .HasColumnType("TEXT")
+                        .HasColumnName("member_id");
+
+                    b.Property<string>("MemberName")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("member_name");
+
+                    b.Property<string>("MemberRunNo")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("member_run_no");
+
+                    b.Property<string>("RequestFingerprint")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("request_fingerprint");
+
+                    b.Property<string>("RequestToken")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("request_token");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MemberId", "CycleKey")
+                        .IsUnique();
+
+                    b.HasIndex("MemberId", "RequestToken")
+                        .IsUnique();
+
+                    b.ToTable("welfare_collections", null, t =>
+                        {
+                            t.HasCheckConstraint("ck_welfare_collection_amount", "amount_satang > 0");
+
+                            t.HasCheckConstraint("ck_welfare_collection_cycle", "length(trim(cycle_key)) > 0");
+
+                            t.HasCheckConstraint("ck_welfare_collection_dates", "due_date >= business_date");
+                        });
+                });
+
+            modelBuilder.Entity("ChapanakitCare.Domain.Entities.AccountingAccount", b =>
+                {
+                    b.HasOne("ChapanakitCare.Domain.Entities.AccountingBook", null)
+                        .WithMany()
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ChapanakitCare.Domain.Entities.AccountingJournal", b =>
+                {
+                    b.HasOne("ChapanakitCare.Domain.Entities.AccountingBook", null)
+                        .WithMany()
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("ChapanakitCare.Domain.Entities.AccountingJournal", null)
+                        .WithMany()
+                        .HasForeignKey("ReversesJournalId", "BookId")
+                        .HasPrincipalKey("Id", "BookId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("ChapanakitCare.Domain.Entities.AccountingJournalLine", b =>
+                {
+                    b.HasOne("ChapanakitCare.Domain.Entities.AccountingBook", null)
+                        .WithMany()
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("ChapanakitCare.Domain.Entities.AccountingAccount", null)
+                        .WithMany()
+                        .HasForeignKey("AccountId", "BookId")
+                        .HasPrincipalKey("Id", "BookId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("ChapanakitCare.Domain.Entities.AccountingJournal", null)
+                        .WithMany()
+                        .HasForeignKey("JournalId", "BookId")
+                        .HasPrincipalKey("Id", "BookId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ChapanakitCare.Domain.Entities.AccountingPeriod", b =>
+                {
+                    b.HasOne("ChapanakitCare.Domain.Entities.AccountingBook", null)
+                        .WithMany()
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ChapanakitCare.Domain.Entities.AccountingPostingAudit", b =>
+                {
+                    b.HasOne("ChapanakitCare.Domain.Entities.AccountingJournal", null)
+                        .WithMany()
+                        .HasForeignKey("JournalId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("ChapanakitCare.Domain.Entities.AdvanceLedgerEntry", b =>
                 {
                     b.HasOne("ChapanakitCare.Domain.Entities.Member", null)
@@ -1438,14 +2242,6 @@ namespace ChapanakitCare.Infrastructure.Persistence.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ChapanakitCare.Domain.Entities.AuditEvent", b =>
-                {
-                    b.HasOne("ChapanakitCare.Domain.Entities.Member", null)
-                        .WithMany()
-                        .HasForeignKey("MemberId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
             modelBuilder.Entity("ChapanakitCare.Domain.Entities.AuditFieldChange", b =>
                 {
                     b.HasOne("ChapanakitCare.Domain.Entities.AuditEvent", null)
@@ -1453,6 +2249,23 @@ namespace ChapanakitCare.Infrastructure.Persistence.Migrations
                         .HasForeignKey("AuditEventId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ChapanakitCare.Domain.Entities.CoordinatorEvent", b =>
+                {
+                    b.HasOne("ChapanakitCare.Domain.Entities.CoordinatorPosition", null)
+                        .WithMany()
+                        .HasForeignKey("PositionKey")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ChapanakitCare.Domain.Entities.CoordinatorPosition", b =>
+                {
+                    b.HasOne("ChapanakitCare.Domain.Entities.Member", null)
+                        .WithMany()
+                        .HasForeignKey("MemberId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("ChapanakitCare.Domain.Entities.DeathBeneficiarySnapshot", b =>
@@ -1491,6 +2304,15 @@ namespace ChapanakitCare.Infrastructure.Persistence.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("ChapanakitCare.Domain.Entities.DeathRecipientPhoto", b =>
+                {
+                    b.HasOne("ChapanakitCare.Domain.Entities.DeathCase", null)
+                        .WithMany()
+                        .HasForeignKey("DeathCaseId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("ChapanakitCare.Domain.Entities.MemberBeneficiary", b =>
                 {
                     b.HasOne("ChapanakitCare.Domain.Entities.Member", null)
@@ -1515,6 +2337,15 @@ namespace ChapanakitCare.Infrastructure.Persistence.Migrations
                         .WithMany()
                         .HasForeignKey("LatestResetId")
                         .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("ChapanakitCare.Domain.Entities.WelfareCollection", b =>
+                {
+                    b.HasOne("ChapanakitCare.Domain.Entities.Member", null)
+                        .WithMany()
+                        .HasForeignKey("MemberId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

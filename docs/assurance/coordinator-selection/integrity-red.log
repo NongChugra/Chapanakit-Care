@@ -1,0 +1,111 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:03.06]     ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Resignation_and_death_end_current_role_in_the_same_transaction(death: True) [FAIL]
+[xUnit.net 00:00:03.18]     ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Resignation_and_death_end_current_role_in_the_same_transaction(death: False) [FAIL]
+[xUnit.net 00:00:03.26]     ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Role_history_cannot_be_edited_or_deleted(delete: True) [FAIL]
+  Failed ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Resignation_and_death_end_current_role_in_the_same_transaction(death: True) [2 s]
+  Error Message:
+   Assert.Null() Failure: Value of type 'Nullable<Guid>' has a value
+Expected: null
+Actual:   11111111-1111-1111-1111-111111111111
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Resignation_and_death_end_current_role_in_the_same_transaction(Boolean death) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorIntegrityTests.cs:line 76
+   at ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Resignation_and_death_end_current_role_in_the_same_transaction(Boolean death) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorIntegrityTests.cs:line 81
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Resignation_and_death_end_current_role_in_the_same_transaction(death: False) [130 ms]
+  Error Message:
+   Assert.Null() Failure: Value of type 'Nullable<Guid>' has a value
+Expected: null
+Actual:   11111111-1111-1111-1111-111111111111
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Resignation_and_death_end_current_role_in_the_same_transaction(Boolean death) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorIntegrityTests.cs:line 76
+   at ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Resignation_and_death_end_current_role_in_the_same_transaction(Boolean death) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorIntegrityTests.cs:line 81
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Role_history_cannot_be_edited_or_deleted(delete: True) [71 ms]
+  Error Message:
+   Assert.Throws() Failure: No exception was thrown
+Expected: typeof(System.InvalidOperationException)
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Role_history_cannot_be_edited_or_deleted(Boolean delete) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorIntegrityTests.cs:line 57
+   at ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Role_history_cannot_be_edited_or_deleted(Boolean delete) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorIntegrityTests.cs:line 59
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:03.30]     ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Role_history_cannot_be_edited_or_deleted(delete: False) [FAIL]
+[xUnit.net 00:00:03.39]     ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Tracked_member_mutations_cannot_leave_an_ineligible_current_leader(change: "group") [FAIL]
+[xUnit.net 00:00:03.44]     ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Tracked_member_mutations_cannot_leave_an_ineligible_current_leader(change: "archive") [FAIL]
+  Failed ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Role_history_cannot_be_edited_or_deleted(delete: False) [43 ms]
+  Error Message:
+   Assert.Throws() Failure: No exception was thrown
+Expected: typeof(System.InvalidOperationException)
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Role_history_cannot_be_edited_or_deleted(Boolean delete) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorIntegrityTests.cs:line 57
+   at ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Role_history_cannot_be_edited_or_deleted(Boolean delete) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorIntegrityTests.cs:line 59
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Tracked_member_mutations_cannot_leave_an_ineligible_current_leader(change: "group") [41 ms]
+  Error Message:
+   Assert.Throws() Failure: No exception was thrown
+Expected: typeof(ChapanakitCare.Infrastructure.Members.MemberValidationException)
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Tracked_member_mutations_cannot_leave_an_ineligible_current_leader(String change) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorIntegrityTests.cs:line 26
+   at ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Tracked_member_mutations_cannot_leave_an_ineligible_current_leader(String change) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorIntegrityTests.cs:line 31
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Tracked_member_mutations_cannot_leave_an_ineligible_current_leader(change: "archive") [47 ms]
+  Error Message:
+   Assert.Throws() Failure: No exception was thrown
+Expected: typeof(ChapanakitCare.Infrastructure.Members.MemberValidationException)
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Tracked_member_mutations_cannot_leave_an_ineligible_current_leader(String change) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorIntegrityTests.cs:line 26
+   at ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Tracked_member_mutations_cannot_leave_an_ineligible_current_leader(String change) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorIntegrityTests.cs:line 31
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:03.49]     ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Tracked_member_mutations_cannot_leave_an_ineligible_current_leader(change: "status") [FAIL]
+[xUnit.net 00:00:03.62]     ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Member_edit_allows_group_change_after_role_is_ended [FAIL]
+[xUnit.net 00:00:03.72]     ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Demo_reset_clears_coordinator_data_before_members [FAIL]
+[xUnit.net 00:00:03.78]     ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Failed_role_history_write_rolls_back_resignation_and_ledger [FAIL]
+  Failed ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Tracked_member_mutations_cannot_leave_an_ineligible_current_leader(change: "status") [45 ms]
+  Error Message:
+   Assert.Throws() Failure: No exception was thrown
+Expected: typeof(ChapanakitCare.Infrastructure.Members.MemberValidationException)
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Tracked_member_mutations_cannot_leave_an_ineligible_current_leader(String change) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorIntegrityTests.cs:line 26
+   at ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Tracked_member_mutations_cannot_leave_an_ineligible_current_leader(String change) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorIntegrityTests.cs:line 31
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Member_edit_allows_group_change_after_role_is_ended [128 ms]
+  Error Message:
+   Assert.Throws() Failure: No exception was thrown
+Expected: typeof(ChapanakitCare.Infrastructure.Members.MemberValidationException)
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Member_edit_allows_group_change_after_role_is_ended() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorIntegrityTests.cs:line 41
+   at ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Member_edit_allows_group_change_after_role_is_ended() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorIntegrityTests.cs:line 45
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Demo_reset_clears_coordinator_data_before_members [93 ms]
+  Error Message:
+   Microsoft.Data.Sqlite.SqliteException : SQLite Error 19: 'FOREIGN KEY constraint failed'.
+  Stack Trace:
+     at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteNonQuery()
+   at System.Data.Common.DbCommand.ExecuteNonQueryAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteNonQueryAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at ChapanakitCare.Infrastructure.Members.DemoDataMaintenanceService.ClearMembersAsync(DateTimeOffset now, String actor, CancellationToken cancellationToken) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Members\MemberApplicationServices.cs:line 568
+   at ChapanakitCare.Infrastructure.Members.DemoDataMaintenanceService.ClearMembersAsync(DateTimeOffset now, String actor, CancellationToken cancellationToken) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Members\MemberApplicationServices.cs:line 578
+   at ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Demo_reset_clears_coordinator_data_before_members() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorIntegrityTests.cs:line 116
+   at ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Demo_reset_clears_coordinator_data_before_members() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorIntegrityTests.cs:line 119
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Failed_role_history_write_rolls_back_resignation_and_ledger [56 ms]
+  Error Message:
+   Assert.Throws() Failure: No exception was thrown
+Expected: typeof(Microsoft.EntityFrameworkCore.DbUpdateException)
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Failed_role_history_write_rolls_back_resignation_and_ledger() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorIntegrityTests.cs:line 90
+   at ChapanakitCare.Domain.Tests.CoordinatorIntegrityTests.Failed_role_history_write_rolls_back_resignation_and_ledger() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CoordinatorIntegrityTests.cs:line 98
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:    10, Passed:    19, Skipped:     0, Total:    29, Duration: 3 s - ChapanakitCare.Domain.Tests.dll (net10.0)

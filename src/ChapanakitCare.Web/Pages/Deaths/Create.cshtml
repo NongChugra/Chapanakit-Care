@@ -6,7 +6,7 @@
     <div class="form-grid">
         <label>เลขกรณีเสียชีวิต<input value="@Model.NextDeathCaseNo" readonly /></label>
         <label>เลขสมาชิก<input asp-for="RunNo" required /></label>
-        <div class="actions" style="align-self:end"><button class="button secondary" type="submit" asp-page-handler="Preview">ตรวจสอบและคำนวณ</button></div>
+        <div class="actions" style="align-self:end"><button class="button secondary" type="submit" asp-page-handler="Preview" formnovalidate>ตรวจสอบและคำนวณ</button></div>
         <label>วันที่บันทึก <span class="hint">ล็อกเป็นวันนี้ แก้ไขไม่ได้</span><input value="@ChapanakitCare.Domain.ThaiBuddhistDate.Format(DateOnly.FromDateTime(DateTime.Today))" readonly /></label>
     </div>
     @if (Model.Preview is not null && Model.PayablePreview is not null && Model.NonPayPreview is not null)
@@ -15,10 +15,7 @@
         var payable = Model.PayablePreview;
         var nonPay = Model.NonPayPreview;
         <div class="alert member-death-summary"><strong>@p.Member.Title@p.Member.FirstName @p.Member.LastName</strong> · เลขประชาชน @(p.Member.PersonalIdCard ?? "–") · เงินสงเคราะห์ล่วงหน้าคงเหลือ @p.Member.AdvanceUnitsBalance คน</div>
-        @if (p.IsWithinSpecialNonPayWindow)
-        {
-            <div class="alert warning">คำเตือนเพื่อความปลอดภัย: สมาชิกอยู่ในช่วงเฝ้าระวัง @p.SpecialNonPayWindowDays วันแรกหลังเริ่มคุ้มครอง (ผ่านแล้ว @p.DaysSinceCoverage วัน) กรุณาตรวจสอบเงื่อนไขโรคกับเอกสารจริง หากเจ้าหน้าที่พิจารณาว่าเข้าข่ายจึงเลือก “เคสไม่จ่าย” และระบุเหตุผล</div>
-        }
+        <div class="alert warning" data-special-window-warning hidden="@(!p.IsWithinSpecialNonPayWindow)">วันที่เสียชีวิตตามใบมรณะบัตรอยู่ในช่วงเฝ้าระวัง @p.SpecialNonPayWindowDays วันหลังเริ่มคุ้มครอง กรุณาตรวจสอบเอกสารและเงื่อนไขโรคก่อนเลือก “เคสไม่จ่าย”</div>
         <div class="form-grid death-member-details">
             <label>วันที่สมัคร<input value="@ChapanakitCare.Web.Pages.Members.IndexModel.ThaiDate(p.Member.ApplicationDate)" readonly /></label>
             <label>วันเกิด<input value="@(p.Member.BirthDate is null ? "–" : ChapanakitCare.Web.Pages.Members.IndexModel.ThaiDate(p.Member.BirthDate.Value))" readonly /></label>
@@ -26,17 +23,29 @@
             <label>กลุ่มสมาชิก<input value="@(p.Member.GroupNo ?? "–")" readonly /></label>
             <label>วันคุ้มครอง<input value="@ChapanakitCare.Web.Pages.Members.IndexModel.ThaiDate(p.Member.CoverageStartDate)" readonly /></label>
         </div>
-        <div class="form-grid death-certificate-grid">
+        <div class="death-documents-layout"><div class="form-grid death-certificate-grid">
             <label>เลขที่ใบมรณะบัตร<input asp-for="CertificateNo" required /></label>
             <label>สาเหตุการเสียชีวิต<input asp-for="Cause" required /></label>
-            <label>วันที่เสียชีวิตตามใบมรณะบัตร<input asp-for="CertificateDate" type="hidden" /><input type="text" inputmode="numeric" maxlength="10" placeholder="วว/ดด/ปปปป" data-thai-date data-thai-date-target="#CertificateDate" required /></label>
-            <label>วันที่แจ้งตามใบมรณะบัตร<input asp-for="ReportedCertificateDate" type="hidden" /><input type="text" inputmode="numeric" maxlength="10" placeholder="วว/ดด/ปปปป" data-thai-date data-thai-date-target="#ReportedCertificateDate" required /></label>
+            <label>วันที่เสียชีวิตตามใบมรณะบัตร<input asp-for="CertificateDate" type="hidden" value="@(Model.CertificateDate?.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))" /><input type="text" inputmode="numeric" maxlength="10" placeholder="วว/ดด/ปปปป" data-thai-date data-thai-date-target="#CertificateDate" required /></label>
+            <label>วันที่แจ้งตามใบมรณะบัตร<input asp-for="ReportedCertificateDate" type="hidden" value="@(Model.ReportedCertificateDate?.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))" /><input type="text" inputmode="numeric" maxlength="10" placeholder="วว/ดด/ปปปป" data-thai-date data-thai-date-target="#ReportedCertificateDate" required /></label>
             <label>ไฟล์ใบมรณะบัตร<input asp-for="CertificatePdf" type="file" accept="application/pdf,.pdf" /><span class="hint">PDF สูงสุด 10 MB (ไม่บังคับ)</span></label>
         </div>
+        <section class="recipient-photo-panel">
+            <h3>ภาพผู้รับเงิน</h3>
+            <p class="muted">แนบภาพของผู้รับเงินแต่ละคนเป็น JPG หรือ PNG สูงสุด 10 MB ต่อภาพ ภาพจะเก็บพร้อมรายการเสียชีวิตและดาวน์โหลดจากทะเบียนผู้เสียชีวิตได้</p>
+            @foreach (var recipient in p.Beneficiaries)
+            {
+                <label>@recipient.Title@recipient.FirstName @recipient.LastName (ผู้รับเงินคนที่ @recipient.SlotNo)
+                    <input type="file" name="RecipientPhoto@(recipient.SlotNo)" accept="image/jpeg,image/png,.jpg,.jpeg,.png" />
+                </label>
+            }
+            <p class="hint">เมื่อหน้าจอแจ้งข้อผิดพลาด กรุณาเลือกไฟล์แนบอีกครั้งก่อนยืนยัน</p>
+        </section></div>
         <div class="nonpay-row">
-            <label class="checkbox-explanation"><span><input asp-for="NonPay" class="large-checkbox" data-nonpay-toggle /> เสียชีวิตด้วยโรคร้ายแรงที่กำหนดไว้ภายใน 1 ปี</span></label>
+            <label class="checkbox-explanation"><span><input asp-for="NonPay" class="large-checkbox" data-nonpay-toggle data-coverage-start="@p.Member.CoverageStartDate.ToString("yyyy-MM-dd")" data-window-days="@p.SpecialNonPayWindowDays" /> เสียชีวิตด้วยโรคร้ายแรงที่กำหนดไว้ภายในช่วงเฝ้าระวัง</span><small class="hint" data-nonpay-date-hint>เลือกได้เมื่อวันที่เสียชีวิตตามใบมรณะบัตรอยู่ภายใน @p.SpecialNonPayWindowDays วันหลังเริ่มคุ้มครอง</small></label>
             <label>เหตุผลเพิ่มเติม<input asp-for="NonPayReason" placeholder="ต้องระบุเมื่อเลือกเคสไม่จ่าย" data-nonpay-reason /></label>
         </div>
+        <div class="alert warning" data-preview-stale hidden>เลขสมาชิกหรือวันที่เสียชีวิตเปลี่ยนแล้ว กรุณากด “ตรวจสอบและคำนวณ” อีกครั้งก่อนยืนยัน</div>
         <section class="calculation-panel" data-death-calculation>
             <h2>รายการคำนวณเงินสงเคราะห์</h2>
             <table><tbody>
@@ -55,29 +64,10 @@
                 }
             </tbody></table>
         </section>
-        <div class="actions"><button class="button danger" type="submit" asp-page-handler="Confirm">ยืนยันการเสียชีวิต</button><a class="button secondary" asp-page="/Members/Index">ยกเลิก</a></div>
+        <div class="actions"><button class="button danger" type="submit" asp-page-handler="Confirm" data-death-confirm>ยืนยันการเสียชีวิต</button><a class="button secondary" asp-page="/Members/Index">ยกเลิก</a></div>
     }
 </form>
 
 @section Scripts {
-<script>
-(() => {
-    const checkbox = document.querySelector('[data-nonpay-toggle]');
-    const reason = document.querySelector('[data-nonpay-reason]');
-    if (!checkbox) return;
-    const update = () => {
-        document.querySelectorAll('[data-money-value]').forEach(cell => {
-            const raw = Number(checkbox.checked ? cell.dataset.nonpay : cell.dataset.pay);
-            const value = cell.dataset.satang === 'true' ? raw / 100 : raw;
-            cell.textContent = `${value.toLocaleString('th-TH', { minimumFractionDigits: cell.dataset.satang === 'true' ? 2 : 0, maximumFractionDigits: 2 })} ${cell.dataset.unit}`;
-        });
-        if (reason) {
-            reason.required = checkbox.checked;
-            reason.disabled = !checkbox.checked;
-        }
-    };
-    checkbox.addEventListener('change', update);
-    update();
-})();
-</script>
+<script src="~/js/death-preview.js" asp-append-version="true"></script>
 }

@@ -1,0 +1,395 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.19]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.29]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.33]   Starting:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.BusinessRuleTests.Beneficiary_count_outside_zero_to_two_is_rejected(beneficiaryCount: 3) [5 ms]
+  Passed ChapanakitCare.Domain.Tests.BusinessRuleTests.Beneficiary_count_outside_zero_to_two_is_rejected(beneficiaryCount: -1) [< 1 ms]
+  Passed ChapanakitCare.Domain.Tests.BusinessRuleTests.Coverage_starts_exactly_180_calendar_days_after_approval [3 ms]
+  Passed ChapanakitCare.Domain.Tests.BusinessRuleTests.Age_is_completed_years_on_the_requested_business_date(birthDateText: "1980-08-25", asOfText: "2026-08-25", expectedAge: 46) [4 ms]
+  Passed ChapanakitCare.Domain.Tests.BusinessRuleTests.Age_is_completed_years_on_the_requested_business_date(birthDateText: "1980-08-26", asOfText: "2026-08-25", expectedAge: 45) [< 1 ms]
+  Passed ChapanakitCare.Domain.Tests.BusinessRuleTests.Age_is_completed_years_on_the_requested_business_date(birthDateText: "1980-08-24", asOfText: "2026-08-25", expectedAge: 46) [< 1 ms]
+[xUnit.net 00:00:00.52]       Assert.Throws() Failure: Exception type was not an exact match
+[xUnit.net 00:00:00.52]       Expected: typeof(System.FormatException)
+[xUnit.net 00:00:00.52]       Actual:   typeof(System.NotImplementedException)
+[xUnit.net 00:00:00.52]       ---- System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:00.52]       Stack Trace:
+[xUnit.net 00:00:00.52]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs(24,0): at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(String input)
+[xUnit.net 00:00:00.52]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:00.52]            at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+[xUnit.net 00:00:00.52]         ----- Inner Stack Trace -----
+[xUnit.net 00:00:00.52]     ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(input: "1.001") [FAIL]
+[xUnit.net 00:00:00.52]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs(5,0): at ChapanakitCare.Domain.FinanceMoney.Parse(String text, Boolean allowZero)
+[xUnit.net 00:00:00.52]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs(24,0): at ChapanakitCare.Domain.Tests.FinanceMoneyTests.<>c__DisplayClass1_0.<Rejects_fractional_satang_malformed_grouping_and_out_of_range_input>b__0()
+[xUnit.net 00:00:00.52]     ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(input: "0") [FAIL]
+[xUnit.net 00:00:00.52]       Assert.Throws() Failure: Exception type was not an exact match
+[xUnit.net 00:00:00.52]       Expected: typeof(System.FormatException)
+[xUnit.net 00:00:00.52]       Actual:   typeof(System.NotImplementedException)
+[xUnit.net 00:00:00.52]       ---- System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:00.52]       Stack Trace:
+[xUnit.net 00:00:00.52]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs(24,0): at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(String input)
+[xUnit.net 00:00:00.52]            at InvokeStub_FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(Object, Span`1)
+[xUnit.net 00:00:00.52]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:00.53]         ----- Inner Stack Trace -----
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs(5,0): at ChapanakitCare.Domain.FinanceMoney.Parse(String text, Boolean allowZero)
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs(24,0): at ChapanakitCare.Domain.Tests.FinanceMoneyTests.<>c__DisplayClass1_0.<Rejects_fractional_satang_malformed_grouping_and_out_of_range_input>b__0()
+  Passed ChapanakitCare.Domain.Tests.BusinessRuleTests.Four_percent_expense_deduction_rounds_down_to_whole_baht_before_splitting [6 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingBenefitTests.Actual_prepaid_money_survives_partial_units_and_is_split_without_loss [25 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingBenefitTests.Actual_recorded_shortfall_reduces_benefit_without_revaluing_old_units [< 1 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingBenefitTests.Nonpay_case_does_not_turn_prepaid_money_into_a_benefit_automatically [< 1 ms]
+  Passed ChapanakitCare.Domain.Tests.BusinessRuleTests.Nonpay_death_has_zero_money_and_does_not_move_other_member_counters(manualNonPay: True, recordedDateText: "2027-02-21", expectedEligibility: ManualNonPayZero) [4 ms]
+  Passed ChapanakitCare.Domain.Tests.BusinessRuleTests.Nonpay_death_has_zero_money_and_does_not_move_other_member_counters(manualNonPay: False, recordedDateText: "2027-02-20", expectedEligibility: BeforeCoverageZero) [< 1 ms]
+  Failed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(input: "1.001") [6 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(System.FormatException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(String input) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs:line 24
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+----- Inner Stack Trace -----
+   at ChapanakitCare.Domain.FinanceMoney.Parse(String text, Boolean allowZero) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs:line 5
+   at ChapanakitCare.Domain.Tests.FinanceMoneyTests.<>c__DisplayClass1_0.<Rejects_fractional_satang_malformed_grouping_and_out_of_range_input>b__0() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs:line 24
+  Passed ChapanakitCare.Domain.Tests.BusinessRuleTests.Death_on_coverage_start_is_payable_and_excludes_the_deceased_from_contributors [2 ms]
+  Failed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(input: "0") [< 1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(System.FormatException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(String input) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs:line 24
+   at InvokeStub_FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+----- Inner Stack Trace -----
+   at ChapanakitCare.Domain.FinanceMoney.Parse(String text, Boolean allowZero) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs:line 5
+   at ChapanakitCare.Domain.Tests.FinanceMoneyTests.<>c__DisplayClass1_0.<Rejects_fractional_satang_malformed_grouping_and_out_of_range_input>b__0() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs:line 24
+[xUnit.net 00:00:00.53]       Assert.Throws() Failure: Exception type was not an exact match
+[xUnit.net 00:00:00.53]     ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(input: "92233720368547758.08") [FAIL]
+[xUnit.net 00:00:00.53]       Expected: typeof(System.FormatException)
+[xUnit.net 00:00:00.53]       Actual:   typeof(System.NotImplementedException)
+[xUnit.net 00:00:00.53]       ---- System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:00.53]       Stack Trace:
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs(24,0): at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(String input)
+[xUnit.net 00:00:00.53]            at InvokeStub_FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(Object, Span`1)
+[xUnit.net 00:00:00.53]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:00.53]         ----- Inner Stack Trace -----
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs(5,0): at ChapanakitCare.Domain.FinanceMoney.Parse(String text, Boolean allowZero)
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs(24,0): at ChapanakitCare.Domain.Tests.FinanceMoneyTests.<>c__DisplayClass1_0.<Rejects_fractional_satang_malformed_grouping_and_out_of_range_input>b__0()
+[xUnit.net 00:00:00.53]       Assert.Throws() Failure: Exception type was not an exact match
+[xUnit.net 00:00:00.53]     ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(input: "NaN") [FAIL]
+[xUnit.net 00:00:00.53]       Expected: typeof(System.FormatException)
+[xUnit.net 00:00:00.53]       Actual:   typeof(System.NotImplementedException)
+[xUnit.net 00:00:00.53]       ---- System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:00.53]       Stack Trace:
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs(24,0): at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(String input)
+[xUnit.net 00:00:00.53]            at InvokeStub_FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(Object, Span`1)
+[xUnit.net 00:00:00.53]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:00.53]         ----- Inner Stack Trace -----
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs(5,0): at ChapanakitCare.Domain.FinanceMoney.Parse(String text, Boolean allowZero)
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs(24,0): at ChapanakitCare.Domain.Tests.FinanceMoneyTests.<>c__DisplayClass1_0.<Rejects_fractional_satang_malformed_grouping_and_out_of_range_input>b__0()
+[xUnit.net 00:00:00.53]     ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(input: "-1") [FAIL]
+[xUnit.net 00:00:00.53]       Assert.Throws() Failure: Exception type was not an exact match
+[xUnit.net 00:00:00.53]       Expected: typeof(System.FormatException)
+[xUnit.net 00:00:00.53]       Actual:   typeof(System.NotImplementedException)
+[xUnit.net 00:00:00.53]       ---- System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:00.53]       Stack Trace:
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs(24,0): at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(String input)
+[xUnit.net 00:00:00.53]            at InvokeStub_FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(Object, Span`1)
+[xUnit.net 00:00:00.53]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:00.53]         ----- Inner Stack Trace -----
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs(5,0): at ChapanakitCare.Domain.FinanceMoney.Parse(String text, Boolean allowZero)
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs(24,0): at ChapanakitCare.Domain.Tests.FinanceMoneyTests.<>c__DisplayClass1_0.<Rejects_fractional_satang_malformed_grouping_and_out_of_range_input>b__0()
+[xUnit.net 00:00:00.53]       Assert.Throws() Failure: Exception type was not an exact match
+[xUnit.net 00:00:00.53]     ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(input: "12,34.50") [FAIL]
+[xUnit.net 00:00:00.53]       Expected: typeof(System.FormatException)
+[xUnit.net 00:00:00.53]       Actual:   typeof(System.NotImplementedException)
+[xUnit.net 00:00:00.53]       ---- System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:00.53]       Stack Trace:
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs(24,0): at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(String input)
+[xUnit.net 00:00:00.53]            at InvokeStub_FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(Object, Span`1)
+[xUnit.net 00:00:00.53]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:00.53]         ----- Inner Stack Trace -----
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs(5,0): at ChapanakitCare.Domain.FinanceMoney.Parse(String text, Boolean allowZero)
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs(24,0): at ChapanakitCare.Domain.Tests.FinanceMoneyTests.<>c__DisplayClass1_0.<Rejects_fractional_satang_malformed_grouping_and_out_of_range_input>b__0()
+[xUnit.net 00:00:00.53]     ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(input: "1e3") [FAIL]
+[xUnit.net 00:00:00.53]       Assert.Throws() Failure: Exception type was not an exact match
+[xUnit.net 00:00:00.53]       Expected: typeof(System.FormatException)
+[xUnit.net 00:00:00.53]       Actual:   typeof(System.NotImplementedException)
+[xUnit.net 00:00:00.53]       ---- System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:00.53]       Stack Trace:
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs(24,0): at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(String input)
+[xUnit.net 00:00:00.53]            at InvokeStub_FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(Object, Span`1)
+[xUnit.net 00:00:00.53]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:00.53]         ----- Inner Stack Trace -----
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs(5,0): at ChapanakitCare.Domain.FinanceMoney.Parse(String text, Boolean allowZero)
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs(24,0): at ChapanakitCare.Domain.Tests.FinanceMoneyTests.<>c__DisplayClass1_0.<Rejects_fractional_satang_malformed_grouping_and_out_of_range_input>b__0()
+[xUnit.net 00:00:00.53]     ChapanakitCare.Domain.Tests.FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(input: "0.01", expected: 1) [FAIL]
+[xUnit.net 00:00:00.53]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:00.53]       Stack Trace:
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs(5,0): at ChapanakitCare.Domain.FinanceMoney.Parse(String text, Boolean allowZero)
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs(13,0): at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(String input, Int64 expected)
+[xUnit.net 00:00:00.53]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:00.53]            at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+[xUnit.net 00:00:00.53]     ChapanakitCare.Domain.Tests.FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(input: "9", expected: 900) [FAIL]
+[xUnit.net 00:00:00.53]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:00.53]       Stack Trace:
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs(5,0): at ChapanakitCare.Domain.FinanceMoney.Parse(String text, Boolean allowZero)
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs(13,0): at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(String input, Int64 expected)
+[xUnit.net 00:00:00.53]            at InvokeStub_FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(Object, Span`1)
+[xUnit.net 00:00:00.53]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:00.53]     ChapanakitCare.Domain.Tests.FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(input: "1,234.50", expected: 123450) [FAIL]
+[xUnit.net 00:00:00.53]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:00.53]       Stack Trace:
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs(5,0): at ChapanakitCare.Domain.FinanceMoney.Parse(String text, Boolean allowZero)
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs(13,0): at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(String input, Int64 expected)
+[xUnit.net 00:00:00.53]            at InvokeStub_FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(Object, Span`1)
+[xUnit.net 00:00:00.53]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:00.53]     ChapanakitCare.Domain.Tests.FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(input: " 451.2 ", expected: 45120) [FAIL]
+[xUnit.net 00:00:00.53]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:00.53]       Stack Trace:
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs(5,0): at ChapanakitCare.Domain.FinanceMoney.Parse(String text, Boolean allowZero)
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs(13,0): at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(String input, Int64 expected)
+[xUnit.net 00:00:00.53]            at InvokeStub_FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(Object, Span`1)
+[xUnit.net 00:00:00.53]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(input: "92233720368547758.08") [< 1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(System.FormatException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(String input) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs:line 24
+   at InvokeStub_FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+----- Inner Stack Trace -----
+   at ChapanakitCare.Domain.FinanceMoney.Parse(String text, Boolean allowZero) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs:line 5
+   at ChapanakitCare.Domain.Tests.FinanceMoneyTests.<>c__DisplayClass1_0.<Rejects_fractional_satang_malformed_grouping_and_out_of_range_input>b__0() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs:line 24
+  Failed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(input: "NaN") [< 1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(System.FormatException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(String input) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs:line 24
+   at InvokeStub_FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+----- Inner Stack Trace -----
+   at ChapanakitCare.Domain.FinanceMoney.Parse(String text, Boolean allowZero) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs:line 5
+   at ChapanakitCare.Domain.Tests.FinanceMoneyTests.<>c__DisplayClass1_0.<Rejects_fractional_satang_malformed_grouping_and_out_of_range_input>b__0() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs:line 24
+  Failed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(input: "-1") [< 1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(System.FormatException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(String input) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs:line 24
+   at InvokeStub_FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+----- Inner Stack Trace -----
+   at ChapanakitCare.Domain.FinanceMoney.Parse(String text, Boolean allowZero) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs:line 5
+   at ChapanakitCare.Domain.Tests.FinanceMoneyTests.<>c__DisplayClass1_0.<Rejects_fractional_satang_malformed_grouping_and_out_of_range_input>b__0() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs:line 24
+  Failed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(input: "12,34.50") [< 1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(System.FormatException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(String input) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs:line 24
+   at InvokeStub_FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+----- Inner Stack Trace -----
+   at ChapanakitCare.Domain.FinanceMoney.Parse(String text, Boolean allowZero) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs:line 5
+   at ChapanakitCare.Domain.Tests.FinanceMoneyTests.<>c__DisplayClass1_0.<Rejects_fractional_satang_malformed_grouping_and_out_of_range_input>b__0() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs:line 24
+  Failed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(input: "1e3") [< 1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(System.FormatException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(String input) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs:line 24
+   at InvokeStub_FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+----- Inner Stack Trace -----
+   at ChapanakitCare.Domain.FinanceMoney.Parse(String text, Boolean allowZero) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs:line 5
+   at ChapanakitCare.Domain.Tests.FinanceMoneyTests.<>c__DisplayClass1_0.<Rejects_fractional_satang_malformed_grouping_and_out_of_range_input>b__0() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs:line 24
+  Failed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(input: "0.01", expected: 1) [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.FinanceMoney.Parse(String text, Boolean allowZero) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs:line 5
+   at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(String input, Int64 expected) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs:line 13
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+  Failed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(input: "9", expected: 900) [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.FinanceMoney.Parse(String text, Boolean allowZero) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs:line 5
+   at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(String input, Int64 expected) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs:line 13
+   at InvokeStub_FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(input: "1,234.50", expected: 123450) [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.FinanceMoney.Parse(String text, Boolean allowZero) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs:line 5
+   at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(String input, Int64 expected) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs:line 13
+   at InvokeStub_FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(input: " 451.2 ", expected: 45120) [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.FinanceMoney.Parse(String text, Boolean allowZero) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs:line 5
+   at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(String input, Int64 expected) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs:line 13
+   at InvokeStub_FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:00.53]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:00.53]       Stack Trace:
+[xUnit.net 00:00:00.53]     ChapanakitCare.Domain.Tests.FinanceMoneyTests.Formats_signed_satang_without_losing_precision(satang: -9223372036854775808, expected: "-92,233,720,368,547,758.08") [FAIL]
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs(6,0): at ChapanakitCare.Domain.FinanceMoney.Format(Int64 satang)
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs(36,0): at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Formats_signed_satang_without_losing_precision(Int64 satang, String expected)
+[xUnit.net 00:00:00.53]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:00.53]     ChapanakitCare.Domain.Tests.FinanceMoneyTests.Formats_signed_satang_without_losing_precision(satang: 123456, expected: "1,234.56") [FAIL]
+[xUnit.net 00:00:00.53]            at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+[xUnit.net 00:00:00.53]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:00.53]       Stack Trace:
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs(6,0): at ChapanakitCare.Domain.FinanceMoney.Format(Int64 satang)
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs(36,0): at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Formats_signed_satang_without_losing_precision(Int64 satang, String expected)
+[xUnit.net 00:00:00.53]            at InvokeStub_FinanceMoneyTests.Formats_signed_satang_without_losing_precision(Object, Span`1)
+[xUnit.net 00:00:00.53]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:00.53]     ChapanakitCare.Domain.Tests.FinanceMoneyTests.Formats_signed_satang_without_losing_precision(satang: -451, expected: "-4.51") [FAIL]
+[xUnit.net 00:00:00.53]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:00.53]       Stack Trace:
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs(6,0): at ChapanakitCare.Domain.FinanceMoney.Format(Int64 satang)
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs(36,0): at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Formats_signed_satang_without_losing_precision(Int64 satang, String expected)
+[xUnit.net 00:00:00.53]            at InvokeStub_FinanceMoneyTests.Formats_signed_satang_without_losing_precision(Object, Span`1)
+[xUnit.net 00:00:00.53]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:00.53]     ChapanakitCare.Domain.Tests.FinanceMoneyTests.Formats_signed_satang_without_losing_precision(satang: 0, expected: "0.00") [FAIL]
+[xUnit.net 00:00:00.53]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:00.53]       Stack Trace:
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs(6,0): at ChapanakitCare.Domain.FinanceMoney.Format(Int64 satang)
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs(36,0): at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Formats_signed_satang_without_losing_precision(Int64 satang, String expected)
+[xUnit.net 00:00:00.53]            at InvokeStub_FinanceMoneyTests.Formats_signed_satang_without_losing_precision(Object, Span`1)
+[xUnit.net 00:00:00.53]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:00.53]     ChapanakitCare.Domain.Tests.FinanceMoneyTests.Zero_is_allowed_only_for_explicit_opening_fields [FAIL]
+[xUnit.net 00:00:00.53]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:00.53]       Stack Trace:
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs(5,0): at ChapanakitCare.Domain.FinanceMoney.Parse(String text, Boolean allowZero)
+[xUnit.net 00:00:00.53]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs(28,0): at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Zero_is_allowed_only_for_explicit_opening_fields()
+[xUnit.net 00:00:00.53]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:00.53]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Failed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Formats_signed_satang_without_losing_precision(satang: -9223372036854775808, expected: "-92,233,720,368,547,758.08") [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.FinanceMoney.Format(Int64 satang) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs:line 6
+   at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Formats_signed_satang_without_losing_precision(Int64 satang, String expected) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs:line 36
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+  Failed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Formats_signed_satang_without_losing_precision(satang: 123456, expected: "1,234.56") [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.FinanceMoney.Format(Int64 satang) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs:line 6
+   at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Formats_signed_satang_without_losing_precision(Int64 satang, String expected) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs:line 36
+   at InvokeStub_FinanceMoneyTests.Formats_signed_satang_without_losing_precision(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Formats_signed_satang_without_losing_precision(satang: -451, expected: "-4.51") [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.FinanceMoney.Format(Int64 satang) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs:line 6
+   at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Formats_signed_satang_without_losing_precision(Int64 satang, String expected) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs:line 36
+   at InvokeStub_FinanceMoneyTests.Formats_signed_satang_without_losing_precision(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Formats_signed_satang_without_losing_precision(satang: 0, expected: "0.00") [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.FinanceMoney.Format(Int64 satang) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs:line 6
+   at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Formats_signed_satang_without_losing_precision(Int64 satang, String expected) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs:line 36
+   at InvokeStub_FinanceMoneyTests.Formats_signed_satang_without_losing_precision(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Zero_is_allowed_only_for_explicit_opening_fields [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.FinanceMoney.Parse(String text, Boolean allowZero) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\FinanceMoney.cs:line 5
+   at ChapanakitCare.Domain.Tests.FinanceMoneyTests.Zero_is_allowed_only_for_explicit_opening_fields() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceMoneyTests.cs:line 28
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:02.34]     ChapanakitCare.Domain.Tests.WelfareCollectionTests.Invalid_member_in_batch_leaves_no_partial_collections [FAIL]
+[xUnit.net 00:00:02.34]       Assert.Throws() Failure: Exception type was not an exact match
+[xUnit.net 00:00:02.34]       Expected: typeof(ChapanakitCare.Infrastructure.Members.MemberValidationException)
+[xUnit.net 00:00:02.34]       Actual:   typeof(System.NotImplementedException)
+[xUnit.net 00:00:02.34]       ---- System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:02.34]       Stack Trace:
+[xUnit.net 00:00:02.34]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\WelfareCollectionTests.cs(52,0): at ChapanakitCare.Domain.Tests.WelfareCollectionTests.Invalid_member_in_batch_leaves_no_partial_collections()
+[xUnit.net 00:00:02.34]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\WelfareCollectionTests.cs(55,0): at ChapanakitCare.Domain.Tests.WelfareCollectionTests.Invalid_member_in_batch_leaves_no_partial_collections()
+[xUnit.net 00:00:02.34]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:02.34]         ----- Inner Stack Trace -----
+[xUnit.net 00:00:02.34]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\WelfareCollectionService.cs(14,0): at ChapanakitCare.Infrastructure.AccountingOperations.WelfareCollectionService.CreateAsync(CreateWelfareCollection command, DateTimeOffset now, String actor, CancellationToken ct)
+[xUnit.net 00:00:02.34]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\WelfareCollectionTests.cs(52,0): at ChapanakitCare.Domain.Tests.WelfareCollectionTests.<>c__DisplayClass2_0.<Invalid_member_in_batch_leaves_no_partial_collections>b__0()
+[xUnit.net 00:00:02.43]     ChapanakitCare.Domain.Tests.WelfareCollectionTests.Collection_requests_preserve_member_group_and_do_not_reset_paid_units [FAIL]
+[xUnit.net 00:00:02.43]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:02.43]       Stack Trace:
+[xUnit.net 00:00:02.43]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\WelfareCollectionService.cs(14,0): at ChapanakitCare.Infrastructure.AccountingOperations.WelfareCollectionService.CreateAsync(CreateWelfareCollection command, DateTimeOffset now, String actor, CancellationToken ct)
+[xUnit.net 00:00:02.43]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\WelfareCollectionTests.cs(18,0): at ChapanakitCare.Domain.Tests.WelfareCollectionTests.Collection_requests_preserve_member_group_and_do_not_reset_paid_units()
+[xUnit.net 00:00:02.43]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\WelfareCollectionTests.cs(26,0): at ChapanakitCare.Domain.Tests.WelfareCollectionTests.Collection_requests_preserve_member_group_and_do_not_reset_paid_units()
+[xUnit.net 00:00:02.43]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:02.53]     ChapanakitCare.Domain.Tests.WelfareCollectionTests.Identical_request_replays_but_changed_payload_and_duplicate_cycle_are_rejected [FAIL]
+[xUnit.net 00:00:02.53]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:02.53]       Stack Trace:
+[xUnit.net 00:00:02.53]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\WelfareCollectionService.cs(14,0): at ChapanakitCare.Infrastructure.AccountingOperations.WelfareCollectionService.CreateAsync(CreateWelfareCollection command, DateTimeOffset now, String actor, CancellationToken ct)
+[xUnit.net 00:00:02.53]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\WelfareCollectionTests.cs(36,0): at ChapanakitCare.Domain.Tests.WelfareCollectionTests.Identical_request_replays_but_changed_payload_and_duplicate_cycle_are_rejected()
+[xUnit.net 00:00:02.53]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\WelfareCollectionTests.cs(43,0): at ChapanakitCare.Domain.Tests.WelfareCollectionTests.Identical_request_replays_but_changed_payload_and_duplicate_cycle_are_rejected()
+[xUnit.net 00:00:02.53]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:02.53]   Finished:    ChapanakitCare.Domain.Tests
+  Failed ChapanakitCare.Domain.Tests.WelfareCollectionTests.Invalid_member_in_batch_leaves_no_partial_collections [1 s]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(ChapanakitCare.Infrastructure.Members.MemberValidationException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.WelfareCollectionTests.Invalid_member_in_batch_leaves_no_partial_collections() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\WelfareCollectionTests.cs:line 52
+   at ChapanakitCare.Domain.Tests.WelfareCollectionTests.Invalid_member_in_batch_leaves_no_partial_collections() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\WelfareCollectionTests.cs:line 55
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at ChapanakitCare.Infrastructure.AccountingOperations.WelfareCollectionService.CreateAsync(CreateWelfareCollection command, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\WelfareCollectionService.cs:line 14
+   at ChapanakitCare.Domain.Tests.WelfareCollectionTests.<>c__DisplayClass2_0.<Invalid_member_in_batch_leaves_no_partial_collections>b__0() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\WelfareCollectionTests.cs:line 52
+  Failed ChapanakitCare.Domain.Tests.WelfareCollectionTests.Collection_requests_preserve_member_group_and_do_not_reset_paid_units [89 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingOperations.WelfareCollectionService.CreateAsync(CreateWelfareCollection command, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\WelfareCollectionService.cs:line 14
+   at ChapanakitCare.Domain.Tests.WelfareCollectionTests.Collection_requests_preserve_member_group_and_do_not_reset_paid_units() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\WelfareCollectionTests.cs:line 18
+   at ChapanakitCare.Domain.Tests.WelfareCollectionTests.Collection_requests_preserve_member_group_and_do_not_reset_paid_units() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\WelfareCollectionTests.cs:line 26
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.WelfareCollectionTests.Identical_request_replays_but_changed_payload_and_duplicate_cycle_are_rejected [98 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingOperations.WelfareCollectionService.CreateAsync(CreateWelfareCollection command, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\WelfareCollectionService.cs:line 14
+   at ChapanakitCare.Domain.Tests.WelfareCollectionTests.Identical_request_replays_but_changed_payload_and_duplicate_cycle_are_rejected() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\WelfareCollectionTests.cs:line 36
+   at ChapanakitCare.Domain.Tests.WelfareCollectionTests.Identical_request_replays_but_changed_payload_and_duplicate_cycle_are_rejected() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\WelfareCollectionTests.cs:line 43
+--- End of stack trace from previous location ---
+
+Total tests: 32
+Test Run Failed.
+     Passed: 13
+     Failed: 19
+ Total time: 3.0304 Seconds

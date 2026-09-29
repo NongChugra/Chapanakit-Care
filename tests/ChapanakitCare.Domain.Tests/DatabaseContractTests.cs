@@ -8,16 +8,25 @@ public sealed class DatabaseContractTests
 {
     private static readonly string[] ExpectedTables =
     [
+        "accounting_accounts",
+        "accounting_books",
+        "accounting_journal_lines",
+        "accounting_journals",
+        "accounting_periods",
+        "accounting_posting_audits",
         "advance_ledger_entries",
         "advance_reset_batches",
         "advance_reset_lines",
         "audit_events",
         "audit_field_changes",
         "backup_runs",
+        "coordinator_events",
+        "coordinator_positions",
         "death_beneficiary_snapshots",
         "death_calculations",
         "death_cases",
         "death_member_snapshots",
+        "death_recipient_photos",
         "member_beneficiaries",
         "member_status_events",
         "members",
@@ -25,11 +34,12 @@ public sealed class DatabaseContractTests
         "number_sequences",
         "system_settings",
         "thai_address_reference",
-        "ui_table_preferences"
+        "ui_table_preferences",
+        "welfare_collections"
     ];
 
     [Fact]
-    public async Task Ef_model_creates_every_first_day_table_in_real_sqlite()
+    public async Task Ef_model_creates_all_application_tables_in_real_sqlite()
     {
         await using var connection = new SqliteConnection("Data Source=:memory:");
         await connection.OpenAsync();
@@ -43,7 +53,7 @@ public sealed class DatabaseContractTests
     }
 
     [Fact]
-    public async Task Initial_migration_creates_the_first_day_schema_and_seed_settings()
+    public async Task Migrations_create_the_current_schema_and_seed_settings()
     {
         await using var connection = new SqliteConnection("Data Source=:memory:");
         await connection.OpenAsync();

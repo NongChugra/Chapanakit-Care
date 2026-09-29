@@ -1,0 +1,27 @@
+{
+  "agentPath": "/root/coordinator_ui",
+  "agentRole": "terra_worker",
+  "childThreadId": "01a06a31-91dd-76d1-9597-324bd3d208f9",
+  "cwd": "D:\\Programing\\Personal Projects\\Chapanakit-Care",
+  "effort": "max",
+  "model": "gpt-5.6-terra",
+  "parentThreadId": "01a069ef-6b65-7761-b154-3aaa3c10e17c",
+  "proofType": "solweaver-child-runtime-v1",
+  "recordIdentityMode": "ordinal",
+  "rollout": "C:\\Users\\mooha\\.codex\\sessions\\2026\\09\\04\\rollout-2026-09-04T09-13-48-01a06a31-91dd-76d1-9597-324bd3d208f9.jsonl",
+  "rolloutSha256": "4b4289519dd9f8462018b588571d07083e6420843bd79a860dbecf91bc66d449",
+  "runtimeGate": "pass",
+  "schemaVersion": 1,
+  "sessionMetaOrdinal": 0,
+  "sessionMetaRecordIndex": 0,
+  "turnContextOrdinals": [
+    7,
+    732,
+    801
+  ],
+  "turnContextRecordIndices": [
+    7,
+    732,
+    801
+  ]
+}

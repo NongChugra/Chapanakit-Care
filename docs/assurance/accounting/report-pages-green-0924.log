@@ -1,0 +1,21 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.01] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:02.02]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:02.30]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:02.40]   Starting:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.AccountingReportPageTests.Report_page_returns_the_requested_read_only_document_format(format: "pdf", contentType: "application/pdf") [7 s]
+[xUnit.net 00:00:11.67]   Finished:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.AccountingReportPageTests.Report_page_returns_the_requested_read_only_document_format(format: "csv", contentType: "text/csv; charset=utf-8") [327 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingReportPageTests.General_ledger_page_scopes_account_choices_to_the_selected_book_and_parses_a_period [542 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingReportPageTests.Trial_balance_page_uses_the_selected_book_and_business_date_cutoff [230 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingReportPageTests.Report_page_rejects_unknown_book_and_malformed_buddhist_date_without_falling_back [149 ms]
+
+Test Run Successful.
+Total tests: 5
+     Passed: 5
+ Total time: 15.6967 Seconds

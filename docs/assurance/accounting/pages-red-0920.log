@@ -1,0 +1,91 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.14]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.24]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.29]   Starting:    ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:02.21]     ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_converts_buddhist_date_and_baht_then_redirects_to_saved_voucher [FAIL]
+[xUnit.net 00:00:02.22]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:02.22]       Stack Trace:
+[xUnit.net 00:00:02.22]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Transaction.cshtml.cs(28,0): at ChapanakitCare.Web.Pages.Accounting.TransactionModel.OnPostAsync()
+[xUnit.net 00:00:02.22]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs(54,0): at ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_converts_buddhist_date_and_baht_then_redirects_to_saved_voucher()
+[xUnit.net 00:00:02.22]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs(59,0): at ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_converts_buddhist_date_and_baht_then_redirects_to_saved_voucher()
+[xUnit.net 00:00:02.22]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:02.45]     ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(kind: "expense", target: "5000", expectedTarget: 2500, expectedCash: 7500) [FAIL]
+[xUnit.net 00:00:02.45]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:02.45]       Stack Trace:
+[xUnit.net 00:00:02.45]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Transaction.cshtml.cs(28,0): at ChapanakitCare.Web.Pages.Accounting.TransactionModel.OnPostAsync()
+[xUnit.net 00:00:02.45]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs(38,0): at ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(String kind, String target, Int64 expectedTarget, Int64 expectedCash)
+[xUnit.net 00:00:02.45]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs(40,0): at ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(String kind, String target, Int64 expectedTarget, Int64 expectedCash)
+[xUnit.net 00:00:02.45]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:02.57]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:02.57]     ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(kind: "transfer", target: "1100", expectedTarget: 2500, expectedCash: 7500) [FAIL]
+[xUnit.net 00:00:02.57]       Stack Trace:
+[xUnit.net 00:00:02.57]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Transaction.cshtml.cs(28,0): at ChapanakitCare.Web.Pages.Accounting.TransactionModel.OnPostAsync()
+[xUnit.net 00:00:02.57]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs(38,0): at ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(String kind, String target, Int64 expectedTarget, Int64 expectedCash)
+[xUnit.net 00:00:02.57]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs(40,0): at ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(String kind, String target, Int64 expectedTarget, Int64 expectedCash)
+[xUnit.net 00:00:02.57]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:02.63]     ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_rejects_subsatang_input_without_posting [FAIL]
+[xUnit.net 00:00:02.63]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:02.63]       Stack Trace:
+[xUnit.net 00:00:02.63]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Transaction.cshtml.cs(28,0): at ChapanakitCare.Web.Pages.Accounting.TransactionModel.OnPostAsync()
+[xUnit.net 00:00:02.63]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs(70,0): at ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_rejects_subsatang_input_without_posting()
+[xUnit.net 00:00:02.63]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs(72,0): at ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_rejects_subsatang_input_without_posting()
+[xUnit.net 00:00:02.63]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:02.68]     ChapanakitCare.Domain.Tests.AccountingPageTests.Expense_form_lists_only_association_accounts [FAIL]
+[xUnit.net 00:00:02.68]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:02.68]       Stack Trace:
+[xUnit.net 00:00:02.68]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Transaction.cshtml.cs(27,0): at ChapanakitCare.Web.Pages.Accounting.TransactionModel.OnGetAsync(String kind)
+[xUnit.net 00:00:02.68]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs(18,0): at ChapanakitCare.Domain.Tests.AccountingPageTests.Expense_form_lists_only_association_accounts()
+[xUnit.net 00:00:02.68]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs(22,0): at ChapanakitCare.Domain.Tests.AccountingPageTests.Expense_form_lists_only_association_accounts()
+[xUnit.net 00:00:02.68]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:02.68]   Finished:    ChapanakitCare.Domain.Tests
+  Failed ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_converts_buddhist_date_and_baht_then_redirects_to_saved_voucher [1 s]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Web.Pages.Accounting.TransactionModel.OnPostAsync() in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Transaction.cshtml.cs:line 28
+   at ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_converts_buddhist_date_and_baht_then_redirects_to_saved_voucher() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs:line 54
+   at ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_converts_buddhist_date_and_baht_then_redirects_to_saved_voucher() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs:line 59
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(kind: "expense", target: "5000", expectedTarget: 2500, expectedCash: 7500) [232 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Web.Pages.Accounting.TransactionModel.OnPostAsync() in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Transaction.cshtml.cs:line 28
+   at ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(String kind, String target, Int64 expectedTarget, Int64 expectedCash) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs:line 38
+   at ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(String kind, String target, Int64 expectedTarget, Int64 expectedCash) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs:line 40
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(kind: "transfer", target: "1100", expectedTarget: 2500, expectedCash: 7500) [119 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Web.Pages.Accounting.TransactionModel.OnPostAsync() in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Transaction.cshtml.cs:line 28
+   at ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(String kind, String target, Int64 expectedTarget, Int64 expectedCash) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs:line 38
+   at ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(String kind, String target, Int64 expectedTarget, Int64 expectedCash) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs:line 40
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_rejects_subsatang_input_without_posting [66 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Web.Pages.Accounting.TransactionModel.OnPostAsync() in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Transaction.cshtml.cs:line 28
+   at ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_rejects_subsatang_input_without_posting() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs:line 70
+   at ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_rejects_subsatang_input_without_posting() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs:line 72
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingPageTests.Expense_form_lists_only_association_accounts [42 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Web.Pages.Accounting.TransactionModel.OnGetAsync(String kind) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Transaction.cshtml.cs:line 27
+   at ChapanakitCare.Domain.Tests.AccountingPageTests.Expense_form_lists_only_association_accounts() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs:line 18
+   at ChapanakitCare.Domain.Tests.AccountingPageTests.Expense_form_lists_only_association_accounts() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs:line 22
+--- End of stack trace from previous location ---
+
+Test Run Failed.
+Total tests: 5
+     Failed: 5
+ Total time: 3.2391 Seconds

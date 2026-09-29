@@ -1,0 +1,102 @@
+@page
+@model ChapanakitCare.Web.Pages.Accounting.OpeningModel
+@{ ViewData["Title"] = "เริ่มใช้บัญชี / ยอดยกมา"; }
+<p><a asp-page="./Index">บัญชีและการเงิน</a> / เริ่มใช้บัญชี</p>
+<section class="card">
+    <h2>เลือกสมุดบัญชีก่อนกรอกยอด</h2>
+    <p>ใช้ยอดเงินจริงและภาระค้างจากหลักฐาน ณ วันเริ่มบัญชี จำนวนหน่วยเดิมของสมาชิกไม่ถือเป็นหลักฐานว่าได้รับเงินแล้ว</p>
+    <form method="get" class="inline-form"><label>สมุดบัญชี<select asp-for="Book"><option value="welfare">เงินสงเคราะห์สมาชิก</option><option value="association">สมาคม</option></select></label><button class="button secondary" type="submit">เลือก</button></form>
+</section>
+<section class="card" style="margin-top:18px">
+    <h2>@(Model.Book == "welfare" ? "ยอดเงินสงเคราะห์สมาชิก" : "ยอดเงินสมาคม")</h2>
+    @if (Model.AlreadyActive)
+    { <p class="alert">สมุดบัญชีนี้เริ่มใช้งานแล้ว ไม่สามารถตั้งยอดยกมาใหม่ได้</p> }
+    else
+    {
+        <form method="post" class="stack" autocomplete="off">
+            <div asp-validation-summary="All" class="alert"></div>
+            <input asp-for="Book" type="hidden" /><input asp-for="RequestToken" type="hidden" />
+            <div class="grid two">
+                <label>วันที่เริ่มบัญชี (พ.ศ.)<input asp-for="BusinessDate" placeholder="วว/ดด/ปปปป" maxlength="10" required /></label>
+                <label>เงินสด (บาท)<input asp-for="Cash" inputmode="decimal" required /></label>
+                <label>เงินฝากธนาคาร (บาท)<input asp-for="Bank" inputmode="decimal" required /></label>
+                <label>@(Model.Book == "welfare" ? "ค่าหัก 4% ค้างนำส่งสมาคม" : "ค่าหัก 4% ค้างรับจากบัญชีสมาชิก") (บาท)<input asp-for="FeeBalance" inputmode="decimal" required /></label>
+                <label>ทุนสะสมตามหลักฐาน (ขาดทุนใช้เครื่องหมาย -)<input asp-for="AccumulatedFund" inputmode="decimal" required /></label>
+            </div>
+            @if (Model.MoneyAccounts.Count > 0)
+            {
+                <h3>เงินในบัญชีเพิ่มเติม</h3>
+                <div class="table-wrap"><table><thead><tr><th>บัญชี</th><th>ยอดตามหลักฐาน (บาท)</th></tr></thead><tbody id="opening-money">
+                @for (var index = 0; index < Model.AdditionalMoney.Count; index++)
+                {
+                    <tr><td><select asp-for="AdditionalMoney[index].AccountCode">@foreach (var account in Model.MoneyAccounts) { <option value="@account.Code">@account.Code · @account.Name</option> }</select></td><td><input asp-for="AdditionalMoney[index].Amount" inputmode="decimal" /></td></tr>
+                }
+                </tbody></table></div>
+                <button class="button secondary" type="button" data-add-opening="opening-money">เพิ่มแถวบัญชีเงิน</button>
+            }
+            else { <p class="muted">ถ้ามีธนาคารหลายบัญชี ให้เพิ่มบัญชีใน <a asp-page="./Manage" asp-route-book="@Model.Book">หน้าตั้งค่าบัญชี</a> ก่อนกรอกยอดยกมา</p> }
+            @if (Model.Book == "welfare")
+            {
+                @if (Model.Recipients.Count > 0)
+                {
+                    <h3>เงินค้างจ่ายผู้รับผลประโยชน์เดิม</h3>
+                    <p class="muted">ระบุเฉพาะยอดที่ยังไม่ได้จ่าย ณ วันเริ่มบัญชี ไม่ใช่ยอดคำนวณทั้งหมดของเหตุเสียชีวิตเดิม</p>
+                    <div class="table-wrap"><table><thead><tr><th>ชุดผู้รับ</th><th>ผู้รับลำดับที่</th><th>ยอดยังค้างจ่าย (บาท)</th></tr></thead><tbody id="opening-benefits">
+                    @for (var index = 0; index < Model.BenefitBalances.Count; index++)
+                    {
+                        <tr><td><select asp-for="BenefitBalances[index].DeathCaseId"><option value="">เลือกชุดผู้รับ</option>
+                            @foreach (var group in Model.Recipients.GroupBy(x => x.DeathCaseId))
+                            { <option value="@group.Key">@string.Join(" / ", group.Select(x => $"{x.SlotNo}: {x.Title}{x.FirstName} {x.LastName}"))</option> }
+                        </select></td><td><select asp-for="BenefitBalances[index].BeneficiarySlot"><option value="1">1</option><option value="2">2</option></select></td><td><input asp-for="BenefitBalances[index].Amount" inputmode="decimal" /></td></tr>
+                    }
+                    </tbody></table></div>
+                    <button class="button secondary" type="button" data-add-opening="opening-benefits">เพิ่มแถวผู้รับเงิน</button>
+                }
+                <h3>ยอดเงินรายสมาชิก</h3>
+                <p class="muted">กรอกยอดล่วงหน้าหรือยอดค้างเพียงด้านเดียว สมาชิกที่ไม่มียอดยกมาจะเริ่มด้วยยอดเงินจริงเป็นศูนย์</p>
+                <div class="table-wrap"><table><thead><tr><th>สมาชิก</th><th>เงินล่วงหน้า (บาท)</th><th>ยอดค้างชำระ (บาท)</th></tr></thead><tbody id="opening-members">
+                @for (var index = 0; index < Model.MemberBalances.Count; index++)
+                {
+                    <tr><td><select asp-for="MemberBalances[index].MemberId"><option value="">เลือกสมาชิก</option>@foreach (var member in Model.Members) { <option value="@member.Id">@member.RunNo · @member.Title@member.FirstName @member.LastName</option> }</select></td><td><input asp-for="MemberBalances[index].Advance" inputmode="decimal" /></td><td><input asp-for="MemberBalances[index].Shortfall" inputmode="decimal" /></td></tr>
+                }
+                </tbody></table></div>
+                <button class="button secondary" type="button" id="add-opening-member">เพิ่มแถวสมาชิก</button>
+            }
+            <label>หลักฐานยอดยกมา / รายละเอียดการตรวจสอบ<textarea asp-for="Evidence" rows="3" maxlength="2000" required></textarea></label>
+            <label><input asp-for="ZeroConfirmed" /> ยืนยันว่ายอดทั้งหมดเป็นศูนย์ตามหลักฐาน (เฉพาะเริ่มด้วยยอดศูนย์)</label>
+            <p>ระบบจะตรวจว่ายอดสินทรัพย์เท่ากับภาระค้างและทุนที่ระบุ โดยไม่สร้างรายได้หรือทุนเติมให้เอง</p>
+            <button class="button" type="submit">บันทึกยอดยกมาและเริ่มบัญชี</button>
+        </form>
+    }
+</section>
+@section Scripts {
+<script>
+document.querySelectorAll('[data-add-opening]').forEach(button => button.addEventListener('click', () => {
+    const body = document.getElementById(button.dataset.addOpening);
+    const source = body?.querySelector('tr');
+    if (!source) return;
+    const row = source.cloneNode(true);
+    const index = body.children.length;
+    row.querySelectorAll('input, select').forEach(field => {
+        field.name = field.name.replace(/\[\d+\]/, '[' + index + ']');
+        field.removeAttribute('id');
+        if (field.tagName === 'SELECT') field.selectedIndex = 0;
+        else field.value = '0';
+    });
+    body.appendChild(row);
+}));
+document.getElementById('add-opening-member')?.addEventListener('click', () => {
+    const body = document.getElementById('opening-members');
+    const source = body?.querySelector('tr');
+    if (!source) return;
+    const row = source.cloneNode(true);
+    const index = body.children.length;
+    row.querySelectorAll('input, select').forEach(field => {
+        field.name = field.name.replace(/\[\d+\]/, '[' + index + ']');
+        field.removeAttribute('id');
+        field.value = field.tagName === 'SELECT' ? '' : '0';
+    });
+    body.appendChild(row);
+});
+</script>
+}

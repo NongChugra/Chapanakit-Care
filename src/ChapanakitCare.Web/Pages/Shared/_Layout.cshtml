@@ -15,7 +15,7 @@
             <div class="nav-menu">
                 <button type="button" class="nav-menu-trigger" aria-haspopup="true" aria-controls="management-submenu">ระบบจัดการและบันทึกข้อมูล</button>
                 <div class="nav-submenu" id="management-submenu">
-                    <span class="muted">กำหนดผู้ประสานงาน <small>เร็ว ๆ นี้</small></span>
+                    <a asp-page="/Coordinators/Index">กำหนดผู้ประสานงาน</a>
                     <a asp-page="/Members/Index">ทะเบียนสมาชิก</a>
                     <a asp-page="/Members/Create">เพิ่มสมาชิก</a>
                     <a asp-page="/Resignations/Index">ปรับสถานะสมาชิกลาออก</a>
@@ -23,7 +23,9 @@
                     <a asp-page="/Deaths/Create">บันทึกการเสียชีวิต</a>
                 </div>
             </div>
+            <a asp-page="/Accounting/Index">บัญชีและการเงิน</a>
             <a asp-page="/Reports/Index">ระบบรายงาน</a>
+            <a asp-page="/History/Index">ประวัติการเปลี่ยนแปลง</a>
         </nav>
     </aside>
     <main>

@@ -1,0 +1,88 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.57]     ChapanakitCare.Domain.Tests.ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(kind: "all", sequence: "2147483647") [FAIL]
+[xUnit.net 00:00:00.59]     ChapanakitCare.Domain.Tests.ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(kind: "sak", sequence: "2147483647") [FAIL]
+[xUnit.net 00:00:00.60]     ChapanakitCare.Domain.Tests.ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(kind: "group", sequence: "1000") [FAIL]
+[xUnit.net 00:00:00.61]     ChapanakitCare.Domain.Tests.ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(kind: "sak", sequence: "1000") [FAIL]
+[xUnit.net 00:00:00.64]     ChapanakitCare.Domain.Tests.ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(kind: "monthly", sequence: "2147483647") [FAIL]
+[xUnit.net 00:00:00.64]     ChapanakitCare.Domain.Tests.ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(kind: "all", sequence: "1000") [FAIL]
+[xUnit.net 00:00:00.65]     ChapanakitCare.Domain.Tests.ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(kind: "group", sequence: "2147483647") [FAIL]
+[xUnit.net 00:00:00.66]     ChapanakitCare.Domain.Tests.ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(kind: "monthly", sequence: "1000") [FAIL]
+  Failed ChapanakitCare.Domain.Tests.ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(kind: "all", sequence: "2147483647") [287 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "\r\nสมาคมฌาปนกิจสงเคราะห์\r\nรายงานสมาชิกทั้ง"···
+Not found: "2147483647"
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(String kind, String sequence) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportLayoutTests.cs:line 41
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+  Failed ChapanakitCare.Domain.Tests.ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(kind: "sak", sequence: "2147483647") [23 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "\r\nสมาคมฌาปนกิจสงเคราะห์\r\nรายงานเดือน 08/2"···
+Not found: "2147483647"
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(String kind, String sequence) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportLayoutTests.cs:line 41
+   at InvokeStub_ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed ChapanakitCare.Domain.Tests.ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(kind: "group", sequence: "1000") [9 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "\r\nสมาคมฌาปนกิจสงเคราะห์\r\nรายงานรายชื่อสมา"···
+Not found: "1000"
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(String kind, String sequence) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportLayoutTests.cs:line 41
+   at InvokeStub_ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed ChapanakitCare.Domain.Tests.ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(kind: "sak", sequence: "1000") [10 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "\r\nสมาคมฌาปนกิจสงเคราะห์\r\nรายงานเดือน 08/2"···
+Not found: "1000"
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(String kind, String sequence) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportLayoutTests.cs:line 41
+   at InvokeStub_ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed ChapanakitCare.Domain.Tests.ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(kind: "monthly", sequence: "2147483647") [21 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "\r\nสมาคมฌาปนกิจสงเคราะห์\r\nรายงานเดือน 08/2"···
+Not found: "2147483647"
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(String kind, String sequence) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportLayoutTests.cs:line 41
+   at InvokeStub_ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed ChapanakitCare.Domain.Tests.ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(kind: "all", sequence: "1000") [8 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "\r\nสมาคมฌาปนกิจสงเคราะห์\r\nรายงานสมาชิกทั้ง"···
+Not found: "1000"
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(String kind, String sequence) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportLayoutTests.cs:line 41
+   at InvokeStub_ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed ChapanakitCare.Domain.Tests.ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(kind: "group", sequence: "2147483647") [8 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "\r\nสมาคมฌาปนกิจสงเคราะห์\r\nรายงานรายชื่อสมา"···
+Not found: "2147483647"
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(String kind, String sequence) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportLayoutTests.cs:line 41
+   at InvokeStub_ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed ChapanakitCare.Domain.Tests.ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(kind: "monthly", sequence: "1000") [10 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "\r\nสมาคมฌาปนกิจสงเคราะห์\r\nรายงานเดือน 08/2"···
+Not found: "1000"
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(String kind, String sequence) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportLayoutTests.cs:line 41
+   at InvokeStub_ReportLayoutTests.Sequence_numbers_remain_whole_through_the_integer_count_range(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+
+Failed!  - Failed:     8, Passed:     0, Skipped:     0, Total:     8, Duration: 395 ms - ChapanakitCare.Domain.Tests.dll (net10.0)

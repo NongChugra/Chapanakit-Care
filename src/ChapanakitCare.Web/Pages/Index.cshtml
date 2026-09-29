@@ -10,14 +10,42 @@
     <article class="card stat"><div class="label">คงเหลือ</div><div class="value">@Model.NormalMembers.ToString("N0")<span class="unit">คน</span></div></article>
 </section>
 
+<section class="card dashboard-coordinators" aria-label="ผู้ประสานงานปัจจุบัน" style="margin-top:18px">
+    <div class="card-head"><div><h2>ผู้ประสานงานปัจจุบัน</h2><p class="muted">รายชื่อผู้รับผิดชอบของสมาคมและแต่ละกลุ่ม</p></div><a class="button secondary" asp-page="/Coordinators/Index">ดูตำแหน่งทั้งหมด</a></div>
+    <div class="dashboard-chairperson">
+        <div><span class="coordinator-role">ประธาน</span><h3>@(Model.Chairperson?.MemberName ?? "ยังไม่ได้แต่งตั้ง")</h3><p class="muted">@(Model.Chairperson?.MemberId is null ? "ทั้งสมาคม" : $"เลขทะเบียน {Model.Chairperson.RunNo}")</p></div>
+        @if (Model.Chairperson is not null)
+        {
+            <a class="button secondary small" asp-page="/Coordinators/Index" asp-route-PositionKey="@Model.Chairperson.Key" asp-route-Action="@(Model.Chairperson.MemberId is null ? "appoint" : "replace")">@(Model.Chairperson.MemberId is null ? "แต่งตั้ง" : "จัดการ")</a>
+        }
+    </div>
+    <div class="card-head dashboard-group-heading"><div><h3>หัวหน้ากลุ่ม</h3><p class="muted">กลุ่มที่ยังว่าง @Model.VacantGroups.Count กลุ่ม</p></div></div>
+    @if (Model.GroupLeaders.Count == 0)
+    {
+        <p class="muted">ยังไม่พบกลุ่มสมาชิกในทะเบียน</p>
+    }
+    else
+    {
+        <div class="table-wrap"><table class="dashboard-coordinator-table"><thead><tr><th>กลุ่ม</th><th>หัวหน้ากลุ่ม</th><th>สถานะ</th><th></th></tr></thead><tbody>
+            @foreach (var leader in Model.GroupLeaders)
+            {
+                <tr><td>@leader.ScopeLabel</td><td>@(leader.MemberName ?? "ยังไม่ได้แต่งตั้ง")</td><td>@(leader.MemberId is null ? "ว่าง" : $"เลขทะเบียน {leader.RunNo}")</td><td><a class="button secondary small" asp-page="/Coordinators/Index" asp-route-PositionKey="@leader.Key" asp-route-Action="@(leader.MemberId is null ? "appoint" : "replace")">@(leader.MemberId is null ? "แต่งตั้ง" : "จัดการ")</a></td></tr>
+            }
+        </tbody></table></div>
+    }
+</section>
+
 <section class="card collapsible-demo" style="margin-top:18px" hidden data-demo-data>
     <div class="card-head" style="margin:0">
         <div><h2>ข้อมูลสาธิตสังเคราะห์</h2><div class="muted">40 รายการสมมติที่กรอกข้อมูลบังคับครบ อยู่ในอำเภอร้องกวาง จังหวัดแพร่ และมีผู้รับเงิน 1–2 คน</div></div>
         <div class="actions">
             <form method="post" asp-page-handler="ImportDemo"><button class="button secondary" type="submit">นำเข้ารายการสาธิต</button></form>
-            <form method="post" asp-page-handler="Backup"><button class="button secondary" type="submit">สำรองฐานข้อมูล</button></form>
             <form method="post" asp-page-handler="ClearMembers" onsubmit="return confirm('ยืนยันล้างสมาชิกทั้งหมด รวมเหตุเสียชีวิต ประวัติ และยอดล่วงหน้าที่เกี่ยวข้อง? การทำงานนี้ย้อนกลับไม่ได้')"><button class="button danger" type="submit">ล้างข้อมูลสมาชิก</button></form>
         </div>
     </div>
+</section>
+<section class="card backup-card">
+    <div><h2>สำรองข้อมูลปัจจุบัน</h2><p class="muted">ดาวน์โหลดสำเนาฐานข้อมูล SQLite ณ เวลานี้ เพื่อเก็บไว้กู้คืนภายหลัง ปุ่มนี้ไม่ได้นำเข้าหรือแทนที่ข้อมูลสาธิต</p></div>
+    <form method="post" asp-page-handler="Backup"><button class="button secondary" type="submit">ดาวน์โหลดสำเนาฐานข้อมูล</button></form>
 </section>
 <div class="actions" style="margin-top:18px"><button class="button secondary small" type="button" data-demo-toggle>แสดงข้อมูลสาธิต</button></div>

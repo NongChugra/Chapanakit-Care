@@ -1,0 +1,119 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.20]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.32]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.37]   Starting:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.BusinessRuleTests.Beneficiary_count_outside_zero_to_two_is_rejected(beneficiaryCount: 3) [8 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(input: "1.001") [10 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(input: "0") [< 1 ms]
+  Passed ChapanakitCare.Domain.Tests.BusinessRuleTests.Beneficiary_count_outside_zero_to_two_is_rejected(beneficiaryCount: -1) [< 1 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(input: "92233720368547758.08") [< 1 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(input: "NaN") [< 1 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(input: "-1") [< 1 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(input: "12,34.50") [< 1 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Rejects_fractional_satang_malformed_grouping_and_out_of_range_input(input: "1e3") [< 1 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(input: "0.01", expected: 1) [< 1 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(input: "9", expected: 900) [< 1 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(input: "1,234.50", expected: 123450) [< 1 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Parses_human_baht_input_without_floating_point_rounding(input: " 451.2 ", expected: 45120) [< 1 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Formats_signed_satang_without_losing_precision(satang: -9223372036854775808, expected: "-92,233,720,368,547,758.08") [1 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Formats_signed_satang_without_losing_precision(satang: 123456, expected: "1,234.56") [< 1 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Formats_signed_satang_without_losing_precision(satang: -451, expected: "-4.51") [< 1 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Formats_signed_satang_without_losing_precision(satang: 0, expected: "0.00") [< 1 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceMoneyTests.Zero_is_allowed_only_for_explicit_opening_fields [< 1 ms]
+  Passed ChapanakitCare.Domain.Tests.BusinessRuleTests.Coverage_starts_exactly_180_calendar_days_after_approval [4 ms]
+  Passed ChapanakitCare.Domain.Tests.BusinessRuleTests.Age_is_completed_years_on_the_requested_business_date(birthDateText: "1980-08-25", asOfText: "2026-08-25", expectedAge: 46) [4 ms]
+  Passed ChapanakitCare.Domain.Tests.BusinessRuleTests.Age_is_completed_years_on_the_requested_business_date(birthDateText: "1980-08-26", asOfText: "2026-08-25", expectedAge: 45) [< 1 ms]
+  Passed ChapanakitCare.Domain.Tests.BusinessRuleTests.Age_is_completed_years_on_the_requested_business_date(birthDateText: "1980-08-24", asOfText: "2026-08-25", expectedAge: 46) [< 1 ms]
+  Passed ChapanakitCare.Domain.Tests.BusinessRuleTests.Four_percent_expense_deduction_rounds_down_to_whole_baht_before_splitting [4 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingBenefitTests.Actual_prepaid_money_survives_partial_units_and_is_split_without_loss [28 ms]
+[xUnit.net 00:00:01.70]     ChapanakitCare.Domain.Tests.FinanceOperationTests.Opening_income_and_unsupported_member_dimensions_are_rejected_without_activation [FAIL]
+[xUnit.net 00:00:01.70]       Assert.Throws() Failure: Exception type was not an exact match
+[xUnit.net 00:00:01.70]       Expected: typeof(ChapanakitCare.Infrastructure.Accounting.AccountingValidationException)
+[xUnit.net 00:00:01.70]       Actual:   typeof(System.NotImplementedException)
+[xUnit.net 00:00:01.70]       ---- System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:01.70]       Stack Trace:
+[xUnit.net 00:00:01.70]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs(64,0): at ChapanakitCare.Domain.Tests.FinanceOperationTests.Opening_income_and_unsupported_member_dimensions_are_rejected_without_activation()
+[xUnit.net 00:00:01.70]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs(69,0): at ChapanakitCare.Domain.Tests.FinanceOperationTests.Opening_income_and_unsupported_member_dimensions_are_rejected_without_activation()
+[xUnit.net 00:00:01.70]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:01.70]         ----- Inner Stack Trace -----
+[xUnit.net 00:00:01.70]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.cs(9,0): at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.OpenAsync(OpenFinanceBook command, DateTimeOffset now, String actor, CancellationToken ct)
+[xUnit.net 00:00:01.70]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs(64,0): at ChapanakitCare.Domain.Tests.FinanceOperationTests.<>c__DisplayClass3_0.<Opening_income_and_unsupported_member_dimensions_are_rejected_without_activation>b__0()
+  Passed ChapanakitCare.Domain.Tests.AccountingBenefitTests.Actual_recorded_shortfall_reduces_benefit_without_revaluing_old_units [< 1 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingBenefitTests.Nonpay_case_does_not_turn_prepaid_money_into_a_benefit_automatically [< 1 ms]
+  Passed ChapanakitCare.Domain.Tests.BusinessRuleTests.Nonpay_death_has_zero_money_and_does_not_move_other_member_counters(manualNonPay: True, recordedDateText: "2027-02-21", expectedEligibility: ManualNonPayZero) [4 ms]
+  Passed ChapanakitCare.Domain.Tests.BusinessRuleTests.Nonpay_death_has_zero_money_and_does_not_move_other_member_counters(manualNonPay: False, recordedDateText: "2027-02-20", expectedEligibility: BeforeCoverageZero) [1 ms]
+  Passed ChapanakitCare.Domain.Tests.BusinessRuleTests.Death_on_coverage_start_is_payable_and_excludes_the_deceased_from_contributors [2 ms]
+  Failed ChapanakitCare.Domain.Tests.FinanceOperationTests.Opening_income_and_unsupported_member_dimensions_are_rejected_without_activation [1 s]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(ChapanakitCare.Infrastructure.Accounting.AccountingValidationException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.FinanceOperationTests.Opening_income_and_unsupported_member_dimensions_are_rejected_without_activation() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs:line 64
+   at ChapanakitCare.Domain.Tests.FinanceOperationTests.Opening_income_and_unsupported_member_dimensions_are_rejected_without_activation() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs:line 69
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.OpenAsync(OpenFinanceBook command, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.cs:line 9
+   at ChapanakitCare.Domain.Tests.FinanceOperationTests.<>c__DisplayClass3_0.<Opening_income_and_unsupported_member_dimensions_are_rejected_without_activation>b__0() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs:line 64
+[xUnit.net 00:00:02.00]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:02.00]     ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_adds_real_member_advance_and_replay_cannot_add_money_twice [FAIL]
+[xUnit.net 00:00:02.00]       Stack Trace:
+[xUnit.net 00:00:02.00]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.cs(9,0): at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.OpenAsync(OpenFinanceBook command, DateTimeOffset now, String actor, CancellationToken ct)
+[xUnit.net 00:00:02.00]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs(32,0): at ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_adds_real_member_advance_and_replay_cannot_add_money_twice()
+[xUnit.net 00:00:02.00]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs(41,0): at ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_adds_real_member_advance_and_replay_cannot_add_money_twice()
+[xUnit.net 00:00:02.00]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:02.07]     ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_clears_recorded_shortfall_before_adding_advance [FAIL]
+[xUnit.net 00:00:02.07]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:02.07]       Stack Trace:
+[xUnit.net 00:00:02.07]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.cs(9,0): at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.OpenAsync(OpenFinanceBook command, DateTimeOffset now, String actor, CancellationToken ct)
+[xUnit.net 00:00:02.07]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs(50,0): at ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_clears_recorded_shortfall_before_adding_advance()
+[xUnit.net 00:00:02.07]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs(56,0): at ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_clears_recorded_shortfall_before_adding_advance()
+[xUnit.net 00:00:02.07]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:02.12]     ChapanakitCare.Domain.Tests.FinanceOperationTests.Opening_records_supplied_money_in_separate_books_without_creating_income [FAIL]
+[xUnit.net 00:00:02.12]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:02.13]       Stack Trace:
+[xUnit.net 00:00:02.13]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.cs(9,0): at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.OpenAsync(OpenFinanceBook command, DateTimeOffset now, String actor, CancellationToken ct)
+[xUnit.net 00:00:02.13]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs(16,0): at ChapanakitCare.Domain.Tests.FinanceOperationTests.Opening_records_supplied_money_in_separate_books_without_creating_income()
+[xUnit.net 00:00:02.13]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs(23,0): at ChapanakitCare.Domain.Tests.FinanceOperationTests.Opening_records_supplied_money_in_separate_books_without_creating_income()
+[xUnit.net 00:00:02.13]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:02.66]   Finished:    ChapanakitCare.Domain.Tests
+  Failed ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_adds_real_member_advance_and_replay_cannot_add_money_twice [305 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.OpenAsync(OpenFinanceBook command, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.cs:line 9
+   at ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_adds_real_member_advance_and_replay_cannot_add_money_twice() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs:line 32
+   at ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_adds_real_member_advance_and_replay_cannot_add_money_twice() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs:line 41
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_clears_recorded_shortfall_before_adding_advance [63 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.OpenAsync(OpenFinanceBook command, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.cs:line 9
+   at ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_clears_recorded_shortfall_before_adding_advance() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs:line 50
+   at ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_clears_recorded_shortfall_before_adding_advance() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs:line 56
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.FinanceOperationTests.Opening_records_supplied_money_in_separate_books_without_creating_income [57 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.OpenAsync(OpenFinanceBook command, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.cs:line 9
+   at ChapanakitCare.Domain.Tests.FinanceOperationTests.Opening_records_supplied_money_in_separate_books_without_creating_income() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs:line 16
+   at ChapanakitCare.Domain.Tests.FinanceOperationTests.Opening_records_supplied_money_in_separate_books_without_creating_income() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs:line 23
+--- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.WelfareCollectionTests.Invalid_member_in_batch_leaves_no_partial_collections [1 s]
+  Passed ChapanakitCare.Domain.Tests.WelfareCollectionTests.Collection_requests_preserve_member_group_and_do_not_reset_paid_units [199 ms]
+  Passed ChapanakitCare.Domain.Tests.WelfareCollectionTests.Identical_request_replays_but_changed_payload_and_duplicate_cycle_are_rejected [73 ms]
+
+Test Run Failed.
+Total tests: 36
+     Passed: 32
+     Failed: 4
+ Total time: 3.2412 Seconds

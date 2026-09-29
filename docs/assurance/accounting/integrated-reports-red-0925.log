@@ -1,0 +1,175 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.18]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.28]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.31]   Starting:    ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:03.30]     ChapanakitCare.Domain.Tests.MemberMoneyReportTests.Annual_actual_receipts_list_original_member_receipts_once_and_marks_a_reversal_at_the_cutoff [FAIL]
+[xUnit.net 00:00:03.30]       ChapanakitCare.Infrastructure.Accounting.AccountingValidationException : เดบิตและเครดิตของรายการบัญชีต้องเท่ากัน
+[xUnit.net 00:00:03.32]       Stack Trace:
+[xUnit.net 00:00:03.32]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Accounting\AccountingPostingService.cs(248,0): at ChapanakitCare.Infrastructure.Accounting.AccountingPostingService.ValidateRequest(AccountingPostRequest request)
+[xUnit.net 00:00:03.32]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Accounting\AccountingPostingService.cs(22,0): at ChapanakitCare.Infrastructure.Accounting.AccountingPostingService.PostAsync(AccountingPostRequest request, CancellationToken cancellationToken)
+[xUnit.net 00:00:03.32]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\MemberMoneyReportTests.cs(116,0): at ChapanakitCare.Domain.Tests.MemberMoneyReportTests.SeedWelfareAsync(AppDbContext database)
+[xUnit.net 00:00:03.32]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\MemberMoneyReportTests.cs(50,0): at ChapanakitCare.Domain.Tests.MemberMoneyReportTests.Annual_actual_receipts_list_original_member_receipts_once_and_marks_a_reversal_at_the_cutoff()
+[xUnit.net 00:00:03.32]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\MemberMoneyReportTests.cs(69,0): at ChapanakitCare.Domain.Tests.MemberMoneyReportTests.Annual_actual_receipts_list_original_member_receipts_once_and_marks_a_reversal_at_the_cutoff()
+[xUnit.net 00:00:03.32]         --- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.MemberMoneyReportTests.Annual_actual_receipts_list_original_member_receipts_once_and_marks_a_reversal_at_the_cutoff [2 s]
+  Error Message:
+   ChapanakitCare.Infrastructure.Accounting.AccountingValidationException : เดบิตและเครดิตของรายการบัญชีต้องเท่ากัน
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.Accounting.AccountingPostingService.ValidateRequest(AccountingPostRequest request) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Accounting\AccountingPostingService.cs:line 248
+   at ChapanakitCare.Infrastructure.Accounting.AccountingPostingService.PostAsync(AccountingPostRequest request, CancellationToken cancellationToken) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Accounting\AccountingPostingService.cs:line 22
+   at ChapanakitCare.Domain.Tests.MemberMoneyReportTests.SeedWelfareAsync(AppDbContext database) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\MemberMoneyReportTests.cs:line 116
+   at ChapanakitCare.Domain.Tests.MemberMoneyReportTests.Annual_actual_receipts_list_original_member_receipts_once_and_marks_a_reversal_at_the_cutoff() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\MemberMoneyReportTests.cs:line 50
+   at ChapanakitCare.Domain.Tests.MemberMoneyReportTests.Annual_actual_receipts_list_original_member_receipts_once_and_marks_a_reversal_at_the_cutoff() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\MemberMoneyReportTests.cs:line 69
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:03.75]       ChapanakitCare.Infrastructure.Accounting.AccountingValidationException : เดบิตและเครดิตของรายการบัญชีต้องเท่ากัน
+[xUnit.net 00:00:03.75]     ChapanakitCare.Domain.Tests.MemberMoneyReportTests.Member_history_uses_posted_control_lines_and_keeps_receipts_refunds_and_death_deductions_separate [FAIL]
+[xUnit.net 00:00:03.75]       Stack Trace:
+[xUnit.net 00:00:03.75]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Accounting\AccountingPostingService.cs(248,0): at ChapanakitCare.Infrastructure.Accounting.AccountingPostingService.ValidateRequest(AccountingPostRequest request)
+[xUnit.net 00:00:03.75]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Accounting\AccountingPostingService.cs(22,0): at ChapanakitCare.Infrastructure.Accounting.AccountingPostingService.PostAsync(AccountingPostRequest request, CancellationToken cancellationToken)
+[xUnit.net 00:00:03.75]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\MemberMoneyReportTests.cs(116,0): at ChapanakitCare.Domain.Tests.MemberMoneyReportTests.SeedWelfareAsync(AppDbContext database)
+[xUnit.net 00:00:03.75]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\MemberMoneyReportTests.cs(15,0): at ChapanakitCare.Domain.Tests.MemberMoneyReportTests.Member_history_uses_posted_control_lines_and_keeps_receipts_refunds_and_death_deductions_separate()
+[xUnit.net 00:00:03.75]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\MemberMoneyReportTests.cs(43,0): at ChapanakitCare.Domain.Tests.MemberMoneyReportTests.Member_history_uses_posted_control_lines_and_keeps_receipts_refunds_and_death_deductions_separate()
+[xUnit.net 00:00:03.75]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:03.81]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:03.81]       Stack Trace:
+[xUnit.net 00:00:03.81]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\MoneyReports.cshtml.cs(53,0): at ChapanakitCare.Web.Pages.Accounting.MoneyReportsModel.OnGetAsync(String format)
+[xUnit.net 00:00:03.81]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMoneyReportPageTests.cs(36,0): at ChapanakitCare.Domain.Tests.AccountingMoneyReportPageTests.Money_report_page_reads_posted_receipts_and_exports_without_a_write(String format, String contentType)
+[xUnit.net 00:00:03.81]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMoneyReportPageTests.cs(44,0): at ChapanakitCare.Domain.Tests.AccountingMoneyReportPageTests.Money_report_page_reads_posted_receipts_and_exports_without_a_write(String format, String contentType)
+[xUnit.net 00:00:03.81]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:03.81]     ChapanakitCare.Domain.Tests.AccountingMoneyReportPageTests.Money_report_page_reads_posted_receipts_and_exports_without_a_write(format: "csv", contentType: "text/csv; charset=utf-8") [FAIL]
+[xUnit.net 00:00:03.89]     ChapanakitCare.Domain.Tests.MemberMoneyReportTests.Daily_register_and_selected_money_account_keep_internal_transfers_separate_from_member_receipts [FAIL]
+[xUnit.net 00:00:03.89]       ChapanakitCare.Infrastructure.Accounting.AccountingValidationException : เดบิตและเครดิตของรายการบัญชีต้องเท่ากัน
+[xUnit.net 00:00:03.89]       Stack Trace:
+[xUnit.net 00:00:03.89]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Accounting\AccountingPostingService.cs(248,0): at ChapanakitCare.Infrastructure.Accounting.AccountingPostingService.ValidateRequest(AccountingPostRequest request)
+[xUnit.net 00:00:03.89]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Accounting\AccountingPostingService.cs(22,0): at ChapanakitCare.Infrastructure.Accounting.AccountingPostingService.PostAsync(AccountingPostRequest request, CancellationToken cancellationToken)
+[xUnit.net 00:00:03.89]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\MemberMoneyReportTests.cs(116,0): at ChapanakitCare.Domain.Tests.MemberMoneyReportTests.SeedWelfareAsync(AppDbContext database)
+[xUnit.net 00:00:03.89]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\MemberMoneyReportTests.cs(76,0): at ChapanakitCare.Domain.Tests.MemberMoneyReportTests.Daily_register_and_selected_money_account_keep_internal_transfers_separate_from_member_receipts()
+[xUnit.net 00:00:03.89]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\MemberMoneyReportTests.cs(98,0): at ChapanakitCare.Domain.Tests.MemberMoneyReportTests.Daily_register_and_selected_money_account_keep_internal_transfers_separate_from_member_receipts()
+[xUnit.net 00:00:03.89]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:03.96]     ChapanakitCare.Domain.Tests.AccountingMoneyReportPageTests.Money_report_page_reads_posted_receipts_and_exports_without_a_write(format: "pdf", contentType: "application/pdf") [FAIL]
+[xUnit.net 00:00:03.96]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:03.96]       Stack Trace:
+[xUnit.net 00:00:03.96]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\MoneyReports.cshtml.cs(53,0): at ChapanakitCare.Web.Pages.Accounting.MoneyReportsModel.OnGetAsync(String format)
+[xUnit.net 00:00:03.96]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMoneyReportPageTests.cs(36,0): at ChapanakitCare.Domain.Tests.AccountingMoneyReportPageTests.Money_report_page_reads_posted_receipts_and_exports_without_a_write(String format, String contentType)
+[xUnit.net 00:00:03.96]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMoneyReportPageTests.cs(44,0): at ChapanakitCare.Domain.Tests.AccountingMoneyReportPageTests.Money_report_page_reads_posted_receipts_and_exports_without_a_write(String format, String contentType)
+[xUnit.net 00:00:03.96]         --- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.MemberMoneyReportTests.Member_history_uses_posted_control_lines_and_keeps_receipts_refunds_and_death_deductions_separate [451 ms]
+  Error Message:
+   ChapanakitCare.Infrastructure.Accounting.AccountingValidationException : เดบิตและเครดิตของรายการบัญชีต้องเท่ากัน
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.Accounting.AccountingPostingService.ValidateRequest(AccountingPostRequest request) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Accounting\AccountingPostingService.cs:line 248
+   at ChapanakitCare.Infrastructure.Accounting.AccountingPostingService.PostAsync(AccountingPostRequest request, CancellationToken cancellationToken) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Accounting\AccountingPostingService.cs:line 22
+   at ChapanakitCare.Domain.Tests.MemberMoneyReportTests.SeedWelfareAsync(AppDbContext database) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\MemberMoneyReportTests.cs:line 116
+   at ChapanakitCare.Domain.Tests.MemberMoneyReportTests.Member_history_uses_posted_control_lines_and_keeps_receipts_refunds_and_death_deductions_separate() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\MemberMoneyReportTests.cs:line 15
+   at ChapanakitCare.Domain.Tests.MemberMoneyReportTests.Member_history_uses_posted_control_lines_and_keeps_receipts_refunds_and_death_deductions_separate() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\MemberMoneyReportTests.cs:line 43
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingMoneyReportPageTests.Money_report_page_reads_posted_receipts_and_exports_without_a_write(format: "csv", contentType: "text/csv; charset=utf-8") [3 s]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Web.Pages.Accounting.MoneyReportsModel.OnGetAsync(String format) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\MoneyReports.cshtml.cs:line 53
+   at ChapanakitCare.Domain.Tests.AccountingMoneyReportPageTests.Money_report_page_reads_posted_receipts_and_exports_without_a_write(String format, String contentType) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMoneyReportPageTests.cs:line 36
+   at ChapanakitCare.Domain.Tests.AccountingMoneyReportPageTests.Money_report_page_reads_posted_receipts_and_exports_without_a_write(String format, String contentType) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMoneyReportPageTests.cs:line 44
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.MemberMoneyReportTests.Daily_register_and_selected_money_account_keep_internal_transfers_separate_from_member_receipts [144 ms]
+  Error Message:
+   ChapanakitCare.Infrastructure.Accounting.AccountingValidationException : เดบิตและเครดิตของรายการบัญชีต้องเท่ากัน
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.Accounting.AccountingPostingService.ValidateRequest(AccountingPostRequest request) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Accounting\AccountingPostingService.cs:line 248
+   at ChapanakitCare.Infrastructure.Accounting.AccountingPostingService.PostAsync(AccountingPostRequest request, CancellationToken cancellationToken) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\Accounting\AccountingPostingService.cs:line 22
+   at ChapanakitCare.Domain.Tests.MemberMoneyReportTests.SeedWelfareAsync(AppDbContext database) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\MemberMoneyReportTests.cs:line 116
+   at ChapanakitCare.Domain.Tests.MemberMoneyReportTests.Daily_register_and_selected_money_account_keep_internal_transfers_separate_from_member_receipts() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\MemberMoneyReportTests.cs:line 76
+   at ChapanakitCare.Domain.Tests.MemberMoneyReportTests.Daily_register_and_selected_money_account_keep_internal_transfers_separate_from_member_receipts() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\MemberMoneyReportTests.cs:line 98
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingMoneyReportPageTests.Money_report_page_reads_posted_receipts_and_exports_without_a_write(format: "pdf", contentType: "application/pdf") [145 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Web.Pages.Accounting.MoneyReportsModel.OnGetAsync(String format) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\MoneyReports.cshtml.cs:line 53
+   at ChapanakitCare.Domain.Tests.AccountingMoneyReportPageTests.Money_report_page_reads_posted_receipts_and_exports_without_a_write(String format, String contentType) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMoneyReportPageTests.cs:line 36
+   at ChapanakitCare.Domain.Tests.AccountingMoneyReportPageTests.Money_report_page_reads_posted_receipts_and_exports_without_a_write(String format, String contentType) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMoneyReportPageTests.cs:line 44
+--- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_converts_buddhist_date_and_baht_then_redirects_to_saved_voucher [3 s]
+  Passed ChapanakitCare.Domain.Tests.AccountingAdjustmentTests.Reclassification_form_posts_the_selected_document_and_categories [3 s]
+  Passed ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_displays_an_error_for_an_overpayment_without_writing_a_journal [3 s]
+[xUnit.net 00:00:04.09]     ChapanakitCare.Domain.Tests.AccountingMoneyReportPageTests.Money_report_page_requires_a_member_only_for_the_member_passbook [FAIL]
+[xUnit.net 00:00:04.09]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:04.10]       Stack Trace:
+[xUnit.net 00:00:04.10]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\MoneyReports.cshtml.cs(53,0): at ChapanakitCare.Web.Pages.Accounting.MoneyReportsModel.OnGetAsync(String format)
+[xUnit.net 00:00:04.10]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMoneyReportPageTests.cs(59,0): at ChapanakitCare.Domain.Tests.AccountingMoneyReportPageTests.Money_report_page_requires_a_member_only_for_the_member_passbook()
+[xUnit.net 00:00:04.10]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMoneyReportPageTests.cs(62,0): at ChapanakitCare.Domain.Tests.AccountingMoneyReportPageTests.Money_report_page_requires_a_member_only_for_the_member_passbook()
+[xUnit.net 00:00:04.10]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:04.13]     ChapanakitCare.Domain.Tests.CollectionReportTests.Outstanding_document_excludes_settled_rows_and_keeps_only_open_amounts [FAIL]
+[xUnit.net 00:00:04.13]       Assert.Contains() Failure: Filter not matched in collection
+[xUnit.net 00:00:04.13]       Collection: ["ยอดค้างชำระ 6.00 บาท", "แสดงทุกรอบและทุกกลุ่มที่เกิดไม่เกินวันที่อ้างอิง"]
+[xUnit.net 00:00:04.14]       Stack Trace:
+[xUnit.net 00:00:04.14]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CollectionReportTests.cs(139,0): at ChapanakitCare.Domain.Tests.CollectionReportTests.Outstanding_document_excludes_settled_rows_and_keeps_only_open_amounts()
+[xUnit.net 00:00:04.14]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:04.14]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Failed ChapanakitCare.Domain.Tests.AccountingMoneyReportPageTests.Money_report_page_requires_a_member_only_for_the_member_passbook [137 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Web.Pages.Accounting.MoneyReportsModel.OnGetAsync(String format) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\MoneyReports.cshtml.cs:line 53
+   at ChapanakitCare.Domain.Tests.AccountingMoneyReportPageTests.Money_report_page_requires_a_member_only_for_the_member_passbook() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMoneyReportPageTests.cs:line 59
+   at ChapanakitCare.Domain.Tests.AccountingMoneyReportPageTests.Money_report_page_requires_a_member_only_for_the_member_passbook() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMoneyReportPageTests.cs:line 62
+--- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.CollectionReportTests.Balance_report_honors_business_date_cutoffs_for_requests_and_reversals [3 s]
+  Failed ChapanakitCare.Domain.Tests.CollectionReportTests.Outstanding_document_excludes_settled_rows_and_keeps_only_open_amounts [17 ms]
+  Error Message:
+   Assert.Contains() Failure: Filter not matched in collection
+Collection: ["ยอดค้างชำระ 6.00 บาท", "แสดงทุกรอบและทุกกลุ่มที่เกิดไม่เกินวันที่อ้างอิง"]
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.CollectionReportTests.Outstanding_document_excludes_settled_rows_and_keeps_only_open_amounts() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CollectionReportTests.cs:line 139
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_download_returns_the_selected_document_format(format: "csv", contentType: "text/csv; charset=utf-8") [283 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingAdjustmentTests.Expense_reclassification_corrects_an_older_document_without_changing_cash_or_total_expense [262 ms]
+  Passed ChapanakitCare.Domain.Tests.CollectionReportTests.Balance_report_uses_frozen_collection_snapshot_and_net_posted_allocations [182 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingCollectionHttpFormTests.Collection_browser_form_accepts_only_its_visible_create_fields [1 s]
+  Passed ChapanakitCare.Domain.Tests.CollectionReportTests.Balance_report_filters_by_frozen_cycle_and_group_snapshots [123 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Receipt_browser_form_accepts_only_its_visible_fields_and_posts_once [897 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_download_returns_the_selected_document_format(format: "pdf", contentType: "application/pdf") [524 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_exports_a_read_only_due_reminder(format: "pdf", contentType: "application/pdf") [744 ms]
+  Passed ChapanakitCare.Domain.Tests.CollectionReportTests.Collection_documents_are_read_only_and_reminders_include_only_due_outstanding_rows [366 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_exports_a_read_only_due_reminder(format: "csv", contentType: "text/csv; charset=utf-8") [99 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Trial_report_browser_request_shows_no_errors_for_irrelevant_filters(path: "/Accounting/Reports?Report=trialbalance&Book=welfa"···) [173 ms]
+[xUnit.net 00:00:05.00]     ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_creates_selected_normal_members_without_recording_cash [FAIL]
+[xUnit.net 00:00:05.00]       System.NullReferenceException : Object reference not set to an instance of an object.
+[xUnit.net 00:00:05.00]       Stack Trace:
+[xUnit.net 00:00:05.00]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Collections.cshtml.cs(115,0): at ChapanakitCare.Web.Pages.Accounting.CollectionsModel.OnPostAsync()
+[xUnit.net 00:00:05.00]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs(43,0): at ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_creates_selected_normal_members_without_recording_cash()
+[xUnit.net 00:00:05.00]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs(49,0): at ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_creates_selected_normal_members_without_recording_cash()
+[xUnit.net 00:00:05.00]         --- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_creates_selected_normal_members_without_recording_cash [94 ms]
+  Error Message:
+   System.NullReferenceException : Object reference not set to an instance of an object.
+  Stack Trace:
+     at ChapanakitCare.Web.Pages.Accounting.CollectionsModel.OnPostAsync() in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Collections.cshtml.cs:line 115
+   at ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_creates_selected_normal_members_without_recording_cash() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs:line 43
+   at ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_creates_selected_normal_members_without_recording_cash() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs:line 49
+--- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_posts_selected_receipt_allocation_without_marking_the_request_paid_by_itself [144 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Trial_report_browser_request_shows_no_errors_for_irrelevant_filters(path: "/Accounting/Reports") [44 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Bank_browser_form_does_not_require_fields_from_other_management_forms [154 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Benefit_payment_form_posts_against_the_chosen_beneficiary [740 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(kind: "expense", target: "5000", expectedTarget: 2500, expectedCash: 7500) [80 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(kind: "transfer", target: "1100", expectedTarget: 2500, expectedCash: 7500) [78 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_rejects_subsatang_input_without_posting [113 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_reversal_form_keeps_original_and_posts_a_linked_correction [145 ms]
+[xUnit.net 00:00:06.37]   Finished:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_reissue_keeps_original_number_and_shows_reversed_status [138 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Expense_form_lists_only_association_accounts [99 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Fee_remittance_form_posts_both_books_without_new_income [164 ms]
+
+Test Run Failed.
+Total tests: 34
+     Passed: 26
+     Failed: 8
+ Total time: 6.8912 Seconds

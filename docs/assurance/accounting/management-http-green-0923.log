@@ -1,0 +1,43 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.46]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.65]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.74]   Starting:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.AccountingCoreTests.Catalog_separates_welfare_from_association_and_only_exposes_the_4_percent_income_account [4 s]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_converts_buddhist_date_and_baht_then_redirects_to_saved_voucher [5 s]
+  Passed ChapanakitCare.Domain.Tests.AccountingCoreTests.Reversal_posts_the_exact_opposite_lines_replays_its_request_and_rejects_a_second_reversal [1 s]
+  Passed ChapanakitCare.Domain.Tests.AccountingManagementPageTests.Management_form_records_statement_difference_without_adjusting_money [5 s]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_download_returns_the_selected_document_format(format: "csv", contentType: "text/csv; charset=utf-8") [451 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingCoreTests.Balanced_welfare_posting_records_dimensions_and_audit_without_creating_an_association_journal [308 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingManagementPageTests.Management_form_closes_and_reopens_selected_period_with_evidence [502 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingCoreTests.Reversal_rejects_opening_and_linked_accrual_journals_that_need_their_own_corrective_workflow [301 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingManagementPageTests.Management_form_adds_book_specific_bank_and_association_expense_without_extra_income [325 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingCoreTests.Idempotency_tokens_are_scoped_to_their_separate_accounting_books [263 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingCoreTests.Account_setup_creates_book_specific_banks_and_an_association_expense_category_without_another_income_account [231 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_download_returns_the_selected_document_format(format: "pdf", contentType: "application/pdf") [973 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Receipt_browser_form_accepts_only_its_visible_fields_and_posts_once [1 s]
+  Passed ChapanakitCare.Domain.Tests.AccountingCoreTests.Closing_a_book_period_blocks_posting_until_a_documented_reopen [226 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingCoreTests.Linked_fee_accrual_posts_one_balanced_journal_per_book_as_one_atomic_operation [392 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingCoreTests.Failed_linked_posting_does_not_leave_the_first_book_persisted_when_the_caller_commits_its_ambient_transaction [335 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Bank_browser_form_does_not_require_fields_from_other_management_forms [285 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingCoreTests.Failed_linked_posting_restores_the_callers_pending_changes_and_accounting_tracker_before_the_ambient_transaction_continues [305 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingCoreTests.Posting_rejects_a_negative_amount_even_when_the_other_side_is_positive [199 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Benefit_payment_form_posts_against_the_chosen_beneficiary [1 s]
+[xUnit.net 00:00:10.11]   Finished:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(kind: "expense", target: "5000", expectedTarget: 2500, expectedCash: 7500) [206 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(kind: "transfer", target: "1100", expectedTarget: 2500, expectedCash: 7500) [184 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_rejects_subsatang_input_without_posting [140 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_reversal_form_keeps_original_and_posts_a_linked_correction [293 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_reissue_keeps_original_number_and_shows_reversed_status [190 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Expense_form_lists_only_association_accounts [119 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Fee_remittance_form_posts_both_books_without_new_income [295 ms]
+
+Test Run Successful.
+Total tests: 27
+     Passed: 27
+ Total time: 11.1630 Seconds

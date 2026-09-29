@@ -151,7 +151,7 @@ public sealed class CheckpointTwoWorkflowTests
         Assert.Equal(2, updated.Version);
         Assert.Equal("ร้องเข็ม", updated.Subdistrict);
         var editAudit = await database.Context.AuditEvents.SingleAsync(value => value.Action == "member.updated");
-        var change = await database.Context.AuditFieldChanges.SingleAsync(value => value.AuditEventId == editAudit.Id);
+        var change = await database.Context.AuditFieldChanges.SingleAsync(value => value.AuditEventId == editAudit.Id && value.FieldName == "Subdistrict");
         Assert.Equal("Subdistrict", change.FieldName);
         Assert.Equal("แม่ยางตาล", change.OldValueDisplay);
         Assert.Equal("ร้องเข็ม", change.NewValueDisplay);

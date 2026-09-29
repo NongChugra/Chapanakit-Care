@@ -1,0 +1,85 @@
+ M .gitattributes
+ M .github/workflows/ci.yml
+ M .gitignore
+ M AGENTS.md
+ M README.md
+ M docs/github-setup.md
+ M docs/report-references/member-by-manager.png
+ M docs/report-references/monthly-member.png
+ M docs/report-references/sak-one.png
+ M src/ChapanakitCare.Desktop/packages.lock.json
+ M src/ChapanakitCare.Domain/BusinessRules.cs
+ M src/ChapanakitCare.Domain/Entities/Entities.cs
+ M src/ChapanakitCare.Domain/packages.lock.json
+ M src/ChapanakitCare.Infrastructure/Deaths/DeathApplicationServices.cs
+ M src/ChapanakitCare.Infrastructure/Members/InteractiveMemberRegistrationPolicy.cs
+ M src/ChapanakitCare.Infrastructure/Members/MemberApplicationServices.cs
+ M src/ChapanakitCare.Infrastructure/Members/ResignationApplicationService.cs
+ M src/ChapanakitCare.Infrastructure/Persistence/AppDbContext.cs
+ M src/ChapanakitCare.Infrastructure/Persistence/Migrations/AppDbContextModelSnapshot.cs
+ M src/ChapanakitCare.Infrastructure/Reports/OfficialReportDocuments.cs
+ M src/ChapanakitCare.Infrastructure/Reports/OfficialReportModels.cs
+ M src/ChapanakitCare.Infrastructure/Reports/ReportApplicationService.cs
+ M src/ChapanakitCare.Infrastructure/packages.lock.json
+ M src/ChapanakitCare.Web/Pages/Deaths/Create.cshtml
+ M src/ChapanakitCare.Web/Pages/Deaths/Create.cshtml.cs
+ M src/ChapanakitCare.Web/Pages/Deaths/Index.cshtml
+ M src/ChapanakitCare.Web/Pages/Deaths/Index.cshtml.cs
+ M src/ChapanakitCare.Web/Pages/History/Index.cshtml
+ M src/ChapanakitCare.Web/Pages/History/Index.cshtml.cs
+ M src/ChapanakitCare.Web/Pages/Index.cshtml
+ M src/ChapanakitCare.Web/Pages/Index.cshtml.cs
+ M src/ChapanakitCare.Web/Pages/Members/Index.cshtml
+ M src/ChapanakitCare.Web/Pages/Members/Index.cshtml.cs
+ M src/ChapanakitCare.Web/Pages/Members/MemberFormInput.cs
+ M src/ChapanakitCare.Web/Pages/Members/_MemberForm.cshtml
+ M src/ChapanakitCare.Web/Pages/Reports/Index.cshtml
+ M src/ChapanakitCare.Web/Pages/Reports/Index.cshtml.cs
+ M src/ChapanakitCare.Web/Pages/Shared/_Layout.cshtml
+ M src/ChapanakitCare.Web/Program.cs
+ M src/ChapanakitCare.Web/packages.lock.json
+ M src/ChapanakitCare.Web/wwwroot/css/site.css
+ M src/ChapanakitCare.Web/wwwroot/js/member-table.js
+ M src/ChapanakitCare.Web/wwwroot/js/site.js
+ M src/ChapanakitCare.Web/wwwroot/js/thai-date.js
+ M tests/ChapanakitCare.Desktop.Tests/packages.lock.json
+ M tests/ChapanakitCare.Domain.Tests/CheckpointFiveWorkflowTests.cs
+ M tests/ChapanakitCare.Domain.Tests/CheckpointFourWorkflowTests.cs
+ M tests/ChapanakitCare.Domain.Tests/CheckpointThreeWorkflowTests.cs
+ M tests/ChapanakitCare.Domain.Tests/CheckpointTwoWorkflowTests.cs
+ M tests/ChapanakitCare.Domain.Tests/DatabaseContractTests.cs
+ M tests/ChapanakitCare.Domain.Tests/ReportPdfText.cs
+ M tests/ChapanakitCare.Domain.Tests/ThaiBuddhistDateTests.cs
+?? docs/assurance/
+?? docs/design/
+?? docs/report-references/README.md
+?? docs/report-references/all-members.png
+?? run-dev.bat
+?? scripts/
+?? src/ChapanakitCare.Domain/Entities/Coordinators.cs
+?? src/ChapanakitCare.Domain/Entities/DeathRecipientPhoto.cs
+?? src/ChapanakitCare.Infrastructure/Coordinators/
+?? src/ChapanakitCare.Infrastructure/Deaths/RecipientPhotoDocument.cs
+?? src/ChapanakitCare.Infrastructure/Members/ActivityAudit.cs
+?? src/ChapanakitCare.Infrastructure/Members/RegistrationAgePolicy.cs
+?? src/ChapanakitCare.Infrastructure/Persistence/CoordinatorWriteGuard.cs
+?? src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260904022726_CoordinatorSelection.Designer.cs
+?? src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260904022726_CoordinatorSelection.cs
+?? src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260908160800_RecipientPhotosAndDurableHistory.Designer.cs
+?? src/ChapanakitCare.Infrastructure/Persistence/Migrations/20260908160800_RecipientPhotosAndDurableHistory.cs
+?? src/ChapanakitCare.Web/Pages/Coordinators/
+?? src/ChapanakitCare.Web/Properties/
+?? src/ChapanakitCare.Web/Validation/GregorianDateAttribute.cs
+?? src/ChapanakitCare.Web/wwwroot/js/coordinator-search.js
+?? tests/ChapanakitCare.Domain.Tests/ActivityHistoryTests.cs
+?? tests/ChapanakitCare.Domain.Tests/CoordinatorIntegrityTests.cs
+?? tests/ChapanakitCare.Domain.Tests/CoordinatorMigrationTests.cs
+?? tests/ChapanakitCare.Domain.Tests/CoordinatorPageTests.cs
+?? tests/ChapanakitCare.Domain.Tests/CoordinatorWorkflowTests.cs
+?? tests/ChapanakitCare.Domain.Tests/DeathPhotoIntegrityTests.cs
+?? tests/ChapanakitCare.Domain.Tests/MemberDateSubmissionTests.cs
+?? tests/ChapanakitCare.Domain.Tests/RegistrationAgeTests.cs
+?? tests/ChapanakitCare.Domain.Tests/ReportCompletionDataTests.cs
+?? tests/ChapanakitCare.Domain.Tests/ReportFormSubmissionTests.cs
+?? tests/ChapanakitCare.Domain.Tests/ReportLayoutTests.cs
+?? tests/js/thai-date.test.mjs

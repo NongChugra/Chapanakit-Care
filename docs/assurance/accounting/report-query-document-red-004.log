@@ -1,0 +1,99 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.18]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.27]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.31]   Starting:    ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:02.39]       Assert.NotNull() Failure: Value is null
+[xUnit.net 00:00:02.38]     ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Journal_document_data_and_csv_keep_posted_reversal_lines_visible [FAIL]
+[xUnit.net 00:00:02.39]       Stack Trace:
+[xUnit.net 00:00:02.39]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs(348,0): at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.ToDocumentData[TReport](TReport report)
+[xUnit.net 00:00:02.39]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs(229,0): at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Journal_document_data_and_csv_keep_posted_reversal_lines_visible()
+[xUnit.net 00:00:02.39]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:02.39]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:02.39]     ChapanakitCare.Domain.Tests.AccountingReportQueryTests.General_ledger_document_data_carries_opening_movement_and_running_balances [FAIL]
+[xUnit.net 00:00:02.39]       Assert.NotNull() Failure: Value is null
+[xUnit.net 00:00:02.39]       Stack Trace:
+[xUnit.net 00:00:02.39]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs(348,0): at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.ToDocumentData[TReport](TReport report)
+[xUnit.net 00:00:02.39]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs(260,0): at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.General_ledger_document_data_carries_opening_movement_and_running_balances()
+[xUnit.net 00:00:02.39]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:02.39]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:02.71]     ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Welfare_control_document_data_keeps_member_and_beneficiary_balances_in_the_welfare_book [FAIL]
+[xUnit.net 00:00:02.71]       Assert.NotNull() Failure: Value is null
+[xUnit.net 00:00:02.71]       Stack Trace:
+[xUnit.net 00:00:02.71]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs(348,0): at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.ToDocumentData[TReport](TReport report)
+[xUnit.net 00:00:02.71]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs(330,0): at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Welfare_control_document_data_keeps_member_and_beneficiary_balances_in_the_welfare_book()
+[xUnit.net 00:00:02.71]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:02.71]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Passed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Trial_balance_uses_business_date_cutoff_keeps_books_separate_and_does_not_mutate_journals [1 s]
+  Passed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Income_expense_report_shows_only_the_association_fee_income_and_operating_expense [147 ms]
+  Failed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Journal_document_data_and_csv_keep_posted_reversal_lines_visible [3 ms]
+  Error Message:
+   Assert.NotNull() Failure: Value is null
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.ToDocumentData[TReport](TReport report) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs:line 348
+   at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Journal_document_data_and_csv_keep_posted_reversal_lines_visible() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs:line 229
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Failed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.General_ledger_document_data_carries_opening_movement_and_running_balances [< 1 ms]
+  Error Message:
+   Assert.NotNull() Failure: Value is null
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.ToDocumentData[TReport](TReport report) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs:line 348
+   at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.General_ledger_document_data_carries_opening_movement_and_running_balances() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs:line 260
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Passed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Journal_report_marks_the_posted_reversal_without_omitting_its_signed_lines [170 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Control_balance_reports_keep_frozen_party_snapshots_when_the_source_record_is_unavailable [158 ms]
+  Failed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Welfare_control_document_data_keeps_member_and_beneficiary_balances_in_the_welfare_book [< 1 ms]
+  Error Message:
+   Assert.NotNull() Failure: Value is null
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.ToDocumentData[TReport](TReport report) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs:line 348
+   at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Welfare_control_document_data_keeps_member_and_beneficiary_balances_in_the_welfare_book() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs:line 330
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Passed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Member_and_beneficiary_reports_derive_control_balances_from_dimensions [86 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Financial_position_keeps_the_association_fee_result_with_its_own_book [157 ms]
+[xUnit.net 00:00:03.16]       Assert.NotNull() Failure: Value is null
+[xUnit.net 00:00:03.16]       Stack Trace:
+[xUnit.net 00:00:03.16]     ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Trial_balance_document_data_keeps_the_book_cutoff_and_integer_satang_as_numeric_baht [FAIL]
+[xUnit.net 00:00:03.16]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs(348,0): at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.ToDocumentData[TReport](TReport report)
+[xUnit.net 00:00:03.16]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs(194,0): at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Trial_balance_document_data_keeps_the_book_cutoff_and_integer_satang_as_numeric_baht()
+[xUnit.net 00:00:03.16]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:03.16]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:03.16]     ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Financial_statement_document_data_keeps_association_result_separate_from_assets [FAIL]
+[xUnit.net 00:00:03.16]       Assert.NotNull() Failure: Value is null
+[xUnit.net 00:00:03.16]       Stack Trace:
+[xUnit.net 00:00:03.16]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs(348,0): at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.ToDocumentData[TReport](TReport report)
+[xUnit.net 00:00:03.16]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs(297,0): at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Financial_statement_document_data_keeps_association_result_separate_from_assets()
+[xUnit.net 00:00:03.16]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:03.16]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:03.17]   Finished:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.General_ledger_carries_opening_then_signed_movement_from_a_reversal [198 ms]
+  Failed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Trial_balance_document_data_keeps_the_book_cutoff_and_integer_satang_as_numeric_baht [< 1 ms]
+  Error Message:
+   Assert.NotNull() Failure: Value is null
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.ToDocumentData[TReport](TReport report) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs:line 348
+   at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Trial_balance_document_data_keeps_the_book_cutoff_and_integer_satang_as_numeric_baht() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs:line 194
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Failed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Financial_statement_document_data_keeps_association_result_separate_from_assets [1 ms]
+  Error Message:
+   Assert.NotNull() Failure: Value is null
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.ToDocumentData[TReport](TReport report) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs:line 348
+   at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Financial_statement_document_data_keeps_association_result_separate_from_assets() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs:line 297
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+
+Total tests: 12
+Test Run Failed.
+     Passed: 7
+     Failed: 5
+ Total time: 3.7471 Seconds

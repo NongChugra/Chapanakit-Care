@@ -1,0 +1,38 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:04.41]     ChapanakitCare.Domain.Tests.ReportCompletionDataTests.Available_relationships_and_membership_exit_are_printed_from_saved_data [FAIL]
+  Failed ChapanakitCare.Domain.Tests.ReportCompletionDataTests.Available_relationships_and_membership_exit_are_printed_from_saved_data [3 s]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "สมาคมฌาปนกิจสงเคราะห์รายงานสมาชิกทั้งหมดร"···
+Not found: "หลาน"
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.ReportCompletionDataTests.Available_relationships_and_membership_exit_are_printed_from_saved_data() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportCompletionDataTests.cs:line 120
+   at ChapanakitCare.Domain.Tests.ReportCompletionDataTests.Available_relationships_and_membership_exit_are_printed_from_saved_data() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportCompletionDataTests.cs:line 123
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:04.77]     ChapanakitCare.Domain.Tests.ReportCompletionDataTests.Group_options_keep_the_exact_group_number_and_show_the_current_leader_or_vacancy [FAIL]
+[xUnit.net 00:00:05.51]     ChapanakitCare.Domain.Tests.ReportCompletionDataTests.Monthly_summary_excludes_exits_before_the_period_and_counts_a_confirmed_death_once [FAIL]
+  Failed ChapanakitCare.Domain.Tests.ReportCompletionDataTests.Group_options_keep_the_exact_group_number_and_show_the_current_leader_or_vacancy [360 ms]
+  Error Message:
+   Assert.Equal() Failure: Strings differ
+Expected: "นายหัวหน้า กลุ่ม"
+Actual:   null
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.ReportCompletionDataTests.Group_options_keep_the_exact_group_number_and_show_the_current_leader_or_vacancy() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportCompletionDataTests.cs:line 99
+   at ChapanakitCare.Domain.Tests.ReportCompletionDataTests.Group_options_keep_the_exact_group_number_and_show_the_current_leader_or_vacancy() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportCompletionDataTests.cs:line 104
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.ReportCompletionDataTests.Monthly_summary_excludes_exits_before_the_period_and_counts_a_confirmed_death_once [733 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "สมาคมฌาปนกิจสงเคราะห์รายงานเดือน03/2569รา"···
+Not found: "311102"
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.ReportCompletionDataTests.Monthly_summary_excludes_exits_before_the_period_and_counts_a_confirmed_death_once() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportCompletionDataTests.cs:line 48
+   at ChapanakitCare.Domain.Tests.ReportCompletionDataTests.Monthly_summary_excludes_exits_before_the_period_and_counts_a_confirmed_death_once() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\ReportCompletionDataTests.cs:line 48
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     3, Passed:     2, Skipped:     0, Total:     5, Duration: 4 s - ChapanakitCare.Domain.Tests.dll (net10.0)

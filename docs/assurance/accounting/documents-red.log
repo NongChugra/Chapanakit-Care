@@ -1,0 +1,11 @@
+Accounting document renderer TDD RED checkpoint
+Timestamp: 2026-09-13 (Asia/Tokyo)
+
+Command:
+$env:MSBUILDDISABLENODEREUSE='1'; & 'C:\Users\mooha\.dotnet\dotnet.exe' test 'tests\ChapanakitCare.Domain.Tests\ChapanakitCare.Domain.Tests.csproj' --no-restore --filter 'FullyQualifiedName~AccountingDocumentTests' -m:1 /nodeReuse:false /p:UseSharedCompilation=false --logger 'console;verbosity=normal'
+
+Observed result before implementation:
+- Build succeeded for Domain, Infrastructure, Web and Domain.Tests.
+- Test run discovered 5 AccountingDocumentTests.
+- 5 failed at the temporary AccountingDocumentRenderer NotImplementedException.
+- This confirms the tests reached the real public renderer methods before behavior was implemented.

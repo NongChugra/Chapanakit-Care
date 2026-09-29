@@ -1,0 +1,82 @@
+@page
+@model ChapanakitCare.Web.Pages.Accounting.MoneyReportsModel
+@{ ViewData["Title"] = "รายงานเงินสมาชิกและเงินสด"; }
+<p><a asp-page="./Index">บัญชีและการเงิน</a> / รายงานเงินสมาชิกและเงินสด</p>
+<section class="card">
+    <h2>รายงานเงินสมาชิกและเงินสด</h2>
+    <p class="muted">รายงานอ่านจากรายการบัญชีที่บันทึกแล้ว เงินรับสมาชิก เงินโอนภายใน และรายได้ของสมาคมแสดงแยกกัน</p>
+    <form method="get" class="stack" autocomplete="off">
+        <div asp-validation-summary="All" class="alert"></div>
+        <div class="grid two">
+            <label>ประเภทรายงาน
+                <select asp-for="Report" required>
+                @foreach (var choice in MoneyReportsModel.ReportChoices)
+                {
+                    <option value="@choice.Value">@choice.Label</option>
+                }
+                </select>
+            </label>
+            <label>สมุดบัญชี
+                <select asp-for="Book" required>
+                @foreach (var book in Model.Books)
+                {
+                    <option value="@(book.Code == AccountingBookCode.Welfare ? "welfare" : "association")">@book.Name</option>
+                }
+                </select>
+            </label>
+            <label>ตั้งแต่วันที่ (พ.ศ.)<input asp-for="From" placeholder="วว/ดด/ปปปป" maxlength="10" required /></label>
+            <label>ถึงวันที่ (พ.ศ.)<input asp-for="To" placeholder="วว/ดด/ปปปป" maxlength="10" required /></label>
+            @if (Model.UsesMember)
+            {
+                <label>สมาชิก
+                    <select asp-for="MemberId" required>
+                        <option value="">เลือกสมาชิก</option>
+                        @foreach (var member in Model.Members)
+                        {
+                            <option value="@member.Id">@member.RunNo · @member.Title@member.FirstName @member.LastName</option>
+                        }
+                    </select>
+                </label>
+            }
+            @if (Model.UsesAccount)
+            {
+                <label>เงินสดหรือธนาคาร
+                    <select asp-for="AccountCode" required>
+                        <option value="">เลือกบัญชี</option>
+                        @foreach (var account in Model.MoneyAccounts)
+                        {
+                            <option value="@account.Code">@account.Code · @account.Name</option>
+                        }
+                    </select>
+                </label>
+            }
+        </div>
+        <div class="form-footer"><button class="button" type="submit">แสดงรายงาน</button><a class="button secondary" asp-page="./Index">กลับ</a></div>
+    </form>
+</section>
+@if (Model.Document is { } document)
+{
+    <section class="card" style="margin-top:18px">
+        <div class="card-head"><div><h2>@document.Title</h2><p class="muted">@document.BookName</p></div><div>
+            <a class="button" asp-route-report="@Model.Report" asp-route-book="@Model.Book" asp-route-memberId="@Model.MemberId" asp-route-accountCode="@Model.AccountCode" asp-route-from="@Model.From" asp-route-to="@Model.To" asp-route-format="pdf">พิมพ์ / บันทึก PDF</a>
+            <a class="button secondary" asp-route-report="@Model.Report" asp-route-book="@Model.Book" asp-route-memberId="@Model.MemberId" asp-route-accountCode="@Model.AccountCode" asp-route-from="@Model.From" asp-route-to="@Model.To" asp-route-format="csv">ดาวน์โหลด CSV</a>
+        </div></div>
+        <div class="table-wrap"><table><thead><tr>@foreach (var column in document.Columns) { <th>@column.Heading</th> }</tr></thead><tbody>
+        @if (document.Rows.Count == 0)
+        {
+            <tr><td colspan="@document.Columns.Count" class="muted">ไม่มีรายการในช่วงเวลาที่เลือก</td></tr>
+        }
+        else
+        {
+            @foreach (var row in document.Rows)
+            {
+                <tr>@foreach (var cell in row) { <td>@cell</td> }</tr>
+            }
+        }
+        </tbody></table></div>
+        @if (document.Notes is { Count: > 0 })
+        {
+            <ul class="muted">@foreach (var note in document.Notes) { <li>@note</li> }</ul>
+        }
+    </section>
+}

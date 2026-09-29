@@ -1,0 +1,12 @@
+# Candidate verification receipt
+
+- Frozen candidate: sha256:f55014fc0be0667f287ec337364cbd50de8bae95ec8af33edc7495a6a2b2e0c1. `freeze_candidate.py --check` confirms unchanged after all checks.
+- Environment: Windows, .NET SDK 10.0.302/runtime 10.0.10, cached locked packages, QuestPDF 2026.8.0, Leelawadee UI, Poppler and bundled Python/pdfplumber.
+- Focused report suite: 31 passed (focused-green.log); subsequent presentation adjustment: 8 layout tests passed (layout-green.log). Actual content/data RED and harness corrections are detailed in parent-audit.md.
+- Final full gates: `verify-candidate.ps1`, one sequence on this candidate. Locked restore, changed-C# formatting, Release solution build zero warnings/errors, 141 domain/integration + 4 desktop tests passed, isolated web publish. Exact command/logs are adjacent. No full-gate reruns on this candidate.
+- Four report fixture pairs, 37 pages total: all 1+8, group 1+8, monthly 1+8, Sak One 1+9. Every page rendered; parent inspected four contact sheets and full-size samples. Geometry checks whole numeric values, printable glyph bounds and member/beneficiary page grouping. `check_pdf_geometry.py` and `pdf-geometry.json` retain recipe and PDF hashes. Temporary outputs: tmp/pdfs/report-completion.
+- Fresh packaged app started on 127.0.0.1:5198 with new SQLite content root tmp/report-browser. Startup migrations succeeded; UI imported 40 synthetic members. UI assigned member 00001 นายกมลชนก ใจดี as group 0101 leader. Report selector showed exact group and leader, other groups showed vacancies. No real user data used or changed.
+- CUA clicked all four real download buttons and received four download events (group 0101, monthly and Sak One default 06/2568). Browser warning/error log empty. One initial non-destructive UI expansion hit automatic approval timeout, retry succeeded; slow browser calls did not indicate application failure.
+- Packaged-app HTTP rechecks returned 200/application/pdf/attachment: all-members.pdf, members-group-0101.pdf, monthly-members-25680601-25680630.pdf, sak-one-25680601-25680630.pdf. Rendered group and monthly UI PDFs confirm actual leader/source data. Temp fixture-only outputs are not releases.
+- Delivery artifacts/Compose: not applicable to source delivery/local single-process app. No deployment, real database migration, commit, merge, push or financial operation performed.
+- Runtime: parent-runtime.json observes Sol/high; worker-runtime.json proves Terra/max. Worker stopped before completion; parent completed and verified its lane.

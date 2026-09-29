@@ -1,0 +1,400 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.01] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.44]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.64]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.71]   Starting:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.AccountingManagementPageTests.Management_form_records_statement_difference_without_adjusting_money [5 s]
+[xUnit.net 00:00:06.64]     ChapanakitCare.Domain.Tests.AccountingManagementPageTests.Management_form_closes_and_reopens_selected_period_with_evidence [FAIL]
+[xUnit.net 00:00:06.65]       Assert.Equal() Failure: Values differ
+[xUnit.net 00:00:06.65]       Expected: 3
+[xUnit.net 00:00:06.65]       Actual:   0
+[xUnit.net 00:00:06.65]       Stack Trace:
+[xUnit.net 00:00:06.65]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingManagementPageTests.cs(48,0): at ChapanakitCare.Domain.Tests.AccountingManagementPageTests.Management_form_closes_and_reopens_selected_period_with_evidence()
+[xUnit.net 00:00:06.65]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingManagementPageTests.cs(51,0): at ChapanakitCare.Domain.Tests.AccountingManagementPageTests.Management_form_closes_and_reopens_selected_period_with_evidence()
+[xUnit.net 00:00:06.65]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:06.76]     ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Receipt_browser_form_accepts_only_its_visible_fields_and_posts_once [FAIL]
+[xUnit.net 00:00:06.76]       <!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>&#xE23;&#xE31;&#xE1A;&#xE40;&#xE07;&#xE34;&#xE19;&#xE2A;&#xE07;&#xE40;&#xE04;&#xE23;&#xE32;&#xE30;&#xE2B;&#xE4C;&#xE2A;&#xE21;&#xE32;&#xE0A;&#xE34;&#xE01; · Chapanakit Care</title>
+    <link rel="icon" type="image/jpeg" href="/images/association-deer-logo.jpg" />
+    <link rel="stylesheet" href="/css/site.css" />
+</head>
+<body>
+    <aside class="top-nav" aria-label="เมนูหลัก">
+        <nav>
+            <a class="brand" href="/"><img src="/images/association-deer-logo.jpg" alt="ตราสมาคม" /><span>Chapanakit Care</span></a>
+            <a href="/">ภาพรวม</a>
+            <div class="nav-menu">
+                <button type="button" class="nav-menu-trigger" aria-haspopup="true" aria-controls="management-submenu">ระบบจัดการและบันทึกข้อมูล</button>
+                <div class="nav-submenu" id="management-submenu">
+                    <a href="/Coordinators">กำหนดผู้ประสานงาน</a>
+                    <a href="/Members">ทะเบียนสมาชิก</a>
+                    <a href="/Members/Create">เพิ่มสมาชิก</a>
+                    <a href="/Resignations">ปรับสถานะสมาชิกลาออก</a>
+                    <a href="/Deaths">ทะเบียนผู้เสียชีวิต</a>
+                    <a href="/Deaths/Create">บันทึกการเสียชีวิต</a>
+                </div>
+            </div>
+            <a href="/Accounting">บัญชีและการเงิน</a>
+            <a href="/Reports">ระบบรายงาน</a>
+            <a href="/History">ประวัติการเปลี่ยนแปลง</a>
+        </nav>
+    </aside>
+    <main>
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">อำเภอร้องกวาง จังหวัดแพร่</p>
+                <h1>&#xE23;&#xE31;&#xE1A;&#xE40;&#xE07;&#xE34;&#xE19;&#xE2A;&#xE07;&#xE40;&#xE04;&#xE23;&#xE32;&#xE30;&#xE2B;&#xE4C;&#xE2A;&#xE21;&#xE32;&#xE0A;&#xE34;&#xE01;</h1>
+            </div>
+            <div class="date-chip">23/09/2569</div>
+        </header>
+        <p><a href="/Accounting">บัญชีและการเงิน</a> / &#xE23;&#xE31;&#xE1A;&#xE40;&#xE07;&#xE34;&#xE19;&#xE2A;&#xE07;&#xE40;&#xE04;&#xE23;&#xE32;&#xE30;&#xE2B;&#xE4C;&#xE2A;&#xE21;&#xE32;&#xE0A;&#xE34;&#xE01;</p>
+<section class="card">
+    <h2>&#xE23;&#xE31;&#xE1A;&#xE40;&#xE07;&#xE34;&#xE19;&#xE2A;&#xE07;&#xE40;&#xE04;&#xE23;&#xE32;&#xE30;&#xE2B;&#xE4C;&#xE2A;&#xE21;&#xE32;&#xE0A;&#xE34;&#xE01;</h2>
+    <p class="muted">&#xE2A;&#xE21;&#xE38;&#xE14;&#xE1A;&#xE31;&#xE0D;&#xE0A;&#xE35;&#xE40;&#xE07;&#xE34;&#xE19;&#xE2A;&#xE07;&#xE40;&#xE04;&#xE23;&#xE32;&#xE30;&#xE2B;&#xE4C;&#xE2A;&#xE21;&#xE32;&#xE0A;&#xE34;&#xE01;</p>
+        <p>เงินรับจะชำระยอดค้างของสมาชิกก่อน ส่วนที่เหลือเก็บเป็นเงินสงเคราะห์ล่วงหน้า</p>
+    <form method="post" class="stack" autocomplete="off">
+        <div class="alert validation-summary-errors" data-valmsg-summary="true"><ul><li>The TargetAccount field is required.</li>
+[xUnit.net 00:00:06.76]       <li>The ExpenseAccount field is required.</li>
+[xUnit.net 00:00:06.76]       <li>The Payee field is required.</li>
+[xUnit.net 00:00:06.76]       </ul></div>
+        <input type="hidden" data-val="true" data-val-required="The Kind field is required." id="Kind" name="Kind" value="receipt" /><input type="hidden" data-val="true" data-val-required="The Book field is required." id="Book" name="Book" value="welfare" /><input type="hidden" data-val="true" data-val-required="The RequestToken field is required." id="RequestToken" name="RequestToken" value="87ab7756cf244afe8bdd221e91770c25" />
+        <div class="grid two">
+            <label>วันที่รายการ (พ.ศ.)<input placeholder="วว/ดด/ปปปป" required maxlength="10" type="text" data-val="true" data-val-required="The BusinessDate field is required." id="BusinessDate" name="BusinessDate" value="12/09/2569" /></label>
+            <label>จำนวนเงิน (บาท)<input inputmode="decimal" placeholder="0.00" required type="text" data-val="true" data-val-required="The Amount field is required." id="Amount" name="Amount" value="9.01" /></label>
+            <label>&#xE23;&#xE31;&#xE1A;&#xE40;&#xE02;&#xE49;&#xE32;
+                <select required data-val="true" data-val-required="The MoneyAccount field is required." id="MoneyAccount" name="MoneyAccount">
+ <option value="1000" selected="selected">&#xE40;&#xE07;&#xE34;&#xE19;&#xE2A;&#xE14;</option>  <option value="1100">&#xE1A;&#xE31;&#xE0D;&#xE0A;&#xE35;&#xE18;&#xE19;&#xE32;&#xE04;&#xE32;&#xE23;</option>                 </select>
+            </label>
+                <label>สมาชิก<select required data-val="true" data-val-required="The MemberId field is required." id="MemberId" name="MemberId"><option value="">เลือกสมาชิก</option>
+ <option value="11111111-1111-1111-1111-111111111111" selected="selected">00001 · &#xE17;&#xE14;&#xE2A;&#xE2D;&#xE1A; &#xE2A;&#xE21;&#xE32;&#xE0A;&#xE34;&#xE01; · กลุ่ม </option>                 </select></label>
+ <p class="muted">สมาชิกลาออกหรือเสียชีวิตรับชำระได้เฉพาะหนี้ค้าง ไม่เติมเงินล่วงหน้าใหม่</p>         </div>
+        <label>รายละเอียด / เลขที่หลักฐาน<textarea required maxlength="2000" rows="3" data-val="true" data-val-required="The Evidence field is required." id="Evidence" name="Evidence">
+[xUnit.net 00:00:06.76]       &#xE23;&#xE31;&#xE1A;&#xE40;&#xE07;&#xE34;&#xE19;&#xE08;&#xE23;&#xE34;&#xE07;</textarea></label>
+        <div class="form-footer"><button class="button" type="submit">บันทึกรายการ</button><a class="button secondary" href="/Accounting">กลับ</a></div>
+    <input name="__RequestVerificationToken" type="hidden" value="CfDJ8JHsI8oa-KROsb_rPhx-d5RJSDhkNIpqZwkPYSqR_Y_EGKeAjH2WfdRQfH_RsI1oeVcfFqVWe1owUNDZnPsikqfusU6tftvusQVek2GSbrmc4_9Wmo0E826ELenI40CRco5s7JMIR2-EGCEMb-Qt8Hg" /></form>
+</section>
+
+    </main>
+    <script src="/js/thai-date.js"></script>
+    <script src="/js/thai-validation.js"></script>
+    <script src="/js/site.js"></script>
+
+</body>
+</html>
+
+[xUnit.net 00:00:06.76]       Stack Trace:
+[xUnit.net 00:00:06.77]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingHttpFormTests.cs(59,0): at ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Receipt_browser_form_accepts_only_its_visible_fields_and_posts_once()
+[xUnit.net 00:00:06.77]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:07.46]       <!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>&#xE15;&#xE31;&#xE49;&#xE07;&#xE04;&#xE48;&#xE32;&#xE41;&#xE25;&#xE30;&#xE15;&#xE23;&#xE27;&#xE08;&#xE2A;&#xE2D;&#xE1A;&#xE1A;&#xE31;&#xE0D;&#xE0A;&#xE35; · Chapanakit Care</title>
+    <link rel="icon" type="image/jpeg" href="/images/association-deer-logo.jpg" />
+    <link rel="stylesheet" href="/css/site.css" />
+</head>
+<body>
+    <aside class="top-nav" aria-label="เมนูหลัก">
+        <nav>
+            <a class="brand" href="/"><img src="/images/association-deer-logo.jpg" alt="ตราสมาคม" /><span>Chapanakit Care</span></a>
+            <a href="/">ภาพรวม</a>
+            <div class="nav-menu">
+                <button type="button" class="nav-menu-trigger" aria-haspopup="true" aria-controls="management-submenu">ระบบจัดการและบันทึกข้อมูล</button>
+                <div class="nav-submenu" id="management-submenu">
+                    <a href="/Coordinators">กำหนดผู้ประสานงาน</a>
+                    <a href="/Members">ทะเบียนสมาชิก</a>
+                    <a href="/Members/Create">เพิ่มสมาชิก</a>
+                    <a href="/Resignations">ปรับสถานะสมาชิกลาออก</a>
+                    <a href="/Deaths">ทะเบียนผู้เสียชีวิต</a>
+                    <a href="/Deaths/Create">บันทึกการเสียชีวิต</a>
+                </div>
+            </div>
+            <a href="/Accounting">บัญชีและการเงิน</a>
+            <a href="/Reports">ระบบรายงาน</a>
+            <a href="/History">ประวัติการเปลี่ยนแปลง</a>
+        </nav>
+    </aside>
+    <main>
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">อำเภอร้องกวาง จังหวัดแพร่</p>
+                <h1>&#xE15;&#xE31;&#xE49;&#xE07;&#xE04;&#xE48;&#xE32;&#xE41;&#xE25;&#xE30;&#xE15;&#xE23;&#xE27;&#xE08;&#xE2A;&#xE2D;&#xE1A;&#xE1A;&#xE31;&#xE0D;&#xE0A;&#xE35;</h1>
+            </div>
+            <div class="date-chip">23/09/2569</div>
+        </header>
+        <p><a href="/Accounting">บัญชีและการเงิน</a> / ตั้งค่าและตรวจสอบ</p>
+<section class="card">
+    <h2>ตั้งค่าและตรวจสอบบัญชี</h2>
+    <form method="get" class="filters"><label>สมุดบัญชี<select data-val="true" data-val-required="The Book field is required." id="Book" name="Book"><option value="welfare" selected="selected">เงินสงเคราะห์สมาชิก</option><option value="association">สมาคม</option></select></label><button class="button">เลือก</button></form>
+    <div class="alert validation-summary-errors" data-valmsg-summary="true"><ul><li>The From field is required.</li>
+[xUnit.net 00:00:07.46]       <li>The To field is required.</li>
+[xUnit.net 00:00:07.46]       <li>The AsOf field is required.</li>
+[xUnit.net 00:00:07.46]     ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Bank_browser_form_does_not_require_fields_from_other_management_forms [FAIL]
+[xUnit.net 00:00:07.46]       <li>The StatementBalance field is required.</li>
+[xUnit.net 00:00:07.46]       <li>The Evidence field is required.</li>
+[xUnit.net 00:00:07.46]       <li>The RequestToken field is required.</li>
+[xUnit.net 00:00:07.46]       </ul></div>
+    <p>รายได้สมาคมมาจากค่าหักร้อยละ 4 เท่านั้น เพิ่มได้เฉพาะบัญชีธนาคารและหมวดค่าใช้จ่าย</p>
+</section>
+<div class="grid two" style="margin-top:18px">
+    <section class="card">
+        <h2>เพิ่มบัญชีธนาคาร</h2>
+        <form method="post" class="stack">
+            <input type="hidden" data-val="true" data-val-required="The Book field is required." id="Book" name="Book" value="welfare" /><input name="Action" value="bank" type="hidden" />
+            <label>รหัสบัญชี (1101–1199)<input name="AccountCode" required pattern="11[0-9]{2}" maxlength="4" /></label>
+            <label>ชื่อบัญชี<input name="AccountName" required maxlength="200" /></label>
+            <label>ธนาคาร / เลขบัญชีอ้างอิง<input name="BankDescription" required maxlength="200" /></label>
+            <button class="button">เพิ่มบัญชีในสมุดที่เลือก</button>
+        <input name="__RequestVerificationToken" type="hidden" value="CfDJ8JHsI8oa-KROsb_rPhx-d5TOGAfXYL8ZieUspZ6k94u0ePd7NbXaWKCI5NZH1FwVzbmKdWvC9cYsdDIfV7jWze150zbgHie8AgChohDdL-wuJf_4hakAHVbcbboI0r_PogVq1-gDeZWDWacUhRXI2RU" /></form>
+        <h3>บัญชีในสมุดนี้</h3>
+        <ul> <li>1000 · &#xE40;&#xE07;&#xE34;&#xE19;&#xE2A;&#xE14; </li>  <li>1100 · &#xE1A;&#xE31;&#xE0D;&#xE0A;&#xE35;&#xE18;&#xE19;&#xE32;&#xE04;&#xE32;&#xE23; &#xE22;&#xE31;&#xE07;&#xE44;&#xE21;&#xE48;&#xE23;&#xE30;&#xE1A;&#xE38;&#xE1A;&#xE31;&#xE0D;&#xE0A;&#xE35;&#xE18;&#xE19;&#xE32;&#xE04;&#xE32;&#xE23;</li>  <li>1200 · &#xE25;&#xE39;&#xE01;&#xE2B;&#xE19;&#xE35;&#xE49;&#xE40;&#xE07;&#xE34;&#xE19;&#xE2A;&#xE07;&#xE40;&#xE04;&#xE23;&#xE32;&#xE30;&#xE2B;&#xE4C;&#xE2A;&#xE21;&#xE32;&#xE0A;&#xE34;&#xE01; </li>  <li>2000 · &#xE40;&#xE07;&#xE34;&#xE19;&#xE2A;&#xE07;&#xE40;&#xE04;&#xE23;&#xE32;&#xE30;&#xE2B;&#xE4C;&#xE25;&#xE48;&#xE27;&#xE07;&#xE2B;&#xE19;&#xE49;&#xE32;&#xE2A;&#xE21;&#xE32;&#xE0A;&#xE34;&#xE01; </li>  <li>2100 · &#xE40;&#xE07;&#xE34;&#xE19;&#xE2A;&#xE07;&#xE40;&#xE04;&#xE23;&#xE32;&#xE30;&#xE2B;&#xE4C;&#xE04;&#xE49;&#xE32;&#xE07;&#xE08;&#xE48;&#xE32;&#xE22; </li>  <li>2200 · &#xE04;&#xE48;&#xE32;&#xE2B;&#xE31;&#xE01;&#xE23;&#xE49;&#xE2D;&#xE22;&#xE25;&#xE30; 4 &#xE04;&#xE49;&#xE32;&#xE07;&#xE19;&#xE33;&#xE2A;&#xE48;&#xE07;&#xE2A;&#xE21;&#xE32;&#xE04;&#xE21; </li>  <li>3000 · &#xE17;&#xE38;&#xE19;&#xE22;&#xE01;&#xE21;&#xE32;&#xE15;&#xE32;&#xE21;&#xE2B;&#xE25;&#xE31;&#xE01;&#xE10;&#xE32;&#xE19; </li> </ul>
+    </section>
+    <section class="card">
+        <h2>ตรวจยอดเงินจริง</h2>
+        <p>เทียบกับยอดธนาคารหรือเงินสดที่นับได้ ผลต่างจะถูกเก็บเป็นหลักฐาน ไม่ปรับเงินในระบบเอง</p>
+        <form method="post" class="stack">
+            <input type="hidden" data-val="true" data-val-required="The Book field is required." id="Book" name="Book" value="welfare" /><input name="Action" value="reconcile" type="hidden" /><input type="hidden" class="input-validation-error" data-val="true" data-val-required="The RequestToken field is required." id="RequestToken" name="RequestToken" value="" />
+            <label>บัญชี<select name="AccountCode" required>
+ <option value="1000">&#xE40;&#xE07;&#xE34;&#xE19;&#xE2A;&#xE14;</option>  <option value="1100">&#xE1A;&#xE31;&#xE0D;&#xE0A;&#xE35;&#xE18;&#xE19;&#xE32;&#xE04;&#xE32;&#xE23;</option>             </select></label>
+            <label>วันที่ยอด (พ.ศ.)<input required placeholder="วว/ดด/ปปปป" type="text" class="input-validation-error" data-val="true" data-val-required="The AsOf field is required." id="AsOf" name="AsOf" value="" /></label>
+            <label>ยอดตามหลักฐาน (บาท)<input required inputmode="decimal" type="text" class="input-validation-error" data-val="true" data-val-required="The StatementBalance field is required." id="StatementBalance" name="StatementBalance" value="" /></label>
+            <label>หลักฐาน / คำอธิบาย<input name="Evidence" required maxlength="2000" /></label>
+            <button class="button">บันทึกผลตรวจยอด</button>
+        <input name="__RequestVerificationToken" type="hidden" value="CfDJ8JHsI8oa-KROsb_rPhx-d5TOGAfXYL8ZieUspZ6k94u0ePd7NbXaWKCI5NZH1FwVzbmKdWvC9cYsdDIfV7jWze150zbgHie8AgChohDdL-wuJf_4hakAHVbcbboI0r_PogVq1-gDeZWDWacUhRXI2RU" /></form>
+        <h3>ประวัติผลตรวจยอด</h3>
+        <ul></ul>
+    </section>
+</div>
+<section class="card" style="margin-top:18px">
+    <h2>ปิดงวด / เปิดงวดแก้ไข</h2>
+    <p>ตรวจรายงานและยอดเงินจริงก่อนปิดงวด รายการใหม่ในวันที่ปิดจะถูกปฏิเสธ หากต้องแก้ไขให้ระบุเหตุผลเปิดงวด แล้วตรวจสอบและปิดอีกครั้ง</p>
+    <form method="post" class="stack">
+        <input type="hidden" data-val="true" data-val-required="The Book field is required." id="Book" name="Book" value="welfare" />
+        <div class="grid two"><label>ตั้งแต่ (พ.ศ.)<input required type="text" class="input-validation-error" data-val="true" data-val-required="The From field is required." id="From" name="From" value="" /></label><label>ถึง (พ.ศ.)<input required type="text" class="input-validation-error" data-val="true" data-val-required="The To field is required." id="To" name="To" value="" /></label></div>
+        <label>หลักฐาน / เหตุผล<input name="Evidence" required maxlength="2000" /></label>
+        <div class="form-footer"><button class="button" name="Action" value="close">ปิดงวด</button><button class="button secondary" name="Action" value="reopen">เปิดงวดแก้ไข</button></div>
+    <input name="__RequestVerificationToken" type="hidden" value="CfDJ8JHsI8oa-KROsb_rPhx-d5TOGAfXYL8ZieUspZ6k94u0ePd7NbXaWKCI5NZH1FwVzbmKdWvC9cYsdDIfV7jWze150zbgHie8AgChohDdL-wuJf_4hakAHVbcbboI0r_PogVq1-gDeZWDWacUhRXI2RU" /></form>
+    <ul></ul>
+</section>
+
+    </main>
+    <script src="/js/thai-date.js"></script>
+    <script src="/js/thai-validation.js"></script>
+    <script src="/js/site.js"></script>
+
+</body>
+</html>
+
+[xUnit.net 00:00:07.47]       Stack Trace:
+[xUnit.net 00:00:07.47]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingHttpFormTests.cs(75,0): at ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Bank_browser_form_does_not_require_fields_from_other_management_forms()
+[xUnit.net 00:00:07.47]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:07.48]   Finished:    ChapanakitCare.Domain.Tests
+  Failed ChapanakitCare.Domain.Tests.AccountingManagementPageTests.Management_form_closes_and_reopens_selected_period_with_evidence [460 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 3
+Actual:   0
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingManagementPageTests.Management_form_closes_and_reopens_selected_period_with_evidence() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingManagementPageTests.cs:line 48
+   at ChapanakitCare.Domain.Tests.AccountingManagementPageTests.Management_form_closes_and_reopens_selected_period_with_evidence() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingManagementPageTests.cs:line 51
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Receipt_browser_form_accepts_only_its_visible_fields_and_posts_once [1 s]
+  Error Message:
+   <!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>&#xE23;&#xE31;&#xE1A;&#xE40;&#xE07;&#xE34;&#xE19;&#xE2A;&#xE07;&#xE40;&#xE04;&#xE23;&#xE32;&#xE30;&#xE2B;&#xE4C;&#xE2A;&#xE21;&#xE32;&#xE0A;&#xE34;&#xE01; · Chapanakit Care</title>
+    <link rel="icon" type="image/jpeg" href="/images/association-deer-logo.jpg" />
+    <link rel="stylesheet" href="/css/site.css" />
+</head>
+<body>
+    <aside class="top-nav" aria-label="เมนูหลัก">
+        <nav>
+            <a class="brand" href="/"><img src="/images/association-deer-logo.jpg" alt="ตราสมาคม" /><span>Chapanakit Care</span></a>
+            <a href="/">ภาพรวม</a>
+            <div class="nav-menu">
+                <button type="button" class="nav-menu-trigger" aria-haspopup="true" aria-controls="management-submenu">ระบบจัดการและบันทึกข้อมูล</button>
+                <div class="nav-submenu" id="management-submenu">
+                    <a href="/Coordinators">กำหนดผู้ประสานงาน</a>
+                    <a href="/Members">ทะเบียนสมาชิก</a>
+                    <a href="/Members/Create">เพิ่มสมาชิก</a>
+                    <a href="/Resignations">ปรับสถานะสมาชิกลาออก</a>
+                    <a href="/Deaths">ทะเบียนผู้เสียชีวิต</a>
+                    <a href="/Deaths/Create">บันทึกการเสียชีวิต</a>
+                </div>
+            </div>
+            <a href="/Accounting">บัญชีและการเงิน</a>
+            <a href="/Reports">ระบบรายงาน</a>
+            <a href="/History">ประวัติการเปลี่ยนแปลง</a>
+        </nav>
+    </aside>
+    <main>
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">อำเภอร้องกวาง จังหวัดแพร่</p>
+                <h1>&#xE23;&#xE31;&#xE1A;&#xE40;&#xE07;&#xE34;&#xE19;&#xE2A;&#xE07;&#xE40;&#xE04;&#xE23;&#xE32;&#xE30;&#xE2B;&#xE4C;&#xE2A;&#xE21;&#xE32;&#xE0A;&#xE34;&#xE01;</h1>
+            </div>
+            <div class="date-chip">23/09/2569</div>
+        </header>
+        <p><a href="/Accounting">บัญชีและการเงิน</a> / &#xE23;&#xE31;&#xE1A;&#xE40;&#xE07;&#xE34;&#xE19;&#xE2A;&#xE07;&#xE40;&#xE04;&#xE23;&#xE32;&#xE30;&#xE2B;&#xE4C;&#xE2A;&#xE21;&#xE32;&#xE0A;&#xE34;&#xE01;</p>
+<section class="card">
+    <h2>&#xE23;&#xE31;&#xE1A;&#xE40;&#xE07;&#xE34;&#xE19;&#xE2A;&#xE07;&#xE40;&#xE04;&#xE23;&#xE32;&#xE30;&#xE2B;&#xE4C;&#xE2A;&#xE21;&#xE32;&#xE0A;&#xE34;&#xE01;</h2>
+    <p class="muted">&#xE2A;&#xE21;&#xE38;&#xE14;&#xE1A;&#xE31;&#xE0D;&#xE0A;&#xE35;&#xE40;&#xE07;&#xE34;&#xE19;&#xE2A;&#xE07;&#xE40;&#xE04;&#xE23;&#xE32;&#xE30;&#xE2B;&#xE4C;&#xE2A;&#xE21;&#xE32;&#xE0A;&#xE34;&#xE01;</p>
+        <p>เงินรับจะชำระยอดค้างของสมาชิกก่อน ส่วนที่เหลือเก็บเป็นเงินสงเคราะห์ล่วงหน้า</p>
+    <form method="post" class="stack" autocomplete="off">
+        <div class="alert validation-summary-errors" data-valmsg-summary="true"><ul><li>The TargetAccount field is required.</li>
+<li>The ExpenseAccount field is required.</li>
+<li>The Payee field is required.</li>
+</ul></div>
+        <input type="hidden" data-val="true" data-val-required="The Kind field is required." id="Kind" name="Kind" value="receipt" /><input type="hidden" data-val="true" data-val-required="The Book field is required." id="Book" name="Book" value="welfare" /><input type="hidden" data-val="true" data-val-required="The RequestToken field is required." id="RequestToken" name="RequestToken" value="87ab7756cf244afe8bdd221e91770c25" />
+        <div class="grid two">
+            <label>วันที่รายการ (พ.ศ.)<input placeholder="วว/ดด/ปปปป" required maxlength="10" type="text" data-val="true" data-val-required="The BusinessDate field is required." id="BusinessDate" name="BusinessDate" value="12/09/2569" /></label>
+            <label>จำนวนเงิน (บาท)<input inputmode="decimal" placeholder="0.00" required type="text" data-val="true" data-val-required="The Amount field is required." id="Amount" name="Amount" value="9.01" /></label>
+            <label>&#xE23;&#xE31;&#xE1A;&#xE40;&#xE02;&#xE49;&#xE32;
+                <select required data-val="true" data-val-required="The MoneyAccount field is required." id="MoneyAccount" name="MoneyAccount">
+ <option value="1000" selected="selected">&#xE40;&#xE07;&#xE34;&#xE19;&#xE2A;&#xE14;</option>  <option value="1100">&#xE1A;&#xE31;&#xE0D;&#xE0A;&#xE35;&#xE18;&#xE19;&#xE32;&#xE04;&#xE32;&#xE23;</option>                 </select>
+            </label>
+                <label>สมาชิก<select required data-val="true" data-val-required="The MemberId field is required." id="MemberId" name="MemberId"><option value="">เลือกสมาชิก</option>
+ <option value="11111111-1111-1111-1111-111111111111" selected="selected">00001 · &#xE17;&#xE14;&#xE2A;&#xE2D;&#xE1A; &#xE2A;&#xE21;&#xE32;&#xE0A;&#xE34;&#xE01; · กลุ่ม </option>                 </select></label>
+ <p class="muted">สมาชิกลาออกหรือเสียชีวิตรับชำระได้เฉพาะหนี้ค้าง ไม่เติมเงินล่วงหน้าใหม่</p>         </div>
+        <label>รายละเอียด / เลขที่หลักฐาน<textarea required maxlength="2000" rows="3" data-val="true" data-val-required="The Evidence field is required." id="Evidence" name="Evidence">
+&#xE23;&#xE31;&#xE1A;&#xE40;&#xE07;&#xE34;&#xE19;&#xE08;&#xE23;&#xE34;&#xE07;</textarea></label>
+        <div class="form-footer"><button class="button" type="submit">บันทึกรายการ</button><a class="button secondary" href="/Accounting">กลับ</a></div>
+    <input name="__RequestVerificationToken" type="hidden" value="CfDJ8JHsI8oa-KROsb_rPhx-d5RJSDhkNIpqZwkPYSqR_Y_EGKeAjH2WfdRQfH_RsI1oeVcfFqVWe1owUNDZnPsikqfusU6tftvusQVek2GSbrmc4_9Wmo0E826ELenI40CRco5s7JMIR2-EGCEMb-Qt8Hg" /></form>
+</section>
+
+    </main>
+    <script src="/js/thai-date.js"></script>
+    <script src="/js/thai-validation.js"></script>
+    <script src="/js/site.js"></script>
+
+</body>
+</html>
+
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Receipt_browser_form_accepts_only_its_visible_fields_and_posts_once() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingHttpFormTests.cs:line 59
+--- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.AccountingManagementPageTests.Management_form_adds_book_specific_bank_and_association_expense_without_extra_income [572 ms]
+  Failed ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Bank_browser_form_does_not_require_fields_from_other_management_forms [222 ms]
+  Error Message:
+   <!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>&#xE15;&#xE31;&#xE49;&#xE07;&#xE04;&#xE48;&#xE32;&#xE41;&#xE25;&#xE30;&#xE15;&#xE23;&#xE27;&#xE08;&#xE2A;&#xE2D;&#xE1A;&#xE1A;&#xE31;&#xE0D;&#xE0A;&#xE35; · Chapanakit Care</title>
+    <link rel="icon" type="image/jpeg" href="/images/association-deer-logo.jpg" />
+    <link rel="stylesheet" href="/css/site.css" />
+</head>
+<body>
+    <aside class="top-nav" aria-label="เมนูหลัก">
+        <nav>
+            <a class="brand" href="/"><img src="/images/association-deer-logo.jpg" alt="ตราสมาคม" /><span>Chapanakit Care</span></a>
+            <a href="/">ภาพรวม</a>
+            <div class="nav-menu">
+                <button type="button" class="nav-menu-trigger" aria-haspopup="true" aria-controls="management-submenu">ระบบจัดการและบันทึกข้อมูล</button>
+                <div class="nav-submenu" id="management-submenu">
+                    <a href="/Coordinators">กำหนดผู้ประสานงาน</a>
+                    <a href="/Members">ทะเบียนสมาชิก</a>
+                    <a href="/Members/Create">เพิ่มสมาชิก</a>
+                    <a href="/Resignations">ปรับสถานะสมาชิกลาออก</a>
+                    <a href="/Deaths">ทะเบียนผู้เสียชีวิต</a>
+                    <a href="/Deaths/Create">บันทึกการเสียชีวิต</a>
+                </div>
+            </div>
+            <a href="/Accounting">บัญชีและการเงิน</a>
+            <a href="/Reports">ระบบรายงาน</a>
+            <a href="/History">ประวัติการเปลี่ยนแปลง</a>
+        </nav>
+    </aside>
+    <main>
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">อำเภอร้องกวาง จังหวัดแพร่</p>
+                <h1>&#xE15;&#xE31;&#xE49;&#xE07;&#xE04;&#xE48;&#xE32;&#xE41;&#xE25;&#xE30;&#xE15;&#xE23;&#xE27;&#xE08;&#xE2A;&#xE2D;&#xE1A;&#xE1A;&#xE31;&#xE0D;&#xE0A;&#xE35;</h1>
+            </div>
+            <div class="date-chip">23/09/2569</div>
+        </header>
+        <p><a href="/Accounting">บัญชีและการเงิน</a> / ตั้งค่าและตรวจสอบ</p>
+<section class="card">
+    <h2>ตั้งค่าและตรวจสอบบัญชี</h2>
+    <form method="get" class="filters"><label>สมุดบัญชี<select data-val="true" data-val-required="The Book field is required." id="Book" name="Book"><option value="welfare" selected="selected">เงินสงเคราะห์สมาชิก</option><option value="association">สมาคม</option></select></label><button class="button">เลือก</button></form>
+    <div class="alert validation-summary-errors" data-valmsg-summary="true"><ul><li>The From field is required.</li>
+<li>The To field is required.</li>
+<li>The AsOf field is required.</li>
+<li>The StatementBalance field is required.</li>
+<li>The Evidence field is required.</li>
+<li>The RequestToken field is required.</li>
+</ul></div>
+    <p>รายได้สมาคมมาจากค่าหักร้อยละ 4 เท่านั้น เพิ่มได้เฉพาะบัญชีธนาคารและหมวดค่าใช้จ่าย</p>
+</section>
+<div class="grid two" style="margin-top:18px">
+    <section class="card">
+        <h2>เพิ่มบัญชีธนาคาร</h2>
+        <form method="post" class="stack">
+            <input type="hidden" data-val="true" data-val-required="The Book field is required." id="Book" name="Book" value="welfare" /><input name="Action" value="bank" type="hidden" />
+            <label>รหัสบัญชี (1101–1199)<input name="AccountCode" required pattern="11[0-9]{2}" maxlength="4" /></label>
+            <label>ชื่อบัญชี<input name="AccountName" required maxlength="200" /></label>
+            <label>ธนาคาร / เลขบัญชีอ้างอิง<input name="BankDescription" required maxlength="200" /></label>
+            <button class="button">เพิ่มบัญชีในสมุดที่เลือก</button>
+        <input name="__RequestVerificationToken" type="hidden" value="CfDJ8JHsI8oa-KROsb_rPhx-d5TOGAfXYL8ZieUspZ6k94u0ePd7NbXaWKCI5NZH1FwVzbmKdWvC9cYsdDIfV7jWze150zbgHie8AgChohDdL-wuJf_4hakAHVbcbboI0r_PogVq1-gDeZWDWacUhRXI2RU" /></form>
+        <h3>บัญชีในสมุดนี้</h3>
+        <ul> <li>1000 · &#xE40;&#xE07;&#xE34;&#xE19;&#xE2A;&#xE14; </li>  <li>1100 · &#xE1A;&#xE31;&#xE0D;&#xE0A;&#xE35;&#xE18;&#xE19;&#xE32;&#xE04;&#xE32;&#xE23; &#xE22;&#xE31;&#xE07;&#xE44;&#xE21;&#xE48;&#xE23;&#xE30;&#xE1A;&#xE38;&#xE1A;&#xE31;&#xE0D;&#xE0A;&#xE35;&#xE18;&#xE19;&#xE32;&#xE04;&#xE32;&#xE23;</li>  <li>1200 · &#xE25;&#xE39;&#xE01;&#xE2B;&#xE19;&#xE35;&#xE49;&#xE40;&#xE07;&#xE34;&#xE19;&#xE2A;&#xE07;&#xE40;&#xE04;&#xE23;&#xE32;&#xE30;&#xE2B;&#xE4C;&#xE2A;&#xE21;&#xE32;&#xE0A;&#xE34;&#xE01; </li>  <li>2000 · &#xE40;&#xE07;&#xE34;&#xE19;&#xE2A;&#xE07;&#xE40;&#xE04;&#xE23;&#xE32;&#xE30;&#xE2B;&#xE4C;&#xE25;&#xE48;&#xE27;&#xE07;&#xE2B;&#xE19;&#xE49;&#xE32;&#xE2A;&#xE21;&#xE32;&#xE0A;&#xE34;&#xE01; </li>  <li>2100 · &#xE40;&#xE07;&#xE34;&#xE19;&#xE2A;&#xE07;&#xE40;&#xE04;&#xE23;&#xE32;&#xE30;&#xE2B;&#xE4C;&#xE04;&#xE49;&#xE32;&#xE07;&#xE08;&#xE48;&#xE32;&#xE22; </li>  <li>2200 · &#xE04;&#xE48;&#xE32;&#xE2B;&#xE31;&#xE01;&#xE23;&#xE49;&#xE2D;&#xE22;&#xE25;&#xE30; 4 &#xE04;&#xE49;&#xE32;&#xE07;&#xE19;&#xE33;&#xE2A;&#xE48;&#xE07;&#xE2A;&#xE21;&#xE32;&#xE04;&#xE21; </li>  <li>3000 · &#xE17;&#xE38;&#xE19;&#xE22;&#xE01;&#xE21;&#xE32;&#xE15;&#xE32;&#xE21;&#xE2B;&#xE25;&#xE31;&#xE01;&#xE10;&#xE32;&#xE19; </li> </ul>
+    </section>
+    <section class="card">
+        <h2>ตรวจยอดเงินจริง</h2>
+        <p>เทียบกับยอดธนาคารหรือเงินสดที่นับได้ ผลต่างจะถูกเก็บเป็นหลักฐาน ไม่ปรับเงินในระบบเอง</p>
+        <form method="post" class="stack">
+            <input type="hidden" data-val="true" data-val-required="The Book field is required." id="Book" name="Book" value="welfare" /><input name="Action" value="reconcile" type="hidden" /><input type="hidden" class="input-validation-error" data-val="true" data-val-required="The RequestToken field is required." id="RequestToken" name="RequestToken" value="" />
+            <label>บัญชี<select name="AccountCode" required>
+ <option value="1000">&#xE40;&#xE07;&#xE34;&#xE19;&#xE2A;&#xE14;</option>  <option value="1100">&#xE1A;&#xE31;&#xE0D;&#xE0A;&#xE35;&#xE18;&#xE19;&#xE32;&#xE04;&#xE32;&#xE23;</option>             </select></label>
+            <label>วันที่ยอด (พ.ศ.)<input required placeholder="วว/ดด/ปปปป" type="text" class="input-validation-error" data-val="true" data-val-required="The AsOf field is required." id="AsOf" name="AsOf" value="" /></label>
+            <label>ยอดตามหลักฐาน (บาท)<input required inputmode="decimal" type="text" class="input-validation-error" data-val="true" data-val-required="The StatementBalance field is required." id="StatementBalance" name="StatementBalance" value="" /></label>
+            <label>หลักฐาน / คำอธิบาย<input name="Evidence" required maxlength="2000" /></label>
+            <button class="button">บันทึกผลตรวจยอด</button>
+        <input name="__RequestVerificationToken" type="hidden" value="CfDJ8JHsI8oa-KROsb_rPhx-d5TOGAfXYL8ZieUspZ6k94u0ePd7NbXaWKCI5NZH1FwVzbmKdWvC9cYsdDIfV7jWze150zbgHie8AgChohDdL-wuJf_4hakAHVbcbboI0r_PogVq1-gDeZWDWacUhRXI2RU" /></form>
+        <h3>ประวัติผลตรวจยอด</h3>
+        <ul></ul>
+    </section>
+</div>
+<section class="card" style="margin-top:18px">
+    <h2>ปิดงวด / เปิดงวดแก้ไข</h2>
+    <p>ตรวจรายงานและยอดเงินจริงก่อนปิดงวด รายการใหม่ในวันที่ปิดจะถูกปฏิเสธ หากต้องแก้ไขให้ระบุเหตุผลเปิดงวด แล้วตรวจสอบและปิดอีกครั้ง</p>
+    <form method="post" class="stack">
+        <input type="hidden" data-val="true" data-val-required="The Book field is required." id="Book" name="Book" value="welfare" />
+        <div class="grid two"><label>ตั้งแต่ (พ.ศ.)<input required type="text" class="input-validation-error" data-val="true" data-val-required="The From field is required." id="From" name="From" value="" /></label><label>ถึง (พ.ศ.)<input required type="text" class="input-validation-error" data-val="true" data-val-required="The To field is required." id="To" name="To" value="" /></label></div>
+        <label>หลักฐาน / เหตุผล<input name="Evidence" required maxlength="2000" /></label>
+        <div class="form-footer"><button class="button" name="Action" value="close">ปิดงวด</button><button class="button secondary" name="Action" value="reopen">เปิดงวดแก้ไข</button></div>
+    <input name="__RequestVerificationToken" type="hidden" value="CfDJ8JHsI8oa-KROsb_rPhx-d5TOGAfXYL8ZieUspZ6k94u0ePd7NbXaWKCI5NZH1FwVzbmKdWvC9cYsdDIfV7jWze150zbgHie8AgChohDdL-wuJf_4hakAHVbcbboI0r_PogVq1-gDeZWDWacUhRXI2RU" /></form>
+    <ul></ul>
+</section>
+
+    </main>
+    <script src="/js/thai-date.js"></script>
+    <script src="/js/thai-validation.js"></script>
+    <script src="/js/site.js"></script>
+
+</body>
+</html>
+
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Bank_browser_form_does_not_require_fields_from_other_management_forms() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingHttpFormTests.cs:line 75
+--- End of stack trace from previous location ---
+
+Test Run Failed.
+Total tests: 5
+     Passed: 2
+     Failed: 3
+ Total time: 8.7537 Seconds

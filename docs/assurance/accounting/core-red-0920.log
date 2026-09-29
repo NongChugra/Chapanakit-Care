@@ -1,0 +1,31 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.15]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.31]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.37]   Starting:    ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:02.97]     ChapanakitCare.Domain.Tests.AccountingCoreTests.Failed_linked_posting_does_not_leave_the_first_book_persisted_when_the_caller_commits_its_ambient_transaction [FAIL]
+[xUnit.net 00:00:02.97]       Assert.Empty() Failure: Collection was not empty
+[xUnit.net 00:00:02.97]       Collection: [AccountingJournal { ActorDisplayName = "ผู้ทดสอบ", ActorUserId = "local-user", AppVersion = "test", BookId = 25cf0f18-2ae8-49e7-803b-b1afe1f49e10, BusinessDate = 12/9/2569, ··· }]
+[xUnit.net 00:00:02.98]       Stack Trace:
+[xUnit.net 00:00:02.98]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs(230,0): at ChapanakitCare.Domain.Tests.AccountingCoreTests.Failed_linked_posting_does_not_leave_the_first_book_persisted_when_the_caller_commits_its_ambient_transaction()
+[xUnit.net 00:00:02.98]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs(255,0): at ChapanakitCare.Domain.Tests.AccountingCoreTests.Failed_linked_posting_does_not_leave_the_first_book_persisted_when_the_caller_commits_its_ambient_transaction()
+[xUnit.net 00:00:02.98]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:03.01]   Finished:    ChapanakitCare.Domain.Tests
+  Failed ChapanakitCare.Domain.Tests.AccountingCoreTests.Failed_linked_posting_does_not_leave_the_first_book_persisted_when_the_caller_commits_its_ambient_transaction [2 s]
+  Error Message:
+   Assert.Empty() Failure: Collection was not empty
+Collection: [AccountingJournal { ActorDisplayName = "ผู้ทดสอบ", ActorUserId = "local-user", AppVersion = "test", BookId = 25cf0f18-2ae8-49e7-803b-b1afe1f49e10, BusinessDate = 12/9/2569, ··· }]
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingCoreTests.Failed_linked_posting_does_not_leave_the_first_book_persisted_when_the_caller_commits_its_ambient_transaction() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs:line 230
+   at ChapanakitCare.Domain.Tests.AccountingCoreTests.Failed_linked_posting_does_not_leave_the_first_book_persisted_when_the_caller_commits_its_ambient_transaction() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs:line 255
+--- End of stack trace from previous location ---
+
+Test Run Failed.
+Total tests: 1
+     Failed: 1
+ Total time: 3.6722 Seconds

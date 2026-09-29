@@ -1,5 +1,6 @@
 using ChapanakitCare.Domain.Entities;
 using ChapanakitCare.Infrastructure.Deaths;
+using ChapanakitCare.Infrastructure.Members;
 using ChapanakitCare.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -13,6 +14,7 @@ public sealed class IndexModel(AppDbContext database, AdvanceResetService reset,
     public IReadOnlyList<Notification> Notices { get; private set; } = [];
     public AdvanceResetBatch? Latest { get; private set; }
     public int TargetUnits { get; private set; }
+    public bool AccountingActive { get; private set; }
 
     [BindProperty] public string ResetToken { get; set; } = string.Empty;
 
@@ -33,14 +35,24 @@ public sealed class IndexModel(AppDbContext database, AdvanceResetService reset,
             return Page();
         }
 
+        try
+        {
         var now = DateTimeOffset.UtcNow;
         var batch = await reset.ResetAsync("manual", $"manual-{ResetToken}", DateOnly.FromDateTime(DateTime.Today), now, "ผู้ใช้งานเครื่องนี้");
         TempData["Success"] = $"รีเซ็ตยอดสมาชิกปกติเป็น {batch.TargetUnits} คนแล้ว ({batch.ResetNo})";
         return RedirectToPage();
+        }
+        catch (MemberValidationException exception)
+        {
+            ModelState.AddModelError(string.Empty, exception.Message);
+            await LoadAsync();
+            return Page();
+        }
     }
 
     private async Task LoadAsync()
     {
+        AccountingActive = await database.AccountingBooks.AnyAsync(x => x.Code == AccountingBookCode.Welfare && x.IsActivated);
         Members = await database.Members.AsNoTracking().Where(value => value.ArchivedAtUtc == null).OrderBy(value => value.RunNo).ToListAsync();
         Notices = await database.Notifications.AsNoTracking().Where(value => value.State == "active").OrderByDescending(value => value.TriggeredBusinessDate).ToListAsync();
         Latest = (await database.AdvanceResetBatches.AsNoTracking().ToListAsync()).OrderByDescending(value => value.ConfirmedAtUtc).FirstOrDefault();

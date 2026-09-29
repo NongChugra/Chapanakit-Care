@@ -1,0 +1,37 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.19]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.28]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.32]   Starting:    ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:02.91]     ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_reissue_keeps_original_number_and_shows_reversed_status [FAIL]
+[xUnit.net 00:00:02.91]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:02.91]       Stack Trace:
+[xUnit.net 00:00:02.91]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Voucher.cshtml.cs(13,0): at ChapanakitCare.Web.Pages.Accounting.VoucherModel.OnGetAsync(Guid id, String format)
+[xUnit.net 00:00:02.91]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs(21,0): at ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_reissue_keeps_original_number_and_shows_reversed_status()
+[xUnit.net 00:00:02.91]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs(29,0): at ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_reissue_keeps_original_number_and_shows_reversed_status()
+[xUnit.net 00:00:02.91]         --- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_converts_buddhist_date_and_baht_then_redirects_to_saved_voucher [2 s]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(kind: "expense", target: "5000", expectedTarget: 2500, expectedCash: 7500) [103 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(kind: "transfer", target: "1100", expectedTarget: 2500, expectedCash: 7500) [127 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_rejects_subsatang_input_without_posting [99 ms]
+  Failed ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_reissue_keeps_original_number_and_shows_reversed_status [82 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Web.Pages.Accounting.VoucherModel.OnGetAsync(Guid id, String format) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Voucher.cshtml.cs:line 13
+   at ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_reissue_keeps_original_number_and_shows_reversed_status() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs:line 21
+   at ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_reissue_keeps_original_number_and_shows_reversed_status() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingPageTests.cs:line 29
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:03.00]   Finished:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Expense_form_lists_only_association_accounts [91 ms]
+
+Total tests: 6
+Test Run Failed.
+     Passed: 5
+     Failed: 1
+ Total time: 3.5043 Seconds

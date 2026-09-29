@@ -14,7 +14,9 @@ public sealed class IndexModel(
     TablePreferenceService preferenceService) : PageModel
 {
     [BindProperty(SupportsGet = true)] public string? Search { get; set; }
+    [Validation.GregorianDate]
     [BindProperty(SupportsGet = true)] public DateOnly? From { get; set; }
+    [Validation.GregorianDate]
     [BindProperty(SupportsGet = true)] public DateOnly? To { get; set; }
     [BindProperty(SupportsGet = true)] public string? Decision { get; set; }
     public IReadOnlyList<Row> Rows { get; private set; } = [];
@@ -52,6 +54,11 @@ public sealed class IndexModel(
                 .ToListAsync())
             .GroupBy(value => value.DeathCaseId)
             .ToDictionary(value => value.Key, value => (IReadOnlyList<DeathBeneficiarySnapshot>)value.ToArray());
+        var photos = await database.DeathRecipientPhotos.AsNoTracking()
+            .Where(x => caseIds.Contains(x.DeathCaseId))
+            .Select(x => new { x.DeathCaseId, x.BeneficiarySlotNo }).ToListAsync();
+        PhotoSlotsByCase = photos.GroupBy(x => x.DeathCaseId)
+            .ToDictionary(x => x.Key, x => x.Select(p => p.BeneficiarySlotNo).Order().ToArray());
         Preference = await preferenceService.GetAsync("local-user", "death-library");
     }
 
@@ -81,6 +88,17 @@ public sealed class IndexModel(
             return NotFound();
         }
     }
+
+    public async Task<IActionResult> OnGetRecipientPhotoAsync(Guid id, int slot)
+    {
+        var photo = await database.DeathRecipientPhotos.AsNoTracking()
+            .SingleOrDefaultAsync(x => x.DeathCaseId == id && x.BeneficiarySlotNo == slot);
+        if (photo is null) return NotFound();
+        Response.Headers["X-Content-Type-Options"] = "nosniff";
+        return File(photo.Bytes, photo.ContentType, photo.FileName);
+    }
+
+    public Dictionary<Guid, int[]> PhotoSlotsByCase { get; private set; } = [];
 
     public sealed record Row(DeathCase Case, DeathMemberSnapshot Member, DeathCalculation Calculation);
     private static string ThaiDate(DateOnly value) => ChapanakitCare.Domain.ThaiBuddhistDate.Format(value);

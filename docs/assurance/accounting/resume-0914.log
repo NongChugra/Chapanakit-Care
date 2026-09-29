@@ -1,0 +1,51 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.01] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:02.88]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:03.31]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:03.44]   Starting:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.AccountingCoreTests.Catalog_separates_welfare_from_association_and_only_exposes_the_4_percent_income_account [5 s]
+[xUnit.net 00:00:09.57]     ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_adds_real_member_advance_and_replay_cannot_add_money_twice [FAIL]
+[xUnit.net 00:00:09.57]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:09.57]       Stack Trace:
+[xUnit.net 00:00:09.58]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.cs(81,0): at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.ReceiveAsync(ReceiveWelfareMoney command, DateTimeOffset now, String actor, CancellationToken ct)
+[xUnit.net 00:00:09.59]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs(34,0): at ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_adds_real_member_advance_and_replay_cannot_add_money_twice()
+[xUnit.net 00:00:09.59]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs(41,0): at ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_adds_real_member_advance_and_replay_cannot_add_money_twice()
+[xUnit.net 00:00:09.59]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:09.73]     ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_clears_recorded_shortfall_before_adding_advance [FAIL]
+[xUnit.net 00:00:09.73]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:09.73]       Stack Trace:
+[xUnit.net 00:00:09.73]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.cs(81,0): at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.ReceiveAsync(ReceiveWelfareMoney command, DateTimeOffset now, String actor, CancellationToken ct)
+[xUnit.net 00:00:09.73]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs(52,0): at ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_clears_recorded_shortfall_before_adding_advance()
+[xUnit.net 00:00:09.73]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs(56,0): at ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_clears_recorded_shortfall_before_adding_advance()
+[xUnit.net 00:00:09.73]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:10.00]   Finished:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Opening_income_and_unsupported_member_dimensions_are_rejected_without_activation [5 s]
+  Failed ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_adds_real_member_advance_and_replay_cannot_add_money_twice [649 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.ReceiveAsync(ReceiveWelfareMoney command, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.cs:line 81
+   at ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_adds_real_member_advance_and_replay_cannot_add_money_twice() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs:line 34
+   at ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_adds_real_member_advance_and_replay_cannot_add_money_twice() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs:line 41
+--- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.AccountingCoreTests.Balanced_welfare_posting_records_dimensions_and_audit_without_creating_an_association_journal [844 ms]
+  Failed ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_clears_recorded_shortfall_before_adding_advance [170 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.ReceiveAsync(ReceiveWelfareMoney command, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.cs:line 81
+   at ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_clears_recorded_shortfall_before_adding_advance() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs:line 52
+   at ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_clears_recorded_shortfall_before_adding_advance() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceOperationTests.cs:line 56
+--- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Opening_records_supplied_money_in_separate_books_without_creating_income [263 ms]
+
+Test Run Failed.
+Total tests: 6
+     Passed: 4
+     Failed: 2
+ Total time: 15.0307 Seconds

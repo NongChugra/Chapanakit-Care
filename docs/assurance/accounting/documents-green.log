@@ -1,0 +1,15 @@
+Accounting document renderer TDD GREEN checkpoint
+Timestamp: 2026-09-13 (Asia/Tokyo)
+
+Command:
+$env:MSBUILDDISABLENODEREUSE='1'; $env:ACCOUNTING_DOCUMENT_ARTIFACTS=(Join-Path (Get-Location) 'docs\assurance\accounting\document-samples'); & 'C:\Users\mooha\.dotnet\dotnet.exe' test 'tests\ChapanakitCare.Domain.Tests\ChapanakitCare.Domain.Tests.csproj' --no-restore --filter 'FullyQualifiedName~AccountingDocumentTests' -m:1 /nodeReuse:false /p:UseSharedCompilation=false --logger 'console;verbosity=normal'
+
+Observed result:
+- Build succeeded for Domain, Infrastructure, Web and Domain.Tests.
+- 9 AccountingDocumentTests passed in 1.1879 seconds.
+- The suite covers UTF-8 BOM/RFC-style CSV quoting, text formula escaping,
+  negative numeric preservation, explicit books, Thai status labels, empty
+  reports, Buddhist Era date presentation, validation, wrapping and repeated
+  headings/page numbers across a five-page PDF.
+- Three PDFs and extracted text evidence were written to
+  `docs/assurance/accounting/document-samples/`.

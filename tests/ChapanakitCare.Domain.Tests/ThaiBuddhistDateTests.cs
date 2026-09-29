@@ -17,8 +17,8 @@ public sealed class ThaiBuddhistDateTests
     }
 
     [Fact]
-    public void NormalizeStoredDate_repairs_an_accidentally_stored_buddhist_year()
+    public void Gregorian_storage_year_is_not_guessed_to_be_a_buddhist_year()
     {
-        Assert.Equal(new DateOnly(2025, 6, 14), ThaiBuddhistDate.NormalizeStoredDate(new DateOnly(2568, 6, 14)));
+        Assert.Equal("01/01/2943", ThaiBuddhistDate.Format(new DateOnly(2400, 1, 1)));
     }
 }

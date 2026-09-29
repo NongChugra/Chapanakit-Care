@@ -1,0 +1,17 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:03.63]     ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_welfare_book_rejects_rate_changes_but_allows_other_settings [FAIL]
+  Failed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_welfare_book_rejects_rate_changes_but_allows_other_settings [2 s]
+  Error Message:
+   Assert.Throws() Failure: No exception was thrown
+Expected: typeof(ChapanakitCare.Infrastructure.Members.MemberValidationException)
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_welfare_book_rejects_rate_changes_but_allows_other_settings() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingWorkflowGuardTests.cs:line 20
+   at ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_welfare_book_rejects_rate_changes_but_allows_other_settings() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingWorkflowGuardTests.cs:line 25
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     1, Passed:     0, Skipped:     0, Total:     1, Duration: 2 s - ChapanakitCare.Domain.Tests.dll (net10.0)

@@ -1,0 +1,32 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:06.57]     ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Initial_accounting_pages_render_without_premature_validation_errors(path: "/Accounting/Manage") [FAIL]
+  Failed ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Initial_accounting_pages_render_without_premature_validation_errors(path: "/Accounting/Manage") [858 ms]
+  Error Message:
+   <div class="alert validation-summary-errors" data-valmsg-summary="true"><ul><li>The Book field is required.</li>
+</ul></div>
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Initial_accounting_pages_render_without_premature_validation_errors(String path) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingHttpFormTests.cs:line 69
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:07.65]     ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Initial_accounting_pages_render_without_premature_validation_errors(path: "/Accounting/Transaction?kind=reclassify") [FAIL]
+  Failed ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Initial_accounting_pages_render_without_premature_validation_errors(path: "/Accounting/Transaction?kind=reclassify") [294 ms]
+  Error Message:
+   <div class="alert validation-summary-errors" data-valmsg-summary="true"><ul><li>The Book field is required.</li>
+</ul></div>
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Initial_accounting_pages_render_without_premature_validation_errors(String path) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingHttpFormTests.cs:line 69
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:09.39]     ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Initial_accounting_pages_render_without_premature_validation_errors(path: "/Accounting/Transaction?kind=receipt") [FAIL]
+  Failed ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Initial_accounting_pages_render_without_premature_validation_errors(path: "/Accounting/Transaction?kind=receipt") [306 ms]
+  Error Message:
+   <div class="alert validation-summary-errors" data-valmsg-summary="true"><ul><li>The Book field is required.</li>
+</ul></div>
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Initial_accounting_pages_render_without_premature_validation_errors(String path) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingHttpFormTests.cs:line 69
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     3, Passed:     3, Skipped:     0, Total:     6, Duration: 9 s - ChapanakitCare.Domain.Tests.dll (net10.0)

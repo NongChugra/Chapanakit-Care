@@ -1,0 +1,138 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.30]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.48]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.54]   Starting:    ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:03.20]     ChapanakitCare.Domain.Tests.AccountingMigrationTests.SQLite_rejects_updates_and_deletes_of_append_only_accounting_history [FAIL]
+[xUnit.net 00:00:03.20]       System.InvalidOperationException : An error was generated for warning 'Microsoft.EntityFrameworkCore.Migrations.PendingModelChangesWarning': The model for context 'AppDbContext' has pending changes. Add a new migration before updating the database. See https://aka.ms/efcore-docs-pending-changes. This exception can be suppressed or logged by passing event ID 'RelationalEventId.PendingModelChangesWarning' to the 'ConfigureWarnings' method in 'DbContext.OnConfiguring' or 'AddDbContext'.
+[xUnit.net 00:00:03.21]       Stack Trace:
+[xUnit.net 00:00:03.21]            at Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`1.Log[TLoggerCategory](IDiagnosticsLogger`1 logger, TParam arg)
+[xUnit.net 00:00:03.21]            at Microsoft.EntityFrameworkCore.Diagnostics.RelationalLoggerExtensions.PendingModelChangesWarning(IDiagnosticsLogger`1 diagnostics, Type contextType)
+[xUnit.net 00:00:03.21]            at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.ValidateMigrations(Boolean useTransaction, String targetMigration)
+[xUnit.net 00:00:03.21]            at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.MigrateAsync(String targetMigration, CancellationToken cancellationToken)
+[xUnit.net 00:00:03.21]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs(430,0): at ChapanakitCare.Domain.Tests.AccountingMigrationTests.MigratedDatabase.CreateAsync()
+[xUnit.net 00:00:03.21]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs(139,0): at ChapanakitCare.Domain.Tests.AccountingMigrationTests.SQLite_rejects_updates_and_deletes_of_append_only_accounting_history()
+[xUnit.net 00:00:03.21]         --- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingMigrationTests.SQLite_rejects_updates_and_deletes_of_append_only_accounting_history [2 s]
+  Error Message:
+   System.InvalidOperationException : An error was generated for warning 'Microsoft.EntityFrameworkCore.Migrations.PendingModelChangesWarning': The model for context 'AppDbContext' has pending changes. Add a new migration before updating the database. See https://aka.ms/efcore-docs-pending-changes. This exception can be suppressed or logged by passing event ID 'RelationalEventId.PendingModelChangesWarning' to the 'ConfigureWarnings' method in 'DbContext.OnConfiguring' or 'AddDbContext'.
+  Stack Trace:
+     at Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`1.Log[TLoggerCategory](IDiagnosticsLogger`1 logger, TParam arg)
+   at Microsoft.EntityFrameworkCore.Diagnostics.RelationalLoggerExtensions.PendingModelChangesWarning(IDiagnosticsLogger`1 diagnostics, Type contextType)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.ValidateMigrations(Boolean useTransaction, String targetMigration)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.MigrateAsync(String targetMigration, CancellationToken cancellationToken)
+   at ChapanakitCare.Domain.Tests.AccountingMigrationTests.MigratedDatabase.CreateAsync() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs:line 430
+   at ChapanakitCare.Domain.Tests.AccountingMigrationTests.SQLite_rejects_updates_and_deletes_of_append_only_accounting_history() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs:line 139
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:03.90]     ChapanakitCare.Domain.Tests.AccountingMigrationTests.Direct_ef_write_rejects_an_unbalanced_posted_journal_before_sqlite_receives_it [FAIL]
+[xUnit.net 00:00:03.91]       System.InvalidOperationException : An error was generated for warning 'Microsoft.EntityFrameworkCore.Migrations.PendingModelChangesWarning': The model for context 'AppDbContext' has pending changes. Add a new migration before updating the database. See https://aka.ms/efcore-docs-pending-changes. This exception can be suppressed or logged by passing event ID 'RelationalEventId.PendingModelChangesWarning' to the 'ConfigureWarnings' method in 'DbContext.OnConfiguring' or 'AddDbContext'.
+[xUnit.net 00:00:03.91]       Stack Trace:
+[xUnit.net 00:00:03.91]            at Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`1.Log[TLoggerCategory](IDiagnosticsLogger`1 logger, TParam arg)
+[xUnit.net 00:00:03.91]            at Microsoft.EntityFrameworkCore.Diagnostics.RelationalLoggerExtensions.PendingModelChangesWarning(IDiagnosticsLogger`1 diagnostics, Type contextType)
+[xUnit.net 00:00:03.91]            at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.ValidateMigrations(Boolean useTransaction, String targetMigration)
+[xUnit.net 00:00:03.91]            at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.MigrateAsync(String targetMigration, CancellationToken cancellationToken)
+[xUnit.net 00:00:03.91]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs(430,0): at ChapanakitCare.Domain.Tests.AccountingMigrationTests.MigratedDatabase.CreateAsync()
+[xUnit.net 00:00:03.91]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs(69,0): at ChapanakitCare.Domain.Tests.AccountingMigrationTests.Direct_ef_write_rejects_an_unbalanced_posted_journal_before_sqlite_receives_it()
+[xUnit.net 00:00:03.91]         --- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingMigrationTests.Direct_ef_write_rejects_an_unbalanced_posted_journal_before_sqlite_receives_it [706 ms]
+  Error Message:
+   System.InvalidOperationException : An error was generated for warning 'Microsoft.EntityFrameworkCore.Migrations.PendingModelChangesWarning': The model for context 'AppDbContext' has pending changes. Add a new migration before updating the database. See https://aka.ms/efcore-docs-pending-changes. This exception can be suppressed or logged by passing event ID 'RelationalEventId.PendingModelChangesWarning' to the 'ConfigureWarnings' method in 'DbContext.OnConfiguring' or 'AddDbContext'.
+  Stack Trace:
+     at Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`1.Log[TLoggerCategory](IDiagnosticsLogger`1 logger, TParam arg)
+   at Microsoft.EntityFrameworkCore.Diagnostics.RelationalLoggerExtensions.PendingModelChangesWarning(IDiagnosticsLogger`1 diagnostics, Type contextType)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.ValidateMigrations(Boolean useTransaction, String targetMigration)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.MigrateAsync(String targetMigration, CancellationToken cancellationToken)
+   at ChapanakitCare.Domain.Tests.AccountingMigrationTests.MigratedDatabase.CreateAsync() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs:line 430
+   at ChapanakitCare.Domain.Tests.AccountingMigrationTests.Direct_ef_write_rejects_an_unbalanced_posted_journal_before_sqlite_receives_it() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs:line 69
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:07.57]     ChapanakitCare.Domain.Tests.AccountingMigrationTests.Upgrade_from_pre_accounting_database_preserves_member_snapshot_and_unit_ledger [FAIL]
+[xUnit.net 00:00:07.57]       System.InvalidOperationException : An error was generated for warning 'Microsoft.EntityFrameworkCore.Migrations.PendingModelChangesWarning': The model for context 'AppDbContext' has pending changes. Add a new migration before updating the database. See https://aka.ms/efcore-docs-pending-changes. This exception can be suppressed or logged by passing event ID 'RelationalEventId.PendingModelChangesWarning' to the 'ConfigureWarnings' method in 'DbContext.OnConfiguring' or 'AddDbContext'.
+[xUnit.net 00:00:07.57]       Stack Trace:
+[xUnit.net 00:00:07.57]            at Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`1.Log[TLoggerCategory](IDiagnosticsLogger`1 logger, TParam arg)
+[xUnit.net 00:00:07.57]            at Microsoft.EntityFrameworkCore.Diagnostics.RelationalLoggerExtensions.PendingModelChangesWarning(IDiagnosticsLogger`1 diagnostics, Type contextType)
+[xUnit.net 00:00:07.57]            at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.ValidateMigrations(Boolean useTransaction, String targetMigration)
+[xUnit.net 00:00:07.57]            at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.MigrateAsync(String targetMigration, CancellationToken cancellationToken)
+[xUnit.net 00:00:07.57]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs(39,0): at ChapanakitCare.Domain.Tests.AccountingMigrationTests.Upgrade_from_pre_accounting_database_preserves_member_snapshot_and_unit_ledger()
+[xUnit.net 00:00:07.57]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs(58,0): at ChapanakitCare.Domain.Tests.AccountingMigrationTests.Upgrade_from_pre_accounting_database_preserves_member_snapshot_and_unit_ledger()
+[xUnit.net 00:00:07.57]         --- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingMigrationTests.Upgrade_from_pre_accounting_database_preserves_member_snapshot_and_unit_ledger [3 s]
+  Error Message:
+   System.InvalidOperationException : An error was generated for warning 'Microsoft.EntityFrameworkCore.Migrations.PendingModelChangesWarning': The model for context 'AppDbContext' has pending changes. Add a new migration before updating the database. See https://aka.ms/efcore-docs-pending-changes. This exception can be suppressed or logged by passing event ID 'RelationalEventId.PendingModelChangesWarning' to the 'ConfigureWarnings' method in 'DbContext.OnConfiguring' or 'AddDbContext'.
+  Stack Trace:
+     at Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`1.Log[TLoggerCategory](IDiagnosticsLogger`1 logger, TParam arg)
+   at Microsoft.EntityFrameworkCore.Diagnostics.RelationalLoggerExtensions.PendingModelChangesWarning(IDiagnosticsLogger`1 diagnostics, Type contextType)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.ValidateMigrations(Boolean useTransaction, String targetMigration)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.MigrateAsync(String targetMigration, CancellationToken cancellationToken)
+   at ChapanakitCare.Domain.Tests.AccountingMigrationTests.Upgrade_from_pre_accounting_database_preserves_member_snapshot_and_unit_ledger() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs:line 39
+   at ChapanakitCare.Domain.Tests.AccountingMigrationTests.Upgrade_from_pre_accounting_database_preserves_member_snapshot_and_unit_ledger() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs:line 58
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:08.26]     ChapanakitCare.Domain.Tests.AccountingMigrationTests.SQLite_rejects_a_journal_line_that_uses_an_account_from_another_book [FAIL]
+[xUnit.net 00:00:08.26]       System.InvalidOperationException : An error was generated for warning 'Microsoft.EntityFrameworkCore.Migrations.PendingModelChangesWarning': The model for context 'AppDbContext' has pending changes. Add a new migration before updating the database. See https://aka.ms/efcore-docs-pending-changes. This exception can be suppressed or logged by passing event ID 'RelationalEventId.PendingModelChangesWarning' to the 'ConfigureWarnings' method in 'DbContext.OnConfiguring' or 'AddDbContext'.
+[xUnit.net 00:00:08.27]       Stack Trace:
+[xUnit.net 00:00:08.27]            at Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`1.Log[TLoggerCategory](IDiagnosticsLogger`1 logger, TParam arg)
+[xUnit.net 00:00:08.27]            at Microsoft.EntityFrameworkCore.Diagnostics.RelationalLoggerExtensions.PendingModelChangesWarning(IDiagnosticsLogger`1 diagnostics, Type contextType)
+[xUnit.net 00:00:08.27]            at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.ValidateMigrations(Boolean useTransaction, String targetMigration)
+[xUnit.net 00:00:08.27]            at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.MigrateAsync(String targetMigration, CancellationToken cancellationToken)
+[xUnit.net 00:00:08.27]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs(430,0): at ChapanakitCare.Domain.Tests.AccountingMigrationTests.MigratedDatabase.CreateAsync()
+[xUnit.net 00:00:08.27]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs(115,0): at ChapanakitCare.Domain.Tests.AccountingMigrationTests.SQLite_rejects_a_journal_line_that_uses_an_account_from_another_book()
+[xUnit.net 00:00:08.27]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:08.43]     ChapanakitCare.Domain.Tests.AccountingMigrationTests.Current_model_has_no_unmigrated_accounting_changes [FAIL]
+[xUnit.net 00:00:08.43]       Assert.False() Failure
+[xUnit.net 00:00:08.43]       Expected: False
+[xUnit.net 00:00:08.43]       Actual:   True
+[xUnit.net 00:00:08.43]       Stack Trace:
+[xUnit.net 00:00:08.43]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs(22,0): at ChapanakitCare.Domain.Tests.AccountingMigrationTests.Current_model_has_no_unmigrated_accounting_changes()
+[xUnit.net 00:00:08.43]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:08.43]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:08.92]     ChapanakitCare.Domain.Tests.AccountingMigrationTests.Direct_ef_write_rejects_mutating_or_deleting_append_only_accounting_history [FAIL]
+[xUnit.net 00:00:08.92]       System.InvalidOperationException : An error was generated for warning 'Microsoft.EntityFrameworkCore.Migrations.PendingModelChangesWarning': The model for context 'AppDbContext' has pending changes. Add a new migration before updating the database. See https://aka.ms/efcore-docs-pending-changes. This exception can be suppressed or logged by passing event ID 'RelationalEventId.PendingModelChangesWarning' to the 'ConfigureWarnings' method in 'DbContext.OnConfiguring' or 'AddDbContext'.
+[xUnit.net 00:00:08.92]       Stack Trace:
+[xUnit.net 00:00:08.92]            at Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`1.Log[TLoggerCategory](IDiagnosticsLogger`1 logger, TParam arg)
+[xUnit.net 00:00:08.93]            at Microsoft.EntityFrameworkCore.Diagnostics.RelationalLoggerExtensions.PendingModelChangesWarning(IDiagnosticsLogger`1 diagnostics, Type contextType)
+[xUnit.net 00:00:08.93]            at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.ValidateMigrations(Boolean useTransaction, String targetMigration)
+[xUnit.net 00:00:08.93]            at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.MigrateAsync(String targetMigration, CancellationToken cancellationToken)
+[xUnit.net 00:00:08.93]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs(430,0): at ChapanakitCare.Domain.Tests.AccountingMigrationTests.MigratedDatabase.CreateAsync()
+[xUnit.net 00:00:08.93]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs(88,0): at ChapanakitCare.Domain.Tests.AccountingMigrationTests.Direct_ef_write_rejects_mutating_or_deleting_append_only_accounting_history()
+[xUnit.net 00:00:08.93]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:08.94]   Finished:    ChapanakitCare.Domain.Tests
+  Failed ChapanakitCare.Domain.Tests.AccountingMigrationTests.SQLite_rejects_a_journal_line_that_uses_an_account_from_another_book [694 ms]
+  Error Message:
+   System.InvalidOperationException : An error was generated for warning 'Microsoft.EntityFrameworkCore.Migrations.PendingModelChangesWarning': The model for context 'AppDbContext' has pending changes. Add a new migration before updating the database. See https://aka.ms/efcore-docs-pending-changes. This exception can be suppressed or logged by passing event ID 'RelationalEventId.PendingModelChangesWarning' to the 'ConfigureWarnings' method in 'DbContext.OnConfiguring' or 'AddDbContext'.
+  Stack Trace:
+     at Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`1.Log[TLoggerCategory](IDiagnosticsLogger`1 logger, TParam arg)
+   at Microsoft.EntityFrameworkCore.Diagnostics.RelationalLoggerExtensions.PendingModelChangesWarning(IDiagnosticsLogger`1 diagnostics, Type contextType)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.ValidateMigrations(Boolean useTransaction, String targetMigration)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.MigrateAsync(String targetMigration, CancellationToken cancellationToken)
+   at ChapanakitCare.Domain.Tests.AccountingMigrationTests.MigratedDatabase.CreateAsync() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs:line 430
+   at ChapanakitCare.Domain.Tests.AccountingMigrationTests.SQLite_rejects_a_journal_line_that_uses_an_account_from_another_book() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs:line 115
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingMigrationTests.Current_model_has_no_unmigrated_accounting_changes [158 ms]
+  Error Message:
+   Assert.False() Failure
+Expected: False
+Actual:   True
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingMigrationTests.Current_model_has_no_unmigrated_accounting_changes() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs:line 22
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Failed ChapanakitCare.Domain.Tests.AccountingMigrationTests.Direct_ef_write_rejects_mutating_or_deleting_append_only_accounting_history [496 ms]
+  Error Message:
+   System.InvalidOperationException : An error was generated for warning 'Microsoft.EntityFrameworkCore.Migrations.PendingModelChangesWarning': The model for context 'AppDbContext' has pending changes. Add a new migration before updating the database. See https://aka.ms/efcore-docs-pending-changes. This exception can be suppressed or logged by passing event ID 'RelationalEventId.PendingModelChangesWarning' to the 'ConfigureWarnings' method in 'DbContext.OnConfiguring' or 'AddDbContext'.
+  Stack Trace:
+     at Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`1.Log[TLoggerCategory](IDiagnosticsLogger`1 logger, TParam arg)
+   at Microsoft.EntityFrameworkCore.Diagnostics.RelationalLoggerExtensions.PendingModelChangesWarning(IDiagnosticsLogger`1 diagnostics, Type contextType)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.ValidateMigrations(Boolean useTransaction, String targetMigration)
+   at Microsoft.EntityFrameworkCore.Migrations.Internal.Migrator.MigrateAsync(String targetMigration, CancellationToken cancellationToken)
+   at ChapanakitCare.Domain.Tests.AccountingMigrationTests.MigratedDatabase.CreateAsync() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs:line 430
+   at ChapanakitCare.Domain.Tests.AccountingMigrationTests.Direct_ef_write_rejects_mutating_or_deleting_append_only_accounting_history() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingMigrationTests.cs:line 88
+--- End of stack trace from previous location ---
+
+Test Run Failed.
+Total tests: 6
+     Failed: 6
+ Total time: 10.0294 Seconds

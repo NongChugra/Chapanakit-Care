@@ -5,7 +5,7 @@
     ViewData["Title"] = "ทะเบียนสมาชิก";
     var columns = new[]
     {
-        ("runNo", "เลขทะเบียน"), ("name", "ชื่อ–นามสกุล"), ("personalIdCard", "เลขประชาชน"),
+        ("runNo", "เลขทะเบียน"), ("name", "ชื่อ–นามสกุล"), ("role", "ตำแหน่ง"), ("personalIdCard", "เลขประชาชน"),
         ("gender", "เพศ"), ("birthDate", "วันเกิด"), ("age", "อายุ"), ("groupNo", "กลุ่มสมาชิก"),
         ("address", "ที่อยู่"), ("applicationDate", "วันที่สมัคร"), ("approvalDate", "วันอนุมัติ"), ("coverageDate", "วันคุ้มครอง"),
         ("beneficiary1", "ผู้รับเงิน 1"), ("relationship1", "ความสัมพันธ์ 1"),
@@ -24,7 +24,7 @@
 
 <section class="card">
     <div class="card-head">
-        <div><h2>สมาชิก @Model.Members.Count.ToString("N0") รายการ</h2></div>
+        <div><h2>สมาชิก @Model.TotalMembers.ToString("N0") รายการ</h2></div>
         <div class="actions">
             <div class="dropdown">
                 <button class="button secondary" type="button" data-dropdown-trigger aria-controls="column-picker">เลือกคอลัมน์</button>
@@ -47,16 +47,18 @@
         </div>
     </div>
 
-    <form method="get" class="filters member-filters">
+    <form method="get" class="filters member-filters" id="member-filters">
         <label>ค้นหาทุกข้อความ<input asp-for="Search" placeholder="เลขทะเบียน ชื่อ โทรศัพท์ ที่อยู่ ผู้รับเงิน..." /></label>
         <label>สถานะ<select asp-for="Status"><option value="">ทุกสถานะ</option><option value="Normal">ปกติ</option><option value="Deceased">เสียชีวิต</option><option value="Resigned">ลาออก</option></select></label>
+        <label>ตำแหน่ง<select asp-for="RoleFilter"><option value="">ทุกตำแหน่ง</option><option value="chairperson">ประธาน</option><option value="group_leader">หัวหน้ากลุ่ม</option><option value="none">ไม่มีตำแหน่ง</option></select></label>
         <label>กลุ่มสมาชิก<input asp-for="GroupNo" /></label>
         <label>ตำบล<input asp-for="Subdistrict" list="rong-kwang-subdistricts" placeholder="เลือกหรือพิมพ์" /></label>
         <label>หมู่ที่<input asp-for="Moo" list="moo-numbers" placeholder="เลือกหรือพิมพ์" /></label>
         <label>กรองวันที่<select asp-for="DateField"><option value="">ไม่กรอง</option><option value="Application">วันที่สมัคร</option><option value="Approval">วันอนุมัติ</option><option value="Coverage">วันคุ้มครอง</option></select></label>
         <label>ตั้งแต่<input asp-for="From" type="hidden" value="@(Model.From?.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))" /><input type="text" inputmode="numeric" maxlength="10" placeholder="วว/ดด/ปปปป" data-thai-date data-thai-date-target="#From" /></label>
         <label>ถึง<input asp-for="To" type="hidden" value="@(Model.To?.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))" /><input type="text" inputmode="numeric" maxlength="10" placeholder="วว/ดด/ปปปป" data-thai-date data-thai-date-target="#To" /></label>
-        <div class="actions"><button class="button" type="submit">กรอง</button><a class="button secondary" asp-page="/Members/Index">ล้าง</a></div>
+        <label>รายการต่อหน้า<select asp-for="PageSize"><option value="25">25</option><option value="50">50</option><option value="100">100</option></select></label>
+        <div class="actions filter-actions"><button class="button" type="submit">กรอง</button><a class="button secondary" asp-page="/Members/Index">ล้าง</a><button class="button secondary" type="button" id="export-members">ส่งออก CSV ตามคอลัมน์ที่เลือก</button></div>
     </form>
     <p class="muted filter-summary">ตัวกรองปัจจุบัน: @Model.FilterSummary</p>
 </section>
@@ -80,32 +82,50 @@
                 var beneficiaries = Model.BeneficiariesByMember.GetValueOrDefault(member.Id) ?? [];
                 var beneficiary1 = beneficiaries.SingleOrDefault(value => value.SlotNo == 1);
                 var beneficiary2 = beneficiaries.SingleOrDefault(value => value.SlotNo == 2);
+                var coordinatorRole = Model.CoordinatorRolesByMember.GetValueOrDefault(member.Id);
                 var age = IndexModel.Age(member);
                 <tr data-original-order="@rowIndex">
                     <td data-column="runNo" data-sort-value="@member.RunNo"><strong>@member.RunNo</strong></td>
                     <td data-column="name" class="member-name" data-title="@member.Title" data-first-name="@member.FirstName" data-last-name="@member.LastName" data-sort-value="@member.FirstName @member.LastName"></td>
+                    <td data-column="role" data-sort-value="@coordinatorRole?.RoleLabel">
+                        @if (coordinatorRole is null)
+                        {
+                            <span class="muted">–</span>
+                        }
+                        else
+                        {
+                            <span class="coordinator-role">@coordinatorRole.RoleLabel</span><small>@coordinatorRole.ScopeLabel</small>
+                        }
+                    </td>
                     <td data-column="personalIdCard" data-sort-value="@member.PersonalIdCard">@(member.PersonalIdCard ?? "–")</td>
                     <td data-column="gender" data-sort-value="@member.Gender">@(member.Gender ?? "–")</td>
-                    <td data-column="birthDate" data-sort-value="@member.BirthDate?.ToString("yyyy-MM-dd")">@(member.BirthDate is null ? "–" : IndexModel.ThaiDate(member.BirthDate.Value))</td>
+                    <td data-column="birthDate" data-sort-value="@member.BirthDate?.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture)">@(member.BirthDate is null ? "–" : IndexModel.ThaiDate(member.BirthDate.Value))</td>
                     <td data-column="age" data-sort-value="@age">@(age?.ToString() ?? "–")</td>
                     <td data-column="groupNo" data-sort-value="@member.GroupNo">@(member.GroupNo ?? "–")</td>
                     <td data-column="address" data-house-no="@member.HouseNo" data-moo="@member.Moo" data-under="@member.Under" data-subdistrict="@member.Subdistrict" data-district="@member.District" data-province="@member.Province" data-postal-code="@member.PostalCode" data-sort-value="@member.Subdistrict @member.Moo @member.HouseNo"></td>
-                    <td data-column="applicationDate" data-sort-value="@member.ApplicationDate.ToString("yyyy-MM-dd")">@IndexModel.ThaiDate(member.ApplicationDate)</td>
-                    <td data-column="approvalDate" data-sort-value="@member.ApprovalDate.ToString("yyyy-MM-dd")">@IndexModel.ThaiDate(member.ApprovalDate)</td>
-                    <td data-column="coverageDate" data-sort-value="@member.CoverageStartDate.ToString("yyyy-MM-dd")">@IndexModel.ThaiDate(member.CoverageStartDate)</td>
+                    <td data-column="applicationDate" data-sort-value="@member.ApplicationDate.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture)">@IndexModel.ThaiDate(member.ApplicationDate)</td>
+                    <td data-column="approvalDate" data-sort-value="@member.ApprovalDate.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture)">@IndexModel.ThaiDate(member.ApprovalDate)</td>
+                    <td data-column="coverageDate" data-sort-value="@member.CoverageStartDate.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture)">@IndexModel.ThaiDate(member.CoverageStartDate)</td>
                     <td data-column="beneficiary1" data-sort-value="@beneficiary1?.FirstName">@(beneficiary1 is null ? "–" : $"{beneficiary1.Title}{beneficiary1.FirstName} {beneficiary1.LastName}")</td>
                     <td data-column="relationship1" data-sort-value="@beneficiary1?.Relationship">@(beneficiary1?.Relationship ?? "–")</td>
                     <td data-column="beneficiary2" data-sort-value="@beneficiary2?.FirstName">@(beneficiary2 is null ? "–" : $"{beneficiary2.Title}{beneficiary2.FirstName} {beneficiary2.LastName}")</td>
                     <td data-column="relationship2" data-sort-value="@beneficiary2?.Relationship">@(beneficiary2?.Relationship ?? "–")</td>
                     <td data-column="advanceUnits" data-sort-value="@member.AdvanceUnitsBalance">@member.AdvanceUnitsBalance</td>
                     <td data-column="status" data-sort-value="@member.Status"><span class="badge @(member.Status == MemberStatus.Deceased ? "deceased" : member.Status == MemberStatus.Resigned ? "resigned" : "")">@(member.Status == MemberStatus.Normal ? "ปกติ" : member.Status == MemberStatus.Deceased ? "เสียชีวิต" : "ลาออก")</span></td>
-                    <td data-column="actions"><a class="button secondary small" asp-page="/Members/Edit" asp-route-id="@member.Id">แก้ไข</a></td>
+                    <td data-column="actions"><div class="member-row-actions"><a class="button secondary small" asp-page="/Members/Edit" asp-route-id="@member.Id">แก้ไข</a></div></td>
                 </tr>
             }
             </tbody>
         </table>
         @if (Model.Members.Count == 0) { <div class="empty">ยังไม่พบสมาชิกตามเงื่อนไขนี้</div> }
     </div>
+    <nav class="pagination" aria-label="หน้าทะเบียนสมาชิก">
+        <span>แสดง @Model.Members.Count.ToString("N0") จาก @Model.TotalMembers.ToString("N0") รายการ · หน้า @Model.PageNumber / @Model.TotalPages</span>
+        <div class="actions">
+            @if (Model.PageNumber > 1) { <a class="button secondary small" href="@Model.PageUrl(Model.PageNumber - 1)">ก่อนหน้า</a> }
+            @if (Model.PageNumber < Model.TotalPages) { <a class="button secondary small" href="@Model.PageUrl(Model.PageNumber + 1)">ถัดไป</a> }
+        </div>
+    </nav>
 </section>
 
 @section Scripts {

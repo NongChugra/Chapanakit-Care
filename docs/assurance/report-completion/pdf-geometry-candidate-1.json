@@ -1,0 +1,66 @@
+[
+  {
+    "file": "all-empty.pdf",
+    "pages": 1,
+    "sha256": "161c77d64a41884c3fba9647e2acac26eb35c9503ff4dc896b3a6f97e68b4d5c",
+    "bounds": "pass",
+    "numericFields": "not-applicable",
+    "memberBlocks": "pass"
+  },
+  {
+    "file": "all-multipage.pdf",
+    "pages": 8,
+    "sha256": "987638f6ac6f1e73fcd607a6c5af5b04e77e000cc10ee8534f64a05887f135e5",
+    "bounds": "pass",
+    "numericFields": "pass",
+    "memberBlocks": "pass"
+  },
+  {
+    "file": "group-empty.pdf",
+    "pages": 1,
+    "sha256": "0ed447047fc32f73c1a2e72889eed3a029daa87b6f76d356558745cb93b5ca06",
+    "bounds": "pass",
+    "numericFields": "not-applicable",
+    "memberBlocks": "pass"
+  },
+  {
+    "file": "group-multipage.pdf",
+    "pages": 8,
+    "sha256": "579431c6c91794f68c0c7a52729006c90711c99d6276a8676fdfb8a345bbf04a",
+    "bounds": "pass",
+    "numericFields": "pass",
+    "memberBlocks": "pass"
+  },
+  {
+    "file": "monthly-empty.pdf",
+    "pages": 1,
+    "sha256": "0fa5bd328563d8d2004b2a6c1b1977b0b405e467c834eee4c0b79ce440c97c1f",
+    "bounds": "pass",
+    "numericFields": "not-applicable",
+    "memberBlocks": "pass"
+  },
+  {
+    "file": "monthly-multipage.pdf",
+    "pages": 8,
+    "sha256": "a7b493ee4d20210e53c52b1d6e220107f3e4821cc1acca1423440640e8049f1b",
+    "bounds": "pass",
+    "numericFields": "pass",
+    "memberBlocks": "pass"
+  },
+  {
+    "file": "sak-empty.pdf",
+    "pages": 1,
+    "sha256": "dbc01d1213a2f38440f3617181be8dfd8668756ca163ab315d3bd6f77a9c2773",
+    "bounds": "pass",
+    "numericFields": "not-applicable",
+    "memberBlocks": "pass"
+  },
+  {
+    "file": "sak-multipage.pdf",
+    "pages": 9,
+    "sha256": "e9c827465e11f9c11be415abb0d3dcfda6d7227fa7de151b6de82f6e8602b150",
+    "bounds": "pass",
+    "numericFields": "pass",
+    "memberBlocks": "pass"
+  }
+]

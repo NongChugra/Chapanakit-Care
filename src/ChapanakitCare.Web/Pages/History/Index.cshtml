@@ -4,7 +4,12 @@
     ViewData["Title"] = "ประวัติการเปลี่ยนแปลง";
 }
 <section class="card">
-    <div class="card-head"><div><h2>รายการล่าสุด</h2><div class="muted">เก็บผู้ดำเนินการ เวลา และค่าเดิม–ค่าใหม่ เพื่อให้ตรวจสอบย้อนหลังได้</div></div></div>
+    <div class="card-head"><div><h2>ประวัติทั้งหมด @Model.TotalItems รายการ</h2><div class="muted">เก็บผู้ดำเนินการ เวลา และรายละเอียดการเปลี่ยนข้อมูล ไม่บันทึกการค้นหา กรอง เรียงลำดับ หรือเปลี่ยนหน้า</div></div></div>
+    <form method="get" class="filters history-filters">
+        <label>ตั้งแต่วันที่<input asp-for="From" type="hidden" value="@(Model.From?.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))" /><input type="text" inputmode="numeric" maxlength="10" placeholder="วว/ดด/ปปปป" data-thai-date data-thai-date-target="#From" /></label>
+        <label>ถึงวันที่<input asp-for="To" type="hidden" value="@(Model.To?.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))" /><input type="text" inputmode="numeric" maxlength="10" placeholder="วว/ดด/ปปปป" data-thai-date data-thai-date-target="#To" /></label>
+        <div class="actions"><button class="button" type="submit">กรองช่วงเวลา</button><a class="button secondary" asp-page="Index">ล้าง</a></div>
+    </form>
     @if (Model.Items.Count == 0)
     {
         <div class="empty">ยังไม่มีประวัติการเปลี่ยนแปลง</div>
@@ -16,6 +21,7 @@
             <div>
                 <strong>@IndexModel.ActionLabel(item.Audit.Action)</strong>
                 @if (item.Member is not null) { <span> · @item.Member.RunNo @item.Member.Title@item.Member.FirstName @item.Member.LastName</span> }
+                @if (!string.IsNullOrWhiteSpace(item.Audit.Reason)) { <p>@item.Audit.Reason</p> }
                 @if (item.Changes.Count > 0)
                 {
                     <ul class="changes">
@@ -28,4 +34,9 @@
             </div>
         </article>
     }
+    <nav class="actions" aria-label="หน้าประวัติ">
+        @if (Model.PageNumber > 1) { <a class="button secondary" asp-route-pageNumber="@(Model.PageNumber - 1)" asp-route-from="@(Model.From?.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))" asp-route-to="@(Model.To?.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))">ก่อนหน้า</a> }
+        <span>หน้า @Model.PageNumber / @Model.TotalPages</span>
+        @if (Model.PageNumber < Model.TotalPages) { <a class="button secondary" asp-route-pageNumber="@(Model.PageNumber + 1)" asp-route-from="@(Model.From?.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))" asp-route-to="@(Model.To?.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture))">ถัดไป</a> }
+    </nav>
 </section>

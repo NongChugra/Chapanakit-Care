@@ -4,6 +4,11 @@ artifacts/
 .assurance/
 .codex-work/
 .dotnet-sdk*/
+# Local recovery archive; source and assurance evidence are versioned separately.
+/docs/assurance/accounting/baseline-source.zip
+/App_Data/
+/output/
+/tmp/
 *.stdout.log
 *.stderr.log
 build.log
@@ -16,6 +21,8 @@ TestResults/
 coverage/
 *.coverage
 *.coveragexml
+**/__pycache__/
+*.py[cod]
 
 # Local SQLite runtime data. Keep source fixtures, including demo-members.json.
 src/ChapanakitCare.Web/App_Data/*.db

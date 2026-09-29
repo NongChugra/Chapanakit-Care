@@ -1,0 +1,36 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.20]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.29]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.33]   Starting:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.AccountingOpeningPageTests.Guided_opening_does_not_invent_accumulated_fund_to_balance_cash [2 s]
+  Passed ChapanakitCare.Domain.Tests.AccountingMigrationTests.SQLite_rejects_updates_and_deletes_of_append_only_accounting_history [2 s]
+  Passed ChapanakitCare.Domain.Tests.AccountingOpeningPageTests.Empty_opening_requires_explicit_zero_confirmation [255 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingOpeningIntegrityTests.Zero_opening_request_replays_after_later_receipt_and_rejects_changed_token_payload [2 s]
+  Passed ChapanakitCare.Domain.Tests.AccountingCashAccountTests.Collector_cash_is_separate_and_depositing_it_is_a_transfer_without_second_receipt [2 s]
+  Passed ChapanakitCare.Domain.Tests.AccountingMigrationTests.Direct_ef_write_rejects_an_unbalanced_posted_journal_before_sqlite_receives_it [517 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingCashAccountTests.Management_form_adds_a_named_cash_holder_in_selected_book [129 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingOpeningIntegrityTests.Failed_opening_rolls_back_activation_and_allows_a_corrected_request_in_the_same_context [229 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingMigrationTests.SQLite_rejects_a_reversal_that_targets_a_journal_in_another_book [428 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingOpeningPageTests.Guided_opening_preserves_existing_beneficiary_debt_and_additional_bank [828 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingOpeningPageTests.Guided_opening_records_cash_and_individual_advance_from_explicit_evidence [87 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Receipt_browser_form_accepts_only_its_visible_fields_and_posts_once [1 s]
+  Passed ChapanakitCare.Domain.Tests.AccountingMigrationTests.Upgrade_from_pre_accounting_database_preserves_member_snapshot_and_unit_ledger [556 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Trial_report_browser_request_shows_no_errors_for_irrelevant_filters(path: "/Accounting/Reports?Report=trialbalance&Book=welfa"···) [193 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Trial_report_browser_request_shows_no_errors_for_irrelevant_filters(path: "/Accounting/Reports") [55 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingMigrationTests.SQLite_rejects_a_journal_line_that_uses_an_account_from_another_book [533 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Bank_browser_form_does_not_require_fields_from_other_management_forms [156 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingMigrationTests.SQLite_rejects_updates_and_deletes_of_accounting_audit_evidence [338 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingMigrationTests.Current_model_has_no_unmigrated_accounting_changes [100 ms]
+[xUnit.net 00:00:05.71]   Finished:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.AccountingMigrationTests.Direct_ef_write_rejects_mutating_or_deleting_append_only_accounting_history [625 ms]
+
+Test Run Successful.
+Total tests: 20
+     Passed: 20
+ Total time: 6.3947 Seconds

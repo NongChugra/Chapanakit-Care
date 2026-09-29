@@ -1,0 +1,86 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.15]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.25]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.29]   Starting:    ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:02.44]     ChapanakitCare.Domain.Tests.AccountingCoreTests.Reversal_posts_the_exact_opposite_lines_replays_its_request_and_rejects_a_second_reversal [FAIL]
+[xUnit.net 00:00:02.44]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:02.44]       Stack Trace:
+[xUnit.net 00:00:02.45]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs(420,0): at ChapanakitCare.Domain.Tests.AccountingCoreTests.Reversal_posts_the_exact_opposite_lines_replays_its_request_and_rejects_a_second_reversal()
+[xUnit.net 00:00:02.45]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs(441,0): at ChapanakitCare.Domain.Tests.AccountingCoreTests.Reversal_posts_the_exact_opposite_lines_replays_its_request_and_rejects_a_second_reversal()
+[xUnit.net 00:00:02.45]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:02.89]     ChapanakitCare.Domain.Tests.AccountingCoreTests.Reversal_rejects_opening_and_linked_accrual_journals_that_need_their_own_corrective_workflow [FAIL]
+[xUnit.net 00:00:02.89]       Assert.Throws() Failure: Exception type was not an exact match
+[xUnit.net 00:00:02.89]       Expected: typeof(ChapanakitCare.Infrastructure.Accounting.AccountingValidationException)
+[xUnit.net 00:00:02.89]       Actual:   typeof(System.NotImplementedException)
+[xUnit.net 00:00:02.89]       ---- System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:02.89]       Stack Trace:
+[xUnit.net 00:00:02.89]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs(478,0): at ChapanakitCare.Domain.Tests.AccountingCoreTests.Reversal_rejects_opening_and_linked_accrual_journals_that_need_their_own_corrective_workflow()
+[xUnit.net 00:00:02.89]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs(492,0): at ChapanakitCare.Domain.Tests.AccountingCoreTests.Reversal_rejects_opening_and_linked_accrual_journals_that_need_their_own_corrective_workflow()
+[xUnit.net 00:00:02.89]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:02.89]         ----- Inner Stack Trace -----
+[xUnit.net 00:00:02.89]
+  Passed ChapanakitCare.Domain.Tests.AccountingCoreTests.Catalog_separates_welfare_from_association_and_only_exposes_the_4_percent_income_account [1 s]
+  Failed ChapanakitCare.Domain.Tests.AccountingCoreTests.Reversal_posts_the_exact_opposite_lines_replays_its_request_and_rejects_a_second_reversal [345 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingCoreTests.Reversal_posts_the_exact_opposite_lines_replays_its_request_and_rejects_a_second_reversal() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs:line 420
+   at ChapanakitCare.Domain.Tests.AccountingCoreTests.Reversal_posts_the_exact_opposite_lines_replays_its_request_and_rejects_a_second_reversal() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs:line 441
+--- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.AccountingCoreTests.Balanced_welfare_posting_records_dimensions_and_audit_without_creating_an_association_journal [328 ms]
+  Failed ChapanakitCare.Domain.Tests.AccountingCoreTests.Reversal_rejects_opening_and_linked_accrual_journals_that_need_their_own_corrective_workflow [115 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(ChapanakitCare.Infrastructure.Accounting.AccountingValidationException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingCoreTests.Reversal_rejects_opening_and_linked_accrual_journals_that_need_their_own_corrective_workflow() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs:line 478
+   at ChapanakitCare.Domain.Tests.AccountingCoreTests.Reversal_rejects_opening_and_linked_accrual_journals_that_need_their_own_corrective_workflow() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs:line 492
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+
+[xUnit.net 00:00:03.04]     ChapanakitCare.Domain.Tests.AccountingCoreTests.Account_setup_creates_book_specific_banks_and_an_association_expense_category_without_another_income_account [FAIL]
+[xUnit.net 00:00:03.04]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:03.04]       Stack Trace:
+[xUnit.net 00:00:03.04]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs(320,0): at ChapanakitCare.Domain.Tests.AccountingCoreTests.Account_setup_creates_book_specific_banks_and_an_association_expense_category_without_another_income_account()
+[xUnit.net 00:00:03.04]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs(354,0): at ChapanakitCare.Domain.Tests.AccountingCoreTests.Account_setup_creates_book_specific_banks_and_an_association_expense_category_without_another_income_account()
+[xUnit.net 00:00:03.04]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:03.10]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:03.10]     ChapanakitCare.Domain.Tests.AccountingCoreTests.Closing_a_book_period_blocks_posting_until_a_documented_reopen [FAIL]
+[xUnit.net 00:00:03.10]       Stack Trace:
+[xUnit.net 00:00:03.10]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs(377,0): at ChapanakitCare.Domain.Tests.AccountingCoreTests.Closing_a_book_period_blocks_posting_until_a_documented_reopen()
+[xUnit.net 00:00:03.10]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs(398,0): at ChapanakitCare.Domain.Tests.AccountingCoreTests.Closing_a_book_period_blocks_posting_until_a_documented_reopen()
+[xUnit.net 00:00:03.10]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:03.57]   Finished:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.AccountingCoreTests.Idempotency_tokens_are_scoped_to_their_separate_accounting_books [85 ms]
+  Failed ChapanakitCare.Domain.Tests.AccountingCoreTests.Account_setup_creates_book_specific_banks_and_an_association_expense_category_without_another_income_account [60 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingCoreTests.Account_setup_creates_book_specific_banks_and_an_association_expense_category_without_another_income_account() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs:line 320
+   at ChapanakitCare.Domain.Tests.AccountingCoreTests.Account_setup_creates_book_specific_banks_and_an_association_expense_category_without_another_income_account() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs:line 354
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingCoreTests.Closing_a_book_period_blocks_posting_until_a_documented_reopen [66 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingCoreTests.Closing_a_book_period_blocks_posting_until_a_documented_reopen() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs:line 377
+   at ChapanakitCare.Domain.Tests.AccountingCoreTests.Closing_a_book_period_blocks_posting_until_a_documented_reopen() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCoreTests.cs:line 398
+--- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.AccountingCoreTests.Linked_fee_accrual_posts_one_balanced_journal_per_book_as_one_atomic_operation [122 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingCoreTests.Failed_linked_posting_does_not_leave_the_first_book_persisted_when_the_caller_commits_its_ambient_transaction [155 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingCoreTests.Failed_linked_posting_restores_the_callers_pending_changes_and_accounting_tracker_before_the_ambient_transaction_continues [109 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingCoreTests.Posting_rejects_a_negative_amount_even_when_the_other_side_is_positive [65 ms]
+
+Total tests: 11
+Test Run Failed.
+     Passed: 7
+     Failed: 4
+ Total time: 4.2256 Seconds

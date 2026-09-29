@@ -1,0 +1,5 @@
+Build started...
+Build succeeded.
+Removing migration '20260922165225_AccountingLedgerIntegrity'.
+Reverting the model snapshot.
+Done.

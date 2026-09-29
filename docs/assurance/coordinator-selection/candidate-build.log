@@ -1,0 +1,12 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Release\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Release\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Release\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Release\net10.0\ChapanakitCare.Domain.Tests.dll
+  ChapanakitCare.Desktop -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Desktop\bin\Release\net10.0-windows\ChapanakitCare.Desktop.dll
+  ChapanakitCare.Desktop.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Desktop.Tests\bin\Release\net10.0-windows\ChapanakitCare.Desktop.Tests.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:25.39

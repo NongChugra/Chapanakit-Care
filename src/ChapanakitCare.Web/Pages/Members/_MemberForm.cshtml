@@ -9,9 +9,9 @@
     <label>ชื่อ<input asp-for="Input.FirstName" required /></label>
     <label>นามสกุล<input asp-for="Input.LastName" required /></label>
     <label>เพศ<select asp-for="Input.Gender" data-gender-select required><option value="">เลือก</option><option>ชาย</option><option>หญิง</option></select></label>
-    <label>เลขประจำตัวประชาชน<input asp-for="Input.PersonalIdCard" inputmode="numeric" maxlength="13" required /></label>
+    <label>เลขประจำตัวประชาชน<input asp-for="Input.PersonalIdCard" inputmode="numeric" pattern="[0-9]{13}" maxlength="13" required /></label>
     <label>วันเกิด (พ.ศ.)<input asp-for="Input.BirthDate" type="hidden" value="@(Model.Input.BirthDate?.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture))" data-birth-date data-age-target="#calculated-age" /><input type="text" inputmode="numeric" maxlength="10" placeholder="วว/ดด/ปปปป" data-thai-date data-thai-date-target="#Input_BirthDate" required /></label>
-    <label>อายุ<span class="hint">คำนวณจากวันเกิดอัตโนมัติ</span><input id="calculated-age" readonly /></label>
+    <label>อายุ<span class="hint">อายุ ณ วันที่สมัคร (สมาชิกใหม่ 20–60 ปี)</span><input id="calculated-age" readonly /></label>
     <label>กลุ่มสมาชิก<input asp-for="Input.GroupNo" required readonly data-member-group /></label>
     <label>บ้านเลขที่<input asp-for="Input.HouseNo" required /></label>
     <label>หมู่ที่<input asp-for="Input.Moo" list="moo-numbers" required data-moo /></label>
@@ -20,7 +20,7 @@
     <label>รหัสไปรษณีย์<input asp-for="Input.PostalCode" inputmode="numeric" maxlength="5" required data-address-postal readonly /></label>
     <label>อำเภอ<input asp-for="Input.District" required data-address-district readonly /></label>
     <label>จังหวัด<input asp-for="Input.Province" required data-address-province readonly /></label>
-    <label>โทรศัพท์ <span class="hint">ไม่บังคับ</span><input asp-for="Input.Mobile" inputmode="tel" /></label>
+    <label>โทรศัพท์ <span class="hint">ไม่บังคับ · ตัวเลข 10 หลัก</span><input asp-for="Input.Mobile" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" /></label>
 </div>
 <datalist id="thai-titles"><option value="นาย"></option><option value="นาง"></option><option value="นางสาว"></option><option value="น.ส."></option></datalist>
 <datalist id="rong-kwang-subdistricts"><option value="ร้องกวาง"></option><option value="ร้องเข็ม"></option><option value="น้ำเลา"></option><option value="บ้านเวียง"></option><option value="ทุ่งศรี"></option><option value="แม่ยางตาล"></option><option value="แม่ยางฮ่อ"></option><option value="ไผ่โทน"></option><option value="ห้วยโรง"></option><option value="แม่ทราย"></option><option value="แม่ยางร้อง"></option></datalist>
@@ -38,16 +38,17 @@
 @for (var slot = 1; slot <= 2; slot++)
 {
     var prefix = slot == 1 ? "Input.Beneficiary1" : "Input.Beneficiary2";
-    <section class="card" style="margin-top:12px;background:#fafbf9" data-address-group>
+    <section class="card beneficiary-card" data-address-group>
         <strong>ผู้รับเงินสงเคราะห์คนที่ @slot</strong>
         <input name="@(prefix).SlotNo" value="@slot" type="hidden" />
-        <div class="grid four" style="margin-top:12px">
+        <div class="beneficiary-grid">
             <label>คำนำหน้า<input name="@(prefix).Title" value="@(slot == 1 ? Model.Input.Beneficiary1.Title : Model.Input.Beneficiary2.Title)" list="thai-titles" placeholder="เลือกหรือพิมพ์" required="@(slot == 1)" /></label>
             <label>ชื่อ<input name="@(prefix).FirstName" value="@(slot == 1 ? Model.Input.Beneficiary1.FirstName : Model.Input.Beneficiary2.FirstName)" required="@(slot == 1)" /></label>
             <label>นามสกุล<input name="@(prefix).LastName" value="@(slot == 1 ? Model.Input.Beneficiary1.LastName : Model.Input.Beneficiary2.LastName)" required="@(slot == 1)" /></label>
             <label>ความสัมพันธ์<input name="@(prefix).Relationship" value="@(slot == 1 ? Model.Input.Beneficiary1.Relationship : Model.Input.Beneficiary2.Relationship)" required="@(slot == 1)" /></label>
             <label>เลขประจำตัวประชาชน<input name="@(prefix).PersonalIdCard" value="@(slot == 1 ? Model.Input.Beneficiary1.PersonalIdCard : Model.Input.Beneficiary2.PersonalIdCard)" inputmode="numeric" pattern="[0-9]{13}" maxlength="13" required="@(slot == 1)" /></label>
-            <label>โทรศัพท์<input name="@(prefix).Mobile" value="@(slot == 1 ? Model.Input.Beneficiary1.Mobile : Model.Input.Beneficiary2.Mobile)" required="@(slot == 1)" /></label>
+            <label>โทรศัพท์<input name="@(prefix).Mobile" value="@(slot == 1 ? Model.Input.Beneficiary1.Mobile : Model.Input.Beneficiary2.Mobile)" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" required="@(slot == 1)" /></label>
+            <label class="same-address-control"><span><input type="checkbox" name="@(prefix).UseMemberAddress" value="true" checked="@(slot == 1 ? Model.Input.Beneficiary1.UseMemberAddress : Model.Input.Beneficiary2.UseMemberAddress)" data-use-member-address="@prefix" /> ใช้ที่อยู่เดียวกับสมาชิก</span></label>
             <label>บ้านเลขที่<input name="@(prefix).HouseNo" value="@(slot == 1 ? Model.Input.Beneficiary1.HouseNo : Model.Input.Beneficiary2.HouseNo)" required="@(slot == 1)" /></label>
             <label>ชื่อหมู่บ้าน<input name="@(prefix).Under" value="@(slot == 1 ? Model.Input.Beneficiary1.Under : Model.Input.Beneficiary2.Under)" required="@(slot == 1)" /></label>
             <label>หมู่ที่<input name="@(prefix).Moo" value="@(slot == 1 ? Model.Input.Beneficiary1.Moo : Model.Input.Beneficiary2.Moo)" required="@(slot == 1)" /></label>

@@ -2,9 +2,11 @@ using System.Globalization;
 using System.Diagnostics;
 using ChapanakitCare.Domain.Entities;
 using ChapanakitCare.Infrastructure.Members;
+using ChapanakitCare.Infrastructure.Coordinators;
 using ChapanakitCare.Infrastructure.Deaths;
 using ChapanakitCare.Infrastructure.Persistence;
 using ChapanakitCare.Infrastructure.Reports;
+using ChapanakitCare.Infrastructure.Accounting;
 using ChapanakitCare.Web.Validation;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,6 +22,7 @@ var databasePath = Path.Combine(appData, "chapanakit-care-demo.db");
 builder.Services.AddRazorPages().AddMvcOptions(options => ThaiModelBindingMessages.Configure(options.ModelBindingMessageProvider));
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite($"Data Source={databasePath}"));
 builder.Services.AddScoped<MemberApplicationService>();
+builder.Services.AddScoped<CoordinatorApplicationService>();
 builder.Services.AddScoped<ResignationApplicationService>();
 builder.Services.AddScoped<SettingsApplicationService>();
 builder.Services.AddScoped<TablePreferenceService>();
@@ -45,6 +48,7 @@ await using (var scope = app.Services.CreateAsyncScope())
 {
     var database = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     await database.Database.MigrateAsync();
+    await new AccountingSetupService(database).EnsureCatalogAsync();
     if (!await database.NumberSequences.AnyAsync(value => value.SequenceKey == "member_run_no"))
     {
         database.NumberSequences.Add(new NumberSequence
@@ -70,14 +74,8 @@ await using (var scope = app.Services.CreateAsyncScope())
         settings.UpdatedAtUtc = DateTimeOffset.UtcNow;
         settings.UpdatedBy = "system_default_upgrade";
     }
-    var membersWithBuddhistYears = await database.Members.ToListAsync();
-    foreach (var member in membersWithBuddhistYears)
-    {
-        member.BirthDate = member.BirthDate is null ? null : ChapanakitCare.Domain.ThaiBuddhistDate.NormalizeStoredDate(member.BirthDate.Value);
-        member.ApplicationDate = ChapanakitCare.Domain.ThaiBuddhistDate.NormalizeStoredDate(member.ApplicationDate);
-        member.ApprovalDate = ChapanakitCare.Domain.ThaiBuddhistDate.NormalizeStoredDate(member.ApprovalDate);
-        member.CoverageStartDate = ChapanakitCare.Domain.ThaiBuddhistDate.NormalizeStoredDate(member.CoverageStartDate);
-    }
+    // Dates are Gregorian in storage. Never guess an era or rewrite member dates
+    // at startup: correcting an existing record belongs in the audited editor.
     await database.SaveChangesAsync();
     await scope.ServiceProvider.GetRequiredService<NotificationService>().RefreshAsync(DateOnly.FromDateTime(DateTime.Today), DateTimeOffset.UtcNow);
 }

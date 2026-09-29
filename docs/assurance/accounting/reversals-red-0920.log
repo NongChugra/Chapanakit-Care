@@ -1,0 +1,85 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.22]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.31]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.34]   Starting:    ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:02.45]     ChapanakitCare.Domain.Tests.FinanceReversalTests.Reversal_rejects_receipt_with_later_financial_activity [FAIL]
+[xUnit.net 00:00:02.45]       Assert.Throws() Failure: Exception type was not an exact match
+[xUnit.net 00:00:02.45]       Expected: typeof(ChapanakitCare.Infrastructure.Accounting.AccountingValidationException)
+[xUnit.net 00:00:02.45]       Actual:   typeof(System.NotImplementedException)
+[xUnit.net 00:00:02.45]       ---- System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:02.45]       Stack Trace:
+[xUnit.net 00:00:02.45]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceReversalTests.cs(38,0): at ChapanakitCare.Domain.Tests.FinanceReversalTests.Reversal_rejects_receipt_with_later_financial_activity()
+[xUnit.net 00:00:02.45]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceReversalTests.cs(40,0): at ChapanakitCare.Domain.Tests.FinanceReversalTests.Reversal_rejects_receipt_with_later_financial_activity()
+[xUnit.net 00:00:02.46]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:02.46]         ----- Inner Stack Trace -----
+[xUnit.net 00:00:02.46]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.cs(106,0): at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.ReverseAsync(ReverseFinanceDocument command, DateTimeOffset now, String actor, CancellationToken ct)
+[xUnit.net 00:00:02.46]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceReversalTests.cs(38,0): at ChapanakitCare.Domain.Tests.FinanceReversalTests.<>c__DisplayClass1_0.<Reversal_rejects_receipt_with_later_financial_activity>b__0()
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Opening_income_and_unsupported_member_dimensions_are_rejected_without_activation [1 s]
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Registration_after_cutover_starts_unpaid_until_actual_receipt [1 s]
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_adds_real_member_advance_and_replay_cannot_add_money_twice [245 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_books_preserve_member_history [80 ms]
+  Failed ChapanakitCare.Domain.Tests.FinanceReversalTests.Reversal_rejects_receipt_with_later_financial_activity [2 s]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(ChapanakitCare.Infrastructure.Accounting.AccountingValidationException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.FinanceReversalTests.Reversal_rejects_receipt_with_later_financial_activity() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceReversalTests.cs:line 38
+   at ChapanakitCare.Domain.Tests.FinanceReversalTests.Reversal_rejects_receipt_with_later_financial_activity() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceReversalTests.cs:line 40
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.ReverseAsync(ReverseFinanceDocument command, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.cs:line 106
+   at ChapanakitCare.Domain.Tests.FinanceReversalTests.<>c__DisplayClass1_0.<Reversal_rejects_receipt_with_later_financial_activity>b__0() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceReversalTests.cs:line 38
+  Passed ChapanakitCare.Domain.Tests.AccountingReconciliationTests.Reconciliation_freezes_statement_difference_without_creating_an_adjustment [2 s]
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_books_preserve_the_four_percent_policy [91 ms]
+[xUnit.net 00:00:02.60]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:02.60]     ChapanakitCare.Domain.Tests.FinanceReversalTests.Fee_remittance_reversal_restores_both_books_atomically [FAIL]
+[xUnit.net 00:00:02.60]       Stack Trace:
+[xUnit.net 00:00:02.60]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.cs(106,0): at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.ReverseAsync(ReverseFinanceDocument command, DateTimeOffset now, String actor, CancellationToken ct)
+[xUnit.net 00:00:02.60]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceReversalTests.cs(51,0): at ChapanakitCare.Domain.Tests.FinanceReversalTests.Fee_remittance_reversal_restores_both_books_atomically()
+[xUnit.net 00:00:02.60]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceReversalTests.cs(57,0): at ChapanakitCare.Domain.Tests.FinanceReversalTests.Fee_remittance_reversal_restores_both_books_atomically()
+[xUnit.net 00:00:02.60]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:02.70]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:02.70]     ChapanakitCare.Domain.Tests.FinanceReversalTests.Receipt_reversal_appends_opposite_entries_and_restores_member_projection_once [FAIL]
+[xUnit.net 00:00:02.70]       Stack Trace:
+[xUnit.net 00:00:02.70]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.cs(106,0): at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.ReverseAsync(ReverseFinanceDocument command, DateTimeOffset now, String actor, CancellationToken ct)
+[xUnit.net 00:00:02.70]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceReversalTests.cs(19,0): at ChapanakitCare.Domain.Tests.FinanceReversalTests.Receipt_reversal_appends_opposite_entries_and_restores_member_projection_once()
+[xUnit.net 00:00:02.70]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceReversalTests.cs(26,0): at ChapanakitCare.Domain.Tests.FinanceReversalTests.Receipt_reversal_appends_opposite_entries_and_restores_member_projection_once()
+[xUnit.net 00:00:02.70]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:03.03]   Finished:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_clears_recorded_shortfall_before_adding_advance [114 ms]
+  Failed ChapanakitCare.Domain.Tests.FinanceReversalTests.Fee_remittance_reversal_restores_both_books_atomically [161 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.ReverseAsync(ReverseFinanceDocument command, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.cs:line 106
+   at ChapanakitCare.Domain.Tests.FinanceReversalTests.Fee_remittance_reversal_restores_both_books_atomically() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceReversalTests.cs:line 51
+   at ChapanakitCare.Domain.Tests.FinanceReversalTests.Fee_remittance_reversal_restores_both_books_atomically() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceReversalTests.cs:line 57
+--- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Opening_records_supplied_money_in_separate_books_without_creating_income [106 ms]
+  Failed ChapanakitCare.Domain.Tests.FinanceReversalTests.Receipt_reversal_appends_opposite_entries_and_restores_member_projection_once [99 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.ReverseAsync(ReverseFinanceDocument command, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.cs:line 106
+   at ChapanakitCare.Domain.Tests.FinanceReversalTests.Receipt_reversal_appends_opposite_entries_and_restores_member_projection_once() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceReversalTests.cs:line 19
+   at ChapanakitCare.Domain.Tests.FinanceReversalTests.Receipt_reversal_appends_opposite_entries_and_restores_member_projection_once() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\FinanceReversalTests.cs:line 26
+--- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Failed_group_receipt_cannot_leak_counter_changes_into_a_later_save [97 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Welfare_opening_projects_verified_member_money_and_does_not_keep_legacy_paid_units [79 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Failed_death_accounting_cannot_persist_deceased_status_on_later_save [362 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_accounting_rejects_unit_reset_without_creating_paid_balances [122 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Collection_receipt_records_partial_payment_and_rejects_overpayment_without_side_effects [215 ms]
+
+Test Run Failed.
+Total tests: 16
+     Passed: 13
+     Failed: 3
+ Total time: 3.7138 Seconds

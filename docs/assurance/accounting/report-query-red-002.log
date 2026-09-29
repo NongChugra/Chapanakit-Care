@@ -1,0 +1,31 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.13]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.22]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.25]   Starting:    ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:02.06]     ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Trial_balance_uses_business_date_cutoff_keeps_books_separate_and_does_not_mutate_journals [FAIL]
+[xUnit.net 00:00:02.06]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:02.06]       Stack Trace:
+[xUnit.net 00:00:02.06]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingReports\AccountingReportQueryService.cs(18,0): at ChapanakitCare.Infrastructure.AccountingReports.AccountingReportQueryService.GetTrialBalanceAsync(AccountingBookCode bookCode, DateOnly asOfDate, CancellationToken cancellationToken)
+[xUnit.net 00:00:02.06]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs(27,0): at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Trial_balance_uses_business_date_cutoff_keeps_books_separate_and_does_not_mutate_journals()
+[xUnit.net 00:00:02.06]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs(39,0): at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Trial_balance_uses_business_date_cutoff_keeps_books_separate_and_does_not_mutate_journals()
+[xUnit.net 00:00:02.06]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:02.08]   Finished:    ChapanakitCare.Domain.Tests
+  Failed ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Trial_balance_uses_business_date_cutoff_keeps_books_separate_and_does_not_mutate_journals [1 s]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingReports.AccountingReportQueryService.GetTrialBalanceAsync(AccountingBookCode bookCode, DateOnly asOfDate, CancellationToken cancellationToken) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingReports\AccountingReportQueryService.cs:line 18
+   at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Trial_balance_uses_business_date_cutoff_keeps_books_separate_and_does_not_mutate_journals() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs:line 27
+   at ChapanakitCare.Domain.Tests.AccountingReportQueryTests.Trial_balance_uses_business_date_cutoff_keeps_books_separate_and_does_not_mutate_journals() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReportQueryTests.cs:line 39
+--- End of stack trace from previous location ---
+
+Total tests: 1
+Test Run Failed.
+     Failed: 1
+ Total time: 2.6053 Seconds

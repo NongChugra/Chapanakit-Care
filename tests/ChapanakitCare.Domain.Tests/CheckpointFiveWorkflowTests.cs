@@ -186,7 +186,11 @@ public sealed class CheckpointFiveWorkflowTests
 
         Assert.NotNull(records);
         Assert.Equal(40, records.Length);
-        Assert.All(records, record => Assert.Empty(InteractiveMemberRegistrationPolicy.Validate(record)));
+        // Historical members remain editable regardless of today's new-admission age rule.
+        Assert.All(records, record => Assert.Empty(InteractiveMemberRegistrationPolicy.Validate(new UpdateMemberCommand(
+            1, record.Title, record.FirstName, record.LastName, record.Gender, record.PersonalIdCard, record.BirthDate,
+            record.HouseNo, record.Under, record.Moo, record.Subdistrict, record.PostalCode, record.Mobile, record.GroupNo,
+            record.ApplicationDate, record.ApprovalDate, record.Beneficiaries, record.District, record.Province))));
         Assert.Equal(40, records.Select(value => value.PersonalIdCard).Distinct().Count());
     }
 

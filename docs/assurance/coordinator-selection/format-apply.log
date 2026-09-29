@@ -1,0 +1,13 @@
+Unhandled exception: System.UnauthorizedAccessException: Access to the path 'D:\Programing\Personal Projects\Chapanakit-Care\.codex-work\tmp6_ja_z6m' is denied.
+   at System.IO.Enumeration.FileSystemEnumerator`1.CreateRelativeDirectoryHandle(ReadOnlySpan`1 relativePath, String fullPath)
+   at System.IO.Enumeration.FileSystemEnumerator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.IO.DirectoryInfo.GetFiles(String searchPattern, EnumerationOptions enumerationOptions)
+   at Microsoft.CodeAnalysis.Tools.Utilities.EditorConfigFinder.GetEditorConfigPaths(String path)
+   at Microsoft.CodeAnalysis.Tools.Workspaces.FolderWorkspace.FolderSolutionLoader.LoadSolutionInfo(String folderPath, SourceFileMatcher fileMatcher)
+   at Microsoft.CodeAnalysis.Tools.Workspaces.FolderWorkspace.OpenFolder(String folderPath, SourceFileMatcher fileMatcher)
+   at Microsoft.CodeAnalysis.Tools.CodeFormatter.OpenFolderWorkspace(String workspacePath, SourceFileMatcher fileMatcher)
+   at Microsoft.CodeAnalysis.Tools.CodeFormatter.FormatWorkspaceAsync(FormatOptions formatOptions, ILogger logger, CancellationToken cancellationToken, String binaryLogPath)
+   at Microsoft.CodeAnalysis.Tools.FormatCommandCommon.FormatAsync(FormatOptions formatOptions, ILogger`1 logger, CancellationToken cancellationToken)
+   at Microsoft.CodeAnalysis.Tools.Commands.FormatWhitespaceCommand.FormatWhitespaceHandler.InvokeAsync(ParseResult parseResult, CancellationToken cancellationToken)
+   at System.CommandLine.Invocation.InvocationPipeline.InvokeAsync(ParseResult parseResult, CancellationToken cancellationToken)

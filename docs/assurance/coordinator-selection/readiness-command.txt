@@ -1,0 +1,3 @@
+& 'C:/Users/mooha/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' 'C:/Users/mooha/.agents/skills/solweaver/scripts/validate_final_strict_packet.py' --readiness 'docs/assurance/coordinator-selection/readiness.json' --ledger 'docs/assurance/coordinator-selection/ledger.md' --attempts 'docs/assurance/coordinator-selection/attempts.json' --packet 'docs/assurance/coordinator-selection/review-packet.md' --candidate-manifest 'docs/assurance/coordinator-selection/candidate-manifest.json'
+
+After reservation, replay with ledger-call-1.md and attempts-before-call-1.json (the immutable byte-identical pre-reservation snapshots).

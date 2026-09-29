@@ -1,0 +1,39 @@
+{
+  "assuranceUnitId": "chapanakit-care/reports/reference-completion",
+  "reopenGeneration": 0,
+  "reviewBudgetMode": "default",
+  "maxReviewCalls": 3,
+  "reviewCallsUsed": 2,
+  "activeReviewReservation": null,
+  "attempts": [
+    {
+      "reviewAttemptId": "58e074c5-b8fa-489e-8596-afea60935e88",
+      "call": 1,
+      "state": "completed",
+      "frozenCandidateId": "sha256:f55014fc0be0667f287ec337364cbd50de8bae95ec8af33edc7495a6a2b2e0c1",
+      "assurancePacketId": "report-final-packet-v1:0f2f5fb3-e3e9-4bdd-9f49-9c2e72fbbe90",
+      "reservedAt": "2026-09-05T00:03:12.740293+07:00",
+      "childId": "01a06d60-01f0-7e63-982f-4db46bf34823",
+      "startedAt": "2026-09-05T00:03:45.700624+07:00",
+      "verdict": "fix-first",
+      "runtimeGate": "pass",
+      "outcome": "revise",
+      "completedAt": "2026-09-05T00:16:16.4787452+07:00"
+    },
+    {
+      "reviewAttemptId": "0a1a9afe-c611-46b9-b1a3-90126563edfe",
+      "call": 2,
+      "state": "completed",
+      "frozenCandidateId": "sha256:bd8c7ceaef912787ac499b99b50664cb1ac85d07c6d3aa36a6d51bb54982fc46",
+      "assurancePacketId": "report-final-packet-v2:a9dba04c-c8a6-4d42-8790-5203f032fa63",
+      "reservedAt": "2026-09-05T00:24:11.7233499+07:00",
+      "childId": "01a06d76-3319-7a93-9e20-152b0b305fa0",
+      "startedAt": "2026-09-05T00:27:57.9934102+07:00",
+      "runtimeGate": "pass",
+      "verdict": "ship",
+      "outcome": "accepted",
+      "completedAt": "2026-09-04T17:35:22.3742676+00:00"
+    }
+  ],
+  "unitStatus": "ship"
+}

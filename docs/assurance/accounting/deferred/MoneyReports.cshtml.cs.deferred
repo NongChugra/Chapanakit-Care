@@ -1,0 +1,55 @@
+using ChapanakitCare.Domain.Entities;
+using ChapanakitCare.Infrastructure.AccountingReports;
+using ChapanakitCare.Infrastructure.Persistence;
+using ChapanakitCare.Infrastructure.Reports;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+
+namespace ChapanakitCare.Web.Pages.Accounting;
+
+public sealed record MoneyReportChoice(string Value, string Label, bool UsesMember, bool UsesAccount);
+
+public sealed class MoneyReportsModel : PageModel
+{
+    private readonly AppDbContext database;
+
+    public MoneyReportsModel(AppDbContext database)
+    {
+        this.database = database ?? throw new ArgumentNullException(nameof(database));
+    }
+
+    public static IReadOnlyList<MoneyReportChoice> ReportChoices { get; } =
+    [
+        new("memberhistory", "สมุดประจำตัวสมาชิก / ประวัติเงิน", true, false),
+        new("annualreceipts", "ทะเบียนใบรับเงินจริงรายปี", false, false),
+        new("dailyregister", "ทะเบียนรับเงินและจ่ายเงินประจำวัน", false, false),
+        new("cashmovement", "การเคลื่อนไหวเงินสด / ธนาคาร", false, true)
+    ];
+
+    [BindProperty(SupportsGet = true)] public string Report { get; set; } = "memberhistory";
+    [BindProperty(SupportsGet = true)] public string Book { get; set; } = "welfare";
+    [BindProperty(SupportsGet = true)] public Guid? MemberId { get; set; }
+    [BindProperty(SupportsGet = true)] public string AccountCode { get; set; } = string.Empty;
+    [BindProperty(SupportsGet = true)] public string From { get; set; } = string.Empty;
+    [BindProperty(SupportsGet = true)] public string To { get; set; } = string.Empty;
+
+    public IReadOnlyList<AccountingBook> Books { get; private set; } = [];
+    public IReadOnlyList<AccountingAccount> MoneyAccounts { get; private set; } = [];
+    public IReadOnlyList<Member> Members { get; private set; } = [];
+    public AccountingDocumentData? Document { get; private set; }
+    public MemberMoneyHistoryReport? MemberHistory { get; private set; }
+    public AnnualActualReceiptsReport? AnnualReceipts { get; private set; }
+    public DailyReceiptPaymentRegisterReport? DailyRegister { get; private set; }
+    public CashBankMovementReport? CashMovement { get; private set; }
+
+    public bool UsesMember => SelectedChoice?.UsesMember == true;
+    public bool UsesAccount => SelectedChoice?.UsesAccount == true;
+    private MoneyReportChoice? SelectedChoice { get; set; }
+
+    public Task<IActionResult> OnGetAsync(string? format = null)
+    {
+        _ = format;
+        _ = database;
+        throw new NotImplementedException();
+    }
+}

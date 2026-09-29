@@ -1,0 +1,59 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.18]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.26]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.30]   Starting:    ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:02.21]     ChapanakitCare.Domain.Tests.AccountingReconciliationTests.Reconciliation_freezes_statement_difference_without_creating_an_adjustment [FAIL]
+[xUnit.net 00:00:02.21]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:02.22]       Stack Trace:
+[xUnit.net 00:00:02.22]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.Reconciliation.cs(6,0): at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.ReconcileAsync(ReconcileMoneyAccount command, DateTimeOffset now, String actor, CancellationToken ct)
+[xUnit.net 00:00:02.22]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReconciliationTests.cs(18,0): at ChapanakitCare.Domain.Tests.AccountingReconciliationTests.Reconciliation_freezes_statement_difference_without_creating_an_adjustment()
+[xUnit.net 00:00:02.22]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReconciliationTests.cs(28,0): at ChapanakitCare.Domain.Tests.AccountingReconciliationTests.Reconciliation_freezes_statement_difference_without_creating_an_adjustment()
+[xUnit.net 00:00:02.22]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:02.33]     ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_books_preserve_the_four_percent_policy [FAIL]
+[xUnit.net 00:00:02.33]       Assert.Throws() Failure: No exception was thrown
+[xUnit.net 00:00:02.33]       Expected: typeof(ChapanakitCare.Infrastructure.Members.MemberValidationException)
+[xUnit.net 00:00:02.33]       Stack Trace:
+[xUnit.net 00:00:02.33]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingWorkflowGuardTests.cs(28,0): at ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_books_preserve_the_four_percent_policy()
+[xUnit.net 00:00:02.33]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingWorkflowGuardTests.cs(31,0): at ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_books_preserve_the_four_percent_policy()
+[xUnit.net 00:00:02.33]         --- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Opening_income_and_unsupported_member_dimensions_are_rejected_without_activation [1 s]
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Registration_after_cutover_starts_unpaid_until_actual_receipt [1 s]
+  Failed ChapanakitCare.Domain.Tests.AccountingReconciliationTests.Reconciliation_freezes_statement_difference_without_creating_an_adjustment [1 s]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.ReconcileAsync(ReconcileMoneyAccount command, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.Reconciliation.cs:line 6
+   at ChapanakitCare.Domain.Tests.AccountingReconciliationTests.Reconciliation_freezes_statement_difference_without_creating_an_adjustment() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReconciliationTests.cs:line 18
+   at ChapanakitCare.Domain.Tests.AccountingReconciliationTests.Reconciliation_freezes_statement_difference_without_creating_an_adjustment() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingReconciliationTests.cs:line 28
+--- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_books_preserve_member_history [87 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_adds_real_member_advance_and_replay_cannot_add_money_twice [291 ms]
+  Failed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_books_preserve_the_four_percent_policy [80 ms]
+  Error Message:
+   Assert.Throws() Failure: No exception was thrown
+Expected: typeof(ChapanakitCare.Infrastructure.Members.MemberValidationException)
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_books_preserve_the_four_percent_policy() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingWorkflowGuardTests.cs:line 28
+   at ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_books_preserve_the_four_percent_policy() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingWorkflowGuardTests.cs:line 31
+--- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Receipt_clears_recorded_shortfall_before_adding_advance [101 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Opening_records_supplied_money_in_separate_books_without_creating_income [78 ms]
+[xUnit.net 00:00:02.85]   Finished:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Failed_group_receipt_cannot_leak_counter_changes_into_a_later_save [83 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Failed_death_accounting_cannot_persist_deceased_status_on_later_save [201 ms]
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Welfare_opening_projects_verified_member_money_and_does_not_keep_legacy_paid_units [113 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_accounting_rejects_unit_reset_without_creating_paid_balances [118 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingDeathIntegrationTests.Active_death_uses_actual_prepaid_and_accrues_fee_in_separate_book_without_paying_cash [2 s]
+  Passed ChapanakitCare.Domain.Tests.FinanceOperationTests.Collection_receipt_records_partial_payment_and_rejects_overpayment_without_side_effects [204 ms]
+
+Test Run Failed.
+Total tests: 14
+     Passed: 12
+     Failed: 2
+ Total time: 3.3786 Seconds

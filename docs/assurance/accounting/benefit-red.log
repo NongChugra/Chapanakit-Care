@@ -1,0 +1,52 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:01.33]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:01.58]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:01.69]   Starting:    ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:02.09]     ChapanakitCare.Domain.Tests.AccountingBenefitTests.Actual_prepaid_money_survives_partial_units_and_is_split_without_loss [FAIL]
+[xUnit.net 00:00:02.09]       Assert.Equal() Failure: Values differ
+[xUnit.net 00:00:02.09]       Expected: 451
+[xUnit.net 00:00:02.09]       Actual:   0
+[xUnit.net 00:00:02.09]       Stack Trace:
+[xUnit.net 00:00:02.09]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingBenefitTests.cs(17,0): at ChapanakitCare.Domain.Tests.AccountingBenefitTests.Actual_prepaid_money_survives_partial_units_and_is_split_without_loss()
+[xUnit.net 00:00:02.09]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:02.09]            at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:02.12]       Assert.Equal() Failure: Values differ
+[xUnit.net 00:00:02.12]     ChapanakitCare.Domain.Tests.AccountingBenefitTests.Actual_recorded_shortfall_reduces_benefit_without_revaluing_old_units [FAIL]
+[xUnit.net 00:00:02.12]       Expected: -450
+[xUnit.net 00:00:02.12]       Actual:   -900
+[xUnit.net 00:00:02.12]       Stack Trace:
+[xUnit.net 00:00:02.12]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingBenefitTests.cs(29,0): at ChapanakitCare.Domain.Tests.AccountingBenefitTests.Actual_recorded_shortfall_reduces_benefit_without_revaluing_old_units()
+[xUnit.net 00:00:02.12]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:02.12]            at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:02.14]   Finished:    ChapanakitCare.Domain.Tests
+  Failed ChapanakitCare.Domain.Tests.AccountingBenefitTests.Actual_prepaid_money_survives_partial_units_and_is_split_without_loss [272 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 451
+Actual:   0
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingBenefitTests.Actual_prepaid_money_survives_partial_units_and_is_split_without_loss() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingBenefitTests.cs:line 17
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed ChapanakitCare.Domain.Tests.AccountingBenefitTests.Actual_recorded_shortfall_reduces_benefit_without_revaluing_old_units [< 1 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: -450
+Actual:   -900
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingBenefitTests.Actual_recorded_shortfall_reduces_benefit_without_revaluing_old_units() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingBenefitTests.cs:line 29
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Passed ChapanakitCare.Domain.Tests.AccountingBenefitTests.Nonpay_case_does_not_turn_prepaid_money_into_a_benefit_automatically [3 ms]
+
+Test Run Failed.
+Total tests: 3
+     Passed: 1
+     Failed: 2
+ Total time: 3.9666 Seconds

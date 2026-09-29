@@ -1,0 +1,47 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:07.14]     ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Initial_accounting_pages_render_without_premature_validation_errors(path: "/Accounting/Manage") [FAIL]
+  Failed ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Initial_accounting_pages_render_without_premature_validation_errors(path: "/Accounting/Manage") [813 ms]
+  Error Message:
+   Assert.DoesNotContain() Failure: Sub-string found
+                                ↓ (pos 2492)
+String: ···"  <div class="alert validation-summary-er"···
+Found:  "validation-summary-errors"
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Initial_accounting_pages_render_without_premature_validation_errors(String path) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingHttpFormTests.cs:line 68
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:08.17]     ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Initial_accounting_pages_render_without_premature_validation_errors(path: "/Accounting/Transaction?kind=reclassify") [FAIL]
+[xUnit.net 00:00:08.65]     ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Initial_accounting_pages_render_without_premature_validation_errors(path: "/Accounting") [FAIL]
+  Failed ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Initial_accounting_pages_render_without_premature_validation_errors(path: "/Accounting/Transaction?kind=reclassify") [265 ms]
+  Error Message:
+   Assert.DoesNotContain() Failure: Sub-string found
+                                ↓ (pos 2451)
+String: ···"  <div class="alert validation-summary-er"···
+Found:  "validation-summary-errors"
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Initial_accounting_pages_render_without_premature_validation_errors(String path) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingHttpFormTests.cs:line 68
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Initial_accounting_pages_render_without_premature_validation_errors(path: "/Accounting") [157 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: OK
+Actual:   InternalServerError
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Initial_accounting_pages_render_without_premature_validation_errors(String path) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingHttpFormTests.cs:line 67
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:09.01]     ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Initial_accounting_pages_render_without_premature_validation_errors(path: "/Accounting/Transaction?kind=receipt") [FAIL]
+  Failed ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Initial_accounting_pages_render_without_premature_validation_errors(path: "/Accounting/Transaction?kind=receipt") [91 ms]
+  Error Message:
+   Assert.DoesNotContain() Failure: Sub-string found
+                                ↓ (pos 2780)
+String: ···"  <div class="alert validation-summary-er"···
+Found:  "validation-summary-errors"
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingHttpFormTests.Initial_accounting_pages_render_without_premature_validation_errors(String path) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingHttpFormTests.cs:line 68
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     4, Passed:     2, Skipped:     0, Total:     6, Duration: 9 s - ChapanakitCare.Domain.Tests.dll (net10.0)

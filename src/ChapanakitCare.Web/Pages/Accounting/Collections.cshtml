@@ -1,0 +1,99 @@
+@page
+@model ChapanakitCare.Web.Pages.Accounting.CollectionsModel
+@using ChapanakitCare.Domain
+@using ChapanakitCare.Infrastructure.Reports
+@{ ViewData["Title"] = "รอบเรียกเก็บและรับเงิน"; }
+<p><a asp-page="./Index">บัญชีและการเงิน</a> / รอบเรียกเก็บและรับเงิน</p>
+<section class="card">
+    <h2>ค้นหารอบเรียกเก็บ</h2>
+    <p class="muted">ใบเรียกเก็บเป็นคำขอให้ชำระเงิน ยังไม่ใช่เงินรับหรือรายได้ การรับเงินจริงและการจัดสรรเป็นขั้นตอนแยกต่างหาก</p>
+    <form method="get" class="filters" autocomplete="off">
+        <label>กลุ่ม<input asp-for="GroupNo" maxlength="30" /></label>
+        <label>รอบเรียกเก็บ<input asp-for="CycleKeyFilter" maxlength="100" placeholder="เช่น 2569-09" /></label>
+        <label>ณ วันที่ (พ.ศ.)<input asp-for="AsOf" required placeholder="วว/ดด/ปปปป" maxlength="10" /></label>
+        <button class="button" type="submit">แสดงรายการ</button>
+    </form>
+    <div asp-validation-summary="All" class="alert"></div>
+</section>
+
+@if (Model.Document is { } document)
+{
+    <section class="card" style="margin-top:18px">
+        <div class="card-head"><div><h2>@document.Title</h2><p class="muted">@document.BookName · ณ วันที่ @ThaiBuddhistDate.Format(document.AsOfDate!.Value)</p></div><div>
+            <a class="button secondary" asp-route-groupNo="@Model.GroupNo" asp-route-cycleKeyFilter="@Model.CycleKeyFilter" asp-route-asOf="@Model.AsOf" asp-route-output="sheet">ใบสรุปรอบ</a>
+            <a class="button secondary" asp-route-groupNo="@Model.GroupNo" asp-route-cycleKeyFilter="@Model.CycleKeyFilter" asp-route-asOf="@Model.AsOf" asp-route-output="outstanding">ยอดค้าง</a>
+            <a class="button secondary" asp-route-groupNo="@Model.GroupNo" asp-route-cycleKeyFilter="@Model.CycleKeyFilter" asp-route-asOf="@Model.AsOf" asp-route-output="reminders">แจ้งเตือนถึงกำหนด</a>
+            <a class="button" asp-route-groupNo="@Model.GroupNo" asp-route-cycleKeyFilter="@Model.CycleKeyFilter" asp-route-asOf="@Model.AsOf" asp-route-output="@Model.Output" asp-route-format="pdf">พิมพ์ / PDF</a>
+            <a class="button secondary" asp-route-groupNo="@Model.GroupNo" asp-route-cycleKeyFilter="@Model.CycleKeyFilter" asp-route-asOf="@Model.AsOf" asp-route-output="@Model.Output" asp-route-format="csv">ดาวน์โหลด CSV</a>
+        </div></div>
+        <div class="table-wrap"><table><thead><tr>@foreach (var column in document.Columns) { <th>@column.Heading</th> }</tr></thead><tbody>
+        @if (document.Rows.Count == 0) { <tr><td colspan="@document.Columns.Count" class="muted">ไม่มีรายการตามตัวกรอง</td></tr> }
+        else { foreach (var row in document.Rows) { <tr>@foreach (var cell in row) { <td>@cell</td> }</tr> } }
+        </tbody></table></div>
+        @if (document.Notes is { Count: > 0 }) { <ul class="muted">@foreach (var note in document.Notes) { <li>@note</li> }</ul> }
+    </section>
+}
+
+<div class="grid two" style="margin-top:18px">
+    <section class="card">
+        <h2>สร้างใบเรียกเก็บตามสมาชิก</h2>
+        <p class="muted">เลือกสมาชิกสถานะปกติและจำนวนที่ต้องการเรียกเก็บ ระบบเก็บชื่อและกลุ่ม ณ วันที่สร้างไว้กับใบเรียกเก็บ</p>
+        <form method="post" class="stack" autocomplete="off">
+            <input name="Action" type="hidden" value="create" />
+            <input asp-for="GroupNo" type="hidden" /><input asp-for="CycleKeyFilter" type="hidden" /><input asp-for="AsOf" type="hidden" />
+            <input asp-for="RequestToken" type="hidden" />
+            <div class="grid two">
+                <label>รอบเรียกเก็บ<input asp-for="RequestCycleKey" required maxlength="100" /></label>
+                <label>วันที่สร้าง (พ.ศ.)<input asp-for="RequestBusinessDate" required placeholder="วว/ดด/ปปปป" maxlength="10" /></label>
+                <label>วันครบกำหนด (พ.ศ.)<input asp-for="RequestDueDate" required placeholder="วว/ดด/ปปปป" maxlength="10" /></label>
+            </div>
+            <label>รายละเอียด<textarea asp-for="RequestDescription" required maxlength="1000" rows="2"></textarea></label>
+            <div class="table-wrap"><table><thead><tr><th>เลือก</th><th>สมาชิก</th><th>จำนวนที่เรียกเก็บ (บาท)</th></tr></thead><tbody>
+            @for (var index = 0; index < Model.RequestLines.Count; index++)
+            {
+                var line = Model.RequestLines[index];
+                var member = Model.Members.FirstOrDefault(value => value.Id == line.MemberId);
+                <tr>
+                    <td><input asp-for="RequestLines[index].Selected" /></td>
+                    <td><input asp-for="RequestLines[index].MemberId" type="hidden" />@(member is null ? "สมาชิกที่ไม่พบ" : $"{member.RunNo} · {member.Title}{member.FirstName} {member.LastName} · กลุ่ม {member.GroupNo}")</td>
+                    <td><input asp-for="RequestLines[index].Amount" inputmode="decimal" placeholder="0.00" /></td>
+                </tr>
+            }
+            </tbody></table></div>
+            @if (Model.RequestLines.Count == 0) { <p class="muted">ไม่พบสมาชิกสถานะปกติตามกลุ่มที่เลือก</p> }
+            <button class="button" type="submit">บันทึกใบเรียกเก็บที่เลือก</button>
+        </form>
+    </section>
+
+    <section class="card">
+        <h2>รับเงินจริงและจัดสรรตามใบเรียกเก็บ</h2>
+        <p class="muted">บันทึกเฉพาะเงินที่ได้รับจริง สามารถรับบางส่วนได้ การบันทึกนี้สร้างใบสำคัญบัญชีและไม่ทำให้ยอดเรียกเก็บกลายเป็นรายได้สมาคม</p>
+        <form method="post" class="stack" autocomplete="off">
+            <input name="Action" type="hidden" value="receipt" />
+            <input asp-for="GroupNo" type="hidden" /><input asp-for="CycleKeyFilter" type="hidden" /><input asp-for="AsOf" type="hidden" />
+            <input asp-for="ReceiptToken" type="hidden" />
+            <div class="grid two">
+                <label>วันที่รับเงินจริง (พ.ศ.)<input asp-for="ReceiptDate" required placeholder="วว/ดด/ปปปป" maxlength="10" /></label>
+                <label>รับเข้า<select asp-for="ReceiptMoneyAccount" required><option value="">เลือกเงินสดหรือธนาคาร</option>
+                    @foreach (var account in Model.MoneyAccounts) { <option value="@account.Code">@account.Code · @account.Name</option> }
+                </select></label>
+            </div>
+            <label>รายละเอียด / หลักฐานรับเงินจริง<textarea asp-for="ReceiptDescription" required maxlength="2000" rows="2"></textarea></label>
+            <div class="table-wrap"><table><thead><tr><th>เลือก</th><th>ใบเรียกเก็บ</th><th>จำนวนที่รับจริง (บาท)</th></tr></thead><tbody>
+            @for (var index = 0; index < Model.ReceiptLines.Count; index++)
+            {
+                var line = Model.ReceiptLines[index];
+                var row = Model.BalanceReport?.Rows.FirstOrDefault(value => value.CollectionId == line.CollectionId);
+                <tr>
+                    <td><input asp-for="ReceiptLines[index].Selected" /></td>
+                    <td><input asp-for="ReceiptLines[index].CollectionId" type="hidden" /><input asp-for="ReceiptLines[index].MemberId" type="hidden" />@(row is null ? "ใบเรียกเก็บที่ไม่พบ" : $"{row.MemberRunNo} · {row.MemberName} · ค้าง {FinanceMoney.Format(row.OutstandingSatang)} บาท")</td>
+                    <td><input asp-for="ReceiptLines[index].Amount" inputmode="decimal" placeholder="0.00" /></td>
+                </tr>
+            }
+            </tbody></table></div>
+            @if (Model.ReceiptLines.Count == 0) { <p class="muted">ไม่มีใบเรียกเก็บค้างตามตัวกรอง</p> }
+            @if (Model.MoneyAccounts.Count == 0) { <p class="alert">ต้องเริ่มใช้บัญชีเงินสงเคราะห์ด้วยยอดยกมาก่อนจึงจะบันทึกรับเงินจริงได้</p> }
+            <button class="button" type="submit">บันทึกรับเงินจริงและเปิดใบสำคัญ</button>
+        </form>
+    </section>
+</div>

@@ -1,0 +1,185 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.16]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.31]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:00.36]   Starting:    ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:02.35]     ChapanakitCare.Domain.Tests.AccountingCollectionHttpFormTests.Collection_browser_form_accepts_only_its_visible_create_fields [FAIL]
+[xUnit.net 00:00:02.36]       Assert.Equal() Failure: Values differ
+[xUnit.net 00:00:02.36]       Expected: Found
+[xUnit.net 00:00:02.36]       Actual:   InternalServerError
+[xUnit.net 00:00:02.36]       Stack Trace:
+[xUnit.net 00:00:02.36]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs(183,0): at ChapanakitCare.Domain.Tests.AccountingCollectionHttpFormTests.Collection_browser_form_accepts_only_its_visible_create_fields()
+[xUnit.net 00:00:02.36]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:02.80]     ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_displays_an_error_for_an_overpayment_without_writing_a_journal [FAIL]
+[xUnit.net 00:00:02.80]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:02.80]       Stack Trace:
+[xUnit.net 00:00:02.80]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Collections.cshtml.cs(52,0): at ChapanakitCare.Web.Pages.Accounting.CollectionsModel.OnPostAsync()
+[xUnit.net 00:00:02.80]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs(101,0): at ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_displays_an_error_for_an_overpayment_without_writing_a_journal()
+[xUnit.net 00:00:02.80]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs(104,0): at ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_displays_an_error_for_an_overpayment_without_writing_a_journal()
+[xUnit.net 00:00:02.80]         --- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingCollectionHttpFormTests.Collection_browser_form_accepts_only_its_visible_create_fields [296 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: Found
+Actual:   InternalServerError
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingCollectionHttpFormTests.Collection_browser_form_accepts_only_its_visible_create_fields() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs:line 183
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_displays_an_error_for_an_overpayment_without_writing_a_journal [2 s]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Web.Pages.Accounting.CollectionsModel.OnPostAsync() in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Collections.cshtml.cs:line 52
+   at ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_displays_an_error_for_an_overpayment_without_writing_a_journal() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs:line 101
+   at ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_displays_an_error_for_an_overpayment_without_writing_a_journal() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs:line 104
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:02.98]     ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_exports_a_read_only_due_reminder(format: "pdf", contentType: "application/pdf") [FAIL]
+[xUnit.net 00:00:02.98]       Assert.IsType() Failure: Value is not the exact type
+[xUnit.net 00:00:02.98]       Expected: typeof(Microsoft.AspNetCore.Mvc.FileContentResult)
+[xUnit.net 00:00:02.98]       Actual:   typeof(Microsoft.AspNetCore.Mvc.RazorPages.PageResult)
+[xUnit.net 00:00:02.98]       Stack Trace:
+[xUnit.net 00:00:02.98]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs(124,0): at ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_exports_a_read_only_due_reminder(String format, String contentType)
+[xUnit.net 00:00:02.98]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs(132,0): at ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_exports_a_read_only_due_reminder(String format, String contentType)
+[xUnit.net 00:00:02.98]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:03.04]     ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_exports_a_read_only_due_reminder(format: "csv", contentType: "text/csv; charset=utf-8") [FAIL]
+[xUnit.net 00:00:03.04]       Assert.IsType() Failure: Value is not the exact type
+[xUnit.net 00:00:03.04]       Expected: typeof(Microsoft.AspNetCore.Mvc.FileContentResult)
+[xUnit.net 00:00:03.04]       Actual:   typeof(Microsoft.AspNetCore.Mvc.RazorPages.PageResult)
+[xUnit.net 00:00:03.04]       Stack Trace:
+[xUnit.net 00:00:03.04]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs(124,0): at ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_exports_a_read_only_due_reminder(String format, String contentType)
+[xUnit.net 00:00:03.04]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs(132,0): at ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_exports_a_read_only_due_reminder(String format, String contentType)
+[xUnit.net 00:00:03.04]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:03.11]     ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_creates_selected_normal_members_without_recording_cash [FAIL]
+[xUnit.net 00:00:03.11]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:03.11]       Stack Trace:
+[xUnit.net 00:00:03.11]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Collections.cshtml.cs(52,0): at ChapanakitCare.Web.Pages.Accounting.CollectionsModel.OnPostAsync()
+[xUnit.net 00:00:03.11]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs(43,0): at ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_creates_selected_normal_members_without_recording_cash()
+[xUnit.net 00:00:03.11]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs(49,0): at ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_creates_selected_normal_members_without_recording_cash()
+[xUnit.net 00:00:03.11]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:03.18]     ChapanakitCare.Domain.Tests.CollectionReportTests.Balance_report_honors_business_date_cutoffs_for_requests_and_reversals [FAIL]
+[xUnit.net 00:00:03.18]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:03.18]       Stack Trace:
+[xUnit.net 00:00:03.18]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingReports\CollectionReportService.cs(44,0): at ChapanakitCare.Infrastructure.AccountingReports.CollectionReportService.GetBalancesAsync(DateOnly asOfDate, String cycleKey, String groupNo, CancellationToken cancellationToken)
+[xUnit.net 00:00:03.18]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CollectionReportTests.cs(58,0): at ChapanakitCare.Domain.Tests.CollectionReportTests.Balance_report_honors_business_date_cutoffs_for_requests_and_reversals()
+[xUnit.net 00:00:03.18]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CollectionReportTests.cs(66,0): at ChapanakitCare.Domain.Tests.CollectionReportTests.Balance_report_honors_business_date_cutoffs_for_requests_and_reversals()
+[xUnit.net 00:00:03.18]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:03.19]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:03.19]     ChapanakitCare.Domain.Tests.CollectionReportTests.Outstanding_document_excludes_settled_rows_and_keeps_only_open_amounts [FAIL]
+[xUnit.net 00:00:03.19]       Stack Trace:
+[xUnit.net 00:00:03.19]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingReports\CollectionReportService.cs(54,0): at ChapanakitCare.Infrastructure.AccountingReports.CollectionReportDocuments.ToOutstandingDocument(WelfareCollectionBalanceReport report)
+[xUnit.net 00:00:03.19]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CollectionReportTests.cs(134,0): at ChapanakitCare.Domain.Tests.CollectionReportTests.Outstanding_document_excludes_settled_rows_and_keeps_only_open_amounts()
+[xUnit.net 00:00:03.19]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+[xUnit.net 00:00:03.19]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:03.19]     ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_posts_selected_receipt_allocation_without_marking_the_request_paid_by_itself [FAIL]
+[xUnit.net 00:00:03.19]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:03.19]       Stack Trace:
+[xUnit.net 00:00:03.19]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Collections.cshtml.cs(52,0): at ChapanakitCare.Web.Pages.Accounting.CollectionsModel.OnPostAsync()
+[xUnit.net 00:00:03.19]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs(72,0): at ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_posts_selected_receipt_allocation_without_marking_the_request_paid_by_itself()
+[xUnit.net 00:00:03.19]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs(78,0): at ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_posts_selected_receipt_allocation_without_marking_the_request_paid_by_itself()
+[xUnit.net 00:00:03.19]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:03.29]     ChapanakitCare.Domain.Tests.CollectionReportTests.Balance_report_uses_frozen_collection_snapshot_and_net_posted_allocations [FAIL]
+[xUnit.net 00:00:03.29]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:03.29]       Stack Trace:
+[xUnit.net 00:00:03.29]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingReports\CollectionReportService.cs(44,0): at ChapanakitCare.Infrastructure.AccountingReports.CollectionReportService.GetBalancesAsync(DateOnly asOfDate, String cycleKey, String groupNo, CancellationToken cancellationToken)
+[xUnit.net 00:00:03.29]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CollectionReportTests.cs(29,0): at ChapanakitCare.Domain.Tests.CollectionReportTests.Balance_report_uses_frozen_collection_snapshot_and_net_posted_allocations()
+[xUnit.net 00:00:03.29]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CollectionReportTests.cs(40,0): at ChapanakitCare.Domain.Tests.CollectionReportTests.Balance_report_uses_frozen_collection_snapshot_and_net_posted_allocations()
+[xUnit.net 00:00:03.29]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:03.36]     ChapanakitCare.Domain.Tests.CollectionReportTests.Balance_report_filters_by_frozen_cycle_and_group_snapshots [FAIL]
+[xUnit.net 00:00:03.36]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:03.36]       Stack Trace:
+[xUnit.net 00:00:03.36]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingReports\CollectionReportService.cs(44,0): at ChapanakitCare.Infrastructure.AccountingReports.CollectionReportService.GetBalancesAsync(DateOnly asOfDate, String cycleKey, String groupNo, CancellationToken cancellationToken)
+[xUnit.net 00:00:03.36]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CollectionReportTests.cs(110,0): at ChapanakitCare.Domain.Tests.CollectionReportTests.Balance_report_filters_by_frozen_cycle_and_group_snapshots()
+[xUnit.net 00:00:03.36]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CollectionReportTests.cs(117,0): at ChapanakitCare.Domain.Tests.CollectionReportTests.Balance_report_filters_by_frozen_cycle_and_group_snapshots()
+[xUnit.net 00:00:03.36]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:03.43]     ChapanakitCare.Domain.Tests.CollectionReportTests.Collection_documents_are_read_only_and_reminders_include_only_due_outstanding_rows [FAIL]
+[xUnit.net 00:00:03.43]       System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:03.43]       Stack Trace:
+[xUnit.net 00:00:03.43]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingReports\CollectionReportService.cs(44,0): at ChapanakitCare.Infrastructure.AccountingReports.CollectionReportService.GetBalancesAsync(DateOnly asOfDate, String cycleKey, String groupNo, CancellationToken cancellationToken)
+[xUnit.net 00:00:03.43]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CollectionReportTests.cs(83,0): at ChapanakitCare.Domain.Tests.CollectionReportTests.Collection_documents_are_read_only_and_reminders_include_only_due_outstanding_rows()
+[xUnit.net 00:00:03.43]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CollectionReportTests.cs(93,0): at ChapanakitCare.Domain.Tests.CollectionReportTests.Collection_documents_are_read_only_and_reminders_include_only_due_outstanding_rows()
+[xUnit.net 00:00:03.43]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:03.44]   Finished:    ChapanakitCare.Domain.Tests
+  Failed ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_exports_a_read_only_due_reminder(format: "pdf", contentType: "application/pdf") [174 ms]
+  Error Message:
+   Assert.IsType() Failure: Value is not the exact type
+Expected: typeof(Microsoft.AspNetCore.Mvc.FileContentResult)
+Actual:   typeof(Microsoft.AspNetCore.Mvc.RazorPages.PageResult)
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_exports_a_read_only_due_reminder(String format, String contentType) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs:line 124
+   at ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_exports_a_read_only_due_reminder(String format, String contentType) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs:line 132
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_exports_a_read_only_due_reminder(format: "csv", contentType: "text/csv; charset=utf-8") [60 ms]
+  Error Message:
+   Assert.IsType() Failure: Value is not the exact type
+Expected: typeof(Microsoft.AspNetCore.Mvc.FileContentResult)
+Actual:   typeof(Microsoft.AspNetCore.Mvc.RazorPages.PageResult)
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_exports_a_read_only_due_reminder(String format, String contentType) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs:line 124
+   at ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_exports_a_read_only_due_reminder(String format, String contentType) in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs:line 132
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_creates_selected_normal_members_without_recording_cash [71 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Web.Pages.Accounting.CollectionsModel.OnPostAsync() in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Collections.cshtml.cs:line 52
+   at ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_creates_selected_normal_members_without_recording_cash() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs:line 43
+   at ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_creates_selected_normal_members_without_recording_cash() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs:line 49
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.CollectionReportTests.Balance_report_honors_business_date_cutoffs_for_requests_and_reversals [2 s]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingReports.CollectionReportService.GetBalancesAsync(DateOnly asOfDate, String cycleKey, String groupNo, CancellationToken cancellationToken) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingReports\CollectionReportService.cs:line 44
+   at ChapanakitCare.Domain.Tests.CollectionReportTests.Balance_report_honors_business_date_cutoffs_for_requests_and_reversals() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CollectionReportTests.cs:line 58
+   at ChapanakitCare.Domain.Tests.CollectionReportTests.Balance_report_honors_business_date_cutoffs_for_requests_and_reversals() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CollectionReportTests.cs:line 66
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.CollectionReportTests.Outstanding_document_excludes_settled_rows_and_keeps_only_open_amounts [1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingReports.CollectionReportDocuments.ToOutstandingDocument(WelfareCollectionBalanceReport report) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingReports\CollectionReportService.cs:line 54
+   at ChapanakitCare.Domain.Tests.CollectionReportTests.Outstanding_document_excludes_settled_rows_and_keeps_only_open_amounts() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CollectionReportTests.cs:line 134
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Failed ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_posts_selected_receipt_allocation_without_marking_the_request_paid_by_itself [85 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Web.Pages.Accounting.CollectionsModel.OnPostAsync() in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\Pages\Accounting\Collections.cshtml.cs:line 52
+   at ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_posts_selected_receipt_allocation_without_marking_the_request_paid_by_itself() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs:line 72
+   at ChapanakitCare.Domain.Tests.AccountingCollectionPageTests.Collection_page_posts_selected_receipt_allocation_without_marking_the_request_paid_by_itself() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingCollectionPageTests.cs:line 78
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.CollectionReportTests.Balance_report_uses_frozen_collection_snapshot_and_net_posted_allocations [99 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingReports.CollectionReportService.GetBalancesAsync(DateOnly asOfDate, String cycleKey, String groupNo, CancellationToken cancellationToken) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingReports\CollectionReportService.cs:line 44
+   at ChapanakitCare.Domain.Tests.CollectionReportTests.Balance_report_uses_frozen_collection_snapshot_and_net_posted_allocations() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CollectionReportTests.cs:line 29
+   at ChapanakitCare.Domain.Tests.CollectionReportTests.Balance_report_uses_frozen_collection_snapshot_and_net_posted_allocations() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CollectionReportTests.cs:line 40
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.CollectionReportTests.Balance_report_filters_by_frozen_cycle_and_group_snapshots [75 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingReports.CollectionReportService.GetBalancesAsync(DateOnly asOfDate, String cycleKey, String groupNo, CancellationToken cancellationToken) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingReports\CollectionReportService.cs:line 44
+   at ChapanakitCare.Domain.Tests.CollectionReportTests.Balance_report_filters_by_frozen_cycle_and_group_snapshots() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CollectionReportTests.cs:line 110
+   at ChapanakitCare.Domain.Tests.CollectionReportTests.Balance_report_filters_by_frozen_cycle_and_group_snapshots() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CollectionReportTests.cs:line 117
+--- End of stack trace from previous location ---
+  Failed ChapanakitCare.Domain.Tests.CollectionReportTests.Collection_documents_are_read_only_and_reminders_include_only_due_outstanding_rows [70 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingReports.CollectionReportService.GetBalancesAsync(DateOnly asOfDate, String cycleKey, String groupNo, CancellationToken cancellationToken) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingReports\CollectionReportService.cs:line 44
+   at ChapanakitCare.Domain.Tests.CollectionReportTests.Collection_documents_are_read_only_and_reminders_include_only_due_outstanding_rows() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CollectionReportTests.cs:line 83
+   at ChapanakitCare.Domain.Tests.CollectionReportTests.Collection_documents_are_read_only_and_reminders_include_only_due_outstanding_rows() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CollectionReportTests.cs:line 93
+--- End of stack trace from previous location ---
+
+Test Run Failed.
+Total tests: 11
+     Failed: 11
+ Total time: 4.1878 Seconds

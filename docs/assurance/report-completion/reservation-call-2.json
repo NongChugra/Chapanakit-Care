@@ -1,0 +1,8 @@
+{
+  "journalSha256": "c3a5e20ac0b56825acbdab928272165a5dd996c51057b775b10c6efbd15663ae",
+  "primitive": "FileMode.CreateNew",
+  "acquired": "2026-09-04T17:24:11.7233499+00:00",
+  "transition": "reserve",
+  "releasedBy": "finally dispose/remove exact lock",
+  "attemptId": "0a1a9afe-c611-46b9-b1a3-90126563edfe"
+}

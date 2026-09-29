@@ -15,6 +15,7 @@ public sealed class MemberFormInput
     public string? Gender { get; set; }
     [RegularExpression("^[0-9]{13}$", ErrorMessage = "เลขประจำตัวประชาชนต้องมี 13 หลัก")]
     public string? PersonalIdCard { get; set; }
+    [Validation.GregorianDate]
     public DateOnly? BirthDate { get; set; }
     public string? HouseNo { get; set; }
     public string? Under { get; set; }
@@ -24,11 +25,14 @@ public sealed class MemberFormInput
     public string? Province { get; set; } = "แพร่";
     [RegularExpression("^[0-9]{5}$", ErrorMessage = "รหัสไปรษณีย์ต้องมี 5 หลัก")]
     public string? PostalCode { get; set; }
+    [RegularExpression("^[0-9]{10}$", ErrorMessage = "โทรศัพท์ต้องเป็นตัวเลข 10 หลัก")]
     public string? Mobile { get; set; }
     public string? GroupNo { get; set; }
     [Required(ErrorMessage = "กรุณากรอกวันที่สมัคร")]
+    [Validation.GregorianDate]
     public DateOnly ApplicationDate { get; set; }
     [Required(ErrorMessage = "กรุณากรอกวันอนุมัติ")]
+    [Validation.GregorianDate]
     public DateOnly ApprovalDate { get; set; }
     public BeneficiaryInput Beneficiary1 { get; set; } = new() { SlotNo = 1 };
     public BeneficiaryInput Beneficiary2 { get; set; } = new() { SlotNo = 2 };
@@ -36,7 +40,10 @@ public sealed class MemberFormInput
     public IReadOnlyList<BeneficiaryCommand> ToBeneficiaries() =>
         new[] { Beneficiary1, Beneficiary2 }
             .Where(value => value.IsStarted())
-            .Select(value => value.ToCommand())
+            .Select(value => value.UseMemberAddress
+                ? value.ToCommand() with { HouseNo = HouseNo, Under = Under, Moo = Moo, Subdistrict = Subdistrict,
+                    District = District, Province = Province, PostalCode = PostalCode }
+                : value.ToCommand())
             .ToArray();
 
     public RegisterMemberCommand ToRegisterCommand() => new(
@@ -79,12 +86,15 @@ public sealed class MemberFormInput
 
 public sealed class BeneficiaryInput
 {
+    public bool UseMemberAddress { get; set; }
     public int SlotNo { get; set; }
     public string? Title { get; set; }
     public string? FirstName { get; set; }
     public string? LastName { get; set; }
     public string? Relationship { get; set; }
+    [RegularExpression("^[0-9]{13}$", ErrorMessage = "เลขประจำตัวประชาชนผู้รับเงินต้องเป็นตัวเลข 13 หลัก")]
     public string? PersonalIdCard { get; set; }
+    [RegularExpression("^[0-9]{10}$", ErrorMessage = "โทรศัพท์ผู้รับเงินต้องเป็นตัวเลข 10 หลัก")]
     public string? Mobile { get; set; }
     public string? HouseNo { get; set; }
     public string? Under { get; set; }

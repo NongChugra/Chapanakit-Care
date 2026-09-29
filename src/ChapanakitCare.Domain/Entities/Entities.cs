@@ -119,6 +119,7 @@ public sealed class DeathCase
     public DateTimeOffset RecordedAtUtc { get; set; }
     public string DeathCertificateNo { get; set; } = string.Empty;
     public DateOnly DeathCertificateDate { get; set; }
+    public DateOnly? ReportedCertificateDate { get; set; }
     public string DeathCertificateFileName { get; set; } = string.Empty;
     public string DeathCertificateContentType { get; set; } = "application/pdf";
     public byte[] DeathCertificatePdf { get; set; } = [];

@@ -1,0 +1,166 @@
+@page
+@model ChapanakitCare.Web.Pages.Coordinators.IndexModel
+@using ChapanakitCare.Infrastructure.Coordinators
+@{
+    ViewData["Title"] = "กำหนดผู้ประสานงาน";
+    var selected = Model.SelectedPosition;
+    var actionLabel = Model.Action == "end" ? "สิ้นสุดหน้าที่" : Model.Action == "replace" ? "เปลี่ยนผู้รับผิดชอบ" : "แต่งตั้งผู้รับผิดชอบ";
+}
+
+<section class="card coordinator-page">
+    <div class="card-head coordinator-head">
+        <div>
+            <h2>ตำแหน่งผู้ประสานงาน</h2>
+            <p class="muted">กำหนดได้เฉพาะประธานหนึ่งคน และหัวหน้ากลุ่มหนึ่งคนต่อกลุ่ม สมาชิกแต่ละคนดำรงได้เพียงหนึ่งตำแหน่ง</p>
+        </div>
+        <a class="button" asp-page="/Coordinators/Index">ดูตำแหน่งทั้งหมด</a>
+    </div>
+
+    <form method="get" class="coordinator-filters" autocomplete="off">
+        <label>ตำแหน่ง<select asp-for="RoleFilter"><option value="">ทุกตำแหน่ง</option><option value="chairperson">ประธาน</option><option value="group_leader">หัวหน้ากลุ่ม</option></select></label>
+        <label>กลุ่ม<select asp-for="GroupFilter"><option value="">ทุกกลุ่ม</option>@foreach (var group in Model.GroupOptions) { <option value="@group">กลุ่ม @group</option> }</select></label>
+        <div class="actions"><button class="button secondary" type="submit">กรอง</button><a class="button secondary" asp-page="/Coordinators/Index">ล้าง</a></div>
+    </form>
+
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div asp-validation-summary="All" class="validation-summary-errors"></div>
+        }
+
+        <div class="coordinator-layout @(selected is null ? "" : "editing")">
+        <section class="coordinator-roster" aria-label="ตำแหน่งปัจจุบัน">
+            <div class="table-wrap">
+                <table class="coordinator-table">
+                    <thead><tr><th>ตำแหน่ง / ขอบเขต</th><th>ผู้ดำรงตำแหน่ง</th><th>สมาชิกในขอบเขต</th><th>จัดการ</th></tr></thead>
+                    <tbody>
+                    @foreach (var position in Model.FilteredPositions)
+                    {
+                        <tr>
+                            <td>
+                                <span class="coordinator-role">@position.RoleLabel</span>
+                                <small>@position.ScopeLabel</small>
+                            </td>
+                            <td>
+                                @if (position.MemberId is null)
+                                {
+                                    <span class="muted">ยังไม่ได้แต่งตั้ง</span>
+                                }
+                                else
+                                {
+                                    <strong>@position.MemberName</strong>
+                                    <small>เลขทะเบียน @position.RunNo · แต่งตั้ง @ChapanakitCare.Domain.ThaiBuddhistDate.Format(position.AppointedOn!.Value)</small>
+                                }
+                            </td>
+                            <td>@position.MemberCount.ToString("N0") คน</td>
+                            <td class="coordinator-actions">
+                                @if (position.MemberId is null)
+                                {
+                                    <a class="button secondary small" asp-route-PositionKey="@position.Key" asp-route-Action="appoint" asp-route-RoleFilter="@Model.RoleFilter" asp-route-GroupFilter="@Model.GroupFilter">แต่งตั้ง</a>
+                                }
+                                else
+                                {
+                                    <a class="button secondary small" asp-route-PositionKey="@position.Key" asp-route-Action="replace" asp-route-RoleFilter="@Model.RoleFilter" asp-route-GroupFilter="@Model.GroupFilter">เปลี่ยน</a>
+                                    <a class="button secondary small" asp-route-PositionKey="@position.Key" asp-route-Action="end" asp-route-RoleFilter="@Model.RoleFilter" asp-route-GroupFilter="@Model.GroupFilter">สิ้นสุดตำแหน่ง</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        @if (selected is not null)
+        {
+            <aside class="coordinator-editor" aria-label="แบบฟอร์ม @actionLabel">
+                <div class="card-head"><div><h2>@actionLabel</h2><p class="muted">@selected.RoleLabel · @selected.ScopeLabel</p></div><a class="coordinator-close" asp-page="/Coordinators/Index" aria-label="ปิดแบบฟอร์ม">×</a></div>
+                <div class="coordinator-selection">
+                    <strong>@(selected.MemberId is null ? "ตำแหน่งว่าง" : selected.MemberName)</strong>
+                    <small>@(selected.MemberId is null ? "เลือกสมาชิกที่มีสิทธิ์จากรายการ" : $"ผู้ดำรงตำแหน่งปัจจุบัน · เลขทะเบียน {selected.RunNo}")</small>
+                </div>
+
+                @if (Model.Action != "end")
+                {
+                    <form method="get" class="coordinator-search" autocomplete="off">
+                        <input type="hidden" asp-for="PositionKey" />
+                        <input type="hidden" asp-for="Action" />
+                        <input type="hidden" asp-for="RoleFilter" />
+                        <input type="hidden" asp-for="GroupFilter" />
+                        <label>ค้นหาสมาชิกที่เลือกได้<input asp-for="Search" type="search" placeholder="เลขทะเบียน หรือชื่อสมาชิก" /></label>
+                        <div class="actions"><button class="button secondary small" type="submit">ค้นหา</button><a class="button secondary small" asp-route-PositionKey="@selected.Key" asp-route-Action="@Model.Action">ล้าง</a></div>
+                    </form>
+                }
+
+                <form method="post" asp-page-handler="Change" class="coordinator-change-form" autocomplete="off">
+                    <input type="hidden" asp-for="PositionKey" />
+                    <input type="hidden" asp-for="Action" />
+                    <input type="hidden" asp-for="ExpectedVersion" />
+                    <input type="hidden" asp-for="ExpectedMemberId" />
+                    <input type="hidden" asp-for="Search" />
+                    <input type="hidden" asp-for="RoleFilter" />
+                    <input type="hidden" asp-for="GroupFilter" />
+
+                    @if (Model.Action != "end")
+                    {
+                        <fieldset class="coordinator-candidates">
+                            <legend>เลือกสมาชิกอย่างชัดเจน</legend>
+                            @if (Model.Candidates.Count == 0)
+                            {
+                                <p class="muted">ไม่พบสมาชิกสถานะปกติที่ยังไม่มีตำแหน่งตามเงื่อนไขนี้</p>
+                            }
+                            else
+                            {
+                                @foreach (var candidate in Model.Candidates)
+                                {
+                                    <label class="coordinator-candidate"><input asp-for="MemberId" id="candidate-@candidate.Id" type="radio" value="@candidate.Id" /><span><strong>@candidate.Name</strong><small>เลขทะเบียน @candidate.RunNo · กลุ่มสมาชิก @candidate.GroupNo</small></span></label>
+                                }
+                            }
+                        </fieldset>
+                    }
+
+                    @if (Model.Action is "replace" or "end")
+                    {
+                        <label>เหตุผลที่@(Model.Action == "end" ? "สิ้นสุดหน้าที่" : "เปลี่ยนผู้รับผิดชอบ") <span aria-hidden="true">*</span><textarea asp-for="Reason" rows="3" maxlength="1000" required></textarea></label>
+                    }
+
+                    <div class="form-footer"><a class="button secondary" asp-page="/Coordinators/Index">ยกเลิก</a><button class="button @(Model.Action == "end" ? "danger" : "")" type="submit">ยืนยัน@(actionLabel)</button></div>
+                </form>
+            </aside>
+        }
+    </div>
+
+    <section class="coordinator-history" aria-label="ประวัติการเปลี่ยนแปลง">
+        <div class="card-head"><div><h2>ประวัติการเปลี่ยนแปลง</h2><p class="muted">เก็บเหตุการณ์ที่ยืนยันแล้วล่าสุด 100 รายการ</p></div></div>
+        @if (Model.History.Count == 0)
+        {
+            <p class="muted coordinator-empty">ยังไม่มีประวัติการแต่งตั้ง</p>
+        }
+        else
+        {
+            <div class="table-wrap">
+                <table class="coordinator-history-table">
+                    <thead><tr><th>วันที่</th><th>ตำแหน่ง</th><th>การเปลี่ยนแปลง</th><th>เหตุผล</th></tr></thead>
+                    <tbody>
+                    @foreach (var entry in Model.History)
+                    {
+                        <tr>
+                            <td>@ChapanakitCare.Domain.ThaiBuddhistDate.Format(entry.EffectiveDate)</td>
+                            <td><span class="coordinator-role">@CoordinatorRoles.Label(entry.RoleCode)</span><small>@CoordinatorRoles.Scope(entry.GroupNo)</small></td>
+                            <td class="coordinator-transition">
+                                <span>@(entry.PreviousMemberName ?? "ตำแหน่งว่าง")</span>
+                                <span aria-hidden="true">→</span>
+                                <span>@(entry.MemberName ?? "ตำแหน่งว่าง")</span>
+                            </td>
+                            <td>@(entry.Reason ?? "แต่งตั้งครั้งแรก")<small>@entry.Actor</small></td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </section>
+</section>
+
+@section Scripts {
+    <script src="~/js/coordinator-search.js" asp-append-version="true"></script>
+}

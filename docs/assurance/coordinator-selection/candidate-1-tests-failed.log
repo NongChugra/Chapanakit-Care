@@ -1,0 +1,28 @@
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Release\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:05.00]     ChapanakitCare.Domain.Tests.CheckpointFourWorkflowTests.Death_preview_is_read_only_and_returns_reference_breakdown_with_equal_recipient_shares [FAIL]
+  Failed ChapanakitCare.Domain.Tests.CheckpointFourWorkflowTests.Death_preview_is_read_only_and_returns_reference_breakdown_with_equal_recipient_shares [201 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 1500
+Actual:   900
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.CheckpointFourWorkflowTests.Death_preview_is_read_only_and_returns_reference_breakdown_with_equal_recipient_shares() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CheckpointFourWorkflowTests.cs:line 90
+   at ChapanakitCare.Domain.Tests.CheckpointFourWorkflowTests.Death_preview_is_read_only_and_returns_reference_breakdown_with_equal_recipient_shares() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CheckpointFourWorkflowTests.cs:line 96
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:05.41]     ChapanakitCare.Domain.Tests.CheckpointThreeWorkflowTests.Payable_death_is_atomic_and_returns_advance_plus_net_collection [FAIL]
+  Failed ChapanakitCare.Domain.Tests.CheckpointThreeWorkflowTests.Payable_death_is_atomic_and_returns_advance_plus_net_collection [194 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 13380
+Actual:   8100
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.CheckpointThreeWorkflowTests.Payable_death_is_atomic_and_returns_advance_plus_net_collection() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CheckpointThreeWorkflowTests.cs:line 27
+   at ChapanakitCare.Domain.Tests.CheckpointThreeWorkflowTests.Payable_death_is_atomic_and_returns_advance_plus_net_collection() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\CheckpointThreeWorkflowTests.cs:line 33
+--- End of stack trace from previous location ---
+
+Failed!  - Failed:     2, Passed:   122, Skipped:     0, Total:   124, Duration: 6 s - ChapanakitCare.Domain.Tests.dll (net10.0)
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Desktop.Tests\bin\Release\net10.0-windows\ChapanakitCare.Desktop.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     4, Skipped:     0, Total:     4, Duration: 214 ms - ChapanakitCare.Desktop.Tests.dll (net10.0)

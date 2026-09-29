@@ -1,0 +1,84 @@
+@page
+@model ChapanakitCare.Web.Pages.Accounting.TransactionModel
+@using ChapanakitCare.Domain.Entities
+@{ ViewData["Title"] = Model.Heading; }
+<p><a asp-page="./Index">บัญชีและการเงิน</a> / @Model.Heading</p>
+<section class="card">
+    <h2>@Model.Heading</h2>
+    <p class="muted">@(Model.Book == "association" ? "สมุดบัญชีสมาคม" : "สมุดบัญชีเงินสงเคราะห์สมาชิก")</p>
+    @if (Model.Kind == "receipt")
+    {
+        <p>เงินรับจะชำระยอดค้างของสมาชิกก่อน ส่วนที่เหลือเก็บเป็นเงินสงเคราะห์ล่วงหน้า</p>
+    }
+    <form method="post" class="stack" autocomplete="off">
+        <div asp-validation-summary="All" class="alert"></div>
+        <input asp-for="Kind" type="hidden" /><input asp-for="Book" type="hidden" /><input asp-for="RequestToken" type="hidden" />
+        <div class="grid two">
+            <label>วันที่รายการ (พ.ศ.)<input asp-for="BusinessDate" placeholder="วว/ดด/ปปปป" required maxlength="10" /></label>
+            <label>จำนวนเงิน (บาท)<input asp-for="Amount" inputmode="decimal" placeholder="0.00" required /></label>
+            @if (Model.Kind != "reclassify")
+            {
+            <label>@(Model.Kind == "receipt" ? "รับเข้า" : "จ่ายจาก")
+                <select asp-for="MoneyAccount" required>
+                @foreach (var account in Model.Accounts.Where(x => x.Role is AccountingAccountRole.Cash or AccountingAccountRole.Bank))
+                { <option value="@account.Code">@account.Name</option> }
+                </select>
+            </label>
+            }
+            @if (Model.Kind == "reclassify")
+            {
+                <label>เอกสารที่ต้องแก้หมวด<select asp-for="OriginalJournalId" required><option value="">เลือกเอกสาร</option>
+                    @foreach (var document in Model.ExpenseDocuments) { <option value="@document.Id">@document.JournalNumber · @document.DescriptionSnapshot</option> }
+                </select></label>
+                <label>หมวดเดิม<select asp-for="ExpenseAccount" required>
+                    @foreach (var account in Model.Accounts.Where(x => x.Role == AccountingAccountRole.OperatingExpense)) { <option value="@account.Code">@account.Name</option> }
+                </select></label>
+                <label>หมวดที่ถูกต้อง<select asp-for="TargetAccount" required>
+                    @foreach (var account in Model.Accounts.Where(x => x.Role == AccountingAccountRole.OperatingExpense)) { <option value="@account.Code">@account.Name</option> }
+                </select></label>
+                <p class="muted">แก้ได้เฉพาะส่วนที่ยังไม่ได้ย้ายหมวดของเอกสารนี้ ต้นฉบับคงเดิม เงินสดและค่าใช้จ่ายรวมไม่เปลี่ยน หากต้องแก้ซ้ำให้เลือกเอกสารแก้หมวดล่าสุดที่มีจำนวนเงินส่วนนี้</p>
+            }
+            @if (Model.Kind is "receipt" or "refund")
+            {
+                <label>สมาชิก<select asp-for="MemberId" required><option value="">เลือกสมาชิก</option>
+                    @foreach (var member in Model.Members) { <option value="@member.Id">@member.RunNo · @member.Title@member.FirstName @member.LastName · กลุ่ม @member.GroupNo</option> }
+                </select></label>
+                @if (Model.Kind == "refund")
+                { <p class="muted">จ่ายคืนได้เฉพาะเงินคงเหลือของสมาชิกลาออกหรือเสียชีวิต ต้องไม่มีหนี้ค้าง และมีหลักฐานผู้รับเงินจริง</p> }
+                else
+                { <p class="muted">สมาชิกลาออกหรือเสียชีวิตรับชำระได้เฉพาะหนี้ค้าง ไม่เติมเงินล่วงหน้าใหม่</p> }
+            }
+            @if (Model.Kind == "expense")
+            {
+                <label>หมวดค่าใช้จ่าย<select asp-for="ExpenseAccount" required>
+                    @foreach (var account in Model.Accounts.Where(x => x.Role == AccountingAccountRole.OperatingExpense)) { <option value="@account.Code">@account.Name</option> }
+                </select></label>
+                <label>ผู้รับเงิน<input asp-for="Payee" required maxlength="300" /></label>
+            }
+            @if (Model.Kind == "benefit")
+            {
+                <label>ชุดผู้รับผลประโยชน์<select asp-for="DeathCaseId" required><option value="">เลือกชุดผู้รับ</option>
+                    @foreach (var group in Model.Recipients.GroupBy(x => x.DeathCaseId))
+                    { <option value="@group.Key">@string.Join(" / ", group.Select(x => $"{x.SlotNo}: {x.Title}{x.FirstName} {x.LastName}"))</option> }
+                </select></label>
+                <label>ผู้รับลำดับที่<select asp-for="BeneficiarySlot"><option value="1">1</option><option value="2">2</option></select></label>
+                <p class="muted">ตรวจชื่อและลำดับผู้รับ ระบบไม่อนุญาตให้จ่ายเกินยอดค้างของผู้รับรายนี้</p>
+            }
+            @if (Model.Kind == "remittance")
+            {
+                <label>รับเข้าในสมุดบัญชีสมาคม<select asp-for="TargetAccount" required>
+                    @foreach (var account in Model.AssociationAccounts) { <option value="@account.Code">@account.Name</option> }
+                </select></label>
+                <p class="muted">การนำส่งนี้ลดค่าหักค้างนำส่งและค้างรับพร้อมกัน ไม่บันทึกรายได้ซ้ำ</p>
+            }
+            @if (Model.Kind == "transfer")
+            {
+                <label>โอนเข้า<select asp-for="TargetAccount" required>
+                    @foreach (var account in Model.Accounts.Where(x => x.Role is AccountingAccountRole.Cash or AccountingAccountRole.Bank)) { <option value="@account.Code">@account.Name</option> }
+                </select></label>
+            }
+        </div>
+        <label>รายละเอียด / เลขที่หลักฐาน<textarea asp-for="Evidence" required maxlength="2000" rows="3"></textarea></label>
+        <div class="form-footer"><button class="button" type="submit">บันทึกรายการ</button><a class="button secondary" asp-page="./Index">กลับ</a></div>
+    </form>
+</section>

@@ -4,6 +4,7 @@ using ChapanakitCare.Domain;
 using ChapanakitCare.Domain.Entities;
 using ChapanakitCare.Infrastructure.Members;
 using ChapanakitCare.Infrastructure.Persistence;
+using ChapanakitCare.Infrastructure.AccountingOperations;
 using Microsoft.EntityFrameworkCore;
 
 namespace ChapanakitCare.Infrastructure.Deaths;
@@ -17,7 +18,9 @@ public sealed record ConfirmDeathCommand(
     string CauseOfDeath,
     bool IsManualNonPayCase,
     string? ManualNonPayReason,
-    DeathCertificateDocument CertificateDocument);
+    DeathCertificateDocument CertificateDocument,
+    IReadOnlyList<RecipientPhotoDocument>? RecipientPhotos = null,
+    DateOnly? ReportedCertificateDate = null);
 public sealed record ConfirmDeathResult(DeathCase DeathCase, DeathCalculation Calculation);
 public sealed record DeathPreview(
     Member Member,
@@ -59,7 +62,8 @@ public sealed class DeathApplicationService(AppDbContext database)
         string runNo,
         bool isManualNonPayCase,
         DateOnly businessDate,
-        CancellationToken ct = default)
+        CancellationToken ct = default,
+        DateOnly? deathCertificateDate = null)
     {
         var member = await database.Members.AsNoTracking().SingleOrDefaultAsync(
             value => value.RunNo == runNo.Trim() && value.ArchivedAtUtc == null,
@@ -79,16 +83,18 @@ public sealed class DeathApplicationService(AppDbContext database)
         }
 
         var settings = await database.SystemSettings.AsNoTracking().SingleAsync(ct);
+        var effectiveDeathDate = deathCertificateDate ?? businessDate;
         var result = DeathBenefitCalculator.Calculate(new DeathBenefitInput(
-            businessDate,
+            effectiveDeathDate,
             member.CoverageStartDate,
             isManualNonPayCase,
             await database.Members.CountAsync(value => value.Status == MemberStatus.Normal && value.Id != member.Id && value.ArchivedAtUtc == null, ct),
             settings.WelfarePerMemberSatang,
             settings.ServiceFeeBasisPoints,
             member.AdvanceUnitsBalance,
-            beneficiaries.Count));
-        var daysSinceCoverage = businessDate.DayNumber - member.CoverageStartDate.DayNumber;
+            beneficiaries.Count,
+            await new DeathAccountingService(database).GetAdvanceAsync(member.Id, ct)));
+        var daysSinceCoverage = effectiveDeathDate.DayNumber - member.CoverageStartDate.DayNumber;
         return new DeathPreview(
             member,
             beneficiaries,
@@ -96,7 +102,7 @@ public sealed class DeathApplicationService(AppDbContext database)
             result.BeneficiarySharesSatang,
             daysSinceCoverage,
             settings.SpecialNonPayWindowDays,
-            daysSinceCoverage >= 0 && daysSinceCoverage < settings.SpecialNonPayWindowDays,
+            SpecialNonPayEligibility.WithinWindow(effectiveDeathDate, member.CoverageStartDate, settings.SpecialNonPayWindowDays),
             settings.ServiceFeeBasisPoints);
     }
 
@@ -105,24 +111,47 @@ public sealed class DeathApplicationService(AppDbContext database)
         if (string.IsNullOrWhiteSpace(command.RunNo) || string.IsNullOrWhiteSpace(command.DeathCertificateNo) || string.IsNullOrWhiteSpace(command.CauseOfDeath) || command.IsManualNonPayCase && string.IsNullOrWhiteSpace(command.ManualNonPayReason))
             throw new MemberValidationException("กรุณากรอกข้อมูลการเสียชีวิตให้ครบ");
         var certificate = ValidateCertificate(command.CertificateDocument);
+        var photos = (command.RecipientPhotos ?? []).Select(photo => photo.Validate()).ToArray();
+        if (photos.Select(photo => photo.BeneficiarySlotNo).Distinct().Count() != photos.Length)
+            throw new MemberValidationException("แนบภาพผู้รับเงินได้คนละ 1 ภาพ");
 
         await using var transaction = await database.Database.BeginTransactionAsync(ct);
+        ConfirmDeathResult confirmedResult;
+        try
+        {
         var member = await database.Members.SingleOrDefaultAsync(x => x.RunNo == command.RunNo.Trim() && x.ArchivedAtUtc == null, ct)
             ?? throw new MemberValidationException("ไม่พบเลขสมาชิก");
         if (member.Status == MemberStatus.Deceased) throw new MemberValidationException("สมาชิกนี้ถูกบันทึกว่าเสียชีวิตแล้ว");
+        if (command.DeathCertificateDate < member.ApplicationDate || command.DeathCertificateDate > businessDate ||
+            command.ReportedCertificateDate is { } reported && (reported < command.DeathCertificateDate || reported > businessDate))
+            throw new MemberValidationException("กรุณาตรวจสอบปี พ.ศ.: วันเสียชีวิตต้องอยู่ตั้งแต่วันที่สมัครถึงวันนี้ และวันที่แจ้งต้องอยู่ตั้งแต่วันเสียชีวิตถึงวันนี้");
         var settings = await database.SystemSettings.AsNoTracking().SingleAsync(ct);
         var beneficiaries = await database.MemberBeneficiaries.Where(x => x.MemberId == member.Id && x.IsActive).OrderBy(x => x.SlotNo).ToListAsync(ct);
+        if (command.IsManualNonPayCase && !SpecialNonPayEligibility.WithinWindow(
+                command.DeathCertificateDate, member.CoverageStartDate, settings.SpecialNonPayWindowDays))
+            throw new MemberValidationException("เลือกโรคร้ายแรงได้เฉพาะวันที่เสียชีวิตในช่วงเฝ้าระวังหลังเริ่มคุ้มครอง");
         if (beneficiaries.Count is < 1 or > 2) throw new MemberValidationException("สมาชิกต้องมีผู้รับเงินสงเคราะห์ 1-2 คน");
+        if (photos.Any(photo => beneficiaries.All(b => b.SlotNo != photo.BeneficiarySlotNo)))
+            throw new MemberValidationException("ไม่พบผู้รับเงินตามช่องภาพที่แนบ");
         var sequence = await GetSequence("death_case_no", "D", now, ct);
         var caseId = Guid.NewGuid();
         var caseNo = $"{sequence.Prefix}{sequence.NextValue.ToString($"D{sequence.Width}", CultureInfo.InvariantCulture)}";
-        var calculationResult = DeathBenefitCalculator.Calculate(new DeathBenefitInput(businessDate, member.CoverageStartDate, command.IsManualNonPayCase,
+        var calculationResult = DeathBenefitCalculator.Calculate(new DeathBenefitInput(command.DeathCertificateDate, member.CoverageStartDate, command.IsManualNonPayCase,
             await database.Members.CountAsync(x => x.Status == MemberStatus.Normal && x.Id != member.Id && x.ArchivedAtUtc == null, ct),
-            settings.WelfarePerMemberSatang, settings.ServiceFeeBasisPoints, member.AdvanceUnitsBalance, beneficiaries.Count));
-        var death = new DeathCase { Id = caseId, DeathCaseNo = caseNo, DeathSequenceNo = sequence.NextValue++, MemberId = member.Id, RecordedBusinessDate = businessDate, RecordedAtUtc = now, DeathCertificateNo = command.DeathCertificateNo.Trim(), DeathCertificateDate = command.DeathCertificateDate, DeathCertificateFileName = certificate.FileName, DeathCertificateContentType = "application/pdf", DeathCertificatePdf = certificate.Bytes, DeathCertificateSize = certificate.Bytes.LongLength, DeathCertificateSha256 = Convert.ToHexString(SHA256.HashData(certificate.Bytes)).ToLowerInvariant(), CauseOfDeathText = command.CauseOfDeath.Trim(), IsManualNonPayCase = command.IsManualNonPayCase, ManualNonPayReason = Clean(command.ManualNonPayReason), EligibilityResult = Eligibility(calculationResult.Eligibility), DaysSinceCoverage = businessDate.DayNumber - member.CoverageStartDate.DayNumber, SettingsRevision = settings.SettingsRevision, ConfirmedAtUtc = now, ConfirmedBy = actor };
+            settings.WelfarePerMemberSatang, settings.ServiceFeeBasisPoints, member.AdvanceUnitsBalance, beneficiaries.Count,
+            await new DeathAccountingService(database).GetAdvanceAsync(member.Id, ct)));
+        var death = new DeathCase { Id = caseId, DeathCaseNo = caseNo, DeathSequenceNo = sequence.NextValue++, MemberId = member.Id, RecordedBusinessDate = businessDate, RecordedAtUtc = now, DeathCertificateNo = command.DeathCertificateNo.Trim(), DeathCertificateDate = command.DeathCertificateDate, DeathCertificateFileName = certificate.FileName, DeathCertificateContentType = "application/pdf", DeathCertificatePdf = certificate.Bytes, DeathCertificateSize = certificate.Bytes.LongLength, DeathCertificateSha256 = Convert.ToHexString(SHA256.HashData(certificate.Bytes)).ToLowerInvariant(), CauseOfDeathText = command.CauseOfDeath.Trim(), IsManualNonPayCase = command.IsManualNonPayCase, ManualNonPayReason = Clean(command.ManualNonPayReason), EligibilityResult = Eligibility(calculationResult.Eligibility), DaysSinceCoverage = command.DeathCertificateDate.DayNumber - member.CoverageStartDate.DayNumber, SettingsRevision = settings.SettingsRevision, ConfirmedAtUtc = now, ConfirmedBy = actor };
         sequence.UpdatedAtUtc = now;
         database.DeathCases.Add(death);
-        database.DeathMemberSnapshots.Add(Snapshot(death.Id, member, businessDate));
+        death.ReportedCertificateDate = command.ReportedCertificateDate;
+        foreach (var photo in photos)
+            database.DeathRecipientPhotos.Add(new DeathRecipientPhoto
+            {
+                Id = Guid.NewGuid(), DeathCaseId = caseId, BeneficiarySlotNo = photo.BeneficiarySlotNo,
+                FileName = photo.FileName, ContentType = photo.ContentType, Bytes = photo.Bytes,
+                Sha256 = Convert.ToHexString(SHA256.HashData(photo.Bytes)).ToLowerInvariant(), CreatedAtUtc = now, CreatedBy = actor
+            });
+        database.DeathMemberSnapshots.Add(Snapshot(death.Id, member, command.DeathCertificateDate));
         foreach (var b in beneficiaries) database.DeathBeneficiarySnapshots.Add(BeneficiarySnapshot(death.Id, b, beneficiaries.Count));
         var calculation = new DeathCalculation { DeathCaseId = caseId, IsPayable = calculationResult.Eligibility == DeathEligibility.Payable, ContributorCount = calculationResult.ContributorCount, WelfarePerMemberSatang = settings.WelfarePerMemberSatang, GrossCollectionSatang = calculationResult.GrossCollectionSatang, ServiceFeeBasisPoints = settings.ServiceFeeBasisPoints, ServiceFeeRoundingMode = settings.ServiceFeeRoundingMode, ServiceFeeSatang = calculationResult.ServiceFeeSatang, NetCollectionSatang = calculationResult.NetCollectionSatang, DeceasedAdvanceUnits = member.AdvanceUnitsBalance, DeceasedAdvanceValueSatang = calculationResult.DeceasedAdvanceValueSatang, TotalBenefitSatang = calculationResult.TotalBenefitSatang, BeneficiaryCount = beneficiaries.Count, CalculatedAtUtc = now };
         database.DeathCalculations.Add(calculation);
@@ -132,10 +161,22 @@ public sealed class DeathApplicationService(AppDbContext database)
             foreach (var contributor in await database.Members.Where(x => x.Status == MemberStatus.Normal && x.Id != member.Id && x.ArchivedAtUtc == null).ToListAsync(ct))
             { await AddLedger(contributor, -1, "death_contribution", businessDate, caseId, null, $"เงินสงเคราะห์กรณี {caseNo}", now, actor, ct); contributor.AdvanceUnitsBalance--; contributor.Version++; contributor.UpdatedAtUtc = now; contributor.UpdatedBy = actor; }
         database.MemberStatusEvents.Add(new MemberStatusEvent { Id = Guid.NewGuid(), MemberId = member.Id, FromStatus = "normal", ToStatus = "deceased", EffectiveDate = businessDate, SourceType = "death_case", SourceId = caseId, CreatedAtUtc = now, CreatedBy = actor });
-        database.AuditEvents.Add(Audit("death.confirmed", "death_case", caseId.ToString(), member.Id, now, actor));
+        var deathAudit = Audit("death.confirmed", "death_case", caseId.ToString(), member.Id, now, actor);
+        deathAudit.Reason = $"{caseNo} · {member.RunNo} {member.FirstName} {member.LastName} · ภาพผู้รับเงิน {photos.Length} ภาพ";
+        database.AuditEvents.Add(deathAudit);
+        await ChapanakitCare.Infrastructure.Coordinators.CoordinatorApplicationService.EndForMemberAsync(database, member, "สิ้นสุดหน้าที่เนื่องจากสมาชิกเสียชีวิต", businessDate, now, actor, ct);
+        await new DeathAccountingService(database).AccrueAsync(death, calculationResult, beneficiaries, settings.ServiceFeeBasisPoints, actor, ct);
         await database.SaveChangesAsync(ct); await transaction.CommitAsync(ct);
+        confirmedResult = new(death, calculation);
+        }
+        catch
+        {
+            await transaction.RollbackAsync(CancellationToken.None);
+            database.ChangeTracker.Clear();
+            throw;
+        }
         await new NotificationService(database).RefreshAsync(businessDate, now, ct);
-        return new(death, calculation);
+        return confirmedResult;
     }
 
     private async Task<NumberSequence> GetSequence(string key, string prefix, DateTimeOffset now, CancellationToken ct)
@@ -170,6 +211,8 @@ public sealed class AdvanceResetService(AppDbContext database)
     public async Task<AdvanceResetBatch> ResetAsync(string trigger, string idempotencyKey, DateOnly date, DateTimeOffset now, string actor, CancellationToken ct = default)
     {
         var existing = await database.AdvanceResetBatches.SingleOrDefaultAsync(x => x.IdempotencyKey == idempotencyKey, ct); if (existing is not null) return existing;
+        if (await database.AccountingBooks.AnyAsync(x => x.Code == AccountingBookCode.Welfare && x.IsActivated, ct))
+            throw new MemberValidationException("เปิดบัญชีเงินสงเคราะห์แล้ว กรุณาสร้างใบเรียกเก็บและบันทึกรับเงินจริงแทนการรีเซ็ตยอด");
         await using var tx = await database.Database.BeginTransactionAsync(ct); var settings = await database.SystemSettings.AsNoTracking().SingleAsync(ct);
         var previous = (await database.AdvanceResetBatches.AsNoTracking().ToListAsync(ct)).OrderByDescending(x => x.ConfirmedAtUtc).FirstOrDefault();
         var sequence = await database.NumberSequences.SingleOrDefaultAsync(x => x.SequenceKey == "reset_no", ct) ?? new NumberSequence { SequenceKey = "reset_no", Prefix = "R", NextValue = 1, Width = 5, UpdatedAtUtc = now }; if (database.Entry(sequence).State == EntityState.Detached) database.NumberSequences.Add(sequence);
@@ -181,6 +224,8 @@ public sealed class AdvanceResetService(AppDbContext database)
             notice.AcknowledgedAtUtc = now;
             notice.AcknowledgedBy = actor;
         }
+        database.AuditEvents.Add(ActivityAudit.Create("advance.reset", "advance_reset", batch.Id.ToString(), now, actor,
+            $"{batch.ResetNo} · ปรับยอดสมาชิกปกติเป็น {batch.TargetUnits} คน · เหตุผล {trigger}"));
         await database.SaveChangesAsync(ct); await tx.CommitAsync(ct); return batch;
     }
 }
@@ -189,6 +234,26 @@ public sealed class NotificationService(AppDbContext database)
 {
     public async Task RefreshAsync(DateOnly date, DateTimeOffset now, CancellationToken ct = default)
     {
+        var accountingActive = await database.AccountingBooks.AnyAsync(x => x.Code == AccountingBookCode.Welfare && x.IsActivated, ct);
+        if (accountingActive)
+        {
+            var obsolete = await database.Notifications.Where(x => x.State == "active" && !x.CycleKey.StartsWith("accounting:")).ToListAsync(ct);
+            foreach (var notice in obsolete)
+            {
+                notice.State = "acknowledged";
+                notice.AcknowledgedAtUtc = now;
+                notice.AcknowledgedBy = "system_accounting_activation";
+            }
+            var month = "accounting:" + date.ToString("yyyy-MM", CultureInfo.InvariantCulture);
+            if (date.Day == 1)
+                await Add("month_start_reset", month, "ต้นเดือน กรุณาตรวจยอดเงินสมาชิกและจัดรอบเรียกเก็บตามความจำเป็น บันทึกรับเงินเมื่อได้รับเงินจริง", null, null, date, now, ct);
+            var count = await database.DeathCases.CountAsync(x => x.RecordState == "confirmed", ct);
+            var warning = await database.SystemSettings.Select(x => x.DeathWarningThreshold).SingleAsync(ct);
+            if (count > warning)
+                await Add("death_threshold", month, $"มีผู้เสียชีวิตสะสม {count} ราย กรุณาตรวจยอดค้างชำระและรอบเรียกเก็บสมาชิก", count, null, date, now, ct);
+            await database.SaveChangesAsync(ct);
+            return;
+        }
         var latest = (await database.AdvanceResetBatches.AsNoTracking().ToListAsync(ct)).OrderByDescending(x => x.ConfirmedAtUtc).FirstOrDefault();
         var cycle = latest?.Id.ToString() ?? "initial";
         var confirmedDeathTimes = await database.DeathCases

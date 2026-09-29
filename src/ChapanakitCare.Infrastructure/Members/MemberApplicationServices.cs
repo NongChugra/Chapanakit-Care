@@ -3,6 +3,7 @@ using System.Text.Json;
 using ChapanakitCare.Domain;
 using ChapanakitCare.Domain.Entities;
 using ChapanakitCare.Infrastructure.Persistence;
+using ChapanakitCare.Infrastructure.Coordinators;
 using Microsoft.EntityFrameworkCore;
 
 namespace ChapanakitCare.Infrastructure.Members;
@@ -83,20 +84,36 @@ public sealed record MemberSearchQuery(
     string? GroupNo = null,
     string? Under = null);
 
+public sealed record MemberSearchPage(IReadOnlyList<Member> Items, int TotalCount);
+
 public sealed class MemberValidationException(string message) : Exception(message);
 
 public sealed class MemberApplicationService(AppDbContext database)
 {
-    public async Task<Member> RegisterAsync(
+    public Task<Member> RegisterAsync(
         RegisterMemberCommand command,
         DateOnly businessDate,
         DateTimeOffset now,
         string actor,
         CancellationToken cancellationToken = default)
     {
+        if (!RegistrationAgePolicy.IsEligible(command.BirthDate, command.ApplicationDate))
+            throw new MemberValidationException(RegistrationAgePolicy.Message);
+        ValidateDateOrder(command.ApplicationDate, command.ApprovalDate, businessDate);
+        return RegisterCoreAsync(command, businessDate, now, actor, cancellationToken);
+    }
+
+    // Historical demo evidence predates today's admission rule.
+    internal Task<Member> ImportHistoricalAsync(RegisterMemberCommand command, DateOnly businessDate,
+        DateTimeOffset now, string actor, CancellationToken ct) => RegisterCoreAsync(command, businessDate, now, actor, ct);
+
+    private async Task<Member> RegisterCoreAsync(RegisterMemberCommand command, DateOnly businessDate,
+        DateTimeOffset now, string actor, CancellationToken cancellationToken)
+    {
         Validate(command.FirstName, command.LastName, command.BirthDate, command.ApplicationDate, command.PostalCode, command.Beneficiaries);
         await using var transaction = await database.Database.BeginTransactionAsync(cancellationToken);
         var settings = await database.SystemSettings.AsNoTracking().SingleAsync(value => value.Id == 1, cancellationToken);
+        var accountingActive = await database.AccountingBooks.AnyAsync(value => value.Code == AccountingBookCode.Welfare && value.IsActivated, cancellationToken);
         var sequence = await database.NumberSequences.SingleAsync(
             value => value.SequenceKey == "member_run_no",
             cancellationToken);
@@ -128,7 +145,7 @@ public sealed class MemberApplicationService(AppDbContext database)
             ApprovalDate = command.ApprovalDate,
             CoverageStartDate = CoveragePolicy.CalculateStart(command.ApprovalDate, settings.CoverageWaitDays),
             Status = MemberStatus.Normal,
-            AdvanceUnitsBalance = settings.ResetTargetUnits,
+            AdvanceUnitsBalance = accountingActive ? 0 : settings.ResetTargetUnits,
             Version = 1,
             CreatedAtUtc = now,
             CreatedBy = actor,
@@ -152,16 +169,18 @@ public sealed class MemberApplicationService(AppDbContext database)
             Id = Guid.NewGuid(),
             MemberId = memberId,
             EntryOrder = 1,
-            EntryType = "opening_30",
+            EntryType = accountingActive ? "correction" : "opening_30",
             BusinessDate = businessDate,
-            UnitsDelta = settings.ResetTargetUnits,
+            UnitsDelta = member.AdvanceUnitsBalance,
             BalanceBefore = 0,
-            BalanceAfter = settings.ResetTargetUnits,
-            Reason = $"สมาชิกผ่านการอนุมัติและชำระเงินสงเคราะห์ล่วงหน้า {settings.ResetTargetUnits} คนแล้ว",
+            BalanceAfter = member.AdvanceUnitsBalance,
+            Reason = accountingActive ? "เริ่มสมาชิกโดยยังไม่มีรายการรับเงินจริง" : $"สมาชิกผ่านการอนุมัติและชำระเงินสงเคราะห์ล่วงหน้า {settings.ResetTargetUnits} คนแล้ว",
             CreatedAtUtc = now,
             CreatedBy = actor
         });
-        database.AuditEvents.Add(NewAudit("member.created", memberId, memberId.ToString(), now, actor));
+        var createdAudit = NewAudit("member.created", memberId, memberId.ToString(), now, actor);
+        createdAudit.Reason = $"{member.RunNo} {member.FirstName} {member.LastName}";
+        database.AuditEvents.Add(createdAudit);
 
         await database.SaveChangesAsync(cancellationToken);
         await transaction.CommitAsync(cancellationToken);
@@ -176,6 +195,7 @@ public sealed class MemberApplicationService(AppDbContext database)
         CancellationToken cancellationToken = default)
     {
         Validate(command.FirstName, command.LastName, command.BirthDate, command.ApplicationDate, command.PostalCode, command.Beneficiaries);
+        ValidateDateOrder(command.ApplicationDate, command.ApprovalDate, DateOnly.FromDateTime(now.LocalDateTime));
         await using var transaction = await database.Database.BeginTransactionAsync(cancellationToken);
         var settings = await database.SystemSettings.AsNoTracking().SingleAsync(value => value.Id == 1, cancellationToken);
         var member = await database.Members.SingleAsync(value => value.Id == memberId, cancellationToken);
@@ -184,15 +204,18 @@ public sealed class MemberApplicationService(AppDbContext database)
             throw new DbUpdateConcurrencyException("ข้อมูลสมาชิกถูกแก้ไขจากหน้าจออื่น กรุณาโหลดใหม่");
         }
 
+        await CoordinatorApplicationService.EnsureGroupChangeAllowedAsync(database, member, Clean(command.GroupNo), cancellationToken);
+
         var operationId = Guid.NewGuid();
         var audit = NewAudit("member.updated", memberId, memberId.ToString(), now, actor, operationId);
+        audit.Reason = $"{member.RunNo} {member.FirstName} {member.LastName}";
         database.AuditEvents.Add(audit);
         TrackChange(audit.Id, nameof(Member.Title), member.Title, Clean(command.Title));
         TrackChange(audit.Id, nameof(Member.FirstName), member.FirstName, command.FirstName.Trim());
         TrackChange(audit.Id, nameof(Member.LastName), member.LastName, command.LastName.Trim());
         TrackChange(audit.Id, nameof(Member.Gender), member.Gender, Clean(command.Gender));
         TrackChange(audit.Id, nameof(Member.PersonalIdCard), member.PersonalIdCard, Clean(command.PersonalIdCard), true);
-        TrackChange(audit.Id, nameof(Member.BirthDate), member.BirthDate?.ToString("yyyy-MM-dd"), command.BirthDate?.ToString("yyyy-MM-dd"));
+        TrackChange(audit.Id, nameof(Member.BirthDate), member.BirthDate?.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture), command.BirthDate?.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture));
         TrackChange(audit.Id, nameof(Member.HouseNo), member.HouseNo, Clean(command.HouseNo));
         TrackChange(audit.Id, nameof(Member.Under), member.Under, Clean(command.Under));
         TrackChange(audit.Id, nameof(Member.Moo), member.Moo, Clean(command.Moo));
@@ -202,8 +225,8 @@ public sealed class MemberApplicationService(AppDbContext database)
         TrackChange(audit.Id, nameof(Member.PostalCode), member.PostalCode, Clean(command.PostalCode));
         TrackChange(audit.Id, nameof(Member.Mobile), member.Mobile, Clean(command.Mobile), true);
         TrackChange(audit.Id, nameof(Member.GroupNo), member.GroupNo, Clean(command.GroupNo));
-        TrackChange(audit.Id, nameof(Member.ApplicationDate), member.ApplicationDate.ToString("yyyy-MM-dd"), command.ApplicationDate.ToString("yyyy-MM-dd"));
-        TrackChange(audit.Id, nameof(Member.ApprovalDate), member.ApprovalDate.ToString("yyyy-MM-dd"), command.ApprovalDate.ToString("yyyy-MM-dd"));
+        TrackChange(audit.Id, nameof(Member.ApplicationDate), member.ApplicationDate.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture), command.ApplicationDate.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture));
+        TrackChange(audit.Id, nameof(Member.ApprovalDate), member.ApprovalDate.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture), command.ApprovalDate.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture));
 
         member.Title = Clean(command.Title);
         member.FirstName = command.FirstName.Trim();
@@ -230,6 +253,18 @@ public sealed class MemberApplicationService(AppDbContext database)
         var existingBeneficiaries = await database.MemberBeneficiaries
             .Where(value => value.MemberId == memberId && value.IsActive)
             .ToListAsync(cancellationToken);
+        foreach (var slot in new[] { 1, 2 })
+        {
+            var old = existingBeneficiaries.SingleOrDefault(b => b.SlotNo == slot);
+            var next = command.Beneficiaries.SingleOrDefault(b => b.SlotNo == slot);
+            var oldValues = old is null ? new Dictionary<string, string?>() : BeneficiaryValues(new BeneficiaryCommand(
+                old.SlotNo, old.Title, old.FirstName, old.LastName, old.Relationship, old.PersonalIdCard, old.Mobile,
+                old.HouseNo, old.Under, old.Moo, old.Subdistrict, old.District, old.Province, old.PostalCode));
+            var nextValues = next is null ? new Dictionary<string, string?>() : BeneficiaryValues(next);
+            foreach (var field in oldValues.Keys.Union(nextValues.Keys))
+                TrackChange(audit.Id, $"Beneficiary{slot}.{field}", oldValues.GetValueOrDefault(field),
+                    nextValues.GetValueOrDefault(field), field is "PersonalIdCard" or "Mobile");
+        }
         foreach (var existing in existingBeneficiaries)
         {
             existing.IsActive = false;
@@ -249,7 +284,72 @@ public sealed class MemberApplicationService(AppDbContext database)
 
     public async Task<IReadOnlyList<Member>> SearchAsync(
         MemberSearchQuery search,
+        CancellationToken cancellationToken = default) =>
+        await BuildSearchQuery(search).OrderBy(value => value.RunNo).ToListAsync(cancellationToken);
+
+    public async Task<MemberSearchPage> SearchPageAsync(MemberSearchQuery search, int pageNumber, int pageSize,
+        IReadOnlyCollection<Guid>? allowedMemberIds = null, IReadOnlyCollection<Guid>? excludedMemberIds = null,
+        string? sortColumn = null, string? sortDirection = null,
         CancellationToken cancellationToken = default)
+    {
+        if (pageNumber < 1 || pageSize < 1 || pageSize > 200) throw new ArgumentOutOfRangeException(nameof(pageSize));
+        var query = BuildSearchQuery(search);
+        if (allowedMemberIds is not null) query = query.Where(value => allowedMemberIds.Contains(value.Id));
+        if (excludedMemberIds is not null) query = query.Where(value => !excludedMemberIds.Contains(value.Id));
+        var total = await query.CountAsync(cancellationToken);
+        var lastPage = Math.Max(1, (int)Math.Ceiling(total / (double)pageSize));
+        pageNumber = Math.Min(pageNumber, lastPage);
+        var items = await OrderSearch(query, sortColumn, sortDirection)
+            .Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync(cancellationToken);
+        return new MemberSearchPage(items, total);
+    }
+
+    private IOrderedQueryable<Member> OrderSearch(IQueryable<Member> query, string? column, string? direction)
+    {
+        var descending = direction == "desc";
+        var ordered = (column, descending) switch
+        {
+            ("name", false) => query.OrderBy(x => x.FirstName).ThenBy(x => x.LastName),
+            ("name", true) => query.OrderByDescending(x => x.FirstName).ThenByDescending(x => x.LastName),
+            ("role", false) => query.OrderBy(x => database.CoordinatorPositions.Where(p => p.MemberId == x.Id).Select(p => p.RoleCode).FirstOrDefault()),
+            ("role", true) => query.OrderByDescending(x => database.CoordinatorPositions.Where(p => p.MemberId == x.Id).Select(p => p.RoleCode).FirstOrDefault()),
+            ("personalIdCard", false) => query.OrderBy(x => x.PersonalIdCard),
+            ("personalIdCard", true) => query.OrderByDescending(x => x.PersonalIdCard),
+            ("gender", false) => query.OrderBy(x => x.Gender),
+            ("gender", true) => query.OrderByDescending(x => x.Gender),
+            ("birthDate", false) => query.OrderBy(x => x.BirthDate),
+            ("birthDate", true) => query.OrderByDescending(x => x.BirthDate),
+            ("age", false) => query.OrderByDescending(x => x.BirthDate),
+            ("age", true) => query.OrderBy(x => x.BirthDate),
+            ("groupNo", false) => query.OrderBy(x => x.GroupNo),
+            ("groupNo", true) => query.OrderByDescending(x => x.GroupNo),
+            ("address", false) => query.OrderBy(x => x.Subdistrict).ThenBy(x => x.Moo).ThenBy(x => x.HouseNo),
+            ("address", true) => query.OrderByDescending(x => x.Subdistrict).ThenByDescending(x => x.Moo).ThenByDescending(x => x.HouseNo),
+            ("applicationDate", false) => query.OrderBy(x => x.ApplicationDate),
+            ("applicationDate", true) => query.OrderByDescending(x => x.ApplicationDate),
+            ("approvalDate", false) => query.OrderBy(x => x.ApprovalDate),
+            ("approvalDate", true) => query.OrderByDescending(x => x.ApprovalDate),
+            ("coverageDate", false) => query.OrderBy(x => x.CoverageStartDate),
+            ("coverageDate", true) => query.OrderByDescending(x => x.CoverageStartDate),
+            ("beneficiary1", false) => query.OrderBy(x => database.MemberBeneficiaries.Where(b => b.MemberId == x.Id && b.IsActive && b.SlotNo == 1).Select(b => b.FirstName).FirstOrDefault()),
+            ("beneficiary1", true) => query.OrderByDescending(x => database.MemberBeneficiaries.Where(b => b.MemberId == x.Id && b.IsActive && b.SlotNo == 1).Select(b => b.FirstName).FirstOrDefault()),
+            ("beneficiary2", false) => query.OrderBy(x => database.MemberBeneficiaries.Where(b => b.MemberId == x.Id && b.IsActive && b.SlotNo == 2).Select(b => b.FirstName).FirstOrDefault()),
+            ("beneficiary2", true) => query.OrderByDescending(x => database.MemberBeneficiaries.Where(b => b.MemberId == x.Id && b.IsActive && b.SlotNo == 2).Select(b => b.FirstName).FirstOrDefault()),
+            ("relationship1", false) => query.OrderBy(x => database.MemberBeneficiaries.Where(b => b.MemberId == x.Id && b.IsActive && b.SlotNo == 1).Select(b => b.Relationship).FirstOrDefault()),
+            ("relationship1", true) => query.OrderByDescending(x => database.MemberBeneficiaries.Where(b => b.MemberId == x.Id && b.IsActive && b.SlotNo == 1).Select(b => b.Relationship).FirstOrDefault()),
+            ("relationship2", false) => query.OrderBy(x => database.MemberBeneficiaries.Where(b => b.MemberId == x.Id && b.IsActive && b.SlotNo == 2).Select(b => b.Relationship).FirstOrDefault()),
+            ("relationship2", true) => query.OrderByDescending(x => database.MemberBeneficiaries.Where(b => b.MemberId == x.Id && b.IsActive && b.SlotNo == 2).Select(b => b.Relationship).FirstOrDefault()),
+            ("advanceUnits", false) => query.OrderBy(x => x.AdvanceUnitsBalance),
+            ("advanceUnits", true) => query.OrderByDescending(x => x.AdvanceUnitsBalance),
+            ("status", false) => query.OrderBy(x => x.Status),
+            ("status", true) => query.OrderByDescending(x => x.Status),
+            (_, true) => query.OrderByDescending(x => x.RunNo),
+            _ => query.OrderBy(x => x.RunNo)
+        };
+        return ordered.ThenBy(x => x.RunNo);
+    }
+
+    private IQueryable<Member> BuildSearchQuery(MemberSearchQuery search)
     {
         var query = database.Members.AsNoTracking().Where(value => value.ArchivedAtUtc == null);
         if (!string.IsNullOrWhiteSpace(search.Text))
@@ -325,7 +425,7 @@ public sealed class MemberApplicationService(AppDbContext database)
             };
         }
 
-        return await query.OrderBy(value => value.RunNo).ToListAsync(cancellationToken);
+        return query;
     }
 
     private static void Validate(
@@ -355,6 +455,12 @@ public sealed class MemberApplicationService(AppDbContext database)
         {
             throw new MemberValidationException("ผู้รับเงินสงเคราะห์มีได้สูงสุด 2 คน และช่องต้องไม่ซ้ำกัน");
         }
+    }
+
+    private static void ValidateDateOrder(DateOnly application, DateOnly approval, DateOnly businessDate)
+    {
+        if (application == default || approval < application || approval > businessDate)
+            throw new MemberValidationException("วันที่สมัครและวันอนุมัติต้องไม่อยู่ในอนาคต และวันอนุมัติต้องไม่อยู่ก่อนวันที่สมัคร กรุณาตรวจสอบปี พ.ศ.");
     }
 
     private void AddBeneficiaries(Guid memberId, IReadOnlyList<BeneficiaryCommand> commands, DateTimeOffset now, string actor)
@@ -388,6 +494,15 @@ public sealed class MemberApplicationService(AppDbContext database)
             });
         }
     }
+
+    private static Dictionary<string, string?> BeneficiaryValues(BeneficiaryCommand b) => new()
+    {
+        ["Title"] = Clean(b.Title), ["FirstName"] = Clean(b.FirstName), ["LastName"] = Clean(b.LastName),
+        ["Relationship"] = Clean(b.Relationship), ["PersonalIdCard"] = Clean(b.PersonalIdCard), ["Mobile"] = Clean(b.Mobile),
+        ["HouseNo"] = Clean(b.HouseNo), ["Under"] = Clean(b.Under), ["Moo"] = Clean(b.Moo),
+        ["Subdistrict"] = Clean(b.Subdistrict), ["District"] = Clean(b.District), ["Province"] = Clean(b.Province),
+        ["PostalCode"] = Clean(b.PostalCode)
+    };
 
     private void TrackChange(Guid auditId, string field, string? oldValue, string? newValue, bool sensitive = false)
     {
@@ -462,7 +577,12 @@ public sealed class SettingsApplicationService(AppDbContext database)
             throw new MemberValidationException("ค่าตั้งต้นระบบไม่ถูกต้อง");
         }
 
+        if (command.ServiceFeeBasisPoints != 400 && await database.AccountingBooks.AnyAsync(x => x.IsActivated, cancellationToken))
+            throw new MemberValidationException("เมื่อเปิดบัญชีแล้ว รายได้สมาคมใช้อัตราค่าหักเงินสงเคราะห์ร้อยละ 4 เท่านั้น");
         var settings = await database.SystemSettings.SingleAsync(value => value.Id == 1, cancellationToken);
+        if (command.WelfarePerMemberSatang != settings.WelfarePerMemberSatang
+            && await database.AccountingBooks.AnyAsync(x => x.Code == AccountingBookCode.Welfare && x.IsActivated, cancellationToken))
+            throw new MemberValidationException("เมื่อเปิดบัญชีเงินสงเคราะห์แล้ว ยังไม่รองรับการเปลี่ยนอัตราเงินสงเคราะห์ต่อสมาชิก เพราะต้องปรับจำนวนหน่วยตามยอดเงินจริงพร้อมประวัติการแก้ไข");
         settings.SettingsRevision++;
         settings.RegistrationFeeSatang = command.RegistrationFeeSatang;
         settings.ServiceFeeBasisPoints = command.ServiceFeeBasisPoints;
@@ -535,7 +655,7 @@ public sealed class DemoImportService(AppDbContext database)
                 continue;
             }
 
-            await memberService.RegisterAsync(record, businessDate, now.AddMilliseconds(imported), actor, cancellationToken);
+            await memberService.ImportHistoricalAsync(record, businessDate, now.AddMilliseconds(imported), actor, cancellationToken);
             imported++;
         }
 
@@ -550,14 +670,20 @@ public sealed class DemoDataMaintenanceService(AppDbContext database)
         string actor,
         CancellationToken cancellationToken = default)
     {
+        if (await database.AccountingBooks.AnyAsync(x => x.IsActivated, cancellationToken)
+            || await database.AccountingJournals.AnyAsync(cancellationToken)
+            || await database.Set<WelfareCollection>().AnyAsync(cancellationToken))
+            throw new MemberValidationException("มีบัญชีหรือใบเรียกเก็บแล้ว ไม่สามารถล้างประวัติสมาชิกได้");
         var memberCount = await database.Members.CountAsync(cancellationToken);
         await using var transaction = await database.Database.BeginTransactionAsync(cancellationToken);
 
-        await database.AuditFieldChanges.ExecuteDeleteAsync(cancellationToken);
-        await database.AuditEvents.ExecuteDeleteAsync(cancellationToken);
+
+        await database.CoordinatorEvents.ExecuteDeleteAsync(cancellationToken);
+        await database.CoordinatorPositions.ExecuteDeleteAsync(cancellationToken);
         await database.Notifications.ExecuteDeleteAsync(cancellationToken);
         await database.AdvanceResetLines.ExecuteDeleteAsync(cancellationToken);
         await database.AdvanceLedgerEntries.ExecuteDeleteAsync(cancellationToken);
+        await database.DeathRecipientPhotos.ExecuteDeleteAsync(cancellationToken);
         await database.DeathBeneficiarySnapshots.ExecuteDeleteAsync(cancellationToken);
         await database.DeathCalculations.ExecuteDeleteAsync(cancellationToken);
         await database.DeathMemberSnapshots.ExecuteDeleteAsync(cancellationToken);
@@ -573,6 +699,8 @@ public sealed class DemoDataMaintenanceService(AppDbContext database)
             sequence.UpdatedAtUtc = now;
         }
 
+        database.AuditEvents.Add(ActivityAudit.Create("demo.members_cleared", "demo_data", "members", now, actor,
+            $"ล้างสมาชิก {memberCount} คน พร้อมข้อมูลดำเนินงานสาธิต ประวัติการเปลี่ยนแปลงยังคงอยู่"));
         await database.SaveChangesAsync(cancellationToken);
         await transaction.CommitAsync(cancellationToken);
         return memberCount;
@@ -585,8 +713,13 @@ public static class AuditActionLabels
     {
         "member.created" => "เพิ่มสมาชิก",
         "member.updated" => "แก้ไขข้อมูลสมาชิก",
+        "advance.reset" => "รีเซ็ตยอดเงินสงเคราะห์ล่วงหน้า",
+        "member.resigned" => "บันทึกสมาชิกลาออก",
         "settings.updated" => "แก้ไขค่าตั้งต้นระบบ",
         "death.confirmed" => "บันทึกการเสียชีวิต",
+        "coordinator.appoint" => "แต่งตั้งผู้ประสานงาน",
+        "coordinator.replace" => "เปลี่ยนผู้ประสานงาน",
+        "coordinator.end" => "สิ้นสุดหน้าที่ผู้ประสานงาน",
         "demo.members_cleared" => "ล้างข้อมูลสมาชิกสาธิต",
         _ => "รายการระบบ"
     };

@@ -1,0 +1,70 @@
+  ChapanakitCare.Domain -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Domain\bin\Debug\net10.0\ChapanakitCare.Domain.dll
+  ChapanakitCare.Infrastructure -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\bin\Debug\net10.0\ChapanakitCare.Infrastructure.dll
+  ChapanakitCare.Web -> D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Web\bin\Debug\net10.0\ChapanakitCare.dll
+  ChapanakitCare.Domain.Tests -> D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll
+Test run for D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\bin\Debug\net10.0\ChapanakitCare.Domain.Tests.dll (.NETCoreApp,Version=v10.0)
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.10)
+[xUnit.net 00:00:00.91]   Discovering: ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:01.01]   Discovered:  ChapanakitCare.Domain.Tests
+[xUnit.net 00:00:01.05]   Starting:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Registration_after_cutover_starts_unpaid_until_actual_receipt [2 s]
+[xUnit.net 00:00:03.91]     ChapanakitCare.Domain.Tests.AccountingResignationTests.Resigned_member_can_settle_debt_without_reopening_coverage_or_prepaying [FAIL]
+[xUnit.net 00:00:03.91]       ChapanakitCare.Infrastructure.Accounting.AccountingValidationException : รับเงินได้เฉพาะสมาชิกสถานะปกติที่ยังใช้งานอยู่
+[xUnit.net 00:00:03.92]       Stack Trace:
+[xUnit.net 00:00:03.92]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.Receipts.cs(37,0): at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.ReceiveAsync(ReceiveWelfareMoney command, DateTimeOffset now, String actor, CancellationToken ct)
+[xUnit.net 00:00:03.92]         D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.Receipts.cs(92,0): at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.ReceiveAsync(ReceiveWelfareMoney command, DateTimeOffset now, String actor, CancellationToken ct)
+[xUnit.net 00:00:03.92]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingResignationTests.cs(21,0): at ChapanakitCare.Domain.Tests.AccountingResignationTests.Resigned_member_can_settle_debt_without_reopening_coverage_or_prepaying()
+[xUnit.net 00:00:03.92]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingResignationTests.cs(28,0): at ChapanakitCare.Domain.Tests.AccountingResignationTests.Resigned_member_can_settle_debt_without_reopening_coverage_or_prepaying()
+[xUnit.net 00:00:03.92]         --- End of stack trace from previous location ---
+[xUnit.net 00:00:04.16]     ChapanakitCare.Domain.Tests.AccountingResignationTests.Refund_form_records_actual_payment_and_refund_reversal_preserves_resigned_status [FAIL]
+[xUnit.net 00:00:04.16]       Assert.IsType() Failure: Value is not the exact type
+[xUnit.net 00:00:04.16]       Expected: typeof(Microsoft.AspNetCore.Mvc.RedirectToPageResult)
+[xUnit.net 00:00:04.16]       Actual:   typeof(Microsoft.AspNetCore.Mvc.RazorPages.PageResult)
+[xUnit.net 00:00:04.16]       Stack Trace:
+[xUnit.net 00:00:04.16]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingResignationTests.cs(41,0): at ChapanakitCare.Domain.Tests.AccountingResignationTests.Refund_form_records_actual_payment_and_refund_reversal_preserves_resigned_status()
+[xUnit.net 00:00:04.16]         D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingResignationTests.cs(47,0): at ChapanakitCare.Domain.Tests.AccountingResignationTests.Refund_form_records_actual_payment_and_refund_reversal_preserves_resigned_status()
+[xUnit.net 00:00:04.16]         --- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_converts_buddhist_date_and_baht_then_redirects_to_saved_voucher [2 s]
+  Failed ChapanakitCare.Domain.Tests.AccountingResignationTests.Resigned_member_can_settle_debt_without_reopening_coverage_or_prepaying [2 s]
+  Error Message:
+   ChapanakitCare.Infrastructure.Accounting.AccountingValidationException : รับเงินได้เฉพาะสมาชิกสถานะปกติที่ยังใช้งานอยู่
+  Stack Trace:
+     at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.ReceiveAsync(ReceiveWelfareMoney command, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.Receipts.cs:line 37
+   at ChapanakitCare.Infrastructure.AccountingOperations.FinanceOperationService.ReceiveAsync(ReceiveWelfareMoney command, DateTimeOffset now, String actor, CancellationToken ct) in D:\Programing\Personal Projects\Chapanakit-Care\src\ChapanakitCare.Infrastructure\AccountingOperations\FinanceOperationService.Receipts.cs:line 92
+   at ChapanakitCare.Domain.Tests.AccountingResignationTests.Resigned_member_can_settle_debt_without_reopening_coverage_or_prepaying() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingResignationTests.cs:line 21
+   at ChapanakitCare.Domain.Tests.AccountingResignationTests.Resigned_member_can_settle_debt_without_reopening_coverage_or_prepaying() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingResignationTests.cs:line 28
+--- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.AccountingResignationTests.Actual_refund_reduces_resigned_member_liability_once_and_rejects_overpayment [154 ms]
+  Failed ChapanakitCare.Domain.Tests.AccountingResignationTests.Refund_form_records_actual_payment_and_refund_reversal_preserves_resigned_status [95 ms]
+  Error Message:
+   Assert.IsType() Failure: Value is not the exact type
+Expected: typeof(Microsoft.AspNetCore.Mvc.RedirectToPageResult)
+Actual:   typeof(Microsoft.AspNetCore.Mvc.RazorPages.PageResult)
+  Stack Trace:
+     at ChapanakitCare.Domain.Tests.AccountingResignationTests.Refund_form_records_actual_payment_and_refund_reversal_preserves_resigned_status() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingResignationTests.cs:line 41
+   at ChapanakitCare.Domain.Tests.AccountingResignationTests.Refund_form_records_actual_payment_and_refund_reversal_preserves_resigned_status() in D:\Programing\Personal Projects\Chapanakit-Care\tests\ChapanakitCare.Domain.Tests\AccountingResignationTests.cs:line 47
+--- End of stack trace from previous location ---
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_download_returns_the_selected_document_format(format: "csv", contentType: "text/csv; charset=utf-8") [353 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingResignationTests.Resignation_uses_exact_money_and_keeps_it_payable_until_actual_refund [92 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Death_form_displays_accounting_setup_error_without_saving_a_death [491 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_books_preserve_member_history [85 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_books_preserve_the_four_percent_policy [57 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Legacy_reset_page_displays_validation_instead_of_throwing_when_accounting_is_active [95 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Failed_death_accounting_cannot_persist_deceased_status_on_later_save [80 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingWorkflowGuardTests.Active_accounting_rejects_unit_reset_without_creating_paid_balances [93 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_download_returns_the_selected_document_format(format: "pdf", contentType: "application/pdf") [591 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Benefit_payment_form_posts_against_the_chosen_beneficiary [163 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(kind: "expense", target: "5000", expectedTarget: 2500, expectedCash: 7500) [62 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Operating_form_posts_selected_expense_or_bank_transfer(kind: "transfer", target: "1100", expectedTarget: 2500, expectedCash: 7500) [68 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Receipt_form_rejects_subsatang_input_without_posting [65 ms]
+[xUnit.net 00:00:05.53]   Finished:    ChapanakitCare.Domain.Tests
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Voucher_reissue_keeps_original_number_and_shows_reversed_status [134 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Expense_form_lists_only_association_accounts [68 ms]
+  Passed ChapanakitCare.Domain.Tests.AccountingPageTests.Fee_remittance_form_posts_both_books_without_new_income [131 ms]
+
+Total tests: 21
+     Passed: 19
+     Failed: 2
+Test Run Failed.
+ Total time: 7.2575 Seconds

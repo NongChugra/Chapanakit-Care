@@ -28,15 +28,6 @@ public static class ThaiBuddhistDate
         return new DateOnly(buddhistYear - BuddhistEraOffset, month, day);
     }
 
-    public static DateOnly NormalizeStoredDate(DateOnly value)
-    {
-        while (value.Year >= 2400)
-        {
-            value = new DateOnly(value.Year - BuddhistEraOffset, value.Month, value.Day);
-        }
-
-        return value;
-    }
 }
 
 public static class AgeCalculator
@@ -73,7 +64,8 @@ public sealed record DeathBenefitInput(
     long WelfarePerMemberSatang,
     int ServiceFeeBasisPoints,
     int DeceasedAdvanceUnits,
-    int BeneficiaryCount);
+    int BeneficiaryCount,
+    long? DeceasedAdvanceBalanceSatang = null);
 
 public sealed record DeathBenefitResult(
     DeathEligibility Eligibility,
@@ -120,7 +112,10 @@ public static class DeathBenefitCalculator
         // then discard any sub-baht remainder so the displayed amount always ends in .00.
         var serviceFee = (feeNumerator / BasisPointDenominator / 100) * 100;
         var netCollection = checked(grossCollection - serviceFee);
-        var advanceValue = checked(input.DeceasedAdvanceUnits * input.WelfarePerMemberSatang);
+        // Active accounting supplies the recorded monetary balance. First-day callers
+        // still use their unit counters until an explicit accounting cutover occurs.
+        var advanceValue = input.DeceasedAdvanceBalanceSatang
+            ?? checked(input.DeceasedAdvanceUnits * input.WelfarePerMemberSatang);
         var totalBenefit = checked(netCollection + advanceValue);
 
         return new DeathBenefitResult(

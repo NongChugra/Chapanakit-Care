@@ -1,0 +1,790 @@
+[
+  {
+    "Path": "src\\ChapanakitCare.Desktop\\App.xaml",
+    "SHA256": "1D010664AFCABC5E4F731C452D90F3D29278A43953CE2BA2F58C8FE80AB15F35"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Desktop\\App.xaml.cs",
+    "SHA256": "B839DE07995F25213EAE0AD91C33618F80FC6EA7ABCB79A145FA7D2AD5391C61"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Desktop\\Assets\\association-deer-logo.ico",
+    "SHA256": "6C6DA72FBFB5DB8DE7976667BE7E99DFB4F1A8DDDF2765FF73B61E58EAEC42EC"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Desktop\\Assets\\association-deer-logo.jpg",
+    "SHA256": "98E3263BE586EDBF6EB2A8A2793E4DB449CDC2C9754E443131CA145BE00D7676"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Desktop\\ChapanakitCare.Desktop.csproj",
+    "SHA256": "9FE18CBC32DC0D32B7F5D9705A3721989E794D738F95DAB6781FD1C67516AAF4"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Desktop\\DesktopBrowserProfile.cs",
+    "SHA256": "026BFE0A07C94018DC2DB5A86F46F104294444B143A8CA137665CECFA1D981F0"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Desktop\\DesktopDownloadPath.cs",
+    "SHA256": "22FF6BB70B7DC2196ACD29AEC90F29AA750E27810417AF7DFCB8FCFF3570048D"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Desktop\\DesktopReportDownload.cs",
+    "SHA256": "202A5466933B6B0C80C8E79F637C6F620672ABCB611A72A9915B8F7744C7B558"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Desktop\\DesktopServerLaunchPlan.cs",
+    "SHA256": "0916E8389B759D83AE1C8544E725EE7050937C7DB781E5845AC01D4A70A31A5F"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Desktop\\MainWindow.xaml",
+    "SHA256": "83BD005189AED913D6BA31810815C4E535ACD36D8DC7B6111FE953AAA49DCA79"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Desktop\\MainWindow.xaml.cs",
+    "SHA256": "597888BBA24F4082B1E8EAD78C3C87A7A05CA0A2B0934CF7F2A5C80FF4DF0902"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Desktop\\packages.lock.json",
+    "SHA256": "24B797736EE2D7A189BD2152920B71F6401288441786693253CA057D0AE2BA56"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Domain\\BusinessRules.cs",
+    "SHA256": "12711BD6C2AF901D77F5A0EBACFD7A00FF08695B6F2450565D99D68D7097BC40"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Domain\\ChapanakitCare.Domain.csproj",
+    "SHA256": "635D3416EEBB7E7FD2BB67491FCA20C86380C58DF8D71635C267A5626E0D6255"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Domain\\Entities\\AccountingEntities.cs",
+    "SHA256": "410589EA15807D4810910B693AFD1F00E424A57A57ECAD619F104B2221DAF415"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Domain\\Entities\\Coordinators.cs",
+    "SHA256": "5F64BF924661D0E68C893353B0A4A9168FDCC6C798FD05766388F5CFB5A4BA49"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Domain\\Entities\\DeathRecipientPhoto.cs",
+    "SHA256": "B363258F7E77D19513CC7620D3B3AE2885C76C9D6B74E1150A414A99FC82B238"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Domain\\Entities\\Entities.cs",
+    "SHA256": "684BF57AD5A0AD631675540FFEBD53F117FD007D2E385155B4B0C543E5DE6DBA"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Domain\\Entities\\WelfareCollection.cs",
+    "SHA256": "27191D937D95CDABB2D97FB44EBEE9F1E74390EF9A713305455D721D892FA227"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Domain\\FinanceMoney.cs",
+    "SHA256": "C7E6D71BAAADE20D9FB27EFF75F47557F831DE507DE956D603FDF49DBDFACF4C"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Domain\\packages.lock.json",
+    "SHA256": "2241481B7E74DCDCD600303146B730ECC12CBD8E49AA55755EF95EE499FE229A"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Accounting\\AccountingContracts.cs",
+    "SHA256": "CDCE9D58B834DE731F72491A8490418C81AFEBA07E17325CCB70F31FF1A60E7B"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Accounting\\AccountingPostingService.cs",
+    "SHA256": "F85C92FF2D09EDA7FD2C9BD9E18DF83CA7F4E2715F01C591D8401CC09637AFDC"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Accounting\\AccountingSetupService.cs",
+    "SHA256": "D22BA1CC363B2FA277FF11B96A80745B6FA66B54A391B2AFE78BDA267C5E662D"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\AccountingOperations\\DeathAccountingService.cs",
+    "SHA256": "3C5473600766A38BEAB3BE301D8251B54D06197BA30367042098949869B24B3C"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\AccountingOperations\\FinanceCommands.cs",
+    "SHA256": "DA3761AEA41F4B5AC716437A1C0E0AC07A714E1113C762F649CCCBCB2E968DA3"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\AccountingOperations\\FinanceOperationService.Adjustments.cs",
+    "SHA256": "DB6D8C04847911A2605BF2F24553EC8852F7162C56F051B5908DD05F916E916E"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\AccountingOperations\\FinanceOperationService.cs",
+    "SHA256": "A50C9AE024969CE74131E36B21DA4ABE81A7FCA5377352C73122959ED8E814F6"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\AccountingOperations\\FinanceOperationService.Disbursements.cs",
+    "SHA256": "0F1169A8F526C542825E6FA53DBF7D956BC69F6458998070E82C187EE16D8CD9"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\AccountingOperations\\FinanceOperationService.Receipts.cs",
+    "SHA256": "4C2C0CD08BA836D0B02E5323A9C12571444EF3B0184248F7197C9CC87246F1DF"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\AccountingOperations\\FinanceOperationService.Reconciliation.cs",
+    "SHA256": "A16CEF6202F44E9AE5A42EC2E92725233261CE10BE2B20E607097F1DA583F62D"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\AccountingOperations\\FinanceOperationService.Refunds.cs",
+    "SHA256": "EFF51A4AEDBD8179C0189AAC7343CACB0D3F6E0A1A0B6398CA3127E4BDB885B3"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\AccountingOperations\\FinanceOperationService.Reversals.cs",
+    "SHA256": "2F800FDC20F41287B08C76075F264940934580FC5867A371550492879939D0D9"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\AccountingOperations\\WelfareCollectionService.cs",
+    "SHA256": "B604A7AC94A03B8BBB3D70551BE8017B764CE3EEB3E3950E403DFEAB22C110F4"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\AccountingReports\\AccountingReportDocuments.cs",
+    "SHA256": "182905F9406A4B7793D65968BE9419D1261FA0E2C516B71B83FD21081752C73D"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\AccountingReports\\AccountingReportModels.cs",
+    "SHA256": "7048AF76FD43B7E270C01C1CEFFA23DEFC582D1EF38970EB0F59FD735EE9C35A"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\AccountingReports\\AccountingReportQueryService.cs",
+    "SHA256": "49142DEB01142CBB7412011AD6F858F9D9A906E2C02E0F5F3063EAF156717577"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\AccountingReports\\CollectionReportService.cs",
+    "SHA256": "025F63B661BEE2B350D8BC6B1404E2CE12E84FF15E13A2D3E7C154ED93A3C9B5"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\ChapanakitCare.Infrastructure.csproj",
+    "SHA256": "FC31DCCBCE59158EF53CE8632761AE64D2E9493B45F1F817E94783329190F71A"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Coordinators\\CoordinatorApplicationService.cs",
+    "SHA256": "81DDDCF52BE92FA9FC39559FBE41A33B2CF7DD4A383CD1C1D0AD1F69EBE975F2"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Deaths\\DeathApplicationServices.cs",
+    "SHA256": "C626087B3BA4D84A033241DC1F61554BD57ACAE4B6DF365A4BFE0D6F42DC121A"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Deaths\\DeathRegistryPresentation.cs",
+    "SHA256": "7DF90C824FC51F8E8C261B353C821FAEC99D2E373BDE7A8E34BFBF81C02A769D"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Deaths\\RecipientPhotoDocument.cs",
+    "SHA256": "25186D9B05F527117BE250998CC8DD7DAA7623BD6BA6D280808452C78D49927F"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Members\\ActivityAudit.cs",
+    "SHA256": "E32CB07646667DB147F0AC6BB2FE8F33972E30D5B1EC51C9AB6C346CE102299D"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Members\\InteractiveMemberRegistrationPolicy.cs",
+    "SHA256": "7A1ADA8DC7DBEBC6B35207484A3DEC6ADC8F90F8B064AECCF80173E0B3617D98"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Members\\MemberApplicationServices.cs",
+    "SHA256": "75246DC8321D47E12747F1D9955FC19E36852749E2C78853D1E0306A18D16A3A"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Members\\RegistrationAgePolicy.cs",
+    "SHA256": "40072FFD3A06939B03C284B54E451466A6420A0D865A1BD81DCA51647A9B31AA"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Members\\ResignationApplicationService.cs",
+    "SHA256": "C36A38B8150B2CAD33DA39FC57371B0D4C6A737CF4B2B1AA710BB331132818FB"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\packages.lock.json",
+    "SHA256": "17433FA7EC83CE32937EFE7CBFC5F7A1C5E05E9D532CFB514550113149702F35"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Persistence\\AppDbContext.Accounting.cs",
+    "SHA256": "582A9ED650BC4F4711F4865E8B387EFDED9492873A148C795A013E4FA4E37166"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Persistence\\AppDbContext.Collections.cs",
+    "SHA256": "EA0F81ABBC5ACCCEB6349160D4A8FE5AFFC259B861CC7B2A348ACAE7828D5E62"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Persistence\\AppDbContext.cs",
+    "SHA256": "E6B7E964256B494F43B023C58F1E0351C3A738811836CE54427976C543FC4125"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Persistence\\AppDbContextFactory.cs",
+    "SHA256": "AED9126DCC41EEB5208E949F45DB5C51B1ACB27BE7B126B2D9EAB2F9B877D328"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Persistence\\BackupApplicationService.cs",
+    "SHA256": "E9DEA3E09CE77FBC03DBF3FBBA6222A37332C259475CC08846079221BC548228"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Persistence\\CoordinatorWriteGuard.cs",
+    "SHA256": "FD31DD874D6652626ED28617C4154178F71114D97A8A6F048A4EFC704719E7B4"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Persistence\\Migrations\\20260825001432_InitialFirstDaySchema.cs",
+    "SHA256": "532697BFCCCD5AC4D3899E361D751CC6F3E9CCF3DCDCE695F4491E287162422B"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Persistence\\Migrations\\20260825001432_InitialFirstDaySchema.Designer.cs",
+    "SHA256": "9906125688E42B0D2D268C44B55CD6745C75C8C3DB2708B82A2634DB8F6FE86A"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Persistence\\Migrations\\20260825095425_CheckpointFiveDeathCertificatesAndPreferences.cs",
+    "SHA256": "2137E9BC10E245D1FE7DD43C8FFB626A79F2A256584362D3020FEB9983F6653D"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Persistence\\Migrations\\20260825095425_CheckpointFiveDeathCertificatesAndPreferences.Designer.cs",
+    "SHA256": "E76C6FEFDE88C62CD810E1C5A8147A824DDB51088F6A9E90FA9C4E772D52B33C"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Persistence\\Migrations\\20260825110538_FinalReviewerClosure.cs",
+    "SHA256": "7076637DBD325CED5F020AF15F74D0928931C04194839E7F6F687F5046FA9897"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Persistence\\Migrations\\20260825110538_FinalReviewerClosure.Designer.cs",
+    "SHA256": "AAD74F73A3ADC48F960B1E5CE1E46C04479FEA3F2440D3A73815EDCF487F6ABD"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Persistence\\Migrations\\20260825193212_DemoReadyRoundingAndResignation.cs",
+    "SHA256": "0B2347F6BC6AB71E84B27E76031D4A72416336E5A92B3EF697CBEF759F668285"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Persistence\\Migrations\\20260825193212_DemoReadyRoundingAndResignation.Designer.cs",
+    "SHA256": "7F437DFF951848E3ED0F1A61302DC518164FC3FD83DA3B6044D9524610AA8BD9"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Persistence\\Migrations\\20260825213000_ExpenseDeductionDefaults.cs",
+    "SHA256": "F3F5D02FC8880B6499D8A961C9554B7F447D3AA89197DFB21CD3321DA6C26252"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Persistence\\Migrations\\20260825223000_ResignationWorkflow.cs",
+    "SHA256": "8B3A8E2794F9D7A5D00F162CB3AA60243C45C486775DB2E32761AEC10CA7E0C1"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Persistence\\Migrations\\20260904022726_CoordinatorSelection.cs",
+    "SHA256": "6809E841C66AA3D5ABA782B92E3780EFBD8B5663D8E9DD6A9348A98BD2E5C95E"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Persistence\\Migrations\\20260904022726_CoordinatorSelection.Designer.cs",
+    "SHA256": "9BF1FB6F28D33A77AFD5CD9C46612E72183885573697B797C8DDCFD248A774C5"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Persistence\\Migrations\\20260908160800_RecipientPhotosAndDurableHistory.cs",
+    "SHA256": "ABAAAE1BBA88DB94E4046BD50D20717D9BB8F48D3C3FB9A38F3117E8DCCF5D6C"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Persistence\\Migrations\\20260908160800_RecipientPhotosAndDurableHistory.Designer.cs",
+    "SHA256": "EF19182AB625F4F517468C1B5F4F1D1C29DE81F42664EB399E36E6BABED60C98"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Persistence\\Migrations\\20260924113236_AccountingLedgerIntegrity.cs",
+    "SHA256": "449D9F82554ADAF65B6A62909A5ED23E82834C20CA8EC456B64BD0BFE9851430"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Persistence\\Migrations\\20260924113236_AccountingLedgerIntegrity.Designer.cs",
+    "SHA256": "68826EC9F016C7B6D5922B64BE1F484ECC33CB5FE05717A52CFA6A9793DEF810"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Persistence\\Migrations\\AppDbContextModelSnapshot.cs",
+    "SHA256": "75FC3506B696BC7BA751CF469679A81371FC123FB699CDFE8A8AE86B5EE42CF6"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Reports\\AccountingDocumentModels.cs",
+    "SHA256": "5F0CDA59214C7453184A31CA5E0193F0B94C8274C88EDCE2E3803C20A11BC597"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Reports\\AccountingDocumentRenderer.cs",
+    "SHA256": "C479445C96B67BEED5FB15730B73443D380CC3FC71A8D3DAC7E31E7AFE72282A"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Reports\\OfficialReportDocuments.cs",
+    "SHA256": "FEEEF51906452639777A035DAAB021919C0A86DF46F0C6C2647A5D09EBBDF272"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Reports\\OfficialReportModels.cs",
+    "SHA256": "0867426B9B7E649260EE9ED27F791B36A10E64850CE349FF231FC74E9C250157"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Infrastructure\\Reports\\ReportApplicationService.cs",
+    "SHA256": "87F366C90217ED992D7693BCB56D90460CC73FB399C8429325DAA6641D53B9A3"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\App_Data\\demo-members.json",
+    "SHA256": "E86C9025523C75A440E603D5B9720C1D8256495AFFB2B3B79BC44369208EBDBE"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\ChapanakitCare.Web.csproj",
+    "SHA256": "F252E04EA0B1D4B21F6A522D3E8445FDEA7CC8035E0AF2DD06EF509F646C093B"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\packages.lock.json",
+    "SHA256": "34D826AA637495263C01C3AE34E5E6252966AC9633370DA303911027EF36D565"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Accounting\\Collections.cshtml",
+    "SHA256": "29915E6DFC3DB47366F5B331FFA80BDB508D5E8FDC22703308FD2450F2A6585F"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Accounting\\Collections.cshtml.cs",
+    "SHA256": "9F61CE49A16543AF6B88AC58AF0CEF7301297641A9645A0DBF1071D461F096F7"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Accounting\\Index.cshtml",
+    "SHA256": "FBB051281956CD691C36939AA4D393DF40453DB43F7A053B4E71A6105E1C4F09"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Accounting\\Index.cshtml.cs",
+    "SHA256": "A27A621192DCF4B385C389DC3626B53ECCDEB53CF33076554ABCF9E1265D2654"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Accounting\\Manage.cshtml",
+    "SHA256": "3C9BDF53A7DA3027F2DC6704998748234165F455DB310B9C31522F974AC7F46E"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Accounting\\Manage.cshtml.cs",
+    "SHA256": "F7A4B8ED7311F035030D5B17936AD15D85133924BD7A91182669BF9E024F081A"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Accounting\\Opening.cshtml",
+    "SHA256": "D55A3FBCF946A3637A4F00C4D2CE80B4378249E3B180A49873E81030691DB6EB"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Accounting\\Opening.cshtml.cs",
+    "SHA256": "DDA6D0015F99121682A7FE2B0B2FF181F58760B3F5AA85FFA9B9BB69C178223D"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Accounting\\Reports.cshtml",
+    "SHA256": "C97A456CA7151A06F1F14283801B081DCDDC690384A2D667B734A9392EC7E6E0"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Accounting\\Reports.cshtml.cs",
+    "SHA256": "80242A43C1E76C86B0FC72B275D802EF8D1AC0C3E924598E614A9BC167E6765B"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Accounting\\Transaction.cshtml",
+    "SHA256": "4078EEE701D184CA365D53C13DA357AB029C23139707F066D2B511E0869EFA3C"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Accounting\\Transaction.cshtml.cs",
+    "SHA256": "E20BAACF6ECFDB5351BEF03E63F7557D9FB51C071C8EDD8B20D55446709816C8"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Accounting\\Voucher.cshtml",
+    "SHA256": "64F7072CB0315BA9DC9E0EB2929B4D3BB9621F62EE65C1E1E1D67180F8CF28A7"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Accounting\\Voucher.cshtml.cs",
+    "SHA256": "2C50E29B7FFDF5A6AD619C968AB21917DE56250558760B3A4DA90E85E971AD3C"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Advances\\Index.cshtml",
+    "SHA256": "7EA28F687A1D4E6F37CFF24E623E87AC3AE8D598CF533B578F5C766BFBCB3D33"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Advances\\Index.cshtml.cs",
+    "SHA256": "B241E404EDBBA7D687ECD9CBE272D5D0BDE0EB52121FBB1933CD0A459E8B4D2D"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Coordinators\\Index.cshtml",
+    "SHA256": "47F88872AD5C9438CDCE2712CAF4ACE27D6C2434726CA835518D03C03268125C"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Coordinators\\Index.cshtml.cs",
+    "SHA256": "60F52B153825CB48D680FF1DBE77FD54C112AE287A5043183D0500F7A483F963"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Deaths\\Create.cshtml",
+    "SHA256": "16D67CFAF462530FEDCF78D2EDB868B220C3D3F27831D24020604914829201C9"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Deaths\\Create.cshtml.cs",
+    "SHA256": "AC060A008A3C0E4C2BE5C78A910F93152FE08D15EEEC7596F941696F393366CF"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Deaths\\Index.cshtml",
+    "SHA256": "C421A6095D146D22113022D1BF31357242710C8C87F33FDF44FB6DEEF3B5FBEB"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Deaths\\Index.cshtml.cs",
+    "SHA256": "F9293E52A8CAD00F3E698D51A0A3D00C3690BB07679B02B298006A7061114531"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Error.cshtml",
+    "SHA256": "16455F1BD2218AA54494ADAFB65687E11034C3914CE396EDAF2908D0BAE9C70D"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Error.cshtml.cs",
+    "SHA256": "2ED97F3EDFDD57233E92F895D6999F1FEACBFE4C37D8ACE470DF725647BC1AA1"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\History\\Index.cshtml",
+    "SHA256": "06FC8754A9FF55BCD709BCFBDEAB2B0299D13BA52A30C3E7475B7E6157B618B9"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\History\\Index.cshtml.cs",
+    "SHA256": "AA38047EB3F49B4B88762560333690B5A8258AE0EB255CADEA0E567C55DA0EF3"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Index.cshtml",
+    "SHA256": "770060D3B5B397BBD3B2F20058A7A4312A5CBFBF68068241A822DC41F39315E6"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Index.cshtml.cs",
+    "SHA256": "EC665A493B32F1ACE5A558BAF1D0E979EBA6076A186A2A726412642F4C6D1B77"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Members\\Create.cshtml",
+    "SHA256": "1220B24C4F16BCDB0E689C5DF5A61B8B645A20F83ADF6C6DB6C3A5755CB5432D"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Members\\Create.cshtml.cs",
+    "SHA256": "7823295CBD0D42475CD51D61E9505B5FEE2542A04905064965EB1E79B73BCFA0"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Members\\Edit.cshtml",
+    "SHA256": "69C09A29C06BC8390B102F2818A2064409616BF913B9A521C3823CB54B31FAB4"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Members\\Edit.cshtml.cs",
+    "SHA256": "44CB5BFDD7897D676194D97F7F72DD47F0D33B8DC329A175D33570BB6040CA94"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Members\\Index.cshtml",
+    "SHA256": "D06B8E7F936C9D1CA305CF7A36A285FCF5A1B2AB4BE2B54FD7355BCB4BE07A9D"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Members\\Index.cshtml.cs",
+    "SHA256": "43389D2B1ED5F86DB931F735F2915B17533C564A61BF534FED327275BDAF0E5F"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Members\\MemberEditorPageModel.cs",
+    "SHA256": "2937574AC12EEA71424CF7839BC99E18663107CE2E434BB5CD14A127B2F0278D"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Members\\_MemberForm.cshtml",
+    "SHA256": "B40E497BCF941130D9FF3806B0AB7ED8C713CCC1F6E52DC94C32CB28398605B1"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Members\\MemberFormInput.cs",
+    "SHA256": "814E34589FD233818FB2F603CB93C08D54EBBFE0F73409BA4A91D6D2CA66DD7F"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Reports\\Index.cshtml",
+    "SHA256": "CB1A90B2595BB75438BEF6D1F44BF83984D2C89A486BB71E109A6001F6B03008"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Reports\\Index.cshtml.cs",
+    "SHA256": "FB1936814514A249AD80BB545A3C2572227DEC8A32BA55CC025D53BA0373C6CD"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Resignations\\Index.cshtml",
+    "SHA256": "48DA35CBB1C788FDA5488E2AC1E8BF375BC0C18247C76DAAB46735402DA99BC8"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Resignations\\Index.cshtml.cs",
+    "SHA256": "8211D452BF140EFE7702FF9CB793478677A7447B5B2FFACD830AE771B849CE8F"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\Shared\\_Layout.cshtml",
+    "SHA256": "3CFDE65821FB78B34E2A5363D2EBC926694943FF96E23CC4B10CDD3953EBCF38"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\_ViewImports.cshtml",
+    "SHA256": "1C207ADE458D1A46E95BC14CE2A1AFBE96931A1832C310645109DD6E2EE4B30E"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Pages\\_ViewStart.cshtml",
+    "SHA256": "62AFAEE3500962D2262CF59943E45AD8BE3D3E0D26698B4152A0C4B7705FC129"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Program.cs",
+    "SHA256": "987A6B561A8EE7B69EEF31E6748E92798E73359D7E7EE2D2BB58B1C24B37C716"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Properties\\launchSettings.json",
+    "SHA256": "DB407070FE6F38C86461A6C8AD2DA1F43902250206E184C91D497D63159464EE"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Validation\\GregorianDateAttribute.cs",
+    "SHA256": "F430BA34AA3CF7492F3A98590ADD64BA4BBF87847EAB994C8E8F51B2D9F8995C"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\Validation\\ThaiModelBindingMessages.cs",
+    "SHA256": "24BE7BFDCDDF34DF4142C08DBFC50E3AFC4B3D76F297F5203F2230C9F88E2E10"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\wwwroot\\css\\site.css",
+    "SHA256": "D0294A3D3C46AECE6200FF612EE3563C63BBA1D9E846841A9BD465BC03945B2E"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\wwwroot\\images\\association-deer-logo.jpg",
+    "SHA256": "98E3263BE586EDBF6EB2A8A2793E4DB449CDC2C9754E443131CA145BE00D7676"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\wwwroot\\images\\exec-3a5e945a-fbfd-49c0-afe1-95781d261508.png",
+    "SHA256": "A0CC727BFD567EC23B9E366F9D346F2E583F18EDAD2273A61FA3B7B3425FD33F"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\wwwroot\\js\\coordinator-search.js",
+    "SHA256": "519E05123AB192D56F330FCD891EEA17F72A7344C6505A366E3A80ECAA1D9DFD"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\wwwroot\\js\\death-table.js",
+    "SHA256": "A9CA89468312440E81AB65EB427FB656DCF3A4562A80276C9347F02C15F2AF7F"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\wwwroot\\js\\member-table.js",
+    "SHA256": "D9645EAAEB6C29925115D3564DAE629D13C779D3A04371C9D59C73710B1561E2"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\wwwroot\\js\\site.js",
+    "SHA256": "5B4EA7F06918A58AD4F3C321CA8909AF7903E7DB2B2FFF649ECCBCBE9E5C402C"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\wwwroot\\js\\thai-date.js",
+    "SHA256": "3C1306803DD51C05CF6493C2A01F2FF33FA4A95E9094D83CC35C3CE316A1DFE0"
+  },
+  {
+    "Path": "src\\ChapanakitCare.Web\\wwwroot\\js\\thai-validation.js",
+    "SHA256": "F61CA929408FBA97EE0CFD2C99BD06B7177370ECB79F62945E56B958FE7A9B24"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Desktop.Tests\\ChapanakitCare.Desktop.Tests.csproj",
+    "SHA256": "94A8EAE47132F109AA601BFF45D247C70C567D75368AD61A0DA935EE985290CE"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Desktop.Tests\\DesktopDownloadPathTests.cs",
+    "SHA256": "C6416CD681594B7EC86DCBD9792BF6345ADE66F357B34812159059DCCA0CD9ED"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Desktop.Tests\\DesktopServerLaunchPlanTests.cs",
+    "SHA256": "480CE24BB624955F3F720268553F25F8D624DAF5F2EE44284A70F8E8A802DB4F"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Desktop.Tests\\packages.lock.json",
+    "SHA256": "74BA330C89C679A92424E3DA710CAC9292D7FD3789CDBAF5D25A99A62299AA3F"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\AccountingAdjustmentTests.cs",
+    "SHA256": "EB5C77CD90536322804399CBAA7C89909B2BD8C3E0EE3A8F011B84D36873D9BF"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\AccountingBenefitTests.cs",
+    "SHA256": "E06C30E8114802F7396E1272D75E9152771B6CF480EE9DA634C52DD4E8F836B5"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\AccountingCashAccountTests.cs",
+    "SHA256": "7621D4384E3528B4C5474CBC85A0AB992498476035956395A7D2758E400BFCD2"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\AccountingCollectionPageTests.cs",
+    "SHA256": "4982789F5B3670913F3242AFA446088B4C3EF2E937940886D52CEF9CF50A7C6E"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\AccountingCoreTests.cs",
+    "SHA256": "2D88FB9BBC45FE20E72A8AD73A3618DE55CB31FF1BD7EC76AC027CB79D5D4A10"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\AccountingDeathIntegrationTests.cs",
+    "SHA256": "1D0CB69692919738E9C404296B9EF266309952CE16998CC288A9AEDDB7A6E855"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\AccountingDocumentTests.cs",
+    "SHA256": "7139A94DB9B93FFA122653EEF07AAFEAFC14438C760D2C977467D52510AA776F"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\AccountingHttpFormTests.cs",
+    "SHA256": "AE4C071CE961F744FA7AE2AB96DC3101B41DA3FF607D6725E98BEB3BA3D9C353"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\AccountingManagementPageTests.cs",
+    "SHA256": "AAC6B693441915505A683FF9C9365618D5F19EB3623FEC2F807693C9B85A7FE3"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\AccountingMigrationTests.cs",
+    "SHA256": "F55753E89716CA39310D56CD3366CA3B44E06AA9461B077BA825063CB851CAE0"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\AccountingOpeningIntegrityTests.cs",
+    "SHA256": "784EDB03D6805AC0F17515CB65CB1D9D7F6F687A2E7525FEF55E035744008263"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\AccountingOpeningPageTests.cs",
+    "SHA256": "A406550B08625BDA080516049F9FF3CEE70BF17531AF66834944223CD2DE41C8"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\AccountingPageTests.cs",
+    "SHA256": "D7DECFFB2DFCA0CADBB3AFCBEE48B3388096735EB8E6A19DAED49412917644BE"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\AccountingReconciliationTests.cs",
+    "SHA256": "3E98BA5AB8DC3E896E72404E0478945E333124B44854032A8BA4CB96B7E331FB"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\AccountingReportPageTests.cs",
+    "SHA256": "2183DE0C6067C96E3DC2C05B5216F83BFC6FF6CA35EB7BADDF1848AEE9781158"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\AccountingReportQueryTests.cs",
+    "SHA256": "ECCD905B807AFD7A2F49FD4377F7F02AFC4355822EEFCA1D1222655B20EF9B0A"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\AccountingResignationTests.cs",
+    "SHA256": "A4A9E9841BF49830F166E21F7A2D7382CDC53F32E3A90465EC15CB83B3015568"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\AccountingTestDatabase.cs",
+    "SHA256": "E1929A8B0C275964046A1EFBFBEC357DE106BDD53F1F32E8163467C32B2ECBAC"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\AccountingWorkflowGuardTests.cs",
+    "SHA256": "5A4ADC566DD86D0EF6DDCAF5D8AFC9E328C5FDD26D03051E0E962FA8CE6E4811"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\ActivityHistoryTests.cs",
+    "SHA256": "B5E65387498A88327EF3889808A192FD4257C9DEB482C2C34D1145817802975A"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\BusinessRuleTests.cs",
+    "SHA256": "1B410E738C2C0C1C38634C10E69626E7DA6480476F00B5533D5D18F4C7280FEC"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\ChapanakitCare.Domain.Tests.csproj",
+    "SHA256": "E8BE855EAE67AE02ADE80F304564BC565C6D98CEE7CCF59297BBFF22C0B30F8C"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\CheckpointFiveWorkflowTests.cs",
+    "SHA256": "9F11EDEFCF43866590BA5BB934E6FFD78DCE45881C21BC8D245EADC32D99F30B"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\CheckpointFourReportTests.cs",
+    "SHA256": "90C8C4A9640DF3D892B0D3C9411BAC332CEC538D02397D180F6BED372738EF01"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\CheckpointFourWorkflowTests.cs",
+    "SHA256": "1F4E5A15BBC3DCA35B03A28A1AAB268A4E7EB91D3B8B18C9F834F0C44FE98C29"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\CheckpointThreeFormGuardTests.cs",
+    "SHA256": "DEC262D0A5C7AA5E6BDD8A55D691E7261AAD8F46FA43267824CFEF1CCC3D9D81"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\CheckpointThreeWorkflowTests.cs",
+    "SHA256": "6982E016798200A2E7A54356F62BD5F39C7886B74851F9BD5B5EF188197715C5"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\CheckpointTwoWorkflowTests.cs",
+    "SHA256": "7FF5906C34FB7ACE2EE1FC92A5B8CE2A028AB4C49ED210B125368F8F03BBA504"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\CollectionReportTests.cs",
+    "SHA256": "D39E42917251F225942392FC45A7CFB6ED5197D32246A80ED09F480CCB7CF8FF"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\CoordinatorIntegrityTests.cs",
+    "SHA256": "A3B47DF6423AE290E6258B38D488FCF59B766C49B789930D9D944995EE0424A3"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\CoordinatorMigrationTests.cs",
+    "SHA256": "F9B8F51210909FCD08A15AFDCC05F9240F5C2EFA9FDBD7917E3462D1CD49791A"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\CoordinatorPageTests.cs",
+    "SHA256": "AA608C9D779C4B8437B8154BE214A18EB7A92F7E172CDE03C4DEA643DE76FF9B"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\CoordinatorWorkflowTests.cs",
+    "SHA256": "DB765B74383967304389914B3D8B38FAA3DE3A69C62CDCB1DA92C0F18D4BB98E"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\DatabaseContractTests.cs",
+    "SHA256": "3B6F64C240E9EBCDF045E7469483A603B8D38A8787212C9236D810DBC7AFAE5F"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\DeathPhotoIntegrityTests.cs",
+    "SHA256": "7B848ECAEF58E5AF4B075411F0F723624AEF3B07BCD17DD7D8A14C242A2562F1"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\DeathRegistryPageTests.cs",
+    "SHA256": "DC0BDE2B134E661B5740EA669AEC4E8580F2966AA46F1332B672945285D454D1"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\FinanceDisbursementTests.cs",
+    "SHA256": "D7A2B19727B9467BDDF64BFB18ADA37154E218492BC40C832481FB3298AEAFBA"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\FinanceMoneyTests.cs",
+    "SHA256": "691FDCAE3339C6A0F645D31D6305261D71C103FB87036435D8976D1E1A8FB0D8"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\FinanceOperationTests.cs",
+    "SHA256": "1A052B41ACB3FB5B2C661F482352A84CBEC3AF6360B82222F83FA74A0AD31BF9"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\FinanceReversalTests.cs",
+    "SHA256": "07244ADA5586D398F57BB56BCFCB8428117175CF36F61D10C22F55CE52048B88"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\FinanceTestStore.cs",
+    "SHA256": "AA765F7409F5F3B21797ED264CD6C38DDFD33A218228D7965F7EB5B6A635EB26"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\MemberDateSubmissionTests.cs",
+    "SHA256": "105FE1DEDF7176A476A1DFE9B857C5595DA7C8D7C19D130B32F6822979E13EA4"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\packages.lock.json",
+    "SHA256": "292BE2A40BC27F2FC8043CF7C17C01E2776A92454D5298F29638D11740FC7D6A"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\RegistrationAgeTests.cs",
+    "SHA256": "DAFB7B0226B6012706F89549208EB220F58040027B43D14F2A845F7E234072F7"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\ReportCompletionDataTests.cs",
+    "SHA256": "6A42EECF1301C45BFAD29B9D712DF39D963649988FB25DD1C16184D8823596EA"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\ReportFormSubmissionTests.cs",
+    "SHA256": "B5A7960FE9AC8BA9048271599DC72D35424A5F995D43AEEB8BD98F15ACE90C3C"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\ReportLayoutTests.cs",
+    "SHA256": "D11CF755D0AC9C470060461D73A5353CB7E40FA62BB052766BA38802436B3D34"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\ReportPdfText.cs",
+    "SHA256": "0DA89C6B85AD7C09B77CFEF78FF98B0B41B825A0C19058274F94A0289D77FDA8"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\ResignationWorkflowTests.cs",
+    "SHA256": "7D85615A5D790DCD2A6A4194351EBC0FCC39837897ACAEE0EF76A72755304191"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\TestData.cs",
+    "SHA256": "84946ECB85F78F6A6EA70F6C42AE54D4BDF308A174DBFAD4F4B0139F77D10FFD"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\ThaiBuddhistDateTests.cs",
+    "SHA256": "3ABA67984C46AD4FB119C4CF3B6114156E1BEFAE0980F04BC7DA903D5E63C2B2"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\ThaiValidationTests.cs",
+    "SHA256": "1ED06B9BA69F1A82E4E98BC73A3972C0DFB8F37F3B7B2BC4B5B66C0275C4BB70"
+  },
+  {
+    "Path": "tests\\ChapanakitCare.Domain.Tests\\WelfareCollectionTests.cs",
+    "SHA256": "E4FC0A237E1F53712434CC35DC027630701634DB3B11AC269DBA0818ACA426AD"
+  },
+  {
+    "Path": "tests\\js\\thai-date.test.mjs",
+    "SHA256": "F999AFA7DC91C2316C95C147429F4A5A5F82281CBA2A550F965D658AD01CCE3E"
+  },
+  {
+    "Path": "tests\\js\\thai-validation.test.mjs",
+    "SHA256": "A7408E05AECB6FB4B1FEE8A86F46D19651B334CA1B08BFB80A2BEEB43CE2A65B"
+  },
+  {
+    "Path": "tests\\tools\\test_build_demo_import.py",
+    "SHA256": "69ED4A6DC443C39EFFD05FACD2A24F3E4116A9B0A3585AFE785581130FBBA40C"
+  }
+]

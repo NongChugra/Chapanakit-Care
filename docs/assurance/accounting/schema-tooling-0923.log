@@ -1,0 +1,5 @@
+The template "Dotnet local tool manifest file" was created successfully.
+
+Unhandled exception: Unable to load the service index for source https://api.nuget.org/v3/index.json.
+You can invoke the tool from this directory using the following commands: 'dotnet tool run dotnet-ef' or 'dotnet dotnet-ef'.
+Tool 'dotnet-ef' (version '10.0.10') was successfully installed. Entry is added to the manifest file D:\Programing\Personal Projects\Chapanakit-Care\dotnet-tools.json.

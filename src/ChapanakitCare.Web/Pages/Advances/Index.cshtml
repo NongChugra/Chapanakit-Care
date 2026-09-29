@@ -4,12 +4,18 @@
 
 <section class="card">
     <div class="card-head">
-        <div><h2>ตัวนับเงินสงเคราะห์ล่วงหน้า</h2><div class="muted">MVP นี้รีเซ็ตเฉพาะจำนวนหน่วย สมาชิกเสียชีวิตคงยอด 0 และไม่เข้าร่วมครั้งถัดไป</div></div>
+        <div><h2>ตัวนับเงินสงเคราะห์ล่วงหน้า</h2><div class="muted">@(Model.AccountingActive ? "ตัวนับคำนวณจากยอดเงินจริง การเติมเงินต้องบันทึกรับเงินสมาชิก" : "MVP นี้รีเซ็ตเฉพาะจำนวนหน่วย สมาชิกเสียชีวิตคงยอด 0 และไม่เข้าร่วมครั้งถัดไป")</div></div>
+        @if (Model.AccountingActive)
+        { <a class="button" asp-page="/Accounting/Transaction" asp-route-kind="receipt">บันทึกรับเงินสมาชิก</a> }
+        else
+        {
         <form method="post" asp-page-handler="Reset" onsubmit="return confirm('ยืนยันรีเซ็ตยอดสมาชิกปกติทุกคนเป็น @Model.TargetUnits คน?')">
             <input asp-for="ResetToken" type="hidden" />
             <button class="button" type="submit">รีเซ็ตยอดสมาชิกปกติเป็น @Model.TargetUnits คน</button>
         </form>
+        }
     </div>
+    <div asp-validation-summary="All" class="alert"></div>
     @if (Model.Latest is not null) { <p>ครั้งล่าสุด: <strong>@Model.Latest.ResetNo</strong> · เสียชีวิตก่อนรีเซ็ต @Model.Latest.DeathsSincePreviousReset ราย</p> }
 </section>
 

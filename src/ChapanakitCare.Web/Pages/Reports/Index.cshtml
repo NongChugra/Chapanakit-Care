@@ -5,13 +5,33 @@
     <div class="card-head"><div><h2>รายงานทางการ</h2></div></div>
 </section>
 <section class="grid three" style="margin-top:18px">
+    @* GET submissions replace the action query, so the handler must be a form field. *@
     <article class="card"><h2>รายงานสมาชิกทั้งหมด</h2>
         <p class="muted">รายชื่อสมาชิกปัจจุบันทั้งหมด พร้อมผู้รับเงินสงเคราะห์</p>
-        <form method="get" asp-page-handler="AllMembers" autocomplete="off"><button class="button" type="submit">ดาวน์โหลด PDF</button></form>
+        <form method="get" asp-page="/Reports/Index" autocomplete="off">
+            <input type="hidden" name="handler" value="AllMembers" />
+            <button class="button" type="submit">ดาวน์โหลด PDF</button>
+        </form>
     </article>
     <article class="card"><h2>รายงานสมาชิกแยกตามกลุ่ม</h2>
-        <form method="get" asp-page-handler="MemberByManager" autocomplete="off"><input type="hidden" name="from" value="@Model.From.ToString("yyyy-MM-dd")" /><input type="hidden" name="to" value="@Model.To.ToString("yyyy-MM-dd")" /><label>กลุ่มสมาชิก<select name="groupNo" required><option value="">เลือกกลุ่ม</option>@foreach (var group in Model.ManagerGroups) { <option value="@group">@group</option> }</select></label><button class="button" type="submit">ดาวน์โหลด PDF</button></form>
+        <form method="get" asp-page="/Reports/Index" autocomplete="off">
+            <input type="hidden" name="handler" value="MemberByManager" />
+            <label>กลุ่มสมาชิก<select name="groupNo" required><option value="">เลือกกลุ่ม</option>@foreach (var group in Model.ManagerGroups) { <option value="@group.GroupNo">@group.DisplayLabel</option> }</select></label>
+            <button class="button" type="submit">ดาวน์โหลด PDF</button>
+        </form>
     </article>
-    <article class="card"><h2>รายงานสมาชิกประจำเดือน</h2><form method="get" asp-page-handler="Monthly"><label>เลือกเดือน (พ.ศ.)<input type="hidden" name="month" value="@Model.DefaultMonth" id="monthly-month" /><input type="text" inputmode="numeric" maxlength="7" placeholder="xx/xxxx" data-thai-month data-thai-month-target="#monthly-month" required /></label><button class="button" type="submit">ดาวน์โหลด PDF</button></form></article>
-    <article class="card"><h2>แบบ ส.ฌ.ก.๑</h2><form method="get" asp-page-handler="SakOne"><label>เลือกเดือน (พ.ศ.)<input type="hidden" name="month" value="@Model.DefaultMonth" id="sak-one-month" /><input type="text" inputmode="numeric" maxlength="7" placeholder="xx/xxxx" data-thai-month data-thai-month-target="#sak-one-month" required /></label><button class="button" type="submit">ดาวน์โหลด PDF</button></form></article>
+    <article class="card"><h2>รายงานสมาชิกประจำเดือน</h2>
+        <form method="get" asp-page="/Reports/Index">
+            <input type="hidden" name="handler" value="Monthly" />
+            <label>เลือกเดือน (พ.ศ.)<input type="hidden" name="month" value="@Model.DefaultMonth" id="monthly-month" /><input type="text" inputmode="numeric" maxlength="7" placeholder="xx/xxxx" data-thai-month data-thai-month-target="#monthly-month" required /></label>
+            <button class="button" type="submit">ดาวน์โหลด PDF</button>
+        </form>
+    </article>
+    <article class="card"><h2>แบบ ส.ฌ.ก.๑</h2>
+        <form method="get" asp-page="/Reports/Index">
+            <input type="hidden" name="handler" value="SakOne" />
+            <label>เลือกเดือน (พ.ศ.)<input type="hidden" name="month" value="@Model.DefaultMonth" id="sak-one-month" /><input type="text" inputmode="numeric" maxlength="7" placeholder="xx/xxxx" data-thai-month data-thai-month-target="#sak-one-month" required /></label>
+            <button class="button" type="submit">ดาวน์โหลด PDF</button>
+        </form>
+    </article>
 </section>

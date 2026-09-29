@@ -1,0 +1,229 @@
+using ChapanakitCare.Domain.Entities;
+using ChapanakitCare.Infrastructure.Persistence;
+using ChapanakitCare.Infrastructure.Reports;
+
+namespace ChapanakitCare.Infrastructure.AccountingReports;
+
+public enum MemberMoneyMovementKind
+{
+    OpeningBalance,
+    ActualReceipt,
+    MemberRefund,
+    DeathDeduction,
+    Reversal,
+    Other
+}
+
+public enum MoneyMovementKind
+{
+    OpeningBalance,
+    MemberReceipt,
+    FeeRemittance,
+    BenefitPayment,
+    MemberRefund,
+    OperatingExpense,
+    InternalTransfer,
+    Reversal,
+    Other
+}
+
+public sealed record MemberMoneyHistoryEntry(
+    DateOnly BusinessDate,
+    Guid JournalId,
+    string JournalNumber,
+    MemberMoneyMovementKind Kind,
+    string VoucherType,
+    string Description,
+    string? PartySnapshot,
+    bool IsReversal,
+    string? ReversedJournalNumber,
+    long AdvanceCreditSatang,
+    long AdvanceDebitSatang,
+    long ShortfallDebitSatang,
+    long ShortfallCreditSatang,
+    long ActualReceiptSatang,
+    long RefundSatang,
+    long DeathDeductionSatang,
+    long RunningAdvanceSatang,
+    long RunningShortfallSatang);
+
+public sealed record MemberMoneyHistoryReport(
+    Guid MemberId,
+    string MemberRunNo,
+    string MemberName,
+    AccountingReportPeriod Period,
+    long OpeningAdvanceSatang,
+    long OpeningShortfallSatang,
+    long MovementAdvanceCreditSatang,
+    long MovementAdvanceDebitSatang,
+    long MovementShortfallDebitSatang,
+    long MovementShortfallCreditSatang,
+    long TotalActualReceiptSatang,
+    long TotalRefundSatang,
+    long TotalDeathDeductionSatang,
+    long ClosingAdvanceSatang,
+    long ClosingShortfallSatang,
+    long ClosingNetAdvanceSatang,
+    IReadOnlyList<MemberMoneyHistoryEntry> Entries);
+
+public sealed record AnnualActualReceiptRow(
+    Guid JournalId,
+    string JournalNumber,
+    DateOnly BusinessDate,
+    Guid MemberId,
+    string MemberRunNo,
+    string MemberName,
+    string? PartySnapshot,
+    string Description,
+    long ActualReceiptSatang,
+    long RecognizedReceiptSatang,
+    bool IsCancelled,
+    Guid? CancellationJournalId,
+    string? CancellationJournalNumber,
+    DateOnly? CancellationBusinessDate);
+
+public sealed record AnnualActualReceiptsReport(
+    AccountingReportPeriod Period,
+    IReadOnlyList<AnnualActualReceiptRow> Rows,
+    long TotalIssuedReceiptSatang,
+    long TotalCancelledReceiptSatang,
+    long TotalRecognizedReceiptSatang);
+
+public sealed record MoneyMovementRow(
+    DateOnly BusinessDate,
+    Guid JournalId,
+    string JournalNumber,
+    string AccountCode,
+    string AccountName,
+    MoneyMovementKind Kind,
+    string VoucherType,
+    string Description,
+    string? PartySnapshot,
+    bool IsReversal,
+    string? ReversedJournalNumber,
+    long MoneyInSatang,
+    long MoneyOutSatang,
+    long InternalTransferInSatang,
+    long InternalTransferOutSatang,
+    long OpeningBalanceInSatang,
+    long OpeningBalanceOutSatang,
+    long RunningBalanceSatang);
+
+public sealed record DailyReceiptPaymentRegisterReport(
+    AccountingBookCode BookCode,
+    string BookName,
+    AccountingReportPeriod Period,
+    long OpeningBalanceSatang,
+    long TotalMoneyInSatang,
+    long TotalMoneyOutSatang,
+    long TotalInternalTransferInSatang,
+    long TotalInternalTransferOutSatang,
+    long TotalOpeningBalanceInSatang,
+    long TotalOpeningBalanceOutSatang,
+    long ClosingBalanceSatang,
+    IReadOnlyList<MoneyMovementRow> Rows);
+
+public sealed record CashBankMovementReport(
+    AccountingBookCode BookCode,
+    string BookName,
+    string AccountCode,
+    string AccountName,
+    AccountingReportPeriod Period,
+    long OpeningBalanceSatang,
+    long TotalMoneyInSatang,
+    long TotalMoneyOutSatang,
+    long TotalInternalTransferInSatang,
+    long TotalInternalTransferOutSatang,
+    long TotalOpeningBalanceInSatang,
+    long TotalOpeningBalanceOutSatang,
+    long ClosingBalanceSatang,
+    IReadOnlyList<MoneyMovementRow> Rows);
+
+/// <summary>
+/// Read-only money-report projections from posted accounting journals. The
+/// methods intentionally do not infer payments from member unit counters.
+/// </summary>
+public sealed class MemberMoneyReportService
+{
+    private readonly AppDbContext database;
+
+    public MemberMoneyReportService(AppDbContext database)
+    {
+        this.database = database ?? throw new ArgumentNullException(nameof(database));
+    }
+
+    public Task<MemberMoneyHistoryReport> GetMemberHistoryAsync(
+        Guid memberId,
+        AccountingReportPeriod period,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(period);
+        _ = memberId;
+        _ = cancellationToken;
+        _ = database;
+        throw new NotImplementedException();
+    }
+
+    public Task<AnnualActualReceiptsReport> GetAnnualActualReceiptsAsync(
+        AccountingReportPeriod period,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(period);
+        _ = cancellationToken;
+        _ = database;
+        throw new NotImplementedException();
+    }
+
+    public Task<DailyReceiptPaymentRegisterReport> GetDailyReceiptPaymentRegisterAsync(
+        AccountingBookCode bookCode,
+        AccountingReportPeriod period,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(period);
+        _ = bookCode;
+        _ = cancellationToken;
+        _ = database;
+        throw new NotImplementedException();
+    }
+
+    public Task<CashBankMovementReport> GetCashBankMovementAsync(
+        AccountingBookCode bookCode,
+        string accountCode,
+        AccountingReportPeriod period,
+        CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(period);
+        _ = bookCode;
+        _ = accountCode;
+        _ = cancellationToken;
+        _ = database;
+        throw new NotImplementedException();
+    }
+}
+
+public static class MemberMoneyReportDocuments
+{
+    public static AccountingDocumentData ToDocumentData(MemberMoneyHistoryReport report)
+    {
+        ArgumentNullException.ThrowIfNull(report);
+        throw new NotImplementedException();
+    }
+
+    public static AccountingDocumentData ToDocumentData(AnnualActualReceiptsReport report)
+    {
+        ArgumentNullException.ThrowIfNull(report);
+        throw new NotImplementedException();
+    }
+
+    public static AccountingDocumentData ToDocumentData(DailyReceiptPaymentRegisterReport report)
+    {
+        ArgumentNullException.ThrowIfNull(report);
+        throw new NotImplementedException();
+    }
+
+    public static AccountingDocumentData ToDocumentData(CashBankMovementReport report)
+    {
+        ArgumentNullException.ThrowIfNull(report);
+        throw new NotImplementedException();
+    }
+}

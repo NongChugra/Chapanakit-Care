@@ -70,7 +70,9 @@ public sealed class CheckpointFourWorkflowTests
         Assert.Empty(await db.Context.Members.ToListAsync());
         Assert.Empty(await db.Context.MemberBeneficiaries.ToListAsync());
         Assert.Empty(await db.Context.AdvanceLedgerEntries.ToListAsync());
-        Assert.Empty(await db.Context.AuditEvents.ToListAsync());
+        Assert.Contains(await db.Context.AuditEvents.ToListAsync(), x => x.Action == "member.created");
+        Assert.Contains(await db.Context.AuditEvents.ToListAsync(), x => x.Action == "demo.members_cleared");
+        Assert.Single(await db.Context.AuditFieldChanges.ToListAsync());
         Assert.Equal(1, (await db.Context.NumberSequences.SingleAsync(x => x.SequenceKey == "member_run_no")).NextValue);
         Assert.NotNull(await db.Context.SystemSettings.SingleAsync());
     }
@@ -79,7 +81,7 @@ public sealed class CheckpointFourWorkflowTests
     public async Task Death_preview_is_read_only_and_returns_reference_breakdown_with_equal_recipient_shares()
     {
         await using var db = await TestDatabase.CreateAsync();
-        var member = await new MemberApplicationService(db.Context).RegisterAsync(Registration("ผู้เสียชีวิต", "1000000000001", twoBeneficiaries: true), Today.AddDays(-200), Now, "tester");
+        var member = await new MemberApplicationService(db.Context).RegisterAsync(Registration("ผู้เสียชีวิต", "1000000000001", twoBeneficiaries: true), Today, Now, "tester");
         member.CoverageStartDate = Today;
         await new MemberApplicationService(db.Context).RegisterAsync(Registration("ผู้ร่วม", "1000000000002"), Today, Now.AddMinute(), "tester");
         await db.Context.SaveChangesAsync();
@@ -87,13 +89,54 @@ public sealed class CheckpointFourWorkflowTests
         var preview = await new DeathApplicationService(db.Context).PreviewAsync("00001", false, Today);
 
         Assert.Equal(1, preview.Calculation.ContributorCount);
-        Assert.Equal(1_500, preview.Calculation.GrossCollectionSatang);
-        Assert.Equal(60, preview.Calculation.ServiceFeeSatang);
-        Assert.Equal(46_440, preview.Calculation.TotalBenefitSatang);
-        Assert.Equal(new long[] { 23_220, 23_220 }, preview.BeneficiarySharesSatang);
+        Assert.Equal(900, preview.Calculation.GrossCollectionSatang);
+        Assert.Equal(0, preview.Calculation.ServiceFeeSatang); // 4% of 9 baht rounds down to zero whole baht.
+        Assert.Equal(27_900, preview.Calculation.TotalBenefitSatang);
+        Assert.Equal(new long[] { 13_950, 13_950 }, preview.BeneficiarySharesSatang);
         Assert.Equal(2, preview.Beneficiaries.Count);
         Assert.Empty(await db.Context.DeathCases.ToListAsync());
         Assert.Equal(MemberStatus.Normal, member.Status);
+    }
+
+    [Fact]
+    public async Task Serious_illness_case_outside_certificate_date_window_cannot_confirm_death()
+    {
+        await using var db = await TestDatabase.CreateAsync();
+        var member = await new MemberApplicationService(db.Context).RegisterAsync(Registration("ทดสอบ", "1000000000001"), Today, Now, "tester");
+        member.ApplicationDate = Today.AddDays(-500);
+        member.CoverageStartDate = Today.AddDays(-366);
+        await db.Context.SaveChangesAsync();
+        var service = new DeathApplicationService(db.Context);
+        var command = new ConfirmDeathCommand("00001", "DC-OLD", Today, "โรคร้ายแรง", true, "เข้าเกณฑ์",
+            new DeathCertificateDocument("death.pdf", "application/pdf", "%PDF-1.4\n%%EOF"u8.ToArray()),
+            ReportedCertificateDate: Today);
+
+        await Assert.ThrowsAsync<MemberValidationException>(() => service.ConfirmAsync(command, Today, Now, "tester"));
+        Assert.Empty(await db.Context.DeathCases.ToListAsync());
+        Assert.Equal(MemberStatus.Normal, member.Status);
+    }
+
+    [Fact]
+    public async Task Delayed_death_recording_uses_certificate_date_for_coverage_and_age()
+    {
+        await using var db = await TestDatabase.CreateAsync();
+        var member = await new MemberApplicationService(db.Context).RegisterAsync(Registration("ก่อนคุ้มครอง", "1000000000001"), Today, Now, "tester");
+        member.ApplicationDate = Today.AddDays(-200);
+        member.CoverageStartDate = Today.AddDays(-20);
+        member.BirthDate = new DateOnly(1980, 8, 24);
+        var deathDate = Today.AddDays(-21);
+        await db.Context.SaveChangesAsync();
+        var service = new DeathApplicationService(db.Context);
+        var preview = await service.PreviewAsync("00001", false, Today, deathCertificateDate: deathDate);
+        Assert.Equal(0, preview.Calculation.TotalBenefitSatang);
+        var result = await service.ConfirmAsync(new ConfirmDeathCommand("00001", "DC-LATE", deathDate,
+            "เหตุ", false, null, new DeathCertificateDocument("death.pdf", "application/pdf", "%PDF-1.4\n%%EOF"u8.ToArray()),
+            ReportedCertificateDate: Today), Today, Now, "tester");
+        Assert.Equal("before_coverage_zero", result.DeathCase.EligibilityResult);
+        Assert.Equal(0, result.Calculation.TotalBenefitSatang);
+        Assert.Equal(0, result.Calculation.ServiceFeeSatang);
+        Assert.Equal(-1, result.DeathCase.DaysSinceCoverage);
+        Assert.Equal(45, (await db.Context.DeathMemberSnapshots.SingleAsync()).AgeAtDeath);
     }
 
     [Fact]
